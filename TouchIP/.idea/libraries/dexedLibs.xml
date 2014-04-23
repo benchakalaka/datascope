@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="dexedLibs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/universal-image-loader-1.8.6-with-sources-eca3b097f3561f854a63e16b5a32daeb.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/library-b241d49f5bc332589c473fb7aeb6a249.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/picasso-2.1.1-a0aabee9ce7a79bcc9e2c255b893d926.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/google-play-services_lib-fcae779380743b6316444eb88578ab55.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/android-async-http-1.4.4-99c7fe88ce236c7e9cfaab8b8817f33c.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/google-play-services-6c0fbff9e038a65c52ef554015104db0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/android-support-v4-8c06d6c211f687d011b1aad42a76d3a8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
