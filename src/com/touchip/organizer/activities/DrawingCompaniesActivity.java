@@ -76,7 +76,7 @@ import com.touchip.organizer.utils.GlobalConstants.Hotspots;
 import com.touchip.organizer.utils.Utils;
 import com.touchip.organizer.utils.Utils.AnimationManager;
 
-/**
+/**asd
  * Description: class represents drawing functions on site plans
  * 
  * @author Ihor Karpachev
