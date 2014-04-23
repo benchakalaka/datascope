@@ -82,7 +82,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
  * @author Ihor Karpachev
  *         Copyright (c) 2013-2014 Datascope Systems Ltd. All Rights Reserved. Date: 17
  *         Dec 2013 Time: 11:24:58
- */
+ test*/
 
 @EActivity ( R.layout.fragments_companies_drawing ) public class DrawingCompaniesActivity extends SpiceFragmentActivity {
 
