@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ssss"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/background_view_rounded_single_trades"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="5sp"
+                android:text="Server address"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textStyle="italic|bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background_view_rounded_single_trades"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/twIp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="@string/ip"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textStyle="italic|bold" />
+
+            <EditText
+                android:id="@+id/etIp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@drawable/background_view_rounded_single"
+                android:padding="2sp"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background_view_rounded_single_trades"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/twPort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="@string/port"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textStyle="italic|bold" />
+
+            <EditText
+                android:id="@+id/etPort"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@drawable/background_view_rounded_single"
+                android:inputType="numberDecimal"
+                android:padding="2sp"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2" >
+
+            <Button
+                android:id="@+id/buttonOk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_view_rounded_single"
+                android:orientation="horizontal"
+                android:text="@string/OK" >
+            </Button>
+
+            <Button
+                android:id="@+id/buttonCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_view_rounded_single"
+                android:orientation="horizontal"
+                android:text="@string/cancel" >
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

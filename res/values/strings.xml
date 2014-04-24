@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="menu_settings">Settings</string>
+    <string name="settings_saved">Settings successfully saved.</string>
+
+    <!-- Drawing labels and captions -->
+    <string name="save">Save</string>
+    <string name="save_drawing">Save drawing</string>
+    <string name="cannot_save_image">Image could not be saved.</string>
+
+    <!-- Notifications and app settings -->
+    <string name="there_is_no_siteplan_related_to_marker">There is no site plans related to current marker or some error occurred during downloading</string>
+    <string name="no_images_related_to_marker_or_date">There are no images related to this marker or date.</string>
+    <string name="there_is_no_images">There are no images relative to this marker, try to pin a photo.</string>
+    <string name="problem_during_downloading">Problem occurred while downloading pictures.</string>
+    <string name="site_plan_uploaded_to_server">Site plan successfully uploaded to server</string>
+    <string name="photo_successfully_uploaded">Photo successfully uploaded to server.</string>
+    <string name="cannot_upload_photo_to_server">Cannot upload photo to the server.</string>
+    <string name="cannot_obtain_current_address">Cannot obtain current address.</string>
+    <string name="connection_problem">Connection problem. Try again later.</string>
+    <string name="click_to_show_menu">Click on marker to show quick menu.</string>
+    <string name="drawing_saved_to_gallery">Drawing saved to gallery</string>
+    <string name="downloading_image">Image downloading in progress.</string>
+    <string name="cannot_capture_picture">Cannot capture picture.</string>
+    <string name="device_has_no_camera">Device has no camera!</string>
+    <string name="cannot_create_marker">Cannot create marker.</string>
+    <string name="unknown_filename">Unknown file name.</string>
+    <string name="hotspot_details">Hotspot details</string>
+    <string name="invalid_ip">IP address is invalid.</string>
+    <string name="loading">Loading, please wait.</string>
+    <string name="app_name">DataScope Ltd.</string>
+    <string name="filename">File name:</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="OK">OK</string>
+    <string name="no">No</string>
+
+    <!-- Stubs -->
+    <string name="server_address_settings">Server address settings</string>
+    <string name="choose_company">Choose company</string>
+    <string name="whiteboard">Whiteboard</string>
+    <string name="resources">Resources</string>
+    <string name="filters">Filters</string>
+    <string name="ip">IP</string>
+    <string name="port">Port</string>
+    <string name="test_connection">Test connection to server</string>
+    <string name="test">Test</string>
+    <string name="save_and_exit">Save and Exit</string>
+    <string name="assigned_hotspots">Assigned hotposts</string>
+    <string name="refresh_drawing">Refresh drawing</string>
+    <string name="undo">Undo</string>
+    <string name="redo">Redo</string>
+    <string name="brush">Brush</string>
+    <string name="site_plan_meeting">Site plan meeting</string>
+    <string name="change_floor_area">Change floor / area</string>
+    <string name="change_date">Change date</string>
+    <string name="TV">TV</string>
+    <string name="everything_will_be_clear">"All shapes/lines will be cleared, you can not undo this action! Do you want confirm this action?"</string>
+    <string name="clear_canvas">Clear canvas</string>
+    <string name="das2vds1dd"></string>
+    <string name="daasds23ewdd"></string>
+
+    <!-- Start activity -->
+    <string name="start_drawing">Drawing</string>
+    <string name="start_calendar">Calendar</string>
+    <string name="start_google_maps">Google Maps</string>
+    <string name="start_site_briefing">Site briefing</string>
+    <string name="start_exit">Exit</string>
+
+    <!-- Map activity -->
+    <string name="map_pin_a_picture">Pin a picture</string>
+    <string name="map_show_pictures">Show pictures</string>
+    <string name="including_two_toasters">%1$s (including Two Toasters)</string>
+    <string name="point_number_x">%1$s</string>
+
+    <string-array name="permits_types">
+        <item>Permit to dig</item>
+        <item>Hot Works</item>
+        <item>Working with electricity</item>
+    </string-array>
+
+    <string name="refresh_map">Refresh map</string>
+    <string name="change_map_type">Change map type</string>
+    <string name="label_color">Color</string>
+    <string name="label_pencil">Pencil</string>
+    <string name="label_menu">Menu</string>
+    <string name="text_to_drawing">Input text</string>
+    <string name="unassigned_hotposts">Unassigned hotposts</string>
+    
+    <string name="_0">0</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="_C">C</string>
+    
+
+</resources>
