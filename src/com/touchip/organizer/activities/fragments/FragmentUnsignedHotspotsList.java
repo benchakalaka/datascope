@@ -19,8 +19,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.communication.rest.model.HotspotsList;
 import com.touchip.organizer.communication.rest.model.HotspotsList.POJORoboHotspot;
+import com.touchip.organizer.utils.DataAccess;
 import com.touchip.organizer.utils.Utils;
 
 public class FragmentUnsignedHotspotsList extends ListFragment {
@@ -29,26 +29,27 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
      public static ListViewUnsignedHotspotsAdapter ADAPTER;
 
      private TextView                              twId , twDescription , twHotspotType , twIsAssigned;
-     private ImageView                             imageHotspotType;
+     private ImageView                             imageHotspotType , imageHotspotComapnyColor;
      private Dialog                                dialogHotspotDetail;
 
      @Override public void onAttach(Activity activity) {
           super.onAttach(activity);
           ADAPTER = new ListViewUnsignedHotspotsAdapter(getActivity());
           setListAdapter(ADAPTER);
+          loadViews();
      }
 
      @Override public void onListItemClick(ListView l, View v, int position, long id) {
-          POJORoboHotspot hotspot = ListViewUnsignedHotspotsAdapter.UNSIGNED_HOTSPOTS.get(position);
-          String isSigned = (Double.valueOf(hotspot.x) > 0) ? "assigned" : "not assigned";
+          POJORoboHotspot hotspot = DataAccess.UNASSIGNED_HOTSPOTS.get(position);
           dialogHotspotDetail.setTitle(hotspot.type.replace("hotspot", ""));
 
-          twDescription.setText("Description:" + hotspot.description);
+          twDescription.setText("Description:" + hotspot.description + "\nCreated by " + FragmentCompaniesList.getCompanyNameById(hotspot.companyId));
           twId.setText("ID: " + hotspot.id);
           twHotspotType.setText("Type: " + hotspot.type);
-          twIsAssigned.setText("Status: hotspot is " + isSigned);
+          twIsAssigned.setText("Status: hotspot is not assigned");
 
           imageHotspotType.setBackgroundResource(Utils.getImageIdByType(hotspot.type));
+          imageHotspotComapnyColor.setBackgroundColor(FragmentCompaniesList.getCompanyColorById(hotspot.companyId));
           dialogHotspotDetail.show();
      }
 
@@ -61,8 +62,8 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
       */
      public static class ListViewUnsignedHotspotsAdapter extends ArrayAdapter <String> {
 
-          public static Activity     activity;
-          public static HotspotsList UNSIGNED_HOTSPOTS;
+          public static Activity        activity;
+          public static POJORoboHotspot draggedUnsignedHotspot;
 
           public ListViewUnsignedHotspotsAdapter ( Activity act ) {
                super(act, R.layout.listview_hotspot_list_item, new String[0]);
@@ -71,7 +72,7 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
           }
 
           @Override public int getCount() {
-               return UNSIGNED_HOTSPOTS.size();
+               return DataAccess.UNASSIGNED_HOTSPOTS.size();
           }
 
           @SuppressWarnings ( "deprecation" ) @Override public View getView(int position, View view, ViewGroup parent) {
@@ -80,15 +81,26 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
                View rowView = inflater.inflate(R.layout.listview_hotspot_list_item, null, true);
                TextView txtTitle = (TextView) rowView.findViewById(R.id.list_hotspots_text_view);
                ImageView imageView = (ImageView) rowView.findViewById(R.id.list_hotspots_image);
-               imageView.setBackgroundDrawable(new BitmapDrawable(activity.getResources(), Utils.getBitmapByHotspotType(UNSIGNED_HOTSPOTS.get(position).type)));
-               imageView.setTag(UNSIGNED_HOTSPOTS.get(position));
+               ImageView imageViewCompanyColour = (ImageView) rowView.findViewById(R.id.list_hotspots_companyColour);
+
+               imageView.setBackgroundDrawable(new BitmapDrawable(activity.getResources(), Utils.getBitmapByHotspotType(DataAccess.UNASSIGNED_HOTSPOTS.get(position).type)));
+               imageView.setTag(DataAccess.UNASSIGNED_HOTSPOTS.get(position));
+
+               try {
+                    imageViewCompanyColour.setBackgroundColor(FragmentCompaniesList.getCompanyColorById(DataAccess.UNASSIGNED_HOTSPOTS.get(position).companyId));
+               } catch (Exception e) {
+                    Utils.logw(e.getMessage());
+                    imageViewCompanyColour.setVisibility(View.INVISIBLE);
+               }
+
                imageView.setOnLongClickListener(new OnLongClickListener() {
 
                     @Override public boolean onLongClick(View v) {
                          ClipData.Item item = new ClipData.Item(v.getTag().toString());
-                         POJORoboHotspot unsignedHotspot = (POJORoboHotspot) v.getTag();
+                         draggedUnsignedHotspot = (POJORoboHotspot) v.getTag();
                          String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
-                         ClipData dragData = new ClipData(String.valueOf(unsignedHotspot.id), mimeTypes, item);
+                         // Id of Hotspot and ID of company (necessary for parameter in DrawingCompaniesActivity :: createHotspot)
+                         ClipData dragData = new ClipData(String.valueOf(draggedUnsignedHotspot.id), mimeTypes, item);
 
                          // Instantiates the drag shadow builder.
                          View.DragShadowBuilder shadow = new DragShadowBuilder(v);
@@ -98,7 +110,7 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
                          return true;
                     }
                });
-               txtTitle.setText(UNSIGNED_HOTSPOTS.get(position).description);
+               txtTitle.setText(DataAccess.UNASSIGNED_HOTSPOTS.get(position).description);
 
                return rowView;
           }
@@ -112,6 +124,7 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
           twHotspotType = ((TextView) dialogHotspotDetail.findViewById(R.id.dialog_edit_text_type));
           twIsAssigned = ((TextView) dialogHotspotDetail.findViewById(R.id.dialog_edit_text_is_signed));
           imageHotspotType = ((ImageView) dialogHotspotDetail.findViewById(R.id.dialog_image_view_type));
+          imageHotspotComapnyColor = ((ImageView) dialogHotspotDetail.findViewById(R.id.dialog_image_view_company_color));
 
           ((Button) dialogHotspotDetail.findViewById(R.id.dialog_button_ok)).setOnClickListener(new OnClickListener() {
                @Override public void onClick(View v) {

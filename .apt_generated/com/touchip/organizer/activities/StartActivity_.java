@@ -74,10 +74,10 @@ public final class StartActivity_
     @Override
     public void onViewChanged(HasViews hasViews) {
         buttonGmaps = ((ImageButton) hasViews.findViewById(id.buttonGmaps));
-        buttonDrawing = ((ImageButton) hasViews.findViewById(id.buttonDrawing));
-        buttonSettings = ((ImageButton) hasViews.findViewById(id.buttonSettings));
-        buttonExit = ((ImageButton) hasViews.findViewById(id.buttonExit));
         buttonCalendar = ((ImageButton) hasViews.findViewById(id.buttonCalendar));
+        buttonDrawing = ((ImageButton) hasViews.findViewById(id.buttonDrawing));
+        buttonExit = ((ImageButton) hasViews.findViewById(id.buttonExit));
+        buttonSettings = ((ImageButton) hasViews.findViewById(id.buttonSettings));
         {
             View view = hasViews.findViewById(id.buttonExit);
             if (view!= null) {

@@ -68,21 +68,21 @@ public final class SlideMenuDrawingCopmanies_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        changeArea = ((LinearLayout) hasViews.findViewById(id.changeArea));
-        changeDate = ((LinearLayout) hasViews.findViewById(id.changeDate));
-        meetingPlan = ((LinearLayout) hasViews.findViewById(id.meetingPlan));
         changeBrushSize = ((LinearLayout) hasViews.findViewById(id.changeBrushSize));
         undo = ((LinearLayout) hasViews.findViewById(id.undo));
+        changeArea = ((LinearLayout) hasViews.findViewById(id.changeArea));
+        changeDate = ((LinearLayout) hasViews.findViewById(id.changeDate));
         redo = ((LinearLayout) hasViews.findViewById(id.redo));
+        meetingPlan = ((LinearLayout) hasViews.findViewById(id.meetingPlan));
         {
-            View view = hasViews.findViewById(id.undo);
+            View view = hasViews.findViewById(id.redo);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        SlideMenuDrawingCopmanies_.this.undo();
+                        SlideMenuDrawingCopmanies_.this.redo();
                     }
 
                 }
@@ -98,21 +98,6 @@ public final class SlideMenuDrawingCopmanies_
                     @Override
                     public void onClick(View view) {
                         SlideMenuDrawingCopmanies_.this.meetingPlan();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.changeDate);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        SlideMenuDrawingCopmanies_.this.changeDate();
                     }
 
                 }
@@ -150,14 +135,29 @@ public final class SlideMenuDrawingCopmanies_
             }
         }
         {
-            View view = hasViews.findViewById(id.redo);
+            View view = hasViews.findViewById(id.changeDate);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        SlideMenuDrawingCopmanies_.this.redo();
+                        SlideMenuDrawingCopmanies_.this.changeDate();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.undo);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        SlideMenuDrawingCopmanies_.this.undo();
                     }
 
                 }

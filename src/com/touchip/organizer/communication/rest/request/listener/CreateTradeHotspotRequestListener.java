@@ -9,7 +9,6 @@ import com.touchip.organizer.activities.DrawingCompaniesActivity_;
 import com.touchip.organizer.activities.custom.components.TradesView;
 import com.touchip.organizer.activities.fragments.FragmentHotspotsList;
 import com.touchip.organizer.activities.fragments.FragmentUnsignedHotspotsList;
-import com.touchip.organizer.activities.fragments.FragmentUnsignedHotspotsList.ListViewUnsignedHotspotsAdapter;
 import com.touchip.organizer.communication.rest.model.HotspotsList;
 import com.touchip.organizer.communication.rest.model.HotspotsList.POJORoboHotspot;
 import com.touchip.organizer.utils.DataAccess;
@@ -41,7 +40,7 @@ public class CreateTradeHotspotRequestListener implements RequestListener <Hotsp
           if ( !Utils.isNullOrEmpty(hotspots) ) {
 
                DataAccess.SIGNED_HOTSPOTS = hotspots;
-               ListViewUnsignedHotspotsAdapter.UNSIGNED_HOTSPOTS = hotspots;
+               // DataAccess.UNASSIGNED_HOTSPOTS = hotspots;
 
                FragmentHotspotsList.ADAPTER.notifyDataSetChanged();
                FragmentUnsignedHotspotsList.ADAPTER.notifyDataSetChanged();

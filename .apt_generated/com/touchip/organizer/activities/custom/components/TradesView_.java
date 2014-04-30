@@ -66,8 +66,8 @@ public final class TradesView_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twTradeDescription = ((TextView) hasViews.findViewById(id.twTradeDescription));
         twTradeAmount = ((TextView) hasViews.findViewById(id.twTradeAmount));
+        twTradeDescription = ((TextView) hasViews.findViewById(id.twTradeDescription));
     }
 
 }

@@ -1749,3 +1749,696 @@
 10:21:38.105 [Worker-46] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
 10:22:05.770 [Worker-46] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
 10:25:29.434 [Worker-46] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+11:57:23.358 [Worker-98] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+11:57:49.745 [Worker-99] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+11:58:00.616 [Worker-98] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+11:58:40.831 [Worker-99] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+11:58:51.73 [Worker-97] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+11:58:56.699 [Worker-102] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+11:59:02.413 [Worker-101] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+11:59:05.933 [Worker-102] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+11:59:12.84 [Worker-99] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+11:59:21.974 [Worker-98] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+11:59:25.814 [Worker-100] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+11:59:29.739 [Worker-99] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+11:59:40.475 [Worker-102] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:04:59.535 [Worker-102] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:05:11.502 [Worker-98] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:05:46.71 [Worker-102] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:09:22.937 [Worker-105] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:09:29.644 [Worker-109] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:09:53.181 [Worker-107] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:10:20.857 [Worker-110] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:12:52.59 [Worker-117] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:20:31.907 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:21:10.214 [Worker-116] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:30:33.989 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:30:33.990 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 1 elements
+12:30:33.996 [Worker-122] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+12:30:34.0 [Worker-122] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+12:30:34.1 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+12:30:34.1 [Worker-122] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+12:30:34.4 [Worker-122] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+12:30:34.7 [Worker-122] INFO  o.a.p.ModelValidator:42 - Validating elements
+12:30:34.7 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:30:34.7 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [menuStatusArrow, svTrades, llFilters, refresh, rlHotspotsOnCanvas, DRAW_VIEW, llTrades, twBottomStatus, llCompanies]
+12:30:34.9 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void refresh() , void menuStatusArrow() ]
+12:30:34.9 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+12:30:34.10 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+12:30:34.10 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+12:30:34.10 [Worker-122] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+12:30:34.11 [Worker-122] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:30:34.13 [Worker-122] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+12:30:34.14 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+12:30:34.14 [Worker-122] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+12:30:34.15 [Worker-122] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+12:30:34.24 [Worker-122] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 34 ms], [Generate Sources = 10 ms], [Extract Annotations = 6 ms], [Find R Classes = 6 ms], [Extract Manifest = 5 ms], [Process Annotations = 4 ms], [Validate Annotations = 3 ms], 
+12:30:34.24 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+12:32:43.491 [Worker-132] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:35:41.680 [Worker-133] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:36:41.944 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:36:41.945 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 8 elements
+12:36:41.952 [Worker-122] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+12:36:41.955 [Worker-122] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+12:36:41.955 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+12:36:41.956 [Worker-122] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+12:36:41.959 [Worker-122] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+12:36:41.961 [Worker-122] INFO  o.a.p.ModelValidator:42 - Validating elements
+12:36:41.962 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:36:41.963 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [refresh, llCompanies, rlHotspotsOnCanvas, DRAW_VIEW, llTrades, menuStatusArrow, svTrades, llFilters, twBottomStatus]
+12:36:41.964 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void menuStatusArrow() , void refresh() ]
+12:36:41.964 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+12:36:41.965 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+12:36:41.965 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+12:36:41.965 [Worker-122] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+12:36:41.966 [Worker-122] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:36:41.967 [Worker-122] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+12:36:41.968 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+12:36:41.968 [Worker-122] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+12:36:41.968 [Worker-122] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+12:36:41.975 [Worker-122] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 30 ms], [Generate Sources = 7 ms], [Extract Annotations = 6 ms], [Find R Classes = 5 ms], [Validate Annotations = 4 ms], [Extract Manifest = 3 ms], [Process Annotations = 3 ms], 
+12:36:41.975 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+12:36:44.605 [Worker-133] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:36:44.605 [Worker-133] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 1 elements
+12:36:44.612 [Worker-133] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+12:36:44.615 [Worker-133] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+12:36:44.615 [Worker-133] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+12:36:44.615 [Worker-133] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+12:36:44.618 [Worker-133] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+12:36:44.621 [Worker-133] INFO  o.a.p.ModelValidator:42 - Validating elements
+12:36:44.622 [Worker-133] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:36:44.622 [Worker-133] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [llCompanies, llTrades, llFilters, rlHotspotsOnCanvas, menuStatusArrow, twBottomStatus, svTrades, DRAW_VIEW, refresh]
+12:36:44.623 [Worker-133] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void refresh() , void menuStatusArrow() ]
+12:36:44.624 [Worker-133] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+12:36:44.624 [Worker-133] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+12:36:44.624 [Worker-133] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+12:36:44.625 [Worker-133] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+12:36:44.625 [Worker-133] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:36:44.626 [Worker-133] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+12:36:44.627 [Worker-133] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+12:36:44.627 [Worker-133] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+12:36:44.627 [Worker-133] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+12:36:44.633 [Worker-133] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 28 ms], [Extract Annotations = 6 ms], [Find R Classes = 6 ms], [Generate Sources = 6 ms], [Validate Annotations = 4 ms], [Extract Manifest = 3 ms], [Process Annotations = 2 ms], 
+12:36:44.633 [Worker-133] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+12:37:55.477 [Worker-132] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:37:55.478 [Worker-132] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 1 elements
+12:37:55.484 [Worker-132] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+12:37:55.486 [Worker-132] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+12:37:55.487 [Worker-132] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+12:37:55.488 [Worker-132] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+12:37:55.505 [Worker-132] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+12:37:55.507 [Worker-132] INFO  o.a.p.ModelValidator:42 - Validating elements
+12:37:55.508 [Worker-132] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:37:55.508 [Worker-132] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [DRAW_VIEW, llCompanies, svTrades, twBottomStatus, llTrades, llFilters, rlHotspotsOnCanvas, menuStatusArrow, refresh]
+12:37:55.509 [Worker-132] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void refresh() , void menuStatusArrow() ]
+12:37:55.509 [Worker-132] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+12:37:55.510 [Worker-132] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+12:37:55.510 [Worker-132] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+12:37:55.510 [Worker-132] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+12:37:55.511 [Worker-132] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:37:55.512 [Worker-132] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+12:37:55.513 [Worker-132] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+12:37:55.513 [Worker-132] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+12:37:55.513 [Worker-132] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+12:37:55.520 [Worker-132] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 42 ms], [Find R Classes = 19 ms], [Generate Sources = 7 ms], [Extract Annotations = 6 ms], [Extract Manifest = 3 ms], [Validate Annotations = 3 ms], [Process Annotations = 3 ms], 
+12:37:55.521 [Worker-132] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+12:38:35.189 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:38:35.190 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 1 elements
+12:38:35.200 [Worker-122] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+12:38:35.203 [Worker-122] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+12:38:35.204 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+12:38:35.204 [Worker-122] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+12:38:35.207 [Worker-122] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+12:38:35.210 [Worker-122] INFO  o.a.p.ModelValidator:42 - Validating elements
+12:38:35.210 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:38:35.211 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [llFilters, refresh, DRAW_VIEW, svTrades, llTrades, twBottomStatus, llCompanies, menuStatusArrow, rlHotspotsOnCanvas]
+12:38:35.212 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void refresh() , void menuStatusArrow() ]
+12:38:35.212 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+12:38:35.212 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+12:38:35.213 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+12:38:35.213 [Worker-122] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+12:38:35.213 [Worker-122] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:38:35.214 [Worker-122] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+12:38:35.214 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+12:38:35.215 [Worker-122] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+12:38:35.215 [Worker-122] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+12:38:35.220 [Worker-122] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 30 ms], [Extract Annotations = 9 ms], [Find R Classes = 6 ms], [Generate Sources = 6 ms], [Extract Manifest = 4 ms], [Validate Annotations = 3 ms], [Process Annotations = 1 ms], 
+12:38:35.220 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+12:38:54.556 [Worker-132] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:38:54.557 [Worker-132] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 8 elements
+12:38:54.565 [Worker-132] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+12:38:54.568 [Worker-132] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+12:38:54.569 [Worker-132] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+12:38:54.569 [Worker-132] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+12:38:54.572 [Worker-132] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+12:38:54.574 [Worker-132] INFO  o.a.p.ModelValidator:42 - Validating elements
+12:38:54.575 [Worker-132] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:38:54.575 [Worker-132] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [refresh, svTrades, rlHotspotsOnCanvas, DRAW_VIEW, llTrades, llCompanies, menuStatusArrow, twBottomStatus, llFilters]
+12:38:54.576 [Worker-132] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void menuStatusArrow() , void refresh() ]
+12:38:54.576 [Worker-132] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+12:38:54.577 [Worker-132] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+12:38:54.577 [Worker-132] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+12:38:54.578 [Worker-132] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+12:38:54.578 [Worker-132] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:38:54.579 [Worker-132] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+12:38:54.580 [Worker-132] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+12:38:54.580 [Worker-132] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+12:38:54.580 [Worker-132] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+12:38:54.587 [Worker-132] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 30 ms], [Extract Annotations = 7 ms], [Generate Sources = 7 ms], [Find R Classes = 5 ms], [Extract Manifest = 4 ms], [Validate Annotations = 4 ms], [Process Annotations = 2 ms], 
+12:38:54.588 [Worker-132] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+12:39:01.547 [Worker-128] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:39:01.547 [Worker-128] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 1 elements
+12:39:01.553 [Worker-128] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+12:39:01.555 [Worker-128] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+12:39:01.556 [Worker-128] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+12:39:01.556 [Worker-128] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+12:39:01.558 [Worker-128] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+12:39:01.561 [Worker-128] INFO  o.a.p.ModelValidator:42 - Validating elements
+12:39:01.561 [Worker-128] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:39:01.561 [Worker-128] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [refresh, rlHotspotsOnCanvas, llTrades, llCompanies, svTrades, twBottomStatus, menuStatusArrow, DRAW_VIEW, llFilters]
+12:39:01.562 [Worker-128] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void refresh() , void menuStatusArrow() ]
+12:39:01.563 [Worker-128] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+12:39:01.563 [Worker-128] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+12:39:01.563 [Worker-128] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+12:39:01.564 [Worker-128] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+12:39:01.565 [Worker-128] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:39:01.566 [Worker-128] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+12:39:01.567 [Worker-128] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+12:39:01.567 [Worker-128] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+12:39:01.567 [Worker-128] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+12:39:01.572 [Worker-128] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 25 ms], [Extract Annotations = 5 ms], [Find R Classes = 5 ms], [Generate Sources = 5 ms], [Extract Manifest = 3 ms], [Validate Annotations = 3 ms], [Process Annotations = 3 ms], 
+12:39:01.572 [Worker-128] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+12:39:29.964 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:39:29.965 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 1 elements
+12:39:29.975 [Worker-122] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+12:39:29.979 [Worker-122] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+12:39:29.979 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+12:39:29.980 [Worker-122] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+12:39:29.984 [Worker-122] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+12:39:29.988 [Worker-122] INFO  o.a.p.ModelValidator:42 - Validating elements
+12:39:29.988 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:39:29.989 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [llFilters, llTrades, twBottomStatus, rlHotspotsOnCanvas, svTrades, DRAW_VIEW, refresh, menuStatusArrow, llCompanies]
+12:39:29.990 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void menuStatusArrow() , void refresh() ]
+12:39:29.990 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+12:39:29.990 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+12:39:29.991 [Worker-122] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+12:39:29.991 [Worker-122] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+12:39:29.991 [Worker-122] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:39:29.993 [Worker-122] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+12:39:29.993 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+12:39:29.994 [Worker-122] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+12:39:29.994 [Worker-122] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+12:39:29.999 [Worker-122] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 34 ms], [Extract Annotations = 10 ms], [Find R Classes = 8 ms], [Generate Sources = 6 ms], [Extract Manifest = 4 ms], [Validate Annotations = 3 ms], [Process Annotations = 2 ms], 
+12:39:29.999 [Worker-122] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+12:48:50.250 [Worker-137] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:49:50.576 [Worker-138] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:49:50.645 [Worker-138] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 4 annotations on 9 elements
+12:49:50.655 [Worker-138] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+12:49:50.657 [Worker-138] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+12:49:50.658 [Worker-138] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+12:49:50.658 [Worker-138] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+12:49:50.661 [Worker-138] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+12:49:50.664 [Worker-138] INFO  o.a.p.ModelValidator:42 - Validating elements
+12:49:50.664 [Worker-138] DEBUG o.a.p.ModelValidator:62 - Validating with EViewGroupHandler: [com.touchip.organizer.activities.custom.components.SlideMenuDrawingCopmanies]
+12:49:50.665 [Worker-138] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [changeDate, undo, changeBrushSize, changeArea, redo, meetingPlan]
+12:49:50.665 [Worker-138] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void changeBrushSize() , void meetingPlan() , void changeArea() , void undo() , void changeDate() , void redo() ]
+12:49:50.666 [Worker-138] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+12:49:50.666 [Worker-138] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+12:49:50.666 [Worker-138] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EViewGroupHandler: [com.touchip.organizer.activities.custom.components.SlideMenuDrawingCopmanies]
+12:49:50.667 [Worker-138] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+12:49:50.667 [Worker-138] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+12:49:50.668 [Worker-138] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+12:49:50.668 [Worker-138] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.SlideMenuDrawingCopmanies_
+12:49:50.673 [Worker-138] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 28 ms], [Extract Annotations = 8 ms], [Find R Classes = 6 ms], [Generate Sources = 6 ms], [Extract Manifest = 4 ms], [Validate Annotations = 2 ms], [Process Annotations = 1 ms], 
+12:49:50.673 [Worker-138] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+12:50:45.450 [Worker-137] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:51:31.602 [Worker-142] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:51:31.603 [Worker-142] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 8 elements
+12:51:31.609 [Worker-142] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+12:51:31.612 [Worker-142] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+12:51:31.612 [Worker-142] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+12:51:31.612 [Worker-142] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+12:51:31.615 [Worker-142] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+12:51:31.617 [Worker-142] INFO  o.a.p.ModelValidator:42 - Validating elements
+12:51:31.618 [Worker-142] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:51:31.618 [Worker-142] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [DRAW_VIEW, llFilters, refresh, svTrades, twBottomStatus, rlHotspotsOnCanvas, llCompanies, menuStatusArrow, llTrades]
+12:51:31.619 [Worker-142] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void refresh() , void menuStatusArrow() ]
+12:51:31.620 [Worker-142] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+12:51:31.620 [Worker-142] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+12:51:31.620 [Worker-142] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+12:51:31.621 [Worker-142] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+12:51:31.621 [Worker-142] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:51:31.622 [Worker-142] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+12:51:31.623 [Worker-142] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+12:51:31.623 [Worker-142] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+12:51:31.623 [Worker-142] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+12:51:31.625 [Worker-142] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 22 ms], [Extract Annotations = 6 ms], [Find R Classes = 5 ms], [Extract Manifest = 3 ms], [Validate Annotations = 3 ms], [Process Annotations = 2 ms], [Generate Sources = 2 ms], 
+12:51:31.635 [Worker-142] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+12:51:45.538 [Worker-141] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:51:45.668 [Worker-141] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 1 elements
+12:51:45.674 [Worker-141] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+12:51:45.677 [Worker-141] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+12:51:45.677 [Worker-141] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+12:51:45.678 [Worker-141] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+12:51:45.681 [Worker-141] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+12:51:45.683 [Worker-141] INFO  o.a.p.ModelValidator:42 - Validating elements
+12:51:45.684 [Worker-141] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:51:45.684 [Worker-141] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [llTrades, twBottomStatus, llCompanies, rlHotspotsOnCanvas, DRAW_VIEW, svTrades, llFilters, menuStatusArrow, refresh]
+12:51:45.685 [Worker-141] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void menuStatusArrow() , void refresh() ]
+12:51:45.686 [Worker-141] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+12:51:45.686 [Worker-141] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+12:51:45.687 [Worker-141] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+12:51:45.687 [Worker-141] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+12:51:45.687 [Worker-141] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:51:45.688 [Worker-141] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+12:51:45.689 [Worker-141] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+12:51:45.689 [Worker-141] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+12:51:45.690 [Worker-141] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+12:51:45.706 [Worker-141] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 38 ms], [Generate Sources = 17 ms], [Extract Annotations = 6 ms], [Find R Classes = 5 ms], [Validate Annotations = 4 ms], [Extract Manifest = 3 ms], [Process Annotations = 2 ms], 
+12:51:45.706 [Worker-141] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+12:54:00.138 [Worker-140] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:54:00.156 [Worker-140] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 1 elements
+12:54:00.162 [Worker-140] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+12:54:00.165 [Worker-140] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+12:54:00.165 [Worker-140] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+12:54:00.166 [Worker-140] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+12:54:00.168 [Worker-140] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+12:54:00.171 [Worker-140] INFO  o.a.p.ModelValidator:42 - Validating elements
+12:54:00.171 [Worker-140] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:54:00.171 [Worker-140] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [svTrades, llCompanies, llFilters, rlHotspotsOnCanvas, llTrades, twBottomStatus, menuStatusArrow, DRAW_VIEW, refresh]
+12:54:00.172 [Worker-140] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void refresh() , void menuStatusArrow() ]
+12:54:00.172 [Worker-140] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+12:54:00.173 [Worker-140] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+12:54:00.173 [Worker-140] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+12:54:00.173 [Worker-140] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+12:54:00.173 [Worker-140] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:54:00.174 [Worker-140] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+12:54:00.175 [Worker-140] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+12:54:00.175 [Worker-140] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+12:54:00.175 [Worker-140] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+12:54:00.181 [Worker-140] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 25 ms], [Generate Sources = 6 ms], [Extract Annotations = 5 ms], [Find R Classes = 5 ms], [Extract Manifest = 3 ms], [Validate Annotations = 2 ms], [Process Annotations = 2 ms], 
+12:54:00.181 [Worker-140] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+12:54:13.554 [Worker-142] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:54:13.573 [Worker-142] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 1 elements
+12:54:13.579 [Worker-142] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+12:54:13.582 [Worker-142] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+12:54:13.582 [Worker-142] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+12:54:13.583 [Worker-142] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+12:54:13.585 [Worker-142] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+12:54:13.588 [Worker-142] INFO  o.a.p.ModelValidator:42 - Validating elements
+12:54:13.588 [Worker-142] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:54:13.588 [Worker-142] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [twBottomStatus, llTrades, refresh, llCompanies, llFilters, rlHotspotsOnCanvas, DRAW_VIEW, menuStatusArrow, svTrades]
+12:54:13.589 [Worker-142] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void refresh() , void menuStatusArrow() ]
+12:54:13.590 [Worker-142] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+12:54:13.590 [Worker-142] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+12:54:13.590 [Worker-142] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+12:54:13.591 [Worker-142] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+12:54:13.591 [Worker-142] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+12:54:13.592 [Worker-142] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+12:54:13.592 [Worker-142] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+12:54:13.593 [Worker-142] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+12:54:13.593 [Worker-142] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+12:54:13.598 [Worker-142] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 25 ms], [Extract Annotations = 6 ms], [Generate Sources = 6 ms], [Find R Classes = 5 ms], [Extract Manifest = 3 ms], [Validate Annotations = 2 ms], [Process Annotations = 2 ms], 
+12:54:13.598 [Worker-142] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+12:55:05.254 [Worker-142] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:56:17.394 [Worker-133] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:56:20.866 [Worker-144] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:57:07.825 [Worker-141] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:57:28.166 [Worker-140] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:57:35.483 [Worker-142] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:57:54.540 [Worker-142] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:58:02.259 [Worker-140] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:59:06.290 [Worker-140] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+12:59:17.776 [Worker-139] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:01:02.19 [Worker-143] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:01:28.660 [Worker-146] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:01:28.767 [Worker-146] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 1 elements
+13:01:28.773 [Worker-146] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+13:01:28.776 [Worker-146] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+13:01:28.776 [Worker-146] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+13:01:28.777 [Worker-146] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+13:01:28.780 [Worker-146] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+13:01:28.782 [Worker-146] INFO  o.a.p.ModelValidator:42 - Validating elements
+13:01:28.783 [Worker-146] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:01:28.783 [Worker-146] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [twBottomStatus, menuStatusArrow, svTrades, refresh, llFilters, llTrades, DRAW_VIEW, rlHotspotsOnCanvas, llCompanies]
+13:01:28.785 [Worker-146] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void menuStatusArrow() , void refresh() ]
+13:01:28.785 [Worker-146] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+13:01:28.786 [Worker-146] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+13:01:28.786 [Worker-146] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+13:01:28.787 [Worker-146] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+13:01:28.787 [Worker-146] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:01:28.788 [Worker-146] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+13:01:28.788 [Worker-146] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+13:01:28.789 [Worker-146] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+13:01:28.789 [Worker-146] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+13:01:28.794 [Worker-146] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 27 ms], [Generate Sources = 6 ms], [Extract Annotations = 5 ms], [Find R Classes = 5 ms], [Validate Annotations = 5 ms], [Extract Manifest = 3 ms], [Process Annotations = 1 ms], 
+13:01:28.795 [Worker-146] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+13:01:55.464 [Worker-145] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:02:21.215 [Worker-147] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:02:42.563 [Worker-146] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:03:22.111 [Worker-147] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:03:40.815 [Worker-143] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:04:16.600 [Worker-145] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:04:16.601 [Worker-145] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 8 elements
+13:04:16.607 [Worker-145] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+13:04:16.609 [Worker-145] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+13:04:16.610 [Worker-145] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+13:04:16.610 [Worker-145] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+13:04:16.612 [Worker-145] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+13:04:16.614 [Worker-145] INFO  o.a.p.ModelValidator:42 - Validating elements
+13:04:16.614 [Worker-145] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:04:16.615 [Worker-145] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [llFilters, twBottomStatus, svTrades, refresh, rlHotspotsOnCanvas, DRAW_VIEW, llCompanies, menuStatusArrow, llTrades]
+13:04:16.616 [Worker-145] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void menuStatusArrow() , void refresh() ]
+13:04:16.616 [Worker-145] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+13:04:16.616 [Worker-145] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+13:04:16.617 [Worker-145] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+13:04:16.617 [Worker-145] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+13:04:16.617 [Worker-145] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:04:16.618 [Worker-145] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+13:04:16.619 [Worker-145] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+13:04:16.619 [Worker-145] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+13:04:16.619 [Worker-145] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+13:04:16.625 [Worker-145] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 24 ms], [Extract Annotations = 6 ms], [Generate Sources = 6 ms], [Find R Classes = 4 ms], [Extract Manifest = 3 ms], [Validate Annotations = 3 ms], [Process Annotations = 2 ms], 
+13:04:16.626 [Worker-145] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+13:04:52.583 [Worker-151] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:04:52.602 [Worker-151] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 1 elements
+13:04:52.608 [Worker-151] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+13:04:52.621 [Worker-151] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+13:04:52.621 [Worker-151] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+13:04:52.622 [Worker-151] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+13:04:52.639 [Worker-151] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+13:04:52.641 [Worker-151] INFO  o.a.p.ModelValidator:42 - Validating elements
+13:04:52.642 [Worker-151] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:04:52.642 [Worker-151] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [DRAW_VIEW, llTrades, llFilters, menuStatusArrow, refresh, rlHotspotsOnCanvas, llCompanies, svTrades, twBottomStatus]
+13:04:52.643 [Worker-151] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void menuStatusArrow() , void refresh() ]
+13:04:52.643 [Worker-151] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+13:04:52.643 [Worker-151] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+13:04:52.644 [Worker-151] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+13:04:52.644 [Worker-151] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+13:04:52.644 [Worker-151] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:04:52.645 [Worker-151] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+13:04:52.646 [Worker-151] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+13:04:52.646 [Worker-151] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+13:04:52.646 [Worker-151] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+13:04:52.652 [Worker-151] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 50 ms], [Find R Classes = 19 ms], [Extract Manifest = 13 ms], [Extract Annotations = 6 ms], [Generate Sources = 6 ms], [Validate Annotations = 3 ms], [Process Annotations = 2 ms], 
+13:04:52.652 [Worker-151] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+13:36:55.69 [Worker-162] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:36:55.69 [Worker-162] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 1 elements
+13:36:55.79 [Worker-162] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+13:36:55.79 [Worker-162] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+13:36:55.79 [Worker-162] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+13:36:55.79 [Worker-162] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+13:36:55.89 [Worker-162] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+13:36:55.89 [Worker-162] INFO  o.a.p.ModelValidator:42 - Validating elements
+13:36:55.89 [Worker-162] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:36:55.89 [Worker-162] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [menuStatusArrow, llTrades, llFilters, rlHotspotsOnCanvas, DRAW_VIEW, refresh, llCompanies, svTrades, twBottomStatus]
+13:36:55.89 [Worker-162] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void refresh() , void menuStatusArrow() ]
+13:36:55.89 [Worker-162] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+13:36:55.89 [Worker-162] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+13:36:55.89 [Worker-162] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+13:36:55.89 [Worker-162] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+13:36:55.89 [Worker-162] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:36:55.89 [Worker-162] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+13:36:55.99 [Worker-162] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+13:36:55.99 [Worker-162] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+13:36:55.99 [Worker-162] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+13:36:55.99 [Worker-162] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 30 ms], [Extract Annotations = 10 ms], [Find R Classes = 10 ms], [Process Annotations = 10 ms], [Extract Manifest = 0 ms], [Validate Annotations = 0 ms], [Generate Sources = 0 ms], 
+13:36:55.99 [Worker-162] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+13:38:41.655 [Worker-164] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:38:51.285 [Worker-162] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:38:57.265 [Worker-161] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:39:10.825 [Worker-167] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:39:36.415 [Worker-167] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:39:36.415 [Worker-167] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 1 elements
+13:39:36.425 [Worker-167] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+13:39:36.425 [Worker-167] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+13:39:36.425 [Worker-167] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+13:39:36.425 [Worker-167] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+13:39:36.425 [Worker-167] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+13:39:36.435 [Worker-167] INFO  o.a.p.ModelValidator:42 - Validating elements
+13:39:36.435 [Worker-167] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:39:36.435 [Worker-167] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [llTrades, llFilters, llCompanies, twBottomStatus, DRAW_VIEW, menuStatusArrow, refresh, svTrades, rlHotspotsOnCanvas]
+13:39:36.435 [Worker-167] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void refresh() , void menuStatusArrow() ]
+13:39:36.435 [Worker-167] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+13:39:36.435 [Worker-167] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+13:39:36.435 [Worker-167] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+13:39:36.435 [Worker-167] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+13:39:36.435 [Worker-167] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:39:36.435 [Worker-167] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+13:39:36.435 [Worker-167] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+13:39:36.435 [Worker-167] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+13:39:36.435 [Worker-167] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+13:39:36.445 [Worker-167] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 30 ms], [Extract Annotations = 10 ms], [Find R Classes = 10 ms], [Generate Sources = 10 ms], [Extract Manifest = 0 ms], [Validate Annotations = 0 ms], [Process Annotations = 0 ms], 
+13:39:36.445 [Worker-167] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+13:40:15.369 [Worker-163] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:40:15.369 [Worker-163] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 8 elements
+13:40:15.379 [Worker-163] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+13:40:15.379 [Worker-163] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+13:40:15.379 [Worker-163] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+13:40:15.379 [Worker-163] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+13:40:15.379 [Worker-163] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+13:40:15.379 [Worker-163] INFO  o.a.p.ModelValidator:42 - Validating elements
+13:40:15.379 [Worker-163] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:40:15.379 [Worker-163] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [svTrades, rlHotspotsOnCanvas, DRAW_VIEW, refresh, llCompanies, llTrades, menuStatusArrow, twBottomStatus, llFilters]
+13:40:15.379 [Worker-163] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void refresh() , void menuStatusArrow() ]
+13:40:15.389 [Worker-163] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+13:40:15.389 [Worker-163] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+13:40:15.389 [Worker-163] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+13:40:15.389 [Worker-163] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+13:40:15.389 [Worker-163] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:40:15.389 [Worker-163] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+13:40:15.389 [Worker-163] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+13:40:15.389 [Worker-163] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+13:40:15.389 [Worker-163] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+13:40:15.389 [Worker-163] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 20 ms], [Extract Annotations = 10 ms], [Validate Annotations = 10 ms], [Extract Manifest = 0 ms], [Find R Classes = 0 ms], [Process Annotations = 0 ms], [Generate Sources = 0 ms], 
+13:40:15.389 [Worker-163] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+13:41:03.325 [Worker-164] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:41:03.325 [Worker-164] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 1 elements
+13:41:03.325 [Worker-164] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+13:41:03.335 [Worker-164] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+13:41:03.335 [Worker-164] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+13:41:03.335 [Worker-164] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+13:41:03.345 [Worker-164] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+13:41:03.355 [Worker-164] INFO  o.a.p.ModelValidator:42 - Validating elements
+13:41:03.355 [Worker-164] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:41:03.355 [Worker-164] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [llCompanies, llTrades, refresh, DRAW_VIEW, svTrades, twBottomStatus, llFilters, menuStatusArrow, rlHotspotsOnCanvas]
+13:41:03.355 [Worker-164] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void refresh() , void menuStatusArrow() ]
+13:41:03.355 [Worker-164] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+13:41:03.355 [Worker-164] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+13:41:03.355 [Worker-164] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+13:41:03.355 [Worker-164] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+13:41:03.355 [Worker-164] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:41:03.355 [Worker-164] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+13:41:03.355 [Worker-164] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+13:41:03.355 [Worker-164] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+13:41:03.355 [Worker-164] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+13:41:03.365 [Worker-164] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 40 ms], [Find R Classes = 20 ms], [Extract Manifest = 10 ms], [Generate Sources = 10 ms], [Extract Annotations = 0 ms], [Validate Annotations = 0 ms], [Process Annotations = 0 ms], 
+13:41:03.365 [Worker-164] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+13:41:29.975 [Worker-161] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:41:29.975 [Worker-161] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 8 elements
+13:41:29.985 [Worker-161] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+13:41:29.985 [Worker-161] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+13:41:29.985 [Worker-161] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+13:41:29.985 [Worker-161] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+13:41:29.985 [Worker-161] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+13:41:29.995 [Worker-161] INFO  o.a.p.ModelValidator:42 - Validating elements
+13:41:29.995 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:41:29.995 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [llTrades, DRAW_VIEW, svTrades, twBottomStatus, llCompanies, menuStatusArrow, refresh, rlHotspotsOnCanvas, llFilters]
+13:41:29.995 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void refresh() , void menuStatusArrow() ]
+13:41:29.995 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+13:41:29.995 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+13:41:29.995 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+13:41:29.995 [Worker-161] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+13:41:29.995 [Worker-161] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:41:29.995 [Worker-161] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+13:41:29.995 [Worker-161] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+13:41:29.995 [Worker-161] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+13:41:29.995 [Worker-161] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+13:41:29.995 [Worker-161] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 20 ms], [Extract Annotations = 10 ms], [Find R Classes = 10 ms], [Extract Manifest = 0 ms], [Validate Annotations = 0 ms], [Process Annotations = 0 ms], [Generate Sources = 0 ms], 
+13:41:29.995 [Worker-161] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+13:41:50.75 [Worker-161] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:41:50.75 [Worker-161] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 1 elements
+13:41:50.85 [Worker-161] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+13:41:50.85 [Worker-161] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+13:41:50.85 [Worker-161] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+13:41:50.85 [Worker-161] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+13:41:50.105 [Worker-161] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+13:41:50.105 [Worker-161] INFO  o.a.p.ModelValidator:42 - Validating elements
+13:41:50.105 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:41:50.105 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [llFilters, refresh, menuStatusArrow, llTrades, llCompanies, twBottomStatus, DRAW_VIEW, svTrades, rlHotspotsOnCanvas]
+13:41:50.105 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void menuStatusArrow() , void refresh() ]
+13:41:50.105 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+13:41:50.105 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+13:41:50.115 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+13:41:50.115 [Worker-161] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+13:41:50.115 [Worker-161] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:41:50.115 [Worker-161] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+13:41:50.115 [Worker-161] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+13:41:50.115 [Worker-161] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+13:41:50.115 [Worker-161] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+13:41:50.115 [Worker-161] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 40 ms], [Find R Classes = 20 ms], [Extract Annotations = 10 ms], [Validate Annotations = 10 ms], [Extract Manifest = 0 ms], [Process Annotations = 0 ms], [Generate Sources = 0 ms], 
+13:41:50.115 [Worker-161] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+13:42:13.289 [Worker-161] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:42:13.289 [Worker-161] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 6 annotations on 1 elements
+13:42:13.299 [Worker-161] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+13:42:13.299 [Worker-161] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+13:42:13.299 [Worker-161] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+13:42:13.299 [Worker-161] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+13:42:13.309 [Worker-161] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+13:42:13.309 [Worker-161] INFO  o.a.p.ModelValidator:42 - Validating elements
+13:42:13.309 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:42:13.309 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [llFilters, menuStatusArrow, llCompanies, svTrades, llTrades, twBottomStatus, rlHotspotsOnCanvas, refresh, DRAW_VIEW]
+13:42:13.309 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void refresh() , void menuStatusArrow() ]
+13:42:13.309 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() ]
+13:42:13.309 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+13:42:13.309 [Worker-161] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() ]
+13:42:13.309 [Worker-161] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+13:42:13.309 [Worker-161] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:42:13.309 [Worker-161] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+13:42:13.309 [Worker-161] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 1
+13:42:13.309 [Worker-161] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+13:42:13.309 [Worker-161] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+13:42:13.319 [Worker-161] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 30 ms], [Find R Classes = 10 ms], [Generate Sources = 10 ms], [Extract Annotations = 0 ms], [Extract Manifest = 0 ms], [Validate Annotations = 0 ms], [Process Annotations = 0 ms], 
+13:42:13.319 [Worker-161] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+13:47:49.828 [Worker-8] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:47:49.864 [Worker-8] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 15 annotations on 95 elements
+13:47:49.882 [Worker-8] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+13:47:49.884 [Worker-8] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+13:47:49.885 [Worker-8] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+13:47:49.886 [Worker-8] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+13:47:49.894 [Worker-8] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+13:47:49.903 [Worker-8] INFO  o.a.p.ModelValidator:42 - Validating elements
+13:47:49.904 [Worker-8] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.UserSettingsActivity, com.touchip.organizer.activities.StartActivity, com.touchip.organizer.activities.MeetingPlanActivity, com.touchip.organizer.activities.MapActivity, com.touchip.organizer.activities.GeneralWhiteBoardActivity, com.touchip.organizer.activities.TvActivity, com.touchip.organizer.activities.ImagePagerActivity, com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:47:49.906 [Worker-8] DEBUG o.a.p.ModelValidator:62 - Validating with EViewGroupHandler: [com.touchip.organizer.activities.custom.components.ActionBarGeneralWhiteboard, com.touchip.organizer.activities.custom.components.ActionBarDrawingCompanies, com.touchip.organizer.activities.custom.components.CompaniesColorFilterView, com.touchip.organizer.activities.custom.components.SlideMenuMapActivity, com.touchip.organizer.activities.custom.components.SlideMenuDrawingCopmanies, com.touchip.organizer.activities.custom.components.TradesView]
+13:47:49.908 [Worker-8] DEBUG o.a.p.ModelValidator:62 - Validating with SharedPrefHandler: [com.touchip.organizer.utils.AppSharedPreferences]
+13:47:49.910 [Worker-8] DEBUG o.a.p.ModelValidator:62 - Validating with PrefHandler: [appPreff, appPreff, appPreff]
+13:47:49.911 [Worker-8] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [pb, webViewTV, menuStatusArrow, ibCreateNewWhiteboard, refreshMap, ibThick, buttonOk, ivCurrentCompanyColor, ibShapesCircle, ibColorPicker, llChangeColour, twCompanyTitle, DRAW_VIEW, settings, showMenu, refresh, exit, buttonCancel, ibClearAll, ivCompanyColor, buttonGmaps, twDataAndTimeCreated, ibMedium, changeMapType, redo, meetingPlan, buttonCalendar, ibColourGreen, ibPencilSettings, WHITE_BOARD_DRAWING, changeDate, llFilters, llCompanies, ibShapesTriangle, twTradeDescription, changeArea, ibLoadWhiteboard, etIp, viewPager, llBrushSize, ibColourRed, rlHotspotsOnCanvas, llTv, llDrawShapes, ibEraser, twBottomStatus, ibColourBlue, ibShapesLine, ibColourBlack, changeBrushSize, llRootMeeting, twTradeAmount, whiteboardLayout, ibShapesFreeDrawing, tbShowFilters, ibWhiteboardSettings, undo, etPort, buttonExit, ibRefreshWhiteboard, llChangeTextSize, ibShapesRectangle, ibSaveDrawing, twAmountOfPeople, ibDrawText, tvCurrentCompanyName, ibThin, llTrades, buttonSettings, buttonDrawing, ibRedo, ibUndo, ibShowShapesPanel, ibColorsPanel, tbShowTrades, svTrades]
+13:47:49.916 [Worker-8] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void buttonCancel() , void refresh() , void ibColourRed() , void buttonGmaps() , void ibShapesCircle() , void buttonOk() , void ibShapesLine() , void ibCreateNewWhiteboard() , void meetingPlan() , void showMenu() , void ibLoadWhiteboard() , void buttonSettings() , void ibSaveDrawing() , void ibShowShapesPanel() , void changeBrushSize() , void ibColorPicker() , void ibColourBlue() , void ibThick() , void ibShapesRectangle() , void redo() , void llTv() , void changeMapType() , void refreshMap() , void ibClearAll() , void ibThin() , void ibShapesTriangle() , void buttonExit() , void ibEraser() , void changeArea() , void whiteboardLayout() , void ibDrawText() , void ibRedo() , void undo() , void ibShapesFreeDrawing() , void settings() , void changeDate() , void ibRefreshWhiteboard() , void menuStatusArrow() , void ibColourBlack() , void ibPencilSettings() , void ibMedium() , void exit() , void ibWhiteboardSettings() , void ibColourGreen() , void ibUndo() , void ibColorsPanel() ]
+13:47:49.926 [Worker-8] DEBUG o.a.p.ModelValidator:62 - Validating with CheckedChangeHandler: [void tbShowFilters(android.widget.CompoundButton, boolean) , void tbShowTrades(android.widget.CompoundButton, boolean) ]
+13:47:49.927 [Worker-8] DEBUG o.a.p.ModelValidator:62 - Validating with ResHandler: [fadeIn, pumpBottom]
+13:47:49.929 [Worker-8] DEBUG o.a.p.ModelValidator:62 - Validating with ResHandler: [meetingUnselectedColor, meetingSelectedColor]
+13:47:49.930 [Worker-8] DEBUG o.a.p.ModelValidator:62 - Validating with SystemServiceHandler: [vi]
+13:47:49.931 [Worker-8] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() , void homeSelected() , void homeSelected() , void homeSelected() ]
+13:47:49.933 [Worker-8] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+13:47:49.934 [Worker-8] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() ]
+13:47:49.935 [Worker-8] DEBUG o.a.p.ModelValidator:62 - Validating with UiThreadHandler: [void reloadBrowser() , void ibDrawText() ]
+13:47:49.936 [Worker-8] DEBUG o.a.p.ModelValidator:62 - Validating with BackgroundHandler: [void refreshBrowser() ]
+13:47:49.942 [Worker-8] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+13:47:49.942 [Worker-8] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.UserSettingsActivity, com.touchip.organizer.activities.StartActivity, com.touchip.organizer.activities.MeetingPlanActivity, com.touchip.organizer.activities.MapActivity, com.touchip.organizer.activities.GeneralWhiteBoardActivity, com.touchip.organizer.activities.TvActivity, com.touchip.organizer.activities.ImagePagerActivity, com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:47:49.964 [Worker-8] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EViewGroupHandler: [com.touchip.organizer.activities.custom.components.ActionBarGeneralWhiteboard, com.touchip.organizer.activities.custom.components.ActionBarDrawingCompanies, com.touchip.organizer.activities.custom.components.CompaniesColorFilterView, com.touchip.organizer.activities.custom.components.SlideMenuMapActivity, com.touchip.organizer.activities.custom.components.SlideMenuDrawingCopmanies, com.touchip.organizer.activities.custom.components.TradesView]
+13:47:49.969 [Worker-8] DEBUG o.a.p.ModelProcessor:80 - Processing root elements SharedPrefHandler: [com.touchip.organizer.utils.AppSharedPreferences]
+13:47:49.973 [Worker-8] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+13:47:49.982 [Worker-8] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 15
+13:47:49.983 [Worker-8] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+13:47:49.984 [Worker-8] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.ActionBarDrawingCompanies_
+13:47:49.991 [Worker-8] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.ActionBarGeneralWhiteboard_
+13:47:49.993 [Worker-8] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.CompaniesColorFilterView_
+13:47:49.996 [Worker-8] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.SlideMenuDrawingCopmanies_
+13:47:49.998 [Worker-8] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.SlideMenuMapActivity_
+13:47:50.1 [Worker-8] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.TradesView_
+13:47:50.3 [Worker-8] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+13:47:50.6 [Worker-8] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.GeneralWhiteBoardActivity_
+13:47:50.11 [Worker-8] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.ImagePagerActivity_
+13:47:50.13 [Worker-8] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.MapActivity_
+13:47:50.16 [Worker-8] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.MeetingPlanActivity_
+13:47:50.18 [Worker-8] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.StartActivity_
+13:47:50.20 [Worker-8] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.TvActivity_
+13:47:50.23 [Worker-8] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.UserSettingsActivity_
+13:47:50.25 [Worker-8] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.utils.AppSharedPreferences_
+13:47:50.27 [Worker-8] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 163 ms], [Generate Sources = 46 ms], [Process Annotations = 45 ms], [Validate Annotations = 33 ms], [Extract Annotations = 16 ms], [Find R Classes = 12 ms], [Extract Manifest = 4 ms], 
+13:47:50.28 [Worker-8] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+13:48:04.669 [Worker-9] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:48:08.586 [Worker-4] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:48:08.587 [Worker-4] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 15 annotations on 95 elements
+13:48:08.601 [Worker-4] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+13:48:08.603 [Worker-4] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+13:48:08.603 [Worker-4] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+13:48:08.604 [Worker-4] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+13:48:08.608 [Worker-4] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+13:48:08.611 [Worker-4] INFO  o.a.p.ModelValidator:42 - Validating elements
+13:48:08.612 [Worker-4] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.UserSettingsActivity, com.touchip.organizer.activities.StartActivity, com.touchip.organizer.activities.MeetingPlanActivity, com.touchip.organizer.activities.MapActivity, com.touchip.organizer.activities.GeneralWhiteBoardActivity, com.touchip.organizer.activities.TvActivity, com.touchip.organizer.activities.ImagePagerActivity, com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:48:08.613 [Worker-4] DEBUG o.a.p.ModelValidator:62 - Validating with EViewGroupHandler: [com.touchip.organizer.activities.custom.components.ActionBarGeneralWhiteboard, com.touchip.organizer.activities.custom.components.ActionBarDrawingCompanies, com.touchip.organizer.activities.custom.components.CompaniesColorFilterView, com.touchip.organizer.activities.custom.components.SlideMenuMapActivity, com.touchip.organizer.activities.custom.components.SlideMenuDrawingCopmanies, com.touchip.organizer.activities.custom.components.TradesView]
+13:48:08.613 [Worker-4] DEBUG o.a.p.ModelValidator:62 - Validating with SharedPrefHandler: [com.touchip.organizer.utils.AppSharedPreferences]
+13:48:08.614 [Worker-4] DEBUG o.a.p.ModelValidator:62 - Validating with PrefHandler: [appPreff, appPreff, appPreff]
+13:48:08.614 [Worker-4] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [etPort, buttonDrawing, svTrades, twDataAndTimeCreated, buttonOk, twTradeDescription, meetingPlan, ibShapesRectangle, ibShapesLine, twCompanyTitle, buttonGmaps, ibColourBlack, ibColourRed, llRootMeeting, refreshMap, tbShowFilters, twBottomStatus, ibRedo, buttonCalendar, ibColorsPanel, menuStatusArrow, ibMedium, ivCurrentCompanyColor, showMenu, llChangeColour, undo, ibColourGreen, exit, llCompanies, ibUndo, llChangeTextSize, llTrades, ibRefreshWhiteboard, redo, ibShapesCircle, whiteboardLayout, ibClearAll, changeDate, pb, ibDrawText, tvCurrentCompanyName, ibShowShapesPanel, settings, ibCreateNewWhiteboard, ivCompanyColor, ibShapesTriangle, ibLoadWhiteboard, etIp, llTv, twAmountOfPeople, WHITE_BOARD_DRAWING, ibSaveDrawing, ibShapesFreeDrawing, buttonExit, viewPager, rlHotspotsOnCanvas, ibEraser, ibPencilSettings, ibThin, buttonSettings, ibThick, twTradeAmount, ibWhiteboardSettings, llDrawShapes, refresh, changeMapType, webViewTV, llBrushSize, DRAW_VIEW, changeArea, ibColourBlue, buttonCancel, changeBrushSize, llFilters, tbShowTrades, ibColorPicker]
+13:48:08.616 [Worker-4] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void meetingPlan() , void buttonExit() , void refreshMap() , void ibRedo() , void ibColourBlue() , void buttonCancel() , void changeArea() , void ibThick() , void ibClearAll() , void buttonOk() , void ibMedium() , void ibColorsPanel() , void ibEraser() , void showMenu() , void ibColourRed() , void refresh() , void whiteboardLayout() , void ibShowShapesPanel() , void settings() , void changeBrushSize() , void ibShapesFreeDrawing() , void changeDate() , void ibDrawText() , void ibColorPicker() , void llTv() , void ibRefreshWhiteboard() , void ibShapesCircle() , void ibCreateNewWhiteboard() , void ibColourBlack() , void ibShapesTriangle() , void ibColourGreen() , void ibShapesLine() , void exit() , void ibPencilSettings() , void ibWhiteboardSettings() , void ibThin() , void ibLoadWhiteboard() , void changeMapType() , void buttonGmaps() , void ibUndo() , void ibSaveDrawing() , void redo() , void ibShapesRectangle() , void menuStatusArrow() , void undo() , void buttonSettings() ]
+13:48:08.622 [Worker-4] DEBUG o.a.p.ModelValidator:62 - Validating with CheckedChangeHandler: [void tbShowFilters(android.widget.CompoundButton, boolean) , void tbShowTrades(android.widget.CompoundButton, boolean) ]
+13:48:08.623 [Worker-4] DEBUG o.a.p.ModelValidator:62 - Validating with ResHandler: [fadeIn, pumpBottom]
+13:48:08.624 [Worker-4] DEBUG o.a.p.ModelValidator:62 - Validating with ResHandler: [meetingUnselectedColor, meetingSelectedColor]
+13:48:08.624 [Worker-4] DEBUG o.a.p.ModelValidator:62 - Validating with SystemServiceHandler: [vi]
+13:48:08.624 [Worker-4] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() , void homeSelected() , void homeSelected() , void homeSelected() ]
+13:48:08.625 [Worker-4] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+13:48:08.626 [Worker-4] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() ]
+13:48:08.626 [Worker-4] DEBUG o.a.p.ModelValidator:62 - Validating with UiThreadHandler: [void reloadBrowser() , void ibDrawText() ]
+13:48:08.627 [Worker-4] DEBUG o.a.p.ModelValidator:62 - Validating with BackgroundHandler: [void refreshBrowser() ]
+13:48:08.627 [Worker-4] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+13:48:08.627 [Worker-4] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.UserSettingsActivity, com.touchip.organizer.activities.StartActivity, com.touchip.organizer.activities.MeetingPlanActivity, com.touchip.organizer.activities.MapActivity, com.touchip.organizer.activities.GeneralWhiteBoardActivity, com.touchip.organizer.activities.TvActivity, com.touchip.organizer.activities.ImagePagerActivity, com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:48:08.632 [Worker-4] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EViewGroupHandler: [com.touchip.organizer.activities.custom.components.ActionBarGeneralWhiteboard, com.touchip.organizer.activities.custom.components.ActionBarDrawingCompanies, com.touchip.organizer.activities.custom.components.CompaniesColorFilterView, com.touchip.organizer.activities.custom.components.SlideMenuMapActivity, com.touchip.organizer.activities.custom.components.SlideMenuDrawingCopmanies, com.touchip.organizer.activities.custom.components.TradesView]
+13:48:08.633 [Worker-4] DEBUG o.a.p.ModelProcessor:80 - Processing root elements SharedPrefHandler: [com.touchip.organizer.utils.AppSharedPreferences]
+13:48:08.634 [Worker-4] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+13:48:08.638 [Worker-4] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 15
+13:48:08.638 [Worker-4] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+13:48:08.639 [Worker-4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.ActionBarDrawingCompanies_
+13:48:08.642 [Worker-4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.ActionBarGeneralWhiteboard_
+13:48:08.644 [Worker-4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.CompaniesColorFilterView_
+13:48:08.645 [Worker-4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.SlideMenuDrawingCopmanies_
+13:48:08.647 [Worker-4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.SlideMenuMapActivity_
+13:48:08.649 [Worker-4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.TradesView_
+13:48:08.651 [Worker-4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+13:48:08.653 [Worker-4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.GeneralWhiteBoardActivity_
+13:48:08.656 [Worker-4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.ImagePagerActivity_
+13:48:08.659 [Worker-4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.MapActivity_
+13:48:08.661 [Worker-4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.MeetingPlanActivity_
+13:48:08.663 [Worker-4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.StartActivity_
+13:48:08.666 [Worker-4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.TvActivity_
+13:48:08.668 [Worker-4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.UserSettingsActivity_
+13:48:08.670 [Worker-4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.utils.AppSharedPreferences_
+13:48:08.671 [Worker-4] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 84 ms], [Generate Sources = 33 ms], [Validate Annotations = 16 ms], [Extract Annotations = 13 ms], [Process Annotations = 11 ms], [Find R Classes = 7 ms], [Extract Manifest = 2 ms], 
+13:48:08.672 [Worker-4] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+13:48:12.60 [Worker-7] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
+13:48:12.61 [Worker-7] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 15 annotations on 95 elements
+13:48:12.74 [Worker-7] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
+13:48:12.75 [Worker-7] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [MainActivity]
+13:48:12.76 [Worker-7] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=com.squareup.timessquare.sample, componentQualifiedNames=[com.touchip.organizer.activities.StartActivity_, com.touchip.organizer.activities.GeneralWhiteBoardActivity_, com.touchip.organizer.activities.MapActivity_, com.touchip.organizer.activities.DrawingCompaniesActivity_, com.touchip.organizer.activities.TvActivity_, com.touchip.organizer.activities.UserSettingsActivity_, com.touchip.organizer.activities.ImagePagerActivity_, com.touchip.organizer.activities.MeetingPlanActivity_, com.octo.android.robospice.JacksonSpringAndroidSpiceService], permissionQualifiedNames=[com.touchip.organizer.activities.permission.MAPS_RECEIVE, android.permission.INTERNET, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE, com.google.android.providers.gsf.permission.READ_GSERVICES, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.CAMERA, android.permission.ACCESS_NETWORK_STATE, android.permission.RECORD_AUDIO], applicationClassName=null, libraryProject=false, debugabble=false, minSdkVersion=14, maxSdkVersion=19, targetSdkVersion=17]
+13:48:12.77 [Worker-7] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: com.squareup.timessquare.sample.R
+13:48:12.80 [Worker-7] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+13:48:12.84 [Worker-7] INFO  o.a.p.ModelValidator:42 - Validating elements
+13:48:12.84 [Worker-7] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [com.touchip.organizer.activities.UserSettingsActivity, com.touchip.organizer.activities.StartActivity, com.touchip.organizer.activities.MeetingPlanActivity, com.touchip.organizer.activities.MapActivity, com.touchip.organizer.activities.GeneralWhiteBoardActivity, com.touchip.organizer.activities.TvActivity, com.touchip.organizer.activities.ImagePagerActivity, com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:48:12.85 [Worker-7] DEBUG o.a.p.ModelValidator:62 - Validating with EViewGroupHandler: [com.touchip.organizer.activities.custom.components.ActionBarGeneralWhiteboard, com.touchip.organizer.activities.custom.components.ActionBarDrawingCompanies, com.touchip.organizer.activities.custom.components.CompaniesColorFilterView, com.touchip.organizer.activities.custom.components.SlideMenuMapActivity, com.touchip.organizer.activities.custom.components.SlideMenuDrawingCopmanies, com.touchip.organizer.activities.custom.components.TradesView]
+13:48:12.85 [Worker-7] DEBUG o.a.p.ModelValidator:62 - Validating with SharedPrefHandler: [com.touchip.organizer.utils.AppSharedPreferences]
+13:48:12.86 [Worker-7] DEBUG o.a.p.ModelValidator:62 - Validating with PrefHandler: [appPreff, appPreff, appPreff]
+13:48:12.86 [Worker-7] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [svTrades, changeMapType, ibThick, WHITE_BOARD_DRAWING, twBottomStatus, ibCreateNewWhiteboard, menuStatusArrow, ibShapesLine, changeBrushSize, ibShapesFreeDrawing, ivCompanyColor, buttonGmaps, ibPencilSettings, undo, ibColourRed, changeArea, buttonOk, refresh, etPort, etIp, ibWhiteboardSettings, ibEraser, refreshMap, twTradeAmount, buttonCancel, ibSaveDrawing, settings, tvCurrentCompanyName, llChangeColour, ibMedium, buttonCalendar, twAmountOfPeople, ibShapesRectangle, showMenu, ibColourBlack, twCompanyTitle, buttonDrawing, buttonExit, ibDrawText, ibThin, DRAW_VIEW, ibRefreshWhiteboard, whiteboardLayout, webViewTV, llTrades, llTv, llRootMeeting, ibColorsPanel, ibShowShapesPanel, pb, ibColourGreen, ibColorPicker, changeDate, buttonSettings, ibUndo, llChangeTextSize, ibShapesTriangle, llFilters, twDataAndTimeCreated, ibClearAll, ibShapesCircle, llCompanies, tbShowTrades, viewPager, tbShowFilters, exit, llBrushSize, rlHotspotsOnCanvas, redo, meetingPlan, ivCurrentCompanyColor, ibRedo, twTradeDescription, ibLoadWhiteboard, llDrawShapes, ibColourBlue]
+13:48:12.88 [Worker-7] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [void ibCreateNewWhiteboard() , void ibPencilSettings() , void exit() , void ibLoadWhiteboard() , void ibDrawText() , void redo() , void buttonCancel() , void ibClearAll() , void ibColorPicker() , void ibShowShapesPanel() , void meetingPlan() , void ibShapesTriangle() , void ibShapesFreeDrawing() , void ibShapesLine() , void changeMapType() , void llTv() , void ibWhiteboardSettings() , void buttonExit() , void changeBrushSize() , void refreshMap() , void ibThin() , void ibColourGreen() , void ibShapesCircle() , void whiteboardLayout() , void ibColourBlack() , void ibMedium() , void menuStatusArrow() , void changeArea() , void buttonOk() , void buttonSettings() , void ibUndo() , void buttonGmaps() , void ibColourBlue() , void showMenu() , void ibShapesRectangle() , void ibRedo() , void ibColorsPanel() , void ibEraser() , void refresh() , void settings() , void ibThick() , void ibRefreshWhiteboard() , void changeDate() , void undo() , void ibSaveDrawing() , void ibColourRed() ]
+13:48:12.93 [Worker-7] DEBUG o.a.p.ModelValidator:62 - Validating with CheckedChangeHandler: [void tbShowTrades(android.widget.CompoundButton, boolean) , void tbShowFilters(android.widget.CompoundButton, boolean) ]
+13:48:12.94 [Worker-7] DEBUG o.a.p.ModelValidator:62 - Validating with ResHandler: [pumpBottom, fadeIn]
+13:48:12.95 [Worker-7] DEBUG o.a.p.ModelValidator:62 - Validating with ResHandler: [meetingSelectedColor, meetingUnselectedColor]
+13:48:12.95 [Worker-7] DEBUG o.a.p.ModelValidator:62 - Validating with SystemServiceHandler: [vi]
+13:48:12.96 [Worker-7] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [void homeSelected() , void homeSelected() , void homeSelected() , void homeSelected() ]
+13:48:12.96 [Worker-7] DEBUG o.a.p.ModelValidator:62 - Validating with OnActivityResultHandler: [void onResult(int, android.content.Intent) ]
+13:48:12.97 [Worker-7] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() , void afterViews() ]
+13:48:12.97 [Worker-7] DEBUG o.a.p.ModelValidator:62 - Validating with UiThreadHandler: [void reloadBrowser() , void ibDrawText() ]
+13:48:12.97 [Worker-7] DEBUG o.a.p.ModelValidator:62 - Validating with BackgroundHandler: [void refreshBrowser() ]
+13:48:12.98 [Worker-7] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+13:48:12.98 [Worker-7] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [com.touchip.organizer.activities.UserSettingsActivity, com.touchip.organizer.activities.StartActivity, com.touchip.organizer.activities.MeetingPlanActivity, com.touchip.organizer.activities.MapActivity, com.touchip.organizer.activities.GeneralWhiteBoardActivity, com.touchip.organizer.activities.TvActivity, com.touchip.organizer.activities.ImagePagerActivity, com.touchip.organizer.activities.DrawingCompaniesActivity]
+13:48:12.102 [Worker-7] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EViewGroupHandler: [com.touchip.organizer.activities.custom.components.ActionBarGeneralWhiteboard, com.touchip.organizer.activities.custom.components.ActionBarDrawingCompanies, com.touchip.organizer.activities.custom.components.CompaniesColorFilterView, com.touchip.organizer.activities.custom.components.SlideMenuMapActivity, com.touchip.organizer.activities.custom.components.SlideMenuDrawingCopmanies, com.touchip.organizer.activities.custom.components.TradesView]
+13:48:12.103 [Worker-7] DEBUG o.a.p.ModelProcessor:80 - Processing root elements SharedPrefHandler: [com.touchip.organizer.utils.AppSharedPreferences]
+13:48:12.104 [Worker-7] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+13:48:12.106 [Worker-7] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 15
+13:48:12.107 [Worker-7] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+13:48:12.107 [Worker-7] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.ActionBarDrawingCompanies_
+13:48:12.109 [Worker-7] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.ActionBarGeneralWhiteboard_
+13:48:12.111 [Worker-7] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.CompaniesColorFilterView_
+13:48:12.112 [Worker-7] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.SlideMenuDrawingCopmanies_
+13:48:12.114 [Worker-7] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.SlideMenuMapActivity_
+13:48:12.116 [Worker-7] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.custom.components.TradesView_
+13:48:12.118 [Worker-7] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.DrawingCompaniesActivity_
+13:48:12.120 [Worker-7] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.GeneralWhiteBoardActivity_
+13:48:12.122 [Worker-7] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.ImagePagerActivity_
+13:48:12.124 [Worker-7] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.MapActivity_
+13:48:12.126 [Worker-7] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.MeetingPlanActivity_
+13:48:12.128 [Worker-7] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.StartActivity_
+13:48:12.130 [Worker-7] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.TvActivity_
+13:48:12.132 [Worker-7] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.activities.UserSettingsActivity_
+13:48:12.134 [Worker-7] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.utils.AppSharedPreferences_
+13:48:12.135 [Worker-7] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 74 ms], [Generate Sources = 29 ms], [Validate Annotations = 14 ms], [Extract Annotations = 12 ms], [Process Annotations = 8 ms], [Find R Classes = 7 ms], [Extract Manifest = 2 ms], 
+13:48:12.136 [Worker-7] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing

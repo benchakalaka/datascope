@@ -56,6 +56,8 @@ import com.touchip.organizer.activities.custom.components.SlideMenuDrawingCopman
 import com.touchip.organizer.activities.custom.components.SlideMenuDrawingCopmanies_;
 import com.touchip.organizer.activities.fragments.FragmentCompaniesList;
 import com.touchip.organizer.activities.fragments.FragmentHotspotsList;
+import com.touchip.organizer.activities.fragments.FragmentUnsignedHotspotsList.ListViewUnsignedHotspotsAdapter;
+import com.touchip.organizer.communication.rest.request.AssignUnassignHotspotRequest;
 import com.touchip.organizer.communication.rest.request.CreateHotspotRequest;
 import com.touchip.organizer.communication.rest.request.CreateTradeHotspotRequest;
 import com.touchip.organizer.communication.rest.request.DownloadDrawingPathsRequest;
@@ -63,6 +65,7 @@ import com.touchip.organizer.communication.rest.request.DownloadSitePlanWithFloo
 import com.touchip.organizer.communication.rest.request.GetTradesRequest;
 import com.touchip.organizer.communication.rest.request.SaveDrawingPathsRequest;
 import com.touchip.organizer.communication.rest.request.UploadCapturedPhotoRequest;
+import com.touchip.organizer.communication.rest.request.listener.AssignUnassignHotspotRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.CreateHotspotRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.CreateTradeHotspotRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.DownloadDrawingPathsRequestListener;
@@ -239,6 +242,11 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           if ( !floors.isEmpty() ) {
                dialog.show();
           }
+     }
+
+     public void AssignUnassignHotspotRequest(Map <String, String> vars) {
+          AssignUnassignHotspotRequest request = new AssignUnassignHotspotRequest(vars);
+          getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new AssignUnassignHotspotRequestListener(this));
      }
 
      public void createHotspot(Map <String, String> vars) {
@@ -495,9 +503,16 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                                    });
                                    dialog.show();
                               } else {
-                                   // assign Unassign hotspot
-                                   requestParams.put("id", String.valueOf(type));
-                                   createHotspot(requestParams);
+                                   // assign Unassign hotspot (type = [hotspotId])
+                                   requestParams.put(GlobalConstants.ID, type);
+                                   requestParams.put(GlobalConstants.COMPANY_ID, String
+                                             .valueOf(ListViewUnsignedHotspotsAdapter.draggedUnsignedHotspot.companyId));
+
+                                   requestParams.put(GlobalConstants.FLOOR, GlobalConstants.CURRENT_FLOOR);
+                                   requestParams.put(GlobalConstants.TYPE, ListViewUnsignedHotspotsAdapter.draggedUnsignedHotspot.type);
+                                   requestParams.put(GlobalConstants.DESCRIPTION, ListViewUnsignedHotspotsAdapter.draggedUnsignedHotspot.description);
+
+                                   AssignUnassignHotspotRequest(requestParams);
                               }
 
                               break;

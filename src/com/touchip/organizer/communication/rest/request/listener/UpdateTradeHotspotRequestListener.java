@@ -12,7 +12,6 @@ import com.touchip.organizer.activities.custom.components.TradesView;
 import com.touchip.organizer.activities.custom.components.TradesView_;
 import com.touchip.organizer.activities.fragments.FragmentHotspotsList;
 import com.touchip.organizer.activities.fragments.FragmentUnsignedHotspotsList;
-import com.touchip.organizer.activities.fragments.FragmentUnsignedHotspotsList.ListViewUnsignedHotspotsAdapter;
 import com.touchip.organizer.communication.rest.model.HotspotsList;
 import com.touchip.organizer.communication.rest.model.HotspotsList.POJORoboHotspot;
 import com.touchip.organizer.utils.DataAccess;
@@ -44,12 +43,13 @@ public class UpdateTradeHotspotRequestListener implements RequestListener <Hotsp
 
                POJORoboHotspot tradeResources = null;
                // last hotspot could be new created trade
-               if ( hotspots.get(hotspots.size() - 1).type.equals(GlobalConstants.Hotspots.TRADE_HOTSPOT) && (hotspots.get(hotspots.size() - 1).x == -1) && (hotspots.get(hotspots.size() - 1).y == -1) ) {
+               if ( hotspots.get(hotspots.size() - 1).type.equals(GlobalConstants.Hotspots.TRADE_HOTSPOT) && (hotspots.get(hotspots.size() - 1).x == -1) && (hotspots.get(hotspots
+                         .size() - 1).y == -1) ) {
                     tradeResources = hotspots.remove(hotspots.size() - 1);
                }
 
                DataAccess.SIGNED_HOTSPOTS = hotspots;
-               ListViewUnsignedHotspotsAdapter.UNSIGNED_HOTSPOTS = hotspots;
+               // ListViewUnsignedHotspotsAdapter.UNASSIGNED_HOTSPOTS = hotspots;
 
                FragmentHotspotsList.ADAPTER.notifyDataSetChanged();
                FragmentUnsignedHotspotsList.ADAPTER.notifyDataSetChanged();

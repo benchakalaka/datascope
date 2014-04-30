@@ -8,13 +8,12 @@ import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.activities.DrawingCompaniesActivity_;
 import com.touchip.organizer.activities.fragments.FragmentHotspotsList;
 import com.touchip.organizer.activities.fragments.FragmentUnsignedHotspotsList;
-import com.touchip.organizer.activities.fragments.FragmentUnsignedHotspotsList.ListViewUnsignedHotspotsAdapter;
-import com.touchip.organizer.communication.rest.model.HotspotsList;
+import com.touchip.organizer.communication.rest.model.CompaniesAndHotspots;
 import com.touchip.organizer.utils.DataAccess;
 import com.touchip.organizer.utils.GlobalConstants.Hotspots;
 import com.touchip.organizer.utils.Utils;
 
-public class CreateHotspotRequestListener implements RequestListener <HotspotsList> {
+public class CreateHotspotRequestListener implements RequestListener <CompaniesAndHotspots> {
 
      // Reference to activity, for updating ui components
      protected DrawingCompaniesActivity_ activity;
@@ -33,10 +32,10 @@ public class CreateHotspotRequestListener implements RequestListener <HotspotsLi
      }
 
      // Request succesfull, update UI
-     @Override public void onRequestSuccess(HotspotsList hotspots) {
-          if ( !Utils.isNullOrEmpty(hotspots) ) {
-               DataAccess.SIGNED_HOTSPOTS = hotspots;
-               ListViewUnsignedHotspotsAdapter.UNSIGNED_HOTSPOTS = DataAccess.SIGNED_HOTSPOTS;
+     @Override public void onRequestSuccess(CompaniesAndHotspots hotspots) {
+          if ( (null != hotspots.hotSpotWrapperList) || (null != hotspots.unassignHotspotsWrapperList) ) {
+               DataAccess.SIGNED_HOTSPOTS = hotspots.hotSpotWrapperList;
+               DataAccess.UNASSIGNED_HOTSPOTS = hotspots.unassignHotspotsWrapperList;
                FragmentHotspotsList.ADAPTER.notifyDataSetChanged();
                FragmentUnsignedHotspotsList.ADAPTER.notifyDataSetChanged();
                FragmentHotspotsList.ADAPTER.updateHotspotsButtonsList(Hotspots.SHOW_ALL);

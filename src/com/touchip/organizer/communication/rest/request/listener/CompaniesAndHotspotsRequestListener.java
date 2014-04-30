@@ -8,7 +8,6 @@ import com.octo.android.robospice.request.listener.RequestListener;
 import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.activities.DrawingCompaniesActivity_;
 import com.touchip.organizer.activities.fragments.FragmentCompaniesList;
-import com.touchip.organizer.activities.fragments.FragmentUnsignedHotspotsList.ListViewUnsignedHotspotsAdapter;
 import com.touchip.organizer.communication.rest.model.CompaniesAndHotspots;
 import com.touchip.organizer.utils.DataAccess;
 import com.touchip.organizer.utils.Utils;
@@ -36,7 +35,7 @@ public class CompaniesAndHotspotsRequestListener implements RequestListener <Com
           FragmentCompaniesList.COMPANIES_LIST = companiesAndHotspots.companyWrappersList;
           DataAccess.SIGNED_HOTSPOTS = companiesAndHotspots.hotSpotWrapperList;
           DataAccess.UNASSIGNED_HOTSPOTS = companiesAndHotspots.unassignHotspotsWrapperList;
-          ListViewUnsignedHotspotsAdapter.UNSIGNED_HOTSPOTS = companiesAndHotspots.unassignHotspotsWrapperList;
+
           activity.setProgressBarIndeterminateVisibility(false);
 
           Intent i = new Intent(activity, DrawingCompaniesActivity_.class);

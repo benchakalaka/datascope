@@ -77,27 +77,12 @@ public final class ActionBarDrawingCompanies_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        llTv = ((LinearLayout) hasViews.findViewById(id.llTv));
-        whiteboardLayout = ((LinearLayout) hasViews.findViewById(id.whiteboardLayout));
-        tbShowFilters = ((ToggleButton) hasViews.findViewById(id.tbShowFilters));
-        tbShowTrades = ((ToggleButton) hasViews.findViewById(id.tbShowTrades));
-        ivCurrentCompanyColor = ((ImageView) hasViews.findViewById(id.ivCurrentCompanyColor));
         tvCurrentCompanyName = ((TextView) hasViews.findViewById(id.tvCurrentCompanyName));
-        {
-            View view = hasViews.findViewById(id.whiteboardLayout);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActionBarDrawingCompanies_.this.whiteboardLayout();
-                    }
-
-                }
-                );
-            }
-        }
+        whiteboardLayout = ((LinearLayout) hasViews.findViewById(id.whiteboardLayout));
+        llTv = ((LinearLayout) hasViews.findViewById(id.llTv));
+        tbShowTrades = ((ToggleButton) hasViews.findViewById(id.tbShowTrades));
+        tbShowFilters = ((ToggleButton) hasViews.findViewById(id.tbShowFilters));
+        ivCurrentCompanyColor = ((ImageView) hasViews.findViewById(id.ivCurrentCompanyColor));
         {
             View view = hasViews.findViewById(id.llTv);
             if (view!= null) {
@@ -107,6 +92,21 @@ public final class ActionBarDrawingCompanies_
                     @Override
                     public void onClick(View view) {
                         ActionBarDrawingCompanies_.this.llTv();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.whiteboardLayout);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActionBarDrawingCompanies_.this.whiteboardLayout();
                     }
 
                 }
