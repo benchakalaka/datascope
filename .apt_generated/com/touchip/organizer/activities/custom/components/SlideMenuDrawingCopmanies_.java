@@ -68,6 +68,7 @@ public final class SlideMenuDrawingCopmanies_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+<<<<<<< HEAD
         changeArea = ((LinearLayout) hasViews.findViewById(id.changeArea));
         changeDate = ((LinearLayout) hasViews.findViewById(id.changeDate));
         meetingPlan = ((LinearLayout) hasViews.findViewById(id.meetingPlan));
@@ -76,73 +77,27 @@ public final class SlideMenuDrawingCopmanies_
         redo = ((LinearLayout) hasViews.findViewById(id.redo));
         {
             View view = hasViews.findViewById(id.undo);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        SlideMenuDrawingCopmanies_.this.undo();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.meetingPlan);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        SlideMenuDrawingCopmanies_.this.meetingPlan();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.changeDate);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        SlideMenuDrawingCopmanies_.this.changeDate();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.changeBrushSize);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        SlideMenuDrawingCopmanies_.this.changeBrushSize();
-                    }
-
-                }
-                );
-            }
-        }
+=======
+        changeBrushSize = ((LinearLayout) hasViews.findViewById(id.changeBrushSize));
+        undo = ((LinearLayout) hasViews.findViewById(id.undo));
+        meetingPlan = ((LinearLayout) hasViews.findViewById(id.meetingPlan));
+        changeDate = ((LinearLayout) hasViews.findViewById(id.changeDate));
+        changeArea = ((LinearLayout) hasViews.findViewById(id.changeArea));
+        redo = ((LinearLayout) hasViews.findViewById(id.redo));
         {
             View view = hasViews.findViewById(id.changeArea);
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
+<<<<<<< HEAD
+                        SlideMenuDrawingCopmanies_.this.undo();
+=======
                         SlideMenuDrawingCopmanies_.this.changeArea();
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
                     }
 
                 }
@@ -150,14 +105,114 @@ public final class SlideMenuDrawingCopmanies_
             }
         }
         {
-            View view = hasViews.findViewById(id.redo);
+<<<<<<< HEAD
+            View view = hasViews.findViewById(id.meetingPlan);
+=======
+            View view = hasViews.findViewById(id.undo);
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
+<<<<<<< HEAD
+                        SlideMenuDrawingCopmanies_.this.meetingPlan();
+=======
+                        SlideMenuDrawingCopmanies_.this.undo();
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
+                    }
+
+                }
+                );
+            }
+        }
+        {
+<<<<<<< HEAD
+            View view = hasViews.findViewById(id.changeDate);
+=======
+            View view = hasViews.findViewById(id.changeBrushSize);
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+<<<<<<< HEAD
+                        SlideMenuDrawingCopmanies_.this.changeDate();
+=======
+                        SlideMenuDrawingCopmanies_.this.changeBrushSize();
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
+                    }
+
+                }
+                );
+            }
+        }
+        {
+<<<<<<< HEAD
+            View view = hasViews.findViewById(id.changeBrushSize);
+=======
+            View view = hasViews.findViewById(id.meetingPlan);
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+<<<<<<< HEAD
+                        SlideMenuDrawingCopmanies_.this.changeBrushSize();
+=======
+                        SlideMenuDrawingCopmanies_.this.meetingPlan();
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
+                    }
+
+                }
+                );
+            }
+        }
+        {
+<<<<<<< HEAD
+            View view = hasViews.findViewById(id.changeArea);
+=======
+            View view = hasViews.findViewById(id.redo);
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+<<<<<<< HEAD
+                        SlideMenuDrawingCopmanies_.this.changeArea();
+=======
                         SlideMenuDrawingCopmanies_.this.redo();
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
+                    }
+
+                }
+                );
+            }
+        }
+        {
+<<<<<<< HEAD
+            View view = hasViews.findViewById(id.redo);
+=======
+            View view = hasViews.findViewById(id.changeDate);
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+<<<<<<< HEAD
+                        SlideMenuDrawingCopmanies_.this.redo();
+=======
+                        SlideMenuDrawingCopmanies_.this.changeDate();
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
                     }
 
                 }

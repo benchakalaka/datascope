@@ -27,7 +27,10 @@ public class DataAccess {
      public static HotspotsList         TRADES_ON_SITE;
      public static List <TradesView>    ARRAY_TRADES_ITEMS = new ArrayList <TradesView>();
      public static HotspotsList         SIGNED_HOTSPOTS;
+<<<<<<< HEAD
      public static HotspotsList         UNASSIGNED_HOTSPOTS;
+=======
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
 
      private DataAccess () {
 

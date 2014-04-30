@@ -78,8 +78,12 @@ public class FragmentHotspotsList extends ListFragment {
 
                                                                            @Override public boolean onLongClick(View v) {
                                                                                 String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
+<<<<<<< HEAD
                                                                                 ClipData dragData = new ClipData(v.getTag().toString(), mimeTypes, new ClipData.Item(v.getTag()
                                                                                           .toString()));
+=======
+                                                                                ClipData dragData = new ClipData(v.getTag().toString(), mimeTypes, new ClipData.Item(v.getTag().toString()));
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
                                                                                 View.DragShadowBuilder shadow = new DragShadowBuilder(v);
                                                                                 v.startDrag(dragData, shadow, null, 0);
                                                                                 return true;
@@ -208,9 +212,13 @@ public class FragmentHotspotsList extends ListFragment {
           String isSigned = (Double.valueOf(hotspot.x) > 0) ? "assigned" : "not assigned";
           dialogHotspotDetail.setTitle(hotspot.type.replace("hotspot", ""));
 
+<<<<<<< HEAD
           String hotspotDescription = Hotspots.PERMITS_HOTSPOT.equals(hotspot.type)
                     ? "Description:" + hotspot.description + "\n Valid from:" + hotspot.validFromDate + "\n Valid to: " + hotspot.validToDate
                     : "Description:" + hotspot.description;
+=======
+          String hotspotDescription = Hotspots.PERMITS_HOTSPOT.equals(hotspot.type) ? "Description:" + hotspot.description + "\n Valid from:" + hotspot.validFromDate + "\n Valid to: " + hotspot.validToDate : "Description:" + hotspot.description;
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
           twDescription.setText(hotspotDescription + "\nCreated by " + FragmentCompaniesList.getCompanyNameById(hotspot.companyId));
 
           twId.setText("ID: " + hotspot.id);
@@ -398,8 +406,12 @@ public class FragmentHotspotsList extends ListFragment {
                                                   return null;
                                              }
                                         });
+<<<<<<< HEAD
                                    } else if ( GlobalConstants.LAST_CLICKED_HOTSPOT.type.equals(Hotspots.SAFETY_HOTSPOT) || GlobalConstants.LAST_CLICKED_HOTSPOT.type
                                              .equals(Hotspots.WASTE_HOTSPOT) ) {
+=======
+                                   } else if ( GlobalConstants.LAST_CLICKED_HOTSPOT.type.equals(Hotspots.SAFETY_HOTSPOT) || GlobalConstants.LAST_CLICKED_HOTSPOT.type.equals(Hotspots.WASTE_HOTSPOT) ) {
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
                                         quickActionPopUpMenu.setAnimStyle(QuickAction.ANIM_GROW_FROM_CENTER);
                                         quickActionPopUpMenu.show(ibutton, location);
                                    } else {

@@ -68,48 +68,76 @@ public final class SlideMenuMapActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+<<<<<<< HEAD
         changeMapType = ((LinearLayout) hasViews.findViewById(id.changeMapType));
         exit = ((LinearLayout) hasViews.findViewById(id.exit));
         settings = ((LinearLayout) hasViews.findViewById(id.settings));
         {
             View view = hasViews.findViewById(id.exit);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        SlideMenuMapActivity_.this.exit();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.settings);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        SlideMenuMapActivity_.this.settings();
-                    }
-
-                }
-                );
-            }
-        }
+=======
+        settings = ((LinearLayout) hasViews.findViewById(id.settings));
+        exit = ((LinearLayout) hasViews.findViewById(id.exit));
+        changeMapType = ((LinearLayout) hasViews.findViewById(id.changeMapType));
         {
             View view = hasViews.findViewById(id.changeMapType);
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
+<<<<<<< HEAD
+                        SlideMenuMapActivity_.this.exit();
+=======
                         SlideMenuMapActivity_.this.changeMapType();
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
+                    }
+
+                }
+                );
+            }
+        }
+        {
+<<<<<<< HEAD
+            View view = hasViews.findViewById(id.settings);
+=======
+            View view = hasViews.findViewById(id.exit);
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+<<<<<<< HEAD
+                        SlideMenuMapActivity_.this.settings();
+=======
+                        SlideMenuMapActivity_.this.exit();
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
+                    }
+
+                }
+                );
+            }
+        }
+        {
+<<<<<<< HEAD
+            View view = hasViews.findViewById(id.changeMapType);
+=======
+            View view = hasViews.findViewById(id.settings);
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+<<<<<<< HEAD
+                        SlideMenuMapActivity_.this.changeMapType();
+=======
+                        SlideMenuMapActivity_.this.settings();
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
                     }
 
                 }

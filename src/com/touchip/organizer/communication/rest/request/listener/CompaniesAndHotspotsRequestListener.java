@@ -35,8 +35,12 @@ public class CompaniesAndHotspotsRequestListener implements RequestListener <Com
      @Override public void onRequestSuccess(CompaniesAndHotspots companiesAndHotspots) {
           FragmentCompaniesList.COMPANIES_LIST = companiesAndHotspots.companyWrappersList;
           DataAccess.SIGNED_HOTSPOTS = companiesAndHotspots.hotSpotWrapperList;
+<<<<<<< HEAD
           DataAccess.UNASSIGNED_HOTSPOTS = companiesAndHotspots.unassignHotspotsWrapperList;
           ListViewUnsignedHotspotsAdapter.UNSIGNED_HOTSPOTS = companiesAndHotspots.unassignHotspotsWrapperList;
+=======
+          ListViewUnsignedHotspotsAdapter.UNSIGNED_HOTSPOTS = companiesAndHotspots.hotSpotWrapperList;
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
           activity.setProgressBarIndeterminateVisibility(false);
 
           Intent i = new Intent(activity, DrawingCompaniesActivity_.class);

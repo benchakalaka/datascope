@@ -73,6 +73,7 @@ public final class StartActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+<<<<<<< HEAD
         buttonGmaps = ((ImageButton) hasViews.findViewById(id.buttonGmaps));
         buttonDrawing = ((ImageButton) hasViews.findViewById(id.buttonDrawing));
         buttonSettings = ((ImageButton) hasViews.findViewById(id.buttonSettings));
@@ -80,13 +81,26 @@ public final class StartActivity_
         buttonCalendar = ((ImageButton) hasViews.findViewById(id.buttonCalendar));
         {
             View view = hasViews.findViewById(id.buttonExit);
+=======
+        buttonExit = ((ImageButton) hasViews.findViewById(id.buttonExit));
+        buttonSettings = ((ImageButton) hasViews.findViewById(id.buttonSettings));
+        buttonGmaps = ((ImageButton) hasViews.findViewById(id.buttonGmaps));
+        buttonCalendar = ((ImageButton) hasViews.findViewById(id.buttonCalendar));
+        buttonDrawing = ((ImageButton) hasViews.findViewById(id.buttonDrawing));
+        {
+            View view = hasViews.findViewById(id.buttonSettings);
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
+<<<<<<< HEAD
                         StartActivity_.this.buttonExit();
+=======
+                        StartActivity_.this.buttonSettings();
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
                     }
 
                 }
@@ -94,14 +108,22 @@ public final class StartActivity_
             }
         }
         {
+<<<<<<< HEAD
             View view = hasViews.findViewById(id.buttonSettings);
+=======
+            View view = hasViews.findViewById(id.buttonExit);
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
+<<<<<<< HEAD
                         StartActivity_.this.buttonSettings();
+=======
+                        StartActivity_.this.buttonExit();
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
                     }
 
                 }

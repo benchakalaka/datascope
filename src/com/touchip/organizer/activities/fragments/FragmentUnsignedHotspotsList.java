@@ -71,7 +71,11 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
           }
 
           @Override public int getCount() {
+<<<<<<< HEAD
                return UNSIGNED_HOTSPOTS.size();
+=======
+               return 0;
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
           }
 
           @SuppressWarnings ( "deprecation" ) @Override public View getView(int position, View view, ViewGroup parent) {

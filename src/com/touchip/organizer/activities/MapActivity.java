@@ -11,6 +11,10 @@ import org.androidannotations.annotations.ViewById;
 
 import android.content.Intent;
 import android.os.Bundle;
+<<<<<<< HEAD
+=======
+import android.os.StrictMode;
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -120,6 +124,11 @@ import com.touchip.organizer.utils.Utils;
 
           sideSlideMenu = SlideMenuMapActivity_.build(MapActivity.this);
           sideSlideMenu.setMenuControlButton(showMenu);
+<<<<<<< HEAD
+=======
+          // Set strict mode.
+          StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().build());
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
           animateCamera(APPROX_CENTER_OF_UK, 7);
      }
 
@@ -181,7 +190,11 @@ import com.touchip.organizer.utils.Utils;
       */
      private void animateCamera(LatLng position, float zoom) {
           CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(position, zoom);
+<<<<<<< HEAD
           googleMap.animateCamera(cameraUpdate, 2000, null);
+=======
+          googleMap.animateCamera(cameraUpdate, 3000, null);
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
      }
 
      public void refreshMarkersOnMap(List <OneClusterMarker> items) {
@@ -202,4 +215,8 @@ import com.touchip.organizer.utils.Utils;
           getDatesToHighliht();
           return false;
      }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
 }

@@ -32,7 +32,12 @@ public class DownloadSitePlanRequestListener implements RequestListener <byte[]>
                Utils.showToast(activity, R.string.there_is_no_images, true);
                return;
           }
+<<<<<<< HEAD
           // decode recieved byte array and set image option "isMutable" to true
+=======
+          // decode recieved byte array and set image option
+          // "isMutable" to true
+>>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
           CompaniesDrawingView.startBitmap = BitmapFactory.decodeByteArray(fileData, 0, fileData.length).copy(Bitmap.Config.ARGB_8888, true);
           CompaniesDrawingView.canvasBitmap = CompaniesDrawingView.startBitmap;
 
