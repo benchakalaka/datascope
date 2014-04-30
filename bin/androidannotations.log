@@ -188,7 +188,6 @@
 16:25:09.504 [Worker-2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: com.touchip.organizer.utils.AppSharedPreferences_
 16:25:09.506 [Worker-2] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 201 ms], [Generate Sources = 59 ms], [Extract Annotations = 48 ms], [Find R Classes = 36 ms], [Extract Manifest = 31 ms], [Validate Annotations = 16 ms], [Process Annotations = 10 ms], 
 16:25:09.507 [Worker-2] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
-<<<<<<< HEAD
 09:08:27.772 [Worker-1] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
 09:08:27.848 [Worker-1] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 15 annotations on 93 elements
 09:08:27.885 [Worker-1] DEBUG o.a.h.AndroidManifestFinder:137 - AndroidManifest.xml file found in parent folder C:\datascope\IDE\eclipseWS\TouchIP: C:\datascope\IDE\eclipseWS\TouchIP\AndroidManifest.xml
@@ -1750,5 +1749,3 @@
 10:21:38.105 [Worker-46] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
 10:22:05.770 [Worker-46] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
 10:25:29.434 [Worker-46] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {phase=BUILD}
-=======
->>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9

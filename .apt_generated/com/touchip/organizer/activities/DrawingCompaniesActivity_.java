@@ -86,7 +86,6 @@ public final class DrawingCompaniesActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-<<<<<<< HEAD
         menuStatusArrow = ((ImageButton) hasViews.findViewById(com.squareup.timessquare.sample.R.id.menuStatusArrow));
         svTrades = ((ScrollView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.svTrades));
         twBottomStatus = ((TextView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.twBottomStatus));
@@ -96,17 +95,6 @@ public final class DrawingCompaniesActivity_
         llFilters = ((LinearLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.llFilters));
         DRAW_VIEW = ((CompaniesDrawingView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.DRAW_VIEW));
         llCompanies = ((LinearLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.llCompanies));
-=======
-        twBottomStatus = ((TextView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.twBottomStatus));
-        llCompanies = ((LinearLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.llCompanies));
-        refresh = ((ImageButton) hasViews.findViewById(com.squareup.timessquare.sample.R.id.refresh));
-        svTrades = ((ScrollView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.svTrades));
-        llTrades = ((LinearLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.llTrades));
-        llFilters = ((LinearLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.llFilters));
-        menuStatusArrow = ((ImageButton) hasViews.findViewById(com.squareup.timessquare.sample.R.id.menuStatusArrow));
-        rlHotspotsOnCanvas = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlHotspotsOnCanvas));
-        DRAW_VIEW = ((CompaniesDrawingView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.DRAW_VIEW));
->>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
         {
             View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.refresh);
             if (view!= null) {

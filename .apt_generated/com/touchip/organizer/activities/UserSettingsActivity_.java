@@ -74,17 +74,10 @@ public final class UserSettingsActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-<<<<<<< HEAD
         etPort = ((EditText) hasViews.findViewById(id.etPort));
         buttonOk = ((Button) hasViews.findViewById(id.buttonOk));
         etIp = ((EditText) hasViews.findViewById(id.etIp));
         buttonCancel = ((Button) hasViews.findViewById(id.buttonCancel));
-=======
-        etIp = ((EditText) hasViews.findViewById(id.etIp));
-        etPort = ((EditText) hasViews.findViewById(id.etPort));
-        buttonCancel = ((Button) hasViews.findViewById(id.buttonCancel));
-        buttonOk = ((Button) hasViews.findViewById(id.buttonOk));
->>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
         {
             View view = hasViews.findViewById(id.buttonCancel);
             if (view!= null) {

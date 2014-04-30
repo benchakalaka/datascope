@@ -77,7 +77,6 @@ public final class ActionBarDrawingCompanies_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-<<<<<<< HEAD
         llTv = ((LinearLayout) hasViews.findViewById(id.llTv));
         whiteboardLayout = ((LinearLayout) hasViews.findViewById(id.whiteboardLayout));
         tbShowFilters = ((ToggleButton) hasViews.findViewById(id.tbShowFilters));
@@ -86,27 +85,13 @@ public final class ActionBarDrawingCompanies_
         tvCurrentCompanyName = ((TextView) hasViews.findViewById(id.tvCurrentCompanyName));
         {
             View view = hasViews.findViewById(id.whiteboardLayout);
-=======
-        tbShowFilters = ((ToggleButton) hasViews.findViewById(id.tbShowFilters));
-        tvCurrentCompanyName = ((TextView) hasViews.findViewById(id.tvCurrentCompanyName));
-        llTv = ((LinearLayout) hasViews.findViewById(id.llTv));
-        ivCurrentCompanyColor = ((ImageView) hasViews.findViewById(id.ivCurrentCompanyColor));
-        whiteboardLayout = ((LinearLayout) hasViews.findViewById(id.whiteboardLayout));
-        tbShowTrades = ((ToggleButton) hasViews.findViewById(id.tbShowTrades));
-        {
-            View view = hasViews.findViewById(id.llTv);
->>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-<<<<<<< HEAD
                         ActionBarDrawingCompanies_.this.whiteboardLayout();
-=======
-                        ActionBarDrawingCompanies_.this.llTv();
->>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
                     }
 
                 }
@@ -114,22 +99,14 @@ public final class ActionBarDrawingCompanies_
             }
         }
         {
-<<<<<<< HEAD
             View view = hasViews.findViewById(id.llTv);
-=======
-            View view = hasViews.findViewById(id.whiteboardLayout);
->>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-<<<<<<< HEAD
                         ActionBarDrawingCompanies_.this.llTv();
-=======
-                        ActionBarDrawingCompanies_.this.whiteboardLayout();
->>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
                     }
 
                 }
@@ -137,22 +114,14 @@ public final class ActionBarDrawingCompanies_
             }
         }
         {
-<<<<<<< HEAD
             CompoundButton view = ((CompoundButton) hasViews.findViewById(id.tbShowTrades));
-=======
-            CompoundButton view = ((CompoundButton) hasViews.findViewById(id.tbShowFilters));
->>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
             if (view!= null) {
                 view.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-<<<<<<< HEAD
                         ActionBarDrawingCompanies_.this.tbShowTrades(buttonView, isChecked);
-=======
-                        ActionBarDrawingCompanies_.this.tbShowFilters(buttonView, isChecked);
->>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
                     }
 
                 }
@@ -160,22 +129,14 @@ public final class ActionBarDrawingCompanies_
             }
         }
         {
-<<<<<<< HEAD
             CompoundButton view = ((CompoundButton) hasViews.findViewById(id.tbShowFilters));
-=======
-            CompoundButton view = ((CompoundButton) hasViews.findViewById(id.tbShowTrades));
->>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
             if (view!= null) {
                 view.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-<<<<<<< HEAD
                         ActionBarDrawingCompanies_.this.tbShowFilters(buttonView, isChecked);
-=======
-                        ActionBarDrawingCompanies_.this.tbShowTrades(buttonView, isChecked);
->>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
                     }
 
                 }

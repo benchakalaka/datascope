@@ -84,22 +84,14 @@ public final class MapActivity_
         refreshMap = ((ImageButton) hasViews.findViewById(id.refreshMap));
         showMenu = ((ImageButton) hasViews.findViewById(id.showMenu));
         {
-<<<<<<< HEAD
             View view = hasViews.findViewById(id.refreshMap);
-=======
-            View view = hasViews.findViewById(id.showMenu);
->>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-<<<<<<< HEAD
                         MapActivity_.this.refreshMap();
-=======
-                        MapActivity_.this.showMenu();
->>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
                     }
 
                 }
@@ -107,22 +99,14 @@ public final class MapActivity_
             }
         }
         {
-<<<<<<< HEAD
             View view = hasViews.findViewById(id.showMenu);
-=======
-            View view = hasViews.findViewById(id.refreshMap);
->>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-<<<<<<< HEAD
                         MapActivity_.this.showMenu();
-=======
-                        MapActivity_.this.refreshMap();
->>>>>>> 78b3b7a5c2e64f02d5ae56556b9490c6f58c1ad9
                     }
 
                 }
