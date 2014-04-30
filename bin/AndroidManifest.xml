@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:maxSdkVersion="19"
-        android:minSdkVersion="17"
+        android:minSdkVersion="14"
         android:targetSdkVersion="17" />
 
     <permission
@@ -52,39 +52,29 @@
         <activity
             android:name="com.touchip.organizer.activities.GeneralWhiteBoardActivity_"
             android:hardwareAccelerated="true"
+            android:parentActivityName="com.touchip.organizer.activities.DrawingCompaniesActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Sherlock.__Theme.DarkActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.touchip.organizer.activities.DrawingCompaniesActivity" />
         </activity>
-        
-        <!--  android:parentActivityName="com.touchip.organizer.activities.DrawingCompaniesActivity" -->
-        
         <activity
             android:name="com.touchip.organizer.activities.MapActivity_"
+            android:parentActivityName="com.touchip.organizer.activities.StartActivity_"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Sherlock.__Theme.DarkActionBar" >
         </activity>
-        
-        <!-- android:parentActivityName="com.touchip.organizer.activities.StartActivity_" -->
-        
         <activity
             android:name="com.touchip.organizer.activities.DrawingCompaniesActivity_"
             android:hardwareAccelerated="true"
+            android:parentActivityName="com.touchip.organizer.activities.MapActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Sherlock.__Theme.DarkActionBar"
             android:windowSoftInputMode="adjustPan" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.touchip.organizer.activities.MapActivity" />
-        </activity>
-        
-        <!-- android:parentActivityName="com.touchip.organizer.activities.MapActivity_"  -->
-        
-        <activity
-            android:name="com.touchip.organizer.activities.BriefingActivity"
-            android:screenOrientation="sensorLandscape" >
         </activity>
         <activity
             android:name="com.touchip.organizer.activities.TvActivity_"
