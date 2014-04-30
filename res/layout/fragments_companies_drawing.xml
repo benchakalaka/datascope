@@ -33,40 +33,43 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:id="@+id/drawing_markerTypes_linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:orientation="vertical" >
+        	android:id="@+id/drawing_markerTypes_linearLayout"
+        	android:layout_width="match_parent"
+        	android:layout_height="match_parent"
+        	android:layout_weight="2"
+        	android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/dialog_hotspot_detail_textview_valid_to"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_border"
-                android:text="@string/assigned_hotspots" />
+        	<TextView
+        		android:id="@+id/dialog_hotspot_detail_textview_valid_to"
+        		android:layout_width="match_parent"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/custom_border"
+        		android:text="@string/assigned_hotspots" />
 
-            <fragment
-                android:id="@+id/fragment_hostspots_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                class="com.touchip.organizer.activities.fragments.FragmentHotspotsList" >
-            </fragment>
+        	<fragment
+        		android:id="@+id/fragment_hostspots_list"
+        		android:layout_width="match_parent"
+        		android:layout_height="0dip"
+        		android:layout_weight="1"
+        		class="com.touchip.organizer.activities.fragments.FragmentHotspotsList" >
+        	</fragment>
 
-            <TextView
-                android:id="@+id/dialog_hotspot_detail_te"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_border"
-                android:text="@string/unassigned_hotposts" />
+        	<TextView
+        		android:id="@+id/dialog_hotspot_detail_te"
+        		android:layout_width="match_parent"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/custom_border"
+        		android:text="@string/unassigned_hotposts" />
 
-            <fragment
-                android:id="@+id/fragment_unsigned_hostspots_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                class="com.touchip.organizer.activities.fragments.FragmentUnsignedHotspotsList" >
-            </fragment>
+        	<fragment
+        		android:id="@+id/fragment_unsigned_hostspots_list"
+        		android:layout_width="match_parent"
+        		android:layout_height="0dip"
+        		android:layout_weight="1"
+        		class="com.touchip.organizer.activities.fragments.FragmentUnsignedHotspotsList" >
+        	</fragment>
         </LinearLayout>
+
     </LinearLayout>
 
     <ScrollView
