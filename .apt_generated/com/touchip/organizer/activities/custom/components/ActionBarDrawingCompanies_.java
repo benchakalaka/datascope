@@ -77,27 +77,12 @@ public final class ActionBarDrawingCompanies_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+        tbShowFilters = ((ToggleButton) hasViews.findViewById(id.tbShowFilters));
+        tbShowTrades = ((ToggleButton) hasViews.findViewById(id.tbShowTrades));
         tvCurrentCompanyName = ((TextView) hasViews.findViewById(id.tvCurrentCompanyName));
         whiteboardLayout = ((LinearLayout) hasViews.findViewById(id.whiteboardLayout));
         llTv = ((LinearLayout) hasViews.findViewById(id.llTv));
-        tbShowTrades = ((ToggleButton) hasViews.findViewById(id.tbShowTrades));
-        tbShowFilters = ((ToggleButton) hasViews.findViewById(id.tbShowFilters));
         ivCurrentCompanyColor = ((ImageView) hasViews.findViewById(id.ivCurrentCompanyColor));
-        {
-            View view = hasViews.findViewById(id.llTv);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActionBarDrawingCompanies_.this.llTv();
-                    }
-
-                }
-                );
-            }
-        }
         {
             View view = hasViews.findViewById(id.whiteboardLayout);
             if (view!= null) {
@@ -114,14 +99,14 @@ public final class ActionBarDrawingCompanies_
             }
         }
         {
-            CompoundButton view = ((CompoundButton) hasViews.findViewById(id.tbShowTrades));
+            View view = hasViews.findViewById(id.llTv);
             if (view!= null) {
-                view.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+                view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        ActionBarDrawingCompanies_.this.tbShowTrades(buttonView, isChecked);
+                    public void onClick(View view) {
+                        ActionBarDrawingCompanies_.this.llTv();
                     }
 
                 }
@@ -137,6 +122,21 @@ public final class ActionBarDrawingCompanies_
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         ActionBarDrawingCompanies_.this.tbShowFilters(buttonView, isChecked);
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            CompoundButton view = ((CompoundButton) hasViews.findViewById(id.tbShowTrades));
+            if (view!= null) {
+                view.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        ActionBarDrawingCompanies_.this.tbShowTrades(buttonView, isChecked);
                     }
 
                 }

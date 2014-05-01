@@ -99,6 +99,9 @@
     <string name="_8">8</string>
     <string name="_9">9</string>
     <string name="_C">C</string>
+    <string name="risk_schedule">Risk schedule</string>
+    <string name="there_are_no_risks">There are no risks found</string>
+    
     
 
 </resources>

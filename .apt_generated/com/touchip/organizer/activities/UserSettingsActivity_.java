@@ -74,25 +74,10 @@ public final class UserSettingsActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        buttonOk = ((Button) hasViews.findViewById(id.buttonOk));
-        etPort = ((EditText) hasViews.findViewById(id.etPort));
         etIp = ((EditText) hasViews.findViewById(id.etIp));
+        etPort = ((EditText) hasViews.findViewById(id.etPort));
         buttonCancel = ((Button) hasViews.findViewById(id.buttonCancel));
-        {
-            View view = hasViews.findViewById(id.buttonCancel);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        UserSettingsActivity_.this.buttonCancel();
-                    }
-
-                }
-                );
-            }
-        }
+        buttonOk = ((Button) hasViews.findViewById(id.buttonOk));
         {
             View view = hasViews.findViewById(id.buttonOk);
             if (view!= null) {
@@ -102,6 +87,21 @@ public final class UserSettingsActivity_
                     @Override
                     public void onClick(View view) {
                         UserSettingsActivity_.this.buttonOk();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.buttonCancel);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        UserSettingsActivity_.this.buttonCancel();
                     }
 
                 }

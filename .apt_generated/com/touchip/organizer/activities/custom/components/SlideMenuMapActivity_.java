@@ -69,8 +69,8 @@ public final class SlideMenuMapActivity_
     @Override
     public void onViewChanged(HasViews hasViews) {
         changeMapType = ((LinearLayout) hasViews.findViewById(id.changeMapType));
-        settings = ((LinearLayout) hasViews.findViewById(id.settings));
         exit = ((LinearLayout) hasViews.findViewById(id.exit));
+        settings = ((LinearLayout) hasViews.findViewById(id.settings));
         {
             View view = hasViews.findViewById(id.exit);
             if (view!= null) {

@@ -29,6 +29,7 @@ public final class RestAddresses {
      public static String        DOWNLOAD_DRAWING_PATHES                        = "http://datascopesystems.com/SitePlanImages/LoadDrawingPaths/";
      public static String        SAVE_DRAWING_PATHES                            = "http://datascopesystems.com/SitePlanImages/SaveDrawingPaths/";
      public static String        GET_OPERATIVES_ON_SITE                         = "http://datascopesystems.com/Companies/GetOperativesByCompanyId/";
+     public static String        GET_ACTIVITIES_AND_RISKS                       = "http://datascopesystems.com/HotSpot/GetRisksForHotspot/";
 
      // common cpnstant
      private static final String IP_PORT                                        = "[ip:port]";
@@ -54,6 +55,7 @@ public final class RestAddresses {
      private static final String DEF_UPDATE_TRADE_HOTSPOT                       = "http://[ip:port]/HotSpot/UpdateTradeHotSpot/";
      private static final String DEF_CREATE_NEW_WHITE_BOARD                     = "http://[ip:port]/SitePlanImages/SaveGeneralWhiteBoardPath/";
      private static final String DEF_GET_TIMES_FOR_PATHS                        = "http://[ip:port]/SitePlanImages/GetTimesForPaths/";
+     private static final String DEF_GET_ACTIVITIES_AND_RISKS                   = "http://[ip:port]/HotSpot/GetRisksForHotspot/";
 
      private RestAddresses () {
      }
@@ -79,6 +81,7 @@ public final class RestAddresses {
           UPDATE_TRADE_HOTSPOT = DEF_UPDATE_TRADE_HOTSPOT.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
           CREATE_NEW_WHITE_BOARD = DEF_CREATE_NEW_WHITE_BOARD.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
           GET_TIMES_FOR_PATHS = DEF_GET_TIMES_FOR_PATHS.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
+          GET_ACTIVITIES_AND_RISKS = DEF_GET_ACTIVITIES_AND_RISKS.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
      }
 
      public static void setServerAddress(String ip, String port) {

@@ -76,46 +76,46 @@ public final class GeneralWhiteBoardActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ibThick = ((ImageButton) hasViews.findViewById(id.ibThick));
-        WHITE_BOARD_DRAWING = ((WhiteBoardDrawingView) hasViews.findViewById(id.WHITE_BOARD_DRAWING));
-        ibCreateNewWhiteboard = ((ImageButton) hasViews.findViewById(id.ibCreateNewWhiteboard));
-        ibShapesLine = ((ImageButton) hasViews.findViewById(id.ibShapesLine));
-        ibShapesFreeDrawing = ((ImageButton) hasViews.findViewById(id.ibShapesFreeDrawing));
-        ibPencilSettings = ((ImageButton) hasViews.findViewById(id.ibPencilSettings));
-        ibColourRed = ((ImageButton) hasViews.findViewById(id.ibColourRed));
         ibWhiteboardSettings = ((ImageButton) hasViews.findViewById(id.ibWhiteboardSettings));
-        ibEraser = ((ImageButton) hasViews.findViewById(id.ibEraser));
-        ibSaveDrawing = ((ImageButton) hasViews.findViewById(id.ibSaveDrawing));
+        ibColorsPanel = ((ImageButton) hasViews.findViewById(id.ibColorsPanel));
+        ibClearAll = ((ImageButton) hasViews.findViewById(id.ibClearAll));
+        ibShapesTriangle = ((ImageButton) hasViews.findViewById(id.ibShapesTriangle));
+        ibRedo = ((ImageButton) hasViews.findViewById(id.ibRedo));
+        ibShapesCircle = ((ImageButton) hasViews.findViewById(id.ibShapesCircle));
         llChangeColour = ((LinearLayout) hasViews.findViewById(id.llChangeColour));
-        ibMedium = ((ImageButton) hasViews.findViewById(id.ibMedium));
-        ibShapesRectangle = ((ImageButton) hasViews.findViewById(id.ibShapesRectangle));
+        ibEraser = ((ImageButton) hasViews.findViewById(id.ibEraser));
+        ibThin = ((ImageButton) hasViews.findViewById(id.ibThin));
+        WHITE_BOARD_DRAWING = ((WhiteBoardDrawingView) hasViews.findViewById(id.WHITE_BOARD_DRAWING));
+        ibShapesFreeDrawing = ((ImageButton) hasViews.findViewById(id.ibShapesFreeDrawing));
+        ibShapesLine = ((ImageButton) hasViews.findViewById(id.ibShapesLine));
+        ibColourGreen = ((ImageButton) hasViews.findViewById(id.ibColourGreen));
+        llBrushSize = ((LinearLayout) hasViews.findViewById(id.llBrushSize));
         ibColourBlack = ((ImageButton) hasViews.findViewById(id.ibColourBlack));
         ibDrawText = ((ImageButton) hasViews.findViewById(id.ibDrawText));
-        ibThin = ((ImageButton) hasViews.findViewById(id.ibThin));
-        ibRefreshWhiteboard = ((ImageButton) hasViews.findViewById(id.ibRefreshWhiteboard));
-        ibColorsPanel = ((ImageButton) hasViews.findViewById(id.ibColorsPanel));
-        ibShowShapesPanel = ((ImageButton) hasViews.findViewById(id.ibShowShapesPanel));
-        ibColourGreen = ((ImageButton) hasViews.findViewById(id.ibColourGreen));
-        ibColorPicker = ((ImageButton) hasViews.findViewById(id.ibColorPicker));
-        ibUndo = ((ImageButton) hasViews.findViewById(id.ibUndo));
-        llChangeTextSize = ((LinearLayout) hasViews.findViewById(id.llChangeTextSize));
-        ibShapesTriangle = ((ImageButton) hasViews.findViewById(id.ibShapesTriangle));
-        ibClearAll = ((ImageButton) hasViews.findViewById(id.ibClearAll));
-        ibShapesCircle = ((ImageButton) hasViews.findViewById(id.ibShapesCircle));
-        llBrushSize = ((LinearLayout) hasViews.findViewById(id.llBrushSize));
-        ibRedo = ((ImageButton) hasViews.findViewById(id.ibRedo));
-        ibLoadWhiteboard = ((ImageButton) hasViews.findViewById(id.ibLoadWhiteboard));
-        llDrawShapes = ((LinearLayout) hasViews.findViewById(id.llDrawShapes));
+        ibPencilSettings = ((ImageButton) hasViews.findViewById(id.ibPencilSettings));
         ibColourBlue = ((ImageButton) hasViews.findViewById(id.ibColourBlue));
+        ibLoadWhiteboard = ((ImageButton) hasViews.findViewById(id.ibLoadWhiteboard));
+        ibUndo = ((ImageButton) hasViews.findViewById(id.ibUndo));
+        ibShowShapesPanel = ((ImageButton) hasViews.findViewById(id.ibShowShapesPanel));
+        ibShapesRectangle = ((ImageButton) hasViews.findViewById(id.ibShapesRectangle));
+        ibRefreshWhiteboard = ((ImageButton) hasViews.findViewById(id.ibRefreshWhiteboard));
+        ibMedium = ((ImageButton) hasViews.findViewById(id.ibMedium));
+        ibCreateNewWhiteboard = ((ImageButton) hasViews.findViewById(id.ibCreateNewWhiteboard));
+        ibThick = ((ImageButton) hasViews.findViewById(id.ibThick));
+        ibColourRed = ((ImageButton) hasViews.findViewById(id.ibColourRed));
+        llDrawShapes = ((LinearLayout) hasViews.findViewById(id.llDrawShapes));
+        ibSaveDrawing = ((ImageButton) hasViews.findViewById(id.ibSaveDrawing));
+        ibColorPicker = ((ImageButton) hasViews.findViewById(id.ibColorPicker));
+        llChangeTextSize = ((LinearLayout) hasViews.findViewById(id.llChangeTextSize));
         {
-            View view = hasViews.findViewById(id.ibCreateNewWhiteboard);
+            View view = hasViews.findViewById(id.ibRefreshWhiteboard);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibCreateNewWhiteboard();
+                        GeneralWhiteBoardActivity_.this.ibRefreshWhiteboard();
                     }
 
                 }
@@ -123,14 +123,14 @@ public final class GeneralWhiteBoardActivity_
             }
         }
         {
-            View view = hasViews.findViewById(id.ibPencilSettings);
+            View view = hasViews.findViewById(id.ibMedium);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibPencilSettings();
+                        GeneralWhiteBoardActivity_.this.ibMedium();
                     }
 
                 }
@@ -146,21 +146,6 @@ public final class GeneralWhiteBoardActivity_
                     @Override
                     public void onClick(View view) {
                         GeneralWhiteBoardActivity_.this.ibLoadWhiteboard();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibDrawText);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibDrawText();
                     }
 
                 }
@@ -198,149 +183,14 @@ public final class GeneralWhiteBoardActivity_
             }
         }
         {
-            View view = hasViews.findViewById(id.ibShowShapesPanel);
+            View view = hasViews.findViewById(id.ibColourBlue);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibShowShapesPanel();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibShapesTriangle);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibShapesTriangle();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibShapesFreeDrawing);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibShapesFreeDrawing();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibShapesLine);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibShapesLine();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibWhiteboardSettings);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibWhiteboardSettings();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibThin);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibThin();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibColourGreen);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibColourGreen();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibShapesCircle);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibShapesCircle();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibColourBlack);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibColourBlack();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibMedium);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibMedium();
+                        GeneralWhiteBoardActivity_.this.ibColourBlue();
                     }
 
                 }
@@ -363,74 +213,14 @@ public final class GeneralWhiteBoardActivity_
             }
         }
         {
-            View view = hasViews.findViewById(id.ibColourBlue);
+            View view = hasViews.findViewById(id.ibColourBlack);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibColourBlue();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibShapesRectangle);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibShapesRectangle();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibRedo);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibRedo();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibColorsPanel);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibColorsPanel();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibEraser);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibEraser();
+                        GeneralWhiteBoardActivity_.this.ibColourBlack();
                     }
 
                 }
@@ -453,14 +243,179 @@ public final class GeneralWhiteBoardActivity_
             }
         }
         {
-            View view = hasViews.findViewById(id.ibRefreshWhiteboard);
+            View view = hasViews.findViewById(id.ibShapesCircle);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibRefreshWhiteboard();
+                        GeneralWhiteBoardActivity_.this.ibShapesCircle();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibColorsPanel);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        GeneralWhiteBoardActivity_.this.ibColorsPanel();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibColourRed);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        GeneralWhiteBoardActivity_.this.ibColourRed();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibEraser);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        GeneralWhiteBoardActivity_.this.ibEraser();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibShapesRectangle);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        GeneralWhiteBoardActivity_.this.ibShapesRectangle();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibPencilSettings);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        GeneralWhiteBoardActivity_.this.ibPencilSettings();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibShapesLine);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        GeneralWhiteBoardActivity_.this.ibShapesLine();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibRedo);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        GeneralWhiteBoardActivity_.this.ibRedo();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibDrawText);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        GeneralWhiteBoardActivity_.this.ibDrawText();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibShapesFreeDrawing);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        GeneralWhiteBoardActivity_.this.ibShapesFreeDrawing();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibShapesTriangle);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        GeneralWhiteBoardActivity_.this.ibShapesTriangle();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibWhiteboardSettings);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        GeneralWhiteBoardActivity_.this.ibWhiteboardSettings();
                     }
 
                 }
@@ -483,14 +438,59 @@ public final class GeneralWhiteBoardActivity_
             }
         }
         {
-            View view = hasViews.findViewById(id.ibColourRed);
+            View view = hasViews.findViewById(id.ibCreateNewWhiteboard);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        GeneralWhiteBoardActivity_.this.ibColourRed();
+                        GeneralWhiteBoardActivity_.this.ibCreateNewWhiteboard();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibShowShapesPanel);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        GeneralWhiteBoardActivity_.this.ibShowShapesPanel();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibColourGreen);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        GeneralWhiteBoardActivity_.this.ibColourGreen();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibThin);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        GeneralWhiteBoardActivity_.this.ibThin();
                     }
 
                 }

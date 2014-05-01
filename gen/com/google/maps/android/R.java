@@ -82,7 +82,7 @@ public final class R {
 		public static final int text = 0x7f050019;
 	}
 	public static final class layout {
-		public static final int text_bubble = 0x7f030042;
+		public static final int text_bubble = 0x7f030044;
 	}
 	public static final class string {
 		public static final int auth_client_needs_enabling_title = 0x7f0a001e;

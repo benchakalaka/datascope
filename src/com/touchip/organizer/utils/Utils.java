@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -69,6 +70,12 @@ public class Utils {
           Bundle bundle = new Bundle();
           bundle.putSerializable(key, value);
           return bundle;
+     }
+
+     public static String getCurrentDate() {
+          Calendar calendar = Calendar.getInstance(); // Get current date.
+          SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
+          return dateFormat.format(calendar.getTime());
      }
 
      @SuppressWarnings ( "unchecked" ) public static List <PathSerializable> parseByteArryaToPathSerializable(byte[] fileData, float canvasWidth, float canvasHeight) {

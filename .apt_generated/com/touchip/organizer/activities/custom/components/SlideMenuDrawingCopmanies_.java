@@ -68,21 +68,21 @@ public final class SlideMenuDrawingCopmanies_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        changeBrushSize = ((LinearLayout) hasViews.findViewById(id.changeBrushSize));
         undo = ((LinearLayout) hasViews.findViewById(id.undo));
-        changeArea = ((LinearLayout) hasViews.findViewById(id.changeArea));
+        changeBrushSize = ((LinearLayout) hasViews.findViewById(id.changeBrushSize));
         changeDate = ((LinearLayout) hasViews.findViewById(id.changeDate));
         redo = ((LinearLayout) hasViews.findViewById(id.redo));
+        changeArea = ((LinearLayout) hasViews.findViewById(id.changeArea));
         meetingPlan = ((LinearLayout) hasViews.findViewById(id.meetingPlan));
         {
-            View view = hasViews.findViewById(id.redo);
+            View view = hasViews.findViewById(id.undo);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        SlideMenuDrawingCopmanies_.this.redo();
+                        SlideMenuDrawingCopmanies_.this.undo();
                     }
 
                 }
@@ -105,14 +105,29 @@ public final class SlideMenuDrawingCopmanies_
             }
         }
         {
-            View view = hasViews.findViewById(id.changeBrushSize);
+            View view = hasViews.findViewById(id.changeDate);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        SlideMenuDrawingCopmanies_.this.changeBrushSize();
+                        SlideMenuDrawingCopmanies_.this.changeDate();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.redo);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        SlideMenuDrawingCopmanies_.this.redo();
                     }
 
                 }
@@ -135,29 +150,14 @@ public final class SlideMenuDrawingCopmanies_
             }
         }
         {
-            View view = hasViews.findViewById(id.changeDate);
+            View view = hasViews.findViewById(id.changeBrushSize);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        SlideMenuDrawingCopmanies_.this.changeDate();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.undo);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        SlideMenuDrawingCopmanies_.this.undo();
+                        SlideMenuDrawingCopmanies_.this.changeBrushSize();
                     }
 
                 }

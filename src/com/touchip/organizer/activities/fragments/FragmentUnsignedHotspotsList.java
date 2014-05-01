@@ -1,5 +1,7 @@
 package com.touchip.organizer.activities.fragments;
 
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ListFragment;
@@ -18,9 +20,14 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.octo.android.robospice.persistence.DurationInMillis;
 import com.squareup.timessquare.sample.R;
+import com.touchip.organizer.activities.DrawingCompaniesActivity_;
 import com.touchip.organizer.communication.rest.model.HotspotsList.POJORoboHotspot;
+import com.touchip.organizer.communication.rest.request.GetActivitiesAndRisksRequest;
+import com.touchip.organizer.communication.rest.request.listener.GetActivitiesAndRisksRequestListener;
 import com.touchip.organizer.utils.DataAccess;
+import com.touchip.organizer.utils.GlobalConstants;
 import com.touchip.organizer.utils.Utils;
 
 public class FragmentUnsignedHotspotsList extends ListFragment {
@@ -40,7 +47,7 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
      }
 
      @Override public void onListItemClick(ListView l, View v, int position, long id) {
-          POJORoboHotspot hotspot = DataAccess.UNASSIGNED_HOTSPOTS.get(position);
+          final POJORoboHotspot hotspot = DataAccess.UNASSIGNED_HOTSPOTS.get(position);
           dialogHotspotDetail.setTitle(hotspot.type.replace("hotspot", ""));
 
           twDescription.setText("Description:" + hotspot.description + "\nCreated by " + FragmentCompaniesList.getCompanyNameById(hotspot.companyId));
@@ -50,6 +57,17 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
 
           imageHotspotType.setBackgroundResource(Utils.getImageIdByType(hotspot.type));
           imageHotspotComapnyColor.setBackgroundColor(FragmentCompaniesList.getCompanyColorById(hotspot.companyId));
+
+          ((Button) dialogHotspotDetail.findViewById(R.id.dialog_button_risk)).setOnClickListener(new OnClickListener() {
+               @Override public void onClick(View v) {
+                    HashMap <String, Integer> vars = new HashMap <String, Integer>();
+                    vars.put(GlobalConstants.HOTSPOT_ID, hotspot.id);
+                    GetActivitiesAndRisksRequest request = new GetActivitiesAndRisksRequest(vars);
+                    ((DrawingCompaniesActivity_) getActivity()).getSpiceManager()
+                              .execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetActivitiesAndRisksRequestListener(getActivity()));
+               }
+          });
+
           dialogHotspotDetail.show();
      }
 
@@ -110,7 +128,7 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
                          return true;
                     }
                });
-               txtTitle.setText(DataAccess.UNASSIGNED_HOTSPOTS.get(position).description);
+               txtTitle.setText("(" + DataAccess.UNASSIGNED_HOTSPOTS.get(position).id + ") " + DataAccess.UNASSIGNED_HOTSPOTS.get(position).description);
 
                return rowView;
           }

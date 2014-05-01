@@ -1,5 +1,7 @@
 package com.touchip.organizer.activities.fragments;
 
+import java.util.HashMap;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -30,13 +32,17 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.octo.android.robospice.persistence.DurationInMillis;
 import com.squareup.timessquare.sample.R;
+import com.touchip.organizer.activities.DrawingCompaniesActivity_;
 import com.touchip.organizer.activities.GeneralWhiteBoardActivity_;
 import com.touchip.organizer.activities.ImagePagerActivity_;
 import com.touchip.organizer.activities.custom.components.CompaniesDrawingView;
 import com.touchip.organizer.activities.custom.components.NumPad;
 import com.touchip.organizer.activities.custom.components.QuickAction;
 import com.touchip.organizer.communication.rest.model.HotspotsList.POJORoboHotspot;
+import com.touchip.organizer.communication.rest.request.GetActivitiesAndRisksRequest;
+import com.touchip.organizer.communication.rest.request.listener.GetActivitiesAndRisksRequestListener;
 import com.touchip.organizer.utils.DataAccess;
 import com.touchip.organizer.utils.GlobalConstants;
 import com.touchip.organizer.utils.GlobalConstants.Hotspots;
@@ -204,7 +210,7 @@ public class FragmentHotspotsList extends ListFragment {
           });
      }
 
-     public static void showDialog(POJORoboHotspot hotspot, Activity activity) {
+     public static void showDialog(final POJORoboHotspot hotspot, final Activity activity) {
           String isSigned = (Double.valueOf(hotspot.x) > 0) ? "assigned" : "not assigned";
           dialogHotspotDetail.setTitle(hotspot.type.replace("hotspot", ""));
 
@@ -220,6 +226,17 @@ public class FragmentHotspotsList extends ListFragment {
           imageHotspotType.setBackgroundResource(Utils.getImageIdByType(hotspot.type));
 
           imageHotspotCompanyColor.setBackgroundColor(FragmentCompaniesList.getCompanyColorById(hotspot.companyId));
+
+          ((Button) dialogHotspotDetail.findViewById(R.id.dialog_button_risk)).setOnClickListener(new OnClickListener() {
+               @Override public void onClick(View v) {
+                    HashMap <String, Integer> vars = new HashMap <String, Integer>();
+                    vars.put(GlobalConstants.HOTSPOT_ID, hotspot.id);
+                    GetActivitiesAndRisksRequest request = new GetActivitiesAndRisksRequest(vars);
+                    ((DrawingCompaniesActivity_) activity).getSpiceManager()
+                              .execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetActivitiesAndRisksRequestListener(activity));
+               }
+          });
+
           dialogHotspotDetail.show();
      }
 
