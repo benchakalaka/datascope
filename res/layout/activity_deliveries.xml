@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@android:color/holo_blue_dark" >
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical" >
+
+		<TableLayout
+			android:id="@+id/tableLayoutDeliveries"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" >
+
+			<TableRow
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:background="@android:color/darker_gray" >
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="9:00"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="9:30"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="10:00"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="10:30"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="11:00"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="11:30"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="12:00"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="12:30"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="13:00"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="13:30"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="14:00"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="14:30"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="15:00"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="15:30"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="16:00"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="16:30"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="17:00"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="17:30"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/background_transparent_inside"
+					android:paddingLeft="3dp"
+					android:paddingRight="3dp"
+					android:text="18:00"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+			</TableRow>
+		</TableLayout>
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:orientation="vertical" >
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginRight="5dp"
+			android:orientation="horizontal" >
+
+			<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:layout_margin="5dp"
+				android:layout_weight="1"
+				android:background="@android:color/holo_green_light" />
+
+			<TextView
+				android:id="@+id/textView1"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="5dp"
+				android:layout_weight="1"
+				android:paddingLeft="3dp"
+				android:paddingRight="3dp"
+				android:text="Slot is available"
+				android:textAppearance="?android:attr/textAppearanceLarge" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal" >
+
+			<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:layout_margin="5dp"
+				android:layout_weight="1"
+				android:background="#FFF3FA70" />
+
+			<TextView
+				android:id="@+id/textView1"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="5dp"
+				android:layout_weight="1"
+				android:paddingLeft="3dp"
+				android:paddingRight="3dp"
+				android:text="Booking have been made (less than 5), slot may not be available"
+				android:textAppearance="?android:attr/textAppearanceLarge" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginRight="5dp"
+			android:orientation="horizontal" >
+
+			<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:layout_margin="5dp"
+				android:layout_weight="1"
+				android:background="@android:color/holo_red_dark" />
+
+			<TextView
+				android:id="@+id/textView1"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:text="Booking have been made (more than 5), slot may be at capacity"
+				android:textAppearance="?android:attr/textAppearanceLarge" />
+		</LinearLayout>
+	</LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" >
+
+	<LinearLayout
+		android:id="@+id/llCompanyAndArea"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_alignParentTop="true"
+		android:layout_margin="5dp"
+		android:background="@drawable/transparent_inside_and_white_border"
+		android:orientation="vertical"
+		android:padding="2sp" >
+
+		<TextView
+			android:id="@+id/tvArea"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_gravity="center_vertical"
+			android:layout_weight="1"
+			android:ellipsize="none"
+			android:gravity="center_vertical"
+			android:padding="3dp"
+			android:scrollHorizontally="false"
+			android:text="Area: Floor 1"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="#B6B6B4" />
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/ll1"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_alignParentTop="true"
+		android:layout_margin="5dp"
+		android:layout_toRightOf="@+id/llCompanyAndArea"
+		android:background="@drawable/transparent_inside_and_white_border"
+		android:orientation="horizontal"
+		android:padding="2sp" >
+
+		<TextView
+			android:id="@+id/twToday"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:ellipsize="none"
+			android:padding="3dp"
+			android:gravity="center_vertical"
+			android:scrollHorizontally="false"
+			android:text="Today: 20-12-2014"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="#B6B6B4" />
+	</LinearLayout>
+
+</RelativeLayout>

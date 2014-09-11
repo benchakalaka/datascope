@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@android:color/black"
+	android:orientation="horizontal" >
+
+	<LinearLayout
+		android:id="@+id/llAssetPicture"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/background_rounded_assets" >
+
+		<ImageView
+			android:layout_width="40dp"
+			android:layout_height="40dp"
+			android:background="@drawable/asset" />
+	</LinearLayout>
+
+	<TextView
+		android:id="@+id/twAssetDescription"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@+id/llAssetPicture"
+		android:gravity="center"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:textColor="@android:color/holo_orange_dark"
+		android:textStyle="italic|bold" >
+	</TextView>
+
+	<LinearLayout
+		android:id="@+id/llAssetTag"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:background="@drawable/background_view_rounded_single" >
+
+		<TextView
+			android:id="@+id/twAssetTagId"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@android:color/white"
+			android:paddingBottom="2dp"
+			android:paddingLeft="4dp"
+			android:paddingRight="4dp"
+			android:paddingTop="2dp"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textColor="@android:color/black" />
+	</LinearLayout>
+
+</RelativeLayout>

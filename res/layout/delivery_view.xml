@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/scrolll"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" >
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@drawable/background_rounded_assets"
+		android:orientation="horizontal" >
+
+		<LinearLayout
+			android:id="@+id/llCompanyColor"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:background="@drawable/background_view_rounded_single"
+			android:orientation="horizontal"
+			android:padding="5sp" >
+
+			<ImageView
+				android:id="@+id/ivCompanyColor"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:background="@drawable/show_all" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/llDeliveryImage"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_toRightOf="@+id/llCompanyColor"
+			android:background="@drawable/background_view_rounded_single" >
+
+			<ImageView
+				android:id="@+id/ivDelivery"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:background="@drawable/arrow_down" />
+		</LinearLayout>
+
+		<TextView
+			android:id="@+id/twDeliveryDescription"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_toRightOf="@+id/llDeliveryImage"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="@android:color/white"
+			android:textStyle="italic|bold" />
+
+		<LinearLayout
+			android:id="@+id/llAssetTag"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentTop="true"
+			android:background="@drawable/background_view_rounded_single" >
+
+			<TextView
+				android:id="@+id/twDeliveryGate"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:background="@drawable/background_view_rounded_single_trades"
+				android:paddingBottom="2dp"
+				android:paddingLeft="4dp"
+				android:paddingRight="4dp"
+				android:paddingTop="2dp"
+				android:text="100"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textColor="@android:color/black" />
+		</LinearLayout>
+	</RelativeLayout>
+
+</ScrollView>

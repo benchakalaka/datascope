@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="settings">Settings</string>
+	<string name="settings_saved">Settings successfully saved.</string>
+
+	<!-- Drawing labels and captions -->
+	<string name="save">Save</string>
+	<string name="save_drawing">Save drawing</string>
+	<string name="cannot_save_image">Image could not be saved.</string>
+	<string name="site_resources">Site Resources</string>
+
+	<!-- Notifications and app settings -->
+	<string name="there_is_no_siteplan_related_to_marker">There is no site plans related to current marker or some error occurred during downloading</string>
+	<string name="no_images_related_to_marker_or_date">There are no images related to this marker or date.</string>
+	<string name="there_is_no_images">There are no images relative to this marker, try to pin a photo.</string>
+	<string name="problem_during_downloading">Problem occurred while downloading pictures.</string>
+	<string name="site_plan_uploaded_to_server">Site plan successfully saved</string>
+	<string name="photo_successfully_uploaded">Photo successfully uploaded to server.</string>
+	<string name="cannot_upload_photo_to_server">Cannot upload photo to the server.</string>
+	<string name="cannot_obtain_current_address">Cannot obtain current address.</string>
+	<string name="connection_problem">Connection problem. Try again later.</string>
+	<string name="click_to_show_menu">Click on marker to show quick menu.</string>
+	<string name="drawing_saved_to_gallery">Drawing saved to gallery</string>
+	<string name="downloading_image">Image downloading in progress.</string>
+	<string name="cannot_capture_picture">Cannot capture picture.</string>
+	<string name="device_has_no_camera">Device has no camera!</string>
+	<string name="cannot_create_marker">Cannot create marker.</string>
+	<string name="unknown_filename">Unknown file name.</string>
+	<string name="hotspot_details">Hotspot details</string>
+	<string name="hotspots">Hotspot management</string>
+	<string name="invalid_ip">IP address is invalid.</string>
+	<string name="loading">Loading, please wait.</string>
+	<string name="app_name">DataScope Ltd.</string>
+	<string name="filename">File name:</string>
+	<string name="cancel">Cancel</string>
+	<string name="yes">Yes</string>
+	<string name="OK">OK</string>
+	<string name="no">No</string>
+	<string name="siteId">Site ID</string>
+	<string name="on_site">On site</string>
+	<string name="off_site">Off site</string>
+
+	<!-- Stubs -->
+	<string name="server_address_settings">Server address settings</string>
+	<string name="choose_company">Choose company!</string>
+	<string name="whiteboard">Whiteboard</string>
+	<string name="resources">Trades</string>
+	<string name="filters">Filters</string>
+	<string name="invalid_password">Invalid password</string>
+	<string name="password_required">Password required</string>
+	<string name="ip">IP</string>
+	<string name="port">Port</string>
+	<string name="test_connection">Test connection to server</string>
+	<string name="save_and_exit">Save and Exit</string>
+	<string name="assigned_hotspots">Assigned hotposts</string>
+	<string name="refresh_drawing">Refresh drawing</string>
+	<string name="undo">Undo</string>
+	<string name="redo">Redo</string>
+	<string name="brush">Brush</string>
+	<string name="site_plan_meeting">PRSR</string>
+	<string name="change_floor_area">Change floor / area</string>
+	<string name="change_date">Change date</string>
+	<string name="TV">TV</string>
+	<string name="everything_will_be_clear">"All shapes/lines will be cleared, you can not undo this action! Do you want confirm this action?"</string>
+	<string name="clear_canvas">Clear canvas</string>
+	<string name="error_obtaining_floors_areas">"Error during obtaining floors/areas!"</string>
+	<string name="select_drawing">Select drawing</string>
+	<string name="date_should_equal_or_grater">Date should be equal or greater: </string>
+	<string name="choose_company_before_creating_hotspot">"Choose company before creating hotpost"</string>
+	<string name="description_cannot_be_empty">Description cannot be empty</string>
+	<string name="text_mode_is_active">Text mode is activated!</string>
+	<string name="choose_custom_color">Choose custom colour</string>
+	<string name="whiteboard_clear">Whiteboard has been cleared!</string>
+	<string name="brush_color_is_black">Brush color is set to black</string>
+	<string name="erase_mode_is_active">Erase mode is activated</string>
+	<string name="thick_brush">Thick brush size</string>
+	<string name="medium_brush_size">Medium brush size</string>
+	<string name="draw_rectangle">Draw rectangle</string>
+	<string name="thin_brush_size">Thin brush size</string>
+	<string name="draw_circle">Draw circle</string>
+	<string name="draw_line">Draw line</string>
+	<string name="draw_triangle">Draw triangle</string>
+	<string name="free_drawing">Free drawing</string>
+	<string name="brush_color_is_set_to_blue">Brush color is set to blue</string>
+	<string name="brush_color_is_set_to_green">Brush color is set to green</string>
+	<string name="brush_color_is_set_to_red">Brush color is set to red</string>
+	<string name="create_whiteboard">Create new whiteboard</string>
+	<string name="everything_will_be_cleared">All shapes/lines will be cleared, you can not undo this action! Do you want confirm this action?</string>
+	<string name="new_whiteboard_created">New whiteboard has been created!</string>
+	<string name="field_cannot_be_empty">Field cannot be empty</string>
+	<string name="text_will_be_drawn_on_canvas">This text will be drawn on the white board</string>
+	<string name="new_color_has_been_set">New color has been set</string>
+	<string name="choose_color_saturation_opacity">Choose color/saturation value/opacity/saturation</string>
+	<string name="show_all_companies_drawings">SHOW ALL COMPANIES DRAWINGS</string>
+	<string name="hide_all_companies_drawings">HIDE ALL COMPANIES DRAWINGS</string>
+	<string name="set_brush_size">Set brush size</string>
+	<string name="brush_size_is_set_to_pixels">Brush size is set to %s pixels</string>
+	<string name="select_map_type">Select map type</string>
+	<string name="there_is_no_resources_available">There is no available resources. You cannot drag this item.</string>
+	<string name="there_is_no_task_briefing">There is no task briefing for this item</string>
+	<string name="assets">Assets</string>
+	<string name="changes_hasnt_been_saved">Whiteboard has not been saved</string>
+	<string name="you_will_loose_whiteboard">Save your whiteboard, otherwise you will loose current whiteboard state. Do you want to proceed?</string>
+	<string name="proceed_anyway">Yes, go back without saving</string>
+	<string name="no_data_for_marker">There is no data for this marker</string>
+	<string name="no_meeting_plan">There is no meeting plan </string>
+	<string name="sel_meeting_name">Select meeting name</string>
+	<string name="error_during_downloading_site_plan_meeting">Error appears during downloading site plan meeting </string>
+	<string name="no_hotspots_from_server">There are no hotspots received from server</string>
+	<string name="risk_information">Risks inforamtion</string>
+	<string name="task_control_information">Task Control inforamtion</string>
+	<string name="save_and_logoff">This action will log you off! Save and Log off anyway?  </string>
+	<string name="uploading_drawings_failed">Uploading drawing failed</string>
+
+	<!-- TEMNPLATES -->
+
+	<string name="update_app">Update application</string>
+	<string name="tvId">Tv ID</string>
+	<string name="user_not_found">Pin is incorrect, user not found</string>
+	<string name="deliveries">Deliveries</string>
+	<string name="deliveries_list_empty">There are no deliveries found</string>
+	<string name="check_network">Check network connection</string>
+	<string name="cannot_create_camera">You have no permision to create camera hotspot</string>
+	<string name="there_is_no_site_plan_found">There is no site plan found</string>
+	<string name="cannot_create_hotspot">Hotspot has not been created</string>
+	<string name="suiatble_operatives">List of suitables operatives</string>
+	<string name="there_is_no_suitable_operatives">There are no suitable operatives on site</string>
+	<string name="qsdfw12312ertgesd">Assets</string>
+	<string name="qw12312ertgesdfsdsd">Assets</string>
+
+	<!-- Start activity -->
+	<string name="start_drawing">Drawing</string>
+	<string name="start_calendar">Calendar</string>
+	<string name="start_google_maps">Google Maps</string>
+	<string name="start_site_briefing">Site briefing</string>
+	<string name="start_exit">Exit</string>
+
+	<!-- Map activity -->
+	<string name="map_pin_a_picture">Pin a picture</string>
+	<string name="map_show_pictures">Show pictures</string>
+	<string name="including_two_toasters">%1$s (including Two Toasters)</string>
+	<string name="point_number_x">%1$s</string>
+
+	<string-array name="permits_types">
+		<item>Permit to dig</item>
+		<item>Hot Works</item>
+		<item>Working with electricity</item>
+	</string-array>
+	<string-array name="map_types">
+		<item>NORMAL</item>
+		<item>TERRAIN</item>
+		<item>SATELLITE</item>
+	</string-array>
+
+	<string name="refresh_map">Refresh map</string>
+	<string name="change_map_type">Change map type</string>
+	<string name="label_color">Color</string>
+	<string name="label_pencil">Pencil</string>
+	<string name="label_menu">Menu</string>
+	<string name="text_to_drawing">Input text</string>
+	<string name="unassigned_hotposts">Unassigned hotposts</string>
+	<string name="_0">0</string>
+	<string name="_1">1</string>
+	<string name="_2">2</string>
+	<string name="_3">3</string>
+	<string name="_4">4</string>
+	<string name="_5">5</string>
+	<string name="_6">6</string>
+	<string name="_7">7</string>
+	<string name="_8">8</string>
+	<string name="_9">9</string>
+	<string name="_C">C</string>
+	<string name="risk_schedule">Risk schedule</string>
+	<string name="there_are_no_risks">There are no risks found</string>
+	<string name="task_briefing">Task briefing</string>
+
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/rlNotesRoot"
+	android:layout_width="match_parent"
+	android:layout_height="100dp"
+	android:layout_margin="3dp"
+	android:background="@color/caldroid_darker_gray" >
+
+	<TextView
+		android:id="@+id/twName"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:layout_toRightOf="@+id/ivNoteColor"
+		android:layout_toLeftOf="@+id/ivNoteType"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentLeft="true"
+		android:layout_margin="3dp"
+		android:layout_alignParentBottom="true"
+		android:text="1"
+		android:singleLine="true"
+		android:maxLines="1"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:textColor="@android:color/white"
+		android:textStyle="bold" />
+
+	<ImageView
+		android:id="@+id/ivNoteColor"
+		android:layout_width="30dp"
+		android:layout_height="30dp"
+		android:layout_margin="4dp"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentTop="true" />
+
+	<ImageView
+		android:id="@+id/ivNoteType"
+		android:layout_width="30dp"
+		android:layout_height="30dp"
+		android:layout_margin="4dp"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true" />
+
+</RelativeLayout>

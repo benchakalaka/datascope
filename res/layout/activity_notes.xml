@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" >
+
+	<ScrollView
+		android:id="@+id/svSv"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/llBottomMenu"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:layout_toRightOf="@+id/svNotesColour" >
+
+		<GridLayout
+			android:id="@+id/gridView"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:alignmentMode="alignBounds"
+			android:columnCount="6"
+			android:columnOrderPreserved="true"
+			android:useDefaultMargins="true" >
+		</GridLayout>
+	</ScrollView>
+
+	<ScrollView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/llBottomMenu"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentTop="true"
+		android:layout_toLeftOf="@+id/svSv"
+		android:background="@android:color/black" >
+
+		<LinearLayout
+			android:id="@+id/llNotes"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical" >
+		</LinearLayout>
+	</ScrollView>
+
+	<LinearLayout
+		android:id="@+id/llBottomMenu"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:background="@color/ab_background"
+		android:orientation="horizontal" >
+
+		<ImageView
+			android:id="@+id/ivAddNote"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_margin="3dp"
+			android:layout_weight="1"
+			android:src="@drawable/add_note"
+			android:tag="addnote" />
+	</LinearLayout>
+
+</RelativeLayout>

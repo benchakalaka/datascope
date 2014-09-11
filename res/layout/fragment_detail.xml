@@ -1,0 +1,168 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@android:color/black"
+	android:orientation="vertical" >
+
+	<!-- Custom View -->
+
+	<com.touchip.organizer.activities.custom.components.CompaniesDrawingView
+		android:id="@+id/DRAW_VIEW"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_above="@+id/linead"
+		android:layout_margin="3dp"
+		android:background="#FFFFFFFF"
+		android:padding="5dp" />
+
+	<HorizontalScrollView
+		android:id="@+id/linead"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true" >
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:background="@drawable/background_view_rounded_single"
+			android:orientation="horizontal" >
+
+			<ImageButton
+				android:id="@+id/ibUndo"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:background="@drawable/round_border_gray_gradient"
+				android:contentDescription="@null"
+				android:padding="10dp"
+				android:src="@drawable/left_arrow" />
+
+			<ImageButton
+				android:id="@+id/ibRedo"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:background="@drawable/round_border_gray_gradient"
+				android:contentDescription="@null"
+				android:padding="10dp"
+				android:scaleType="fitXY"
+				android:src="@drawable/right_arrow" />
+
+			<ImageButton
+				android:id="@+id/ibBrushSize"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:background="@drawable/round_border_gray_gradient"
+				android:contentDescription="@null"
+				android:padding="10dp"
+				android:scaleType="fitXY"
+				android:src="@drawable/brush" />
+
+			<ImageButton
+				android:id="@+id/ibWb"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:background="@drawable/round_border_gray_gradient"
+				android:contentDescription="@null"
+				android:padding="10dp"
+				android:scaleType="fitXY"
+				android:src="@drawable/whiteboard" />
+
+			<ImageButton
+				android:id="@+id/ibResources"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:background="@drawable/round_border_gray_gradient"
+				android:contentDescription="@null"
+				android:padding="10dp"
+				android:scaleType="fitXY"
+				android:src="@drawable/users" />
+
+			<ImageButton
+				android:id="@+id/ibHotspots"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:background="@drawable/round_border_gray_gradient"
+				android:contentDescription="@null"
+				android:padding="10dp"
+				android:scaleType="fitXY"
+				android:src="@drawable/hotspots" />
+
+			<ImageButton
+				android:id="@+id/ibChangeFloor"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:background="@drawable/round_border_gray_gradient"
+				android:contentDescription="@null"
+				android:padding="10dp"
+				android:scaleType="fitXY"
+				android:src="@drawable/floors" />
+
+			<ImageButton
+				android:id="@+id/ibChangeDate"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:background="@drawable/round_border_gray_gradient"
+				android:contentDescription="@null"
+				android:padding="10dp"
+				android:scaleType="fitXY"
+				android:src="@drawable/calendar_change_date" />
+
+			<ImageButton
+				android:id="@+id/ibRefresh"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:background="@drawable/round_border_gray_gradient"
+				android:contentDescription="@null"
+				android:padding="10dp"
+				android:scaleType="fitXY"
+				android:src="@drawable/refresh_map" />
+		</LinearLayout>
+	</HorizontalScrollView>
+
+	<LinearLayout
+		android:id="@+id/linearLayout1ss"
+		android:layout_above="@+id/linead"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_margin="20dp"
+		android:background="@android:color/black"
+		android:orientation="horizontal" >
+
+		<TextView
+			android:id="@+id/tvSPN"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:ellipsize="none"
+			android:layout_gravity="center"
+			android:padding="3dp"
+			android:scrollHorizontally="false"
+			android:text="Area: ?"
+			android:textStyle="bold"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			android:textColor="@android:color/holo_orange_dark" />
+	</LinearLayout>
+	
+	
+	<LinearLayout
+		android:layout_above="@+id/linead"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/background_fenced"
+		android:layout_alignParentRight="true"
+		android:orientation="horizontal" >
+
+		<ImageView
+			android:id="@+id/ivCompanyColor"
+			android:layout_width="40dp"
+			android:layout_height="40dp"
+			android:layout_margin="5dp"
+			android:background="@drawable/question" />
+	</LinearLayout>
+	
+
+</RelativeLayout>
