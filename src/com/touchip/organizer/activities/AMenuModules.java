@@ -126,7 +126,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           // showProgressDialog();
           HashMap <String, String> params = new HashMap <String, String>();
           params.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
-          params.put(HTTP_PARAMS.SITE_ID, String.valueOf(1)); // TODO ////////////////////////////////////////////////////////////////
+          params.put(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
 
           GetDeliveriesListRequest request = new GetDeliveriesListRequest(params);
           getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetDeliveriesListRequestListener(this));

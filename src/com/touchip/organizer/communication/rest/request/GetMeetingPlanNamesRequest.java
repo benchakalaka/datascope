@@ -6,6 +6,7 @@ import java.util.Map;
 import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
 import com.touchip.organizer.communication.rest.model.MeetingPlanNamesList;
 import com.touchip.organizer.utils.GlobalConstants;
+import com.touchip.organizer.utils.HTTP_PARAMS;
 import com.touchip.organizer.utils.Utils;
 
 public class GetMeetingPlanNamesRequest extends SpringAndroidSpiceRequest <MeetingPlanNamesList> {
@@ -27,7 +28,7 @@ public class GetMeetingPlanNamesRequest extends SpringAndroidSpiceRequest <Meeti
                vars.clear();
           }
           vars.put("markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
-          vars.put("date", GlobalConstants.SITE_PLAN_IMAGE_NAME);
+          vars.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
           return getRestTemplate().postForObject(RestAddresses.GET_MEETINGPLAN_NAMES, vars, MeetingPlanNamesList.class);
      }
 
