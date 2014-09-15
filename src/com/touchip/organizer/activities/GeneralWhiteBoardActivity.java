@@ -30,7 +30,9 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -78,25 +80,49 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
      // Load Views
      @ViewById public static WhiteBoardDrawingView WHITE_BOARD_DRAWING;
 
-     @ViewById ImageButton                         ibPencilSettings , ibRedo , ibUndo , ibThick , ibMedium , ibThin , ibEraser;
-     @ViewById ImageButton                         ibColorsPanel , ibColourBlack , ibColourBlue , ibColourGreen , ibColourRed , ibColorPicker;
-     @ViewById ImageButton                         ibShowShapesPanel , ibShapesRectangle , ibShapesCircle , ibShapesLine , ibShapesTriangle , ibShapesFreeDrawing , ibDrawText;
-     @ViewById ImageButton                         ibWhiteboardSettings , ibClearAll , ibLoadWhiteboard , ibSaveDrawing , ibCreateNewWhiteboard , ibRefreshWhiteboard;
+     @ViewById ImageButton                         ibRedo , ibUndo , ibThick , ibMedium , ibThin , ibEraser;
+     @ViewById ImageButton                         ibColorPicker;
+     @ViewById ImageButton                         ibShapesRectangle , ibShapesCircle , ibShapesLine , ibShapesTriangle , ibShapesFreeDrawing , ibDrawText;
+     @ViewById ImageButton                         ibClearAll , ibLoadWhiteboard , ibSaveDrawing , ibCreateNewWhiteboard , ibRefreshWhiteboard;
+
+     @ViewById ImageView                           ibColour1 , ibColour2 , ibColour3 , ibColour4 , ibColour5 , ibColour6 , ibColour7 , ibColour8 , ibColour9 , ibColour10 , ibColour11 , ibColour12 , ibColour13 , ibColour14 , ibColour15 , ibColour16 , ibColour17;
+     @ViewById ImageView                           ivWhiteboardSettings , ivDrawingSettings , ivColours , ivShapes;
 
      // Layouts which contains all control button (for hide/show feature)
-     @ViewById LinearLayout                        llBrushSize , llChangeTextSize , llChangeColour , llDrawShapes;
+     @ViewById LinearLayout                        llBrushSize , llChangeTextSize , llDrawShapes;
+     @ViewById HorizontalScrollView                svChangeColour;
      public ActionBarGeneralWhiteboard             customActionBar;
 
      OnTouchListener                               menuTouchListener = new OnTouchListener() {
 
                                                                           @Override public boolean onTouch(View v, MotionEvent event) {
-                                                                               Utils.setScaleFactor(v, ibColorPicker, ibColourBlack, ibColourBlue, ibColourGreen, ibColourRed, ibColourRed, ibShapesCircle, ibShapesFreeDrawing, ibShapesLine, ibShapesRectangle, ibShapesTriangle, ibThick, ibMedium, ibThin);
+                                                                               // Utils.setScaleFactor(v, ibColorPicker, ibColourBlack, ibColourBlue,
+                                                                               // ibColourGreen, ibColourRed, ibColourRed, ibShapesCircle, ibShapesFreeDrawing,
+                                                                               // ibShapesLine, ibShapesRectangle, ibShapesTriangle, ibThick, ibMedium, ibThin);
                                                                                return false;
                                                                           }
                                                                      };
 
      @AfterViews void afterViews() {
           INSTANCE = this;
+
+          ibColour1.setOnClickListener(this);
+          ibColour2.setOnClickListener(this);
+          ibColour3.setOnClickListener(this);
+          ibColour4.setOnClickListener(this);
+          ibColour5.setOnClickListener(this);
+          ibColour6.setOnClickListener(this);
+          ibColour7.setOnClickListener(this);
+          ibColour8.setOnClickListener(this);
+          ibColour9.setOnClickListener(this);
+          ibColour10.setOnClickListener(this);
+          ibColour11.setOnClickListener(this);
+          ibColour12.setOnClickListener(this);
+          ibColour13.setOnClickListener(this);
+          ibColour14.setOnClickListener(this);
+          ibColour15.setOnClickListener(this);
+          ibColour16.setOnClickListener(this);
+          ibColour17.setOnClickListener(this);
 
           // preapare progress dialog
           progressDialog = new ProgressDialog(GeneralWhiteBoardActivity.this);
@@ -155,6 +181,8 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
 
           Utils.configureCustomActionBar(getActionBar(), customActionBar);
 
+          getActionBar().setIcon(R.drawable.menu);
+
           dialogInputText.setTitle(R.string.text_will_be_drawn_on_canvas);
           Button ok = (Button) dialogInputText.findViewById(R.id.dialog_button_ok);
           Button cancel = (Button) dialogInputText.findViewById(R.id.dialog_button_cancel);
@@ -166,10 +194,6 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
           progressDialog.setTitle(R.string.loading);
           progressDialog.setCancelable(true);
 
-          ibColourBlack.setOnTouchListener(menuTouchListener);
-          ibColourBlue.setOnTouchListener(menuTouchListener);
-          ibColourGreen.setOnTouchListener(menuTouchListener);
-          ibColourRed.setOnTouchListener(menuTouchListener);
           ibShapesCircle.setOnTouchListener(menuTouchListener);
           ibShapesRectangle.setOnTouchListener(menuTouchListener);
           ibShapesLine.setOnTouchListener(menuTouchListener);
@@ -181,10 +205,6 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
           ibEraser.setOnTouchListener(menuTouchListener);
           ibColorPicker.setOnTouchListener(menuTouchListener);
 
-          ibColourBlack.setTag(GlobalConstants.COLOURS_BUTTON);
-          ibColourBlue.setTag(GlobalConstants.COLOURS_BUTTON);
-          ibColourGreen.setTag(GlobalConstants.COLOURS_BUTTON);
-          ibColourRed.setTag(GlobalConstants.COLOURS_BUTTON);
           ibColorPicker.setTag(GlobalConstants.COLOURS_BUTTON);
 
           ibShapesCircle.setTag(GlobalConstants.SHAPES_BUTTON);
@@ -199,18 +219,7 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
 
           ibEraser.setTag(GlobalConstants.TEXT_SETTINGS_BUTTON);
 
-          // set default selected settings
-          ibColourBlack.setScaleX(0.9f);
-          ibColourBlack.setScaleY(0.9f);
-
-          ibShapesFreeDrawing.setScaleX(0.9f);
-          ibShapesFreeDrawing.setScaleY(0.9f);
-
-          ibThick.setScaleX(0.9f);
-          ibThick.setScaleY(0.9f);
-
           ibShapesFreeDrawing.setBackgroundResource(R.drawable.background_view_rounded_single);
-          ibColourBlack.setBackgroundResource(R.drawable.background_view_rounded_single);
           ibThick.setBackgroundResource(R.drawable.background_view_rounded_single);
 
           WHITE_BOARD_DRAWING.setColor(Color.BLACK);
@@ -269,7 +278,7 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
                // Variable array for POST request
                Map <String, String> params = new HashMap <String, String>();
                if ( WHITEBOARD_TYPE.equals(GlobalConstants.DrawingType.HOTSPOT_WHITEBOARD_DRAWING) || IS_WHITEBOARD_NEW ) {
-                    params.put(HTTP_PARAMS.MARKER_ID, GlobalConstants.LAST_CLICKED_MARKER_ID);
+                    params.put(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
                     params.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
                     params.put(HTTP_PARAMS.FLOOR, GlobalConstants.CURRENT_FLOOR);
                     params.put(HTTP_PARAMS.TYPE, WHITEBOARD_TYPE);
@@ -314,7 +323,7 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
 
                if ( WHITEBOARD_TYPE.equals(GlobalConstants.DrawingType.HOTSPOT_WHITEBOARD_DRAWING) ) {
                     params.add(HTTP_PARAMS.TYPE, WHITEBOARD_TYPE);
-                    params.add(HTTP_PARAMS.MARKER_ID, GlobalConstants.LAST_CLICKED_MARKER_ID);
+                    params.add(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
                     params.add(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
                     params.add(HTTP_PARAMS.FLOOR, GlobalConstants.CURRENT_FLOOR);
                     params.add(HTTP_PARAMS.HOTSPOT_ID, String.valueOf(GlobalConstants.LAST_CLICKED_HOTSPOT.id));
@@ -324,7 +333,7 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
                     } else {
                          IS_WHITEBOARD_NEW = !IS_WHITEBOARD_NEW;
                          params.add(HTTP_PARAMS.TYPE, WHITEBOARD_TYPE);
-                         params.add(HTTP_PARAMS.MARKER_ID, GlobalConstants.LAST_CLICKED_MARKER_ID);
+                         params.add(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
                          params.add(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
                          params.add(HTTP_PARAMS.FLOOR, GlobalConstants.CURRENT_FLOOR);
                     }
@@ -386,6 +395,35 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
                     dialogInputText.dismiss();
                     break;
                default:
+                    ibColour1.setBackgroundResource(android.R.color.transparent);
+                    ibColour2.setBackgroundResource(android.R.color.transparent);
+                    ibColour3.setBackgroundResource(android.R.color.transparent);
+                    ibColour4.setBackgroundResource(android.R.color.transparent);
+                    ibColour5.setBackgroundResource(android.R.color.transparent);
+                    ibColour6.setBackgroundResource(android.R.color.transparent);
+                    ibColour7.setBackgroundResource(android.R.color.transparent);
+                    ibColour8.setBackgroundResource(android.R.color.transparent);
+                    ibColour9.setBackgroundResource(android.R.color.transparent);
+                    ibColour10.setBackgroundResource(android.R.color.transparent);
+                    ibColour11.setBackgroundResource(android.R.color.transparent);
+                    ibColour12.setBackgroundResource(android.R.color.transparent);
+                    ibColour13.setBackgroundResource(android.R.color.transparent);
+                    ibColour14.setBackgroundResource(android.R.color.transparent);
+                    ibColour15.setBackgroundResource(android.R.color.transparent);
+                    ibColour16.setBackgroundResource(android.R.color.transparent);
+                    ibColour17.setBackgroundResource(android.R.color.transparent);
+                    view.setBackgroundResource(R.drawable.transparent_inside_and_white_round_border);
+                    // set bg color of note
+                    int color = Color.parseColor(view.getTag().toString());
+                    WHITE_BOARD_DRAWING.disableEraserMode();
+                    WHITE_BOARD_DRAWING.setColor(color);
+                    Utils.showCustomToast(GeneralWhiteBoardActivity.this, R.string.colour_has_been_changed, R.drawable.paint_pressed);
+
+                    // if ( color == Color.WHITE ) {
+                    // ivTypeOfNote.setBackgroundColor(Color.TRANSPARENT);
+                    // } else {
+                    // ivTypeOfNote.setBackgroundColor(color);
+                    // }
                     return;
           }
      }
@@ -435,13 +473,6 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
           builder.create().show();
      }
 
-     @Click void ibColourBlack() {
-          WHITE_BOARD_DRAWING.disableEraserMode();
-          ibColourBlack.startAnimation(AnimationManager.load(R.anim.pump_bottom, 500));
-          WHITE_BOARD_DRAWING.setColor(Color.BLACK);
-          Utils.showCustomToast(GeneralWhiteBoardActivity.this, R.string.brush_color_is_black, R.drawable.circle_black);
-     }
-
      @Click void ibEraser() {
           ibEraser.startAnimation(AnimationManager.load(R.anim.pump_bottom, 500));
           WHITE_BOARD_DRAWING.setEraserMode();
@@ -451,13 +482,13 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
      @Click void ibThin() {
           ibThin.startAnimation(AnimationManager.load(R.anim.pump_bottom, 500));
           WHITE_BOARD_DRAWING.setBrushSize(15);
-          Utils.showCustomToast(GeneralWhiteBoardActivity.this, R.string.thick_brush, R.drawable.brush_pencil128);
+          Utils.showCustomToast(GeneralWhiteBoardActivity.this, R.string.thick_brush, R.drawable.brush);
      }
 
      @Click void ibMedium() {
           ibMedium.startAnimation(AnimationManager.load(R.anim.pump_bottom, 500));
           WHITE_BOARD_DRAWING.setBrushSize(10);
-          Utils.showCustomToast(GeneralWhiteBoardActivity.this, R.string.medium_brush_size, R.drawable.brush_pencil128);
+          Utils.showCustomToast(GeneralWhiteBoardActivity.this, R.string.medium_brush_size, R.drawable.brush);
      }
 
      @Click void ibShapesRectangle() {
@@ -470,7 +501,7 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
      @Click void ibThick() {
           ibThick.startAnimation(AnimationManager.load(R.anim.pump_bottom, 500));
           WHITE_BOARD_DRAWING.setBrushSize(5);
-          Utils.showCustomToast(GeneralWhiteBoardActivity.this, R.string.thin_brush_size, R.drawable.brush_pencil128);
+          Utils.showCustomToast(GeneralWhiteBoardActivity.this, R.string.thin_brush_size, R.drawable.brush);
      }
 
      @Click void ibShapesCircle() {
@@ -499,27 +530,6 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
           ibShapesFreeDrawing.startAnimation(AnimationManager.load(R.anim.pump_bottom, 500));
           WHITE_BOARD_DRAWING.setDrawingShape(WhiteBoardDrawingView.ShapesType.STANDART_DRAWING);
           Utils.showCustomToast(GeneralWhiteBoardActivity.this, R.string.free_drawing, R.drawable.free_drawing);
-     }
-
-     @Click void ibColourBlue() {
-          WHITE_BOARD_DRAWING.disableEraserMode();
-          ibColourBlue.startAnimation(AnimationManager.load(R.anim.pump_bottom, 500));
-          WHITE_BOARD_DRAWING.setColor(Color.BLUE);
-          Utils.showCustomToast(GeneralWhiteBoardActivity.this, R.string.brush_color_is_set_to_blue, R.drawable.circle_blue);
-     }
-
-     @Click void ibColourGreen() {
-          WHITE_BOARD_DRAWING.disableEraserMode();
-          ibColourGreen.startAnimation(AnimationManager.load(R.anim.pump_bottom, 500));
-          WHITE_BOARD_DRAWING.setColor(Color.GREEN);
-          Utils.showCustomToast(GeneralWhiteBoardActivity.this, R.string.brush_color_is_set_to_green, R.drawable.circle_green);
-     }
-
-     @Click void ibColourRed() {
-          WHITE_BOARD_DRAWING.disableEraserMode();
-          ibColourRed.startAnimation(AnimationManager.load(R.anim.pump_bottom, 500));
-          WHITE_BOARD_DRAWING.setColor(Color.RED);
-          Utils.showCustomToast(GeneralWhiteBoardActivity.this, R.string.brush_color_is_set_to_red, R.drawable.circle_red);
      }
 
      @Click void ibSaveDrawing() {
@@ -565,7 +575,7 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
                     ibCreateNewWhiteboard.startAnimation(AnimationManager.load(R.anim.pump_bottom, 500));
                     IS_WHITEBOARD_NEW = true;
                     WHITE_BOARD_DRAWING.clearAllPaths();
-                    Utils.showCustomToast(GeneralWhiteBoardActivity.this, R.string.new_whiteboard_created, R.drawable.add_whiteboard);
+                    Utils.showCustomToast(GeneralWhiteBoardActivity.this, R.string.new_whiteboard_created, R.drawable.add);
 
                     customActionBar.setTimeCreatedText(GlobalConstants.SITE_PLAN_IMAGE_NAME + " not saved");
                     dialog.dismiss();
@@ -588,29 +598,45 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
      /**
       * Show or hide penicl's settings panel
       */
-     @Click void ibPencilSettings() {
+     @Click void ivDrawingSettings() {
           llBrushSize.setVisibility((llBrushSize.getVisibility() == View.GONE) ? View.VISIBLE : View.GONE);
+
+          svChangeColour.setVisibility(View.GONE);
+          llChangeTextSize.setVisibility(View.GONE);
+          llDrawShapes.setVisibility(View.GONE);
      }
 
      /**
       * Show or hide whiteboard panel
       */
-     @Click void ibWhiteboardSettings() {
+     @Click void ivWhiteboardSettings() {
           llChangeTextSize.setVisibility((llChangeTextSize.getVisibility() == View.GONE) ? View.VISIBLE : View.GONE);
+
+          svChangeColour.setVisibility(View.GONE);
+          llBrushSize.setVisibility(View.GONE);
+          llDrawShapes.setVisibility(View.GONE);
      }
 
      /**
       * Show or hide colors panel
       */
-     @Click void ibColorsPanel() {
-          llChangeColour.setVisibility((llChangeColour.getVisibility() == View.GONE) ? View.VISIBLE : View.GONE);
+     @Click void ivColours() {
+          svChangeColour.setVisibility((svChangeColour.getVisibility() == View.GONE) ? View.VISIBLE : View.GONE);
+
+          llChangeTextSize.setVisibility(View.GONE);
+          llBrushSize.setVisibility(View.GONE);
+          llDrawShapes.setVisibility(View.GONE);
      }
 
      /**
       * Show or hide shapes panel
       */
-     @Click void ibShowShapesPanel() {
+     @Click void ivShapes() {
           llDrawShapes.setVisibility((llDrawShapes.getVisibility() == View.GONE) ? View.VISIBLE : View.GONE);
+
+          llChangeTextSize.setVisibility(View.GONE);
+          llBrushSize.setVisibility(View.GONE);
+          svChangeColour.setVisibility(View.GONE);
      }
 
      @Override public void onSaturationChanged(int saturation) {

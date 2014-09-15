@@ -7,7 +7,7 @@
 	<color name="light_gray_header_color">#646663</color>
 	<color name="meetingUnselectedColor">#ABE7FF</color>
 	<color name="meetingSelectedColor">#DCDEDC</color>
-	<color name="ab_background">#3EA055</color>
+	<color name="ab_background">#20324a</color>
 	<color name="ab_calendar_bg">#bb0066CC</color>
 	<color name="ab_calendar_cell_bg">#330011FF</color>
 

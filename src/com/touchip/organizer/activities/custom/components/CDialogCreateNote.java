@@ -34,7 +34,7 @@ import com.touchip.organizer.utils.Utils;
 
      // ====================== variable
      private final Activity activity;
-     public static int      noteTypeId = R.drawable.rectangle;
+     public static int      noteTypeId = R.drawable.rectangle_1;
 
      public CDialogCreateNote ( Context context , Activity act ) {
           super(context);
@@ -46,7 +46,6 @@ import com.touchip.organizer.utils.Utils;
           try {
                date = DateUtils.parseDate(twEndDateL.getText().toString(), Utils.DATE_FORMAT_YYYY_MM_DD);
           } catch (ParseException e) {
-               // TODO Auto-generated catch block
                e.printStackTrace();
           }
           if ( null == date ) {
@@ -81,20 +80,20 @@ import com.touchip.organizer.utils.Utils;
      }
 
      @Click void ivTypeOfNote() {
-          if ( noteTypeId == R.drawable.rectangle ) {
-               noteTypeId = R.drawable.triangle;
+          if ( noteTypeId == R.drawable.rectangle_1 ) {
+               noteTypeId = R.drawable.triangle_1;
                ivTypeOfNote.setImageResource(noteTypeId);
                return;
           }
 
-          if ( noteTypeId == R.drawable.triangle ) {
+          if ( noteTypeId == R.drawable.triangle_1 ) {
                noteTypeId = R.drawable.circle;
                ivTypeOfNote.setImageResource(noteTypeId);
                return;
           }
 
           if ( noteTypeId == R.drawable.circle ) {
-               noteTypeId = R.drawable.rectangle;
+               noteTypeId = R.drawable.rectangle_1;
                ivTypeOfNote.setImageResource(noteTypeId);
                return;
           }

@@ -6,7 +6,6 @@ package com.touchip.organizer.utils;
 public class HTTP_PARAMS {
      public static final String FLOOR               = "floor";
      public static final String HOTSPOT_ID          = "hotspotId";
-     public static final String MARKER_ID           = "markerId";
      public static final String SITE_ID             = "siteId";
      public static final String TYPE                = "type";
      public static final String DATE                = "date";

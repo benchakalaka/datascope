@@ -34,13 +34,23 @@ public class DownloadSitePlanRequestListenerStartActivity implements RequestList
                TvActivity.dissmissProgressDialog();
                return;
           }
+          // FileOutputStream fis;
+          // try {
+          // fileData = Base64.decode(fileData, Base64.DEFAULT);
+          // String path = Environment.getExternalStorageDirectory().getAbsoluteFile() + File.separator + "test.png";
+          // fis = new FileOutputStream(path);
+          // fis.write(fileData);
+          // } catch (Exception e) {
+          // e.printStackTrace();
+          // }
+
           // decode recieved byte array and set image option "isMutable" to true
-          CompaniesDrawingView.startBitmap = BitmapFactory.decodeByteArray(fileData, 0, fileData.length).copy(Bitmap.Config.ARGB_8888, true);
+          CompaniesDrawingView.startBitmap = BitmapFactory.decodeByteArray(fileData, 0, fileData.length);
+          CompaniesDrawingView.startBitmap = CompaniesDrawingView.startBitmap.copy(Bitmap.Config.ARGB_8888, true);
           CompaniesDrawingView.canvasBitmap = CompaniesDrawingView.startBitmap;
 
           CompaniesAndHotspotsRequest request = new CompaniesAndHotspotsRequest();
           activity.getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ONE_MINUTE, new CompaniesAndHotspotsRequestListener(activity));
 
      }
-
 }

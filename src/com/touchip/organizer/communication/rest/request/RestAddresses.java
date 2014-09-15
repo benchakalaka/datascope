@@ -24,7 +24,6 @@ public final class RestAddresses {
      public static String        GET_LIST_OF_DATES_TO_HIGHLIGHT_IN_CALENDAR     = "http://datascopesystems.com/SitePlanImages/GetDatesToHighLight/";
      public static String        GET_MEETING_PLAN                               = "http://datascopesystems.com/SitePlanMeeting/GetSitePlanMeeting/";
      public static String        DOWNLOAD_DRAWING_PATHES                        = "http://datascopesystems.com/SitePlanImages/LoadDrawingPaths/";
-     // public static String SAVE_DRAWING_PATHES = "http://datascopesystems.com/SitePlanImages/SaveDrawingPaths/";
      public static String        SAVE_DRAWING_PATHES                            = "http://datascopesystems.com/SitePlanImages/SaveSitePlanDrawingPaths/";
      public static String        GET_OPERATIVES_ON_SITE                         = "http://datascopesystems.com/Companies/GetOperativesByCompanyId/";
      public static String        GET_ACTIVITIES_AND_RISKS                       = "http://datascopesystems.com/HotSpot/GetRisksForHotspot/";
@@ -32,7 +31,7 @@ public final class RestAddresses {
      public static String        GET_MEETINGPLAN_NAMES                          = "http://datascopesystems.com/SitePlanMeeting/GetListOfPlans/";
      public static String        GET_ASSETS_LIST                                = "http://datascopesystems.com/HotSpot/GetAssetsBySiteAndCompany/";
      public static String        UPDATE_APPLICATION                             = "http://datascopesystems.com/UpdateClientApplication/UpdateAndroidApplication/";
-     public static String        LOGIN                                          = "http://datascopesystems.com/Login/LoginUser/";
+     public static String        LOGIN                                          = "http://datascopesystems.com/Login/LoginUser/";                                 // LoginUser
      public static String        GET_DELIVERIES_LIST                            = "http://datascopesystems.com/Deliveries/GetDeliveriesGrid/";
      public static String        SAVE_GWD_PATHS                                 = "http://datascopesystems.com/SitePlanImages/SaveGeneralWhiteBoardDrawingPaths/";
      public static String        SAVE_HWD_PATHS                                 = "http://datascopesystems.com/SitePlanImages/SaveHotSpotDrawingPaths/";
@@ -57,7 +56,6 @@ public final class RestAddresses {
      private static final String DEF_GET_LIST_OF_DATES_TO_HIGHLIGHT_IN_CALENDAR = "http://[ip:port]/SitePlanImages/GetDatesToHighLight/";
      private static final String DEF_GET_MEETING_PLAN                           = "http://[ip:port]/SitePlanMeeting/GetSitePlanMeeting/";
      private static final String DEF_DOWNLOAD_DRAWING_PATHES                    = "http://[ip:port]/SitePlanImages/LoadDrawingPaths/";
-     // private static final String DEF_SAVE_DRAWING_PATHES = "http://[ip:port]/SitePlanImages/SaveDrawingPaths/";
      private static final String DEF_SAVE_DRAWING_PATHES                        = "http://[ip:port]/SitePlanImages/SaveSitePlanDrawingPaths/";
      private static final String DEF_GET_OPERATIVES_ON_SITE                     = "http://[ip:port]/Companies/GetOperativesByCompanyId/";
      private static final String DEF_GET_TRADES                                 = "http://[ip:port]/HotSpot/GetTrades/";
@@ -70,7 +68,7 @@ public final class RestAddresses {
      private static final String DEF_GET_MEETINGPLAN_NAMES                      = "http://[ip:port]/SitePlanMeeting/GetListOfPlans/";
      private static final String DEF_GET_ASSETS_LIST                            = "http://[ip:port]/HotSpot/GetAssetsBySiteAndCompany/";
      private static final String DEF_UPDATE_APPLICATION                         = "http://[ip:port]/UpdateClientApplication/UpdateAndroidApplication/";
-     private static final String DEF_LOGIN                                      = "http://[ip:port]/Login/LoginUser/";
+     private static final String DEF_LOGIN                                      = "http://[ip:port]/Login/LoginUser/";                                            // LoginUser
      private static final String DEF_GET_DELIVERIES_LIST                        = "http://[ip:port]/Deliveries/GetDeliveriesGrid/";
      private static final String DEF_SAVE_GWD_PATHS                             = "http://[ip:port]/SitePlanImages/SaveGeneralWhiteBoardDrawingPaths/";
      private static final String DEF_SAVE_HWD_PATHS                             = "http://[ip:port]/SitePlanImages/SaveHotSpotDrawingPaths/";

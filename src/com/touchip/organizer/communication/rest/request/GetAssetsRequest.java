@@ -30,7 +30,7 @@ public class GetAssetsRequest extends SpringAndroidSpiceRequest <AssetsList> {
           }
 
           vars.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(DataAccess.LAST_CLICKED_COMPANY.companyId));
-          vars.put(HTTP_PARAMS.MARKER_ID, GlobalConstants.LAST_CLICKED_MARKER_ID);
+          vars.put(/* HTTP_PARAMS.SITE_ID */"markerId", String.valueOf(GlobalConstants.LAST_CLICKED_MARKER_ID));
 
           return getRestTemplate().postForObject(RestAddresses.GET_ASSETS_LIST, vars, AssetsList.class);
      }

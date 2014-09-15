@@ -9,6 +9,7 @@
 		android:layout_height="wrap_content"
 		android:layout_above="@+id/llBottomMenu"
 		android:layout_alignParentRight="true"
+		android:layout_margin="2dp"
 		android:layout_alignParentTop="true"
 		android:layout_toRightOf="@+id/svNotesColour" >
 
@@ -54,7 +55,7 @@
 			android:layout_height="50dp"
 			android:layout_margin="3dp"
 			android:layout_weight="1"
-			android:src="@drawable/add_note"
+			android:src="@drawable/jenote"
 			android:tag="addnote" />
 	</LinearLayout>
 

@@ -9,9 +9,11 @@ import org.androidannotations.annotations.ViewById;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.DragShadowBuilder;
-import android.view.View.OnLongClickListener;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.widget.GridLayout;
 import android.widget.ImageView;
@@ -30,14 +32,30 @@ import com.touchip.organizer.utils.Utils;
      private Dialog                       dialogCreateNote;
      public static Date                   currentDate;
 
-     OnLongClickListener                  longClickDragListener = new OnLongClickListener() {
+     OnTouchListener                      touch                 = new OnTouchListener() {
 
-                                                                     @Override public boolean onLongClick(View v) {
+                                                                     @Override public boolean onTouch(View v, MotionEvent event) {
+
+                                                                          switch (event.getAction()) {
+                                                                               case MotionEvent.ACTION_DOWN:
+                                                                                    String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
+                                                                                    ClipData dragData = new ClipData(v.getTag().toString(), mimeTypes, new ClipData.Item(v.getTag().toString()));
+                                                                                    View.DragShadowBuilder shadow = new DragShadowBuilder(v);
+                                                                                    v.startDrag(dragData, shadow, null, 0);
+                                                                                    break;
+                                                                          }
+
+                                                                          return false;
+                                                                     }
+                                                                };
+
+     OnClickListener                      longClickDragListener = new android.view.View.OnClickListener() {
+
+                                                                     @Override public void onClick(View v) {
                                                                           String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
                                                                           ClipData dragData = new ClipData(v.getTag().toString(), mimeTypes, new ClipData.Item(v.getTag().toString()));
                                                                           View.DragShadowBuilder shadow = new DragShadowBuilder(v);
                                                                           v.startDrag(dragData, shadow, null, 0);
-                                                                          return true;
                                                                      }
 
                                                                 };
@@ -48,7 +66,8 @@ import com.touchip.organizer.utils.Utils;
           dialogCreateNote.requestWindowFeature(Window.FEATURE_NO_TITLE);
           dialogCreateNote.setContentView(CDialogCreateNote_.build(this, this));
           fillGridView(currentDate.getMonth(), currentDate.getYear());
-          ivAddNote.setOnLongClickListener(longClickDragListener);
+          // ivAddNote.setOnClickListener(longClickDragListener);
+          ivAddNote.setOnTouchListener(touch);
      }
 
      private void fillGridView(int month, int year) {
@@ -61,5 +80,4 @@ import com.touchip.organizer.utils.Utils;
                gridView.addView(item);
           }
      }
-
 }

@@ -83,25 +83,40 @@ public final class AMenuModules_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twDate = ((TextView) hasViews.findViewById(id.twDate));
-        rlNotes = ((RelativeLayout) hasViews.findViewById(id.rlNotes));
-        rlTv = ((RelativeLayout) hasViews.findViewById(id.rlTv));
-        rlWboard = ((RelativeLayout) hasViews.findViewById(id.rlWboard));
-        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
-        rlDelivery = ((RelativeLayout) hasViews.findViewById(id.rlDelivery));
         rlQuilt = ((RelativeLayout) hasViews.findViewById(id.rlQuilt));
+        rlNotes = ((RelativeLayout) hasViews.findViewById(id.rlNotes));
+        twDate = ((TextView) hasViews.findViewById(id.twDate));
+        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
+        rlWboard = ((RelativeLayout) hasViews.findViewById(id.rlWboard));
         ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
-        rlPrsr = ((RelativeLayout) hasViews.findViewById(id.rlPrsr));
         twUserDetails = ((TextView) hasViews.findViewById(id.twUserDetails));
+        rlTv = ((RelativeLayout) hasViews.findViewById(id.rlTv));
+        rlDelivery = ((RelativeLayout) hasViews.findViewById(id.rlDelivery));
+        rlPrsr = ((RelativeLayout) hasViews.findViewById(id.rlPrsr));
         {
-            View view = hasViews.findViewById(id.rlNotes);
+            View view = hasViews.findViewById(id.rlQuilt);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        AMenuModules_.this.rlNotes();
+                        AMenuModules_.this.rlQuilt();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ivPrevDay);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        AMenuModules_.this.ivPrevDay();
                     }
 
                 }
@@ -139,29 +154,14 @@ public final class AMenuModules_
             }
         }
         {
-            View view = hasViews.findViewById(id.ivPrevDay);
+            View view = hasViews.findViewById(id.rlWboard);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        AMenuModules_.this.ivPrevDay();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.rlQuilt);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        AMenuModules_.this.rlQuilt();
+                        AMenuModules_.this.rlWboard();
                     }
 
                 }
@@ -184,14 +184,14 @@ public final class AMenuModules_
             }
         }
         {
-            View view = hasViews.findViewById(id.rlWboard);
+            View view = hasViews.findViewById(id.rlNotes);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        AMenuModules_.this.rlWboard();
+                        AMenuModules_.this.rlNotes();
                     }
 
                 }

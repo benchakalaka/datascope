@@ -23,7 +23,7 @@ public class GetPathsCreationTimeRequest extends SpringAndroidSpiceRequest <Path
 
           vars.put(HTTP_PARAMS.FLOOR, GlobalConstants.CURRENT_FLOOR);
           vars.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
-          vars.put(HTTP_PARAMS.MARKER_ID, GlobalConstants.LAST_CLICKED_MARKER_ID);
+          vars.put(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
 
           return getRestTemplate().postForObject(RestAddresses.GET_TIMES_FOR_PATHS, vars, PathsCreationTimeList.class);
      }

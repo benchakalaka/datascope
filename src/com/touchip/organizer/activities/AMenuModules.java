@@ -105,6 +105,10 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
      @Click void rlQuilt() {
           showProgressDialog();
 
+          // DownloadSitePlanRequest request = new DownloadSitePlanRequest();
+          // getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new
+          // DownloadSitePlanRequestListenerStartActivity(AMenuModules.this));
+
           // 2 is id for llandudno project
           GetDatesToHighlightRequest request = new GetDatesToHighlightRequest();
           getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new DatesToHighlightRequestListener(AMenuModules.this));
@@ -122,7 +126,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           // showProgressDialog();
           HashMap <String, String> params = new HashMap <String, String>();
           params.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
-          params.put(HTTP_PARAMS.MARKER_ID, String.valueOf(1));
+          params.put(HTTP_PARAMS.SITE_ID, String.valueOf(1)); // TODO ////////////////////////////////////////////////////////////////
 
           GetDeliveriesListRequest request = new GetDeliveriesListRequest(params);
           getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetDeliveriesListRequestListener(this));

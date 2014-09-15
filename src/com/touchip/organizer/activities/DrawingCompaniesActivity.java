@@ -125,7 +125,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
      // @ViewById TextView twBottomStatus;
      @ViewById TextView                           twTotalAmountOfPeople , tvSPN;
      @ViewById static RelativeLayout              rlHotspotsOnCanvas;
-     @ViewById ImageButton                        ibUndo , ibRedo , ibBrushSize , ibWb , ibResources , ibHotspots , ibChangeFloor , ibChangeDate , ibRefresh;
+     @ViewById ImageView                          ibUndo , ibRedo , ibBrushSize , ibWb , ibResources , ibHotspots , ibChangeFloor , ibChangeDate , ibRefresh;
 
      // ListView ASSETS and Trades
      @ViewById static ListView                    lwAssets;
@@ -351,7 +351,6 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           builder.setTitle(R.string.select_drawing);
           ListView modeList = new ListView(DrawingCompaniesActivity.this);
           List <String> floors = null;
-          // saveAndSendDrawing(false, GlobalConstants.CURRENT_FLOOR);
           String selectedDate = (null != date) ? Utils.formatDate(date) : GlobalConstants.SITE_PLAN_IMAGE_NAME;
 
           for ( int i = 0; i < DataAccess.datestoHighlight.size(); i++ ) {
@@ -567,7 +566,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                                    return true;
                               }
 
-                              requestParams.put(HTTP_PARAMS.MARKER_ID, GlobalConstants.LAST_CLICKED_MARKER_ID);
+                              requestParams.put(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
                               requestParams.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
 
                               // ASSET HOTSPOT HAS BEEN DRAGED TO CANVAS
@@ -818,7 +817,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                               DrawingCompaniesActivity.showProgressDialog();
                               HashMap <String, String> params = new HashMap <String, String>();
                               params.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
-                              params.put(HTTP_PARAMS.MARKER_ID, String.valueOf(1));
+                              params.put(HTTP_PARAMS.SITE_ID, String.valueOf(1));
                               showProgressDialog();
                               GetDeliveriesListRequest request = new GetDeliveriesListRequest(params);
                               getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetDeliveriesListRequestListener(DrawingCompaniesActivity.this));

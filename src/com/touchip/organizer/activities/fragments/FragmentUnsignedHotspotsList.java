@@ -7,6 +7,9 @@ import android.app.Dialog;
 import android.app.ListFragment;
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,12 +44,22 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
      private TextView                              twId , twDescription , twHotspotType , twIsAssigned;
      private ImageView                             imageHotspotType , imageHotspotComapnyColor;
      private Dialog                                dialogHotspotDetail;
+     static Paint                                  paint;
 
      @Override public void onAttach(Activity activity) {
           super.onAttach(activity);
+          paint = new Paint();
+          paint.setAntiAlias(true);
           ADAPTER = new ListViewUnsignedHotspotsAdapter(getActivity());
           setListAdapter(ADAPTER);
           loadViews();
+     }
+
+     public static Bitmap createRoundImage(Paint paint) {
+          Bitmap circleBitmap = Bitmap.createBitmap(30, 30, Bitmap.Config.ARGB_8888);
+          Canvas c = new Canvas(circleBitmap);
+          c.drawCircle(circleBitmap.getWidth() - 15, circleBitmap.getHeight() - 15, 14, paint);
+          return circleBitmap;
      }
 
      @Override public void onListItemClick(ListView l, View v, int position, long id) {
@@ -67,8 +80,7 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
                     HashMap <String, Integer> vars = new HashMap <String, Integer>();
                     vars.put(HTTP_PARAMS.HOTSPOT_ID, hotspot.id);
                     GetActivitiesAndRisksRequest request = new GetActivitiesAndRisksRequest(vars);
-                    ((DrawingCompaniesActivity_) getActivity()).getSpiceManager()
-                              .execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetActivitiesAndRisksRequestListener(getActivity()));
+                    ((DrawingCompaniesActivity_) getActivity()).getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetActivitiesAndRisksRequestListener(getActivity()));
                }
           });
 
@@ -78,8 +90,7 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
                     HashMap <String, Integer> vars = new HashMap <String, Integer>();
                     vars.put(HTTP_PARAMS.HOTSPOT_ID, hotspot.id);
                     GetTaskBriefingRequest request = new GetTaskBriefingRequest(vars);
-                    ((DrawingCompaniesActivity_) getActivity()).getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new
-                              GetTaskBriefingRequestListener(getActivity()));
+                    ((DrawingCompaniesActivity_) getActivity()).getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetTaskBriefingRequestListener(getActivity()));
                }
           });
 
@@ -120,7 +131,8 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
                imageView.setTag(DataAccess.UNASSIGNED_HOTSPOTS.get(position));
 
                try {
-                    imageViewCompanyColour.setBackgroundColor(FragmentCompaniesList.getCompanyColorById(DataAccess.UNASSIGNED_HOTSPOTS.get(position).companyId));
+                    paint.setColor(FragmentCompaniesList.getCompanyColorById(DataAccess.UNASSIGNED_HOTSPOTS.get(position).companyId));
+                    imageViewCompanyColour.setImageBitmap(createRoundImage(paint));
                } catch (Exception e) {
                     Utils.logw(e.getMessage());
                     imageViewCompanyColour.setVisibility(View.INVISIBLE);

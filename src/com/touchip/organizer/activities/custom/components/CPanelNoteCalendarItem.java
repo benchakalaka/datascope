@@ -33,11 +33,11 @@ import com.touchip.organizer.communication.rest.model.ModelNote;
 
      private String getNoteTypeStringByImageId(int noteImageId) {
           String noteType = "";
-          if ( noteImageId == R.drawable.rectangle ) {
+          if ( noteImageId == R.drawable.rectangle_1 ) {
                noteType = "rectangle";
           }
 
-          if ( noteImageId == R.drawable.triangle ) {
+          if ( noteImageId == R.drawable.triangle_1 ) {
                noteType = "triangle";
           }
 
@@ -50,11 +50,11 @@ import com.touchip.organizer.communication.rest.model.ModelNote;
      public static int getNoteImageIdByStringName(String type) {
           int noteTypeImageId = 0;
           if ( type.equals("rectangle") ) {
-               noteTypeImageId = R.drawable.rectangle;
+               noteTypeImageId = R.drawable.rectangle_1;
           }
 
           if ( type.equals("triangle") ) {
-               noteTypeImageId = R.drawable.triangle;
+               noteTypeImageId = R.drawable.triangle_1;
           }
 
           if ( type.equals("circle") ) {

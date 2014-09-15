@@ -27,7 +27,7 @@ public class DownloadDrawingPathsRequest extends SpringAndroidSpiceRequest <byte
                vars.clear();
           }
 
-          vars.put(HTTP_PARAMS.MARKER_ID, GlobalConstants.LAST_CLICKED_MARKER_ID);
+          vars.put(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
           vars.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
           vars.put(HTTP_PARAMS.FLOOR, GlobalConstants.CURRENT_FLOOR);
           vars.put(HTTP_PARAMS.TYPE, GlobalConstants.DrawingType.SITE_PLAN_DRAWING);

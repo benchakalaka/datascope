@@ -13,7 +13,10 @@ import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.DragEvent;
@@ -74,6 +77,8 @@ public class FragmentHotspotsList extends ListFragment {
      public static ListViewHotsportsAdapter     ADAPTER;
 
      private static ProgressDialog              progressDialog;
+
+     static Paint                               paint;
 
      View.OnClickListener                       clickListener                         = new View.OnClickListener() {
 
@@ -176,6 +181,8 @@ public class FragmentHotspotsList extends ListFragment {
 
      @Override public void onAttach(Activity activity) {
           super.onAttach(activity);
+          paint = new Paint();
+          paint.setAntiAlias(true);
           ADAPTER = new ListViewHotsportsAdapter(getActivity());
           setListAdapter(ADAPTER);
      }
@@ -653,6 +660,13 @@ public class FragmentHotspotsList extends ListFragment {
                return DataAccess.SIGNED_HOTSPOTS.size();
           }
 
+          public static Bitmap createRoundImage(Paint paint) {
+               Bitmap circleBitmap = Bitmap.createBitmap(30, 30, Bitmap.Config.ARGB_8888);
+               Canvas c = new Canvas(circleBitmap);
+               c.drawCircle(circleBitmap.getWidth() - 15, circleBitmap.getHeight() - 15, 14, paint);
+               return circleBitmap;
+          }
+
           @SuppressWarnings ( "deprecation" ) @Override public View getView(int position, View view, ViewGroup parent) {
                LayoutInflater inflater = activity.getLayoutInflater();
                View rowView = inflater.inflate(R.layout.listview_hotspot_list_item, null, true);
@@ -662,7 +676,9 @@ public class FragmentHotspotsList extends ListFragment {
 
                imageView.setBackgroundDrawable(new BitmapDrawable(activity.getResources(), Utils.getBitmapByHotspotType(DataAccess.SIGNED_HOTSPOTS.get(position).type)));
                try {
-                    imageViewCompanyColour.setBackgroundColor(FragmentCompaniesList.getCompanyColorById(DataAccess.SIGNED_HOTSPOTS.get(position).companyId));
+                    // imageViewCompanyColour.setBackgroundColor(FragmentCompaniesList.getCompanyColorById(DataAccess.SIGNED_HOTSPOTS.get(position).companyId));
+                    paint.setColor(FragmentCompaniesList.getCompanyColorById(DataAccess.SIGNED_HOTSPOTS.get(position).companyId));
+                    imageViewCompanyColour.setImageBitmap(createRoundImage(paint));
                } catch (Exception e) {
                     Utils.logw(e.getMessage());
                     imageViewCompanyColour.setVisibility(View.INVISIBLE);

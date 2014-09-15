@@ -2,20 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/ssssss"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent" >
+	android:layout_height="match_parent"
+	android:layout_margin="2dp"
+	android:background="@drawable/transparent_inside_and_white_border" >
 
 	<TableLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent" >
+		android:layout_height="match_parent"
+		android:background="@color/ab_background" >
 
 		<TableRow>
 
 			<LinearLayout
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
-				android:background="@drawable/background_view_rounded_single"
+				android:background="@drawable/background_view_circle_single"
 				android:orientation="horizontal"
-				android:padding="5sp" >
+				android:layout_margin="3dp"
+				android:padding="6sp" >
 
 				<ImageView
 					android:id="@+id/ivCompanyColor"

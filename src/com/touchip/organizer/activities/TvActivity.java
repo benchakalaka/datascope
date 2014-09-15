@@ -7,6 +7,7 @@ import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.os.StrictMode;
 import android.view.Window;
 import android.webkit.WebView;
@@ -29,14 +30,15 @@ import com.touchip.organizer.utils.Utils;
 @EActivity ( R.layout.activity_tv ) public class TvActivity extends SpiceFragmentActivity {
 
      // Load Views
-     @Pref AppSharedPreferences_ appPreff;
-     @ViewById WebView           webViewTV;
+     @Pref AppSharedPreferences_  appPreff;
+     @ViewById WebView            webViewTV;
 
-     private static String       URL;
+     private static String        URL;
 
-     public static ActionBarTv   customActionBar;
+     public static ActionBarTv    customActionBar;
 
-     @ViewById RelativeLayout    relativeRoot;
+     @ViewById RelativeLayout     relativeRoot;
+     public static ProgressDialog progressDialog;
 
      @AfterViews void afterViews() {
 
@@ -51,6 +53,10 @@ import com.touchip.organizer.utils.Utils;
 
           Utils.configureCustomActionBar(getActionBar(), null);
           Utils.configureWebView(webViewTV);
+
+          progressDialog = new ProgressDialog(TvActivity.this);
+          progressDialog.setMessage(Utils.getResources(R.string.loading));
+          progressDialog.setCancelable(true);
           // webViewTV.loadUrl("file:///android_asset/cctv.htm");
           // webViewTV.loadUrl("http://194.28.136.8:8000/nphMotionJpeg");
 

@@ -74,9 +74,9 @@ public final class SlideMenuMapActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        settings = ((LinearLayout) hasViews.findViewById(id.settings));
-        exit = ((LinearLayout) hasViews.findViewById(id.exit));
         changeMapType = ((LinearLayout) hasViews.findViewById(id.changeMapType));
+        exit = ((LinearLayout) hasViews.findViewById(id.exit));
+        settings = ((LinearLayout) hasViews.findViewById(id.settings));
         {
             View view = hasViews.findViewById(id.exit);
             if (view!= null) {
@@ -93,21 +93,6 @@ public final class SlideMenuMapActivity_
             }
         }
         {
-            View view = hasViews.findViewById(id.changeMapType);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        SlideMenuMapActivity_.this.changeMapType();
-                    }
-
-                }
-                );
-            }
-        }
-        {
             View view = hasViews.findViewById(id.settings);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -116,6 +101,21 @@ public final class SlideMenuMapActivity_
                     @Override
                     public void onClick(View view) {
                         SlideMenuMapActivity_.this.settings();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.changeMapType);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        SlideMenuMapActivity_.this.changeMapType();
                     }
 
                 }

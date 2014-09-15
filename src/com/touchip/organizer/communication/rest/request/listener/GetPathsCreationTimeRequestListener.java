@@ -60,7 +60,7 @@ public class GetPathsCreationTimeRequestListener implements RequestListener <Pat
                });
                dialog.show();
           } else {
-               Utils.showCustomToast(activity, "Creating new whiteboard", R.drawable.add_whiteboard);
+               Utils.showCustomToast(activity, "Creating new whiteboard", R.drawable.add);
                GeneralWhiteBoardActivity_.WHITEBOARD_TYPE = GlobalConstants.DrawingType.GENERAL_WHITEBOARD_DRAWING;
                GeneralWhiteBoardActivity_.IS_WHITEBOARD_NEW = true;
                activity.startActivity(new Intent(activity, GeneralWhiteBoardActivity_.class));

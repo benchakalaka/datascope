@@ -68,8 +68,8 @@ public final class CNoteCalendarItem_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        llAttachedColours = ((LinearLayout) hasViews.findViewById(id.llAttachedColours));
         twDay = ((TextView) hasViews.findViewById(id.twDay));
+        llAttachedColours = ((LinearLayout) hasViews.findViewById(id.llAttachedColours));
     }
 
 }

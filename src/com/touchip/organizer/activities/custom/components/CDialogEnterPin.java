@@ -2,6 +2,7 @@ package com.touchip.organizer.activities.custom.components;
 
 import java.util.HashMap;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
@@ -10,6 +11,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.text.Selection;
 import android.text.TextUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -34,6 +36,11 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
      public CDialogEnterPin ( Context context , Activity act ) {
           super(context);
           this.activity = act;
+     }
+
+     @AfterViews void afterViews() {
+          InputMethodManager imm = (InputMethodManager) this.activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+          imm.hideSoftInputFromWindow(etPassword.getWindowToken(), 0);
      }
 
      @Click void twLogin() {

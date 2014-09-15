@@ -70,148 +70,28 @@ public final class CDialogEnterPin_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        tw1 = ((TextView) hasViews.findViewById(id.tw1));
         tw5 = ((TextView) hasViews.findViewById(id.tw5));
+        tw9 = ((TextView) hasViews.findViewById(id.tw9));
+        tw6 = ((TextView) hasViews.findViewById(id.tw6));
+        twc = ((TextView) hasViews.findViewById(id.twc));
         tw7 = ((TextView) hasViews.findViewById(id.tw7));
         tw3 = ((TextView) hasViews.findViewById(id.tw3));
-        etPassword = ((EditText) hasViews.findViewById(id.etPassword));
-        twc = ((TextView) hasViews.findViewById(id.twc));
-        tw6 = ((TextView) hasViews.findViewById(id.tw6));
-        twLogin = ((TextView) hasViews.findViewById(id.twLogin));
         tw8 = ((TextView) hasViews.findViewById(id.tw8));
-        tw4 = ((TextView) hasViews.findViewById(id.tw4));
-        tw9 = ((TextView) hasViews.findViewById(id.tw9));
-        tw0 = ((TextView) hasViews.findViewById(id.tw0));
         tw2 = ((TextView) hasViews.findViewById(id.tw2));
+        tw4 = ((TextView) hasViews.findViewById(id.tw4));
+        tw0 = ((TextView) hasViews.findViewById(id.tw0));
+        tw1 = ((TextView) hasViews.findViewById(id.tw1));
+        twLogin = ((TextView) hasViews.findViewById(id.twLogin));
+        etPassword = ((EditText) hasViews.findViewById(id.etPassword));
         {
-            View view = hasViews.findViewById(id.tw5);
+            View view = hasViews.findViewById(id.tw4);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogEnterPin_.this.tw5();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.tw9);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogEnterPin_.this.tw9();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.tw6);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogEnterPin_.this.tw6();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.tw7);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogEnterPin_.this.tw7();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.twc);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogEnterPin_.this.twc();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.tw2);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogEnterPin_.this.tw2();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.tw3);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogEnterPin_.this.tw3();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.twLogin);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogEnterPin_.this.twLogin();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.tw1);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogEnterPin_.this.tw1();
+                        CDialogEnterPin_.this.tw4();
                     }
 
                 }
@@ -234,14 +114,89 @@ public final class CDialogEnterPin_
             }
         }
         {
-            View view = hasViews.findViewById(id.tw4);
+            View view = hasViews.findViewById(id.twc);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogEnterPin_.this.tw4();
+                        CDialogEnterPin_.this.twc();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.tw6);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogEnterPin_.this.tw6();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.twLogin);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogEnterPin_.this.twLogin();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.tw9);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogEnterPin_.this.tw9();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.tw5);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogEnterPin_.this.tw5();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.tw2);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogEnterPin_.this.tw2();
                     }
 
                 }
@@ -263,6 +218,52 @@ public final class CDialogEnterPin_
                 );
             }
         }
+        {
+            View view = hasViews.findViewById(id.tw3);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogEnterPin_.this.tw3();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.tw1);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogEnterPin_.this.tw1();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.tw7);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogEnterPin_.this.tw7();
+                    }
+
+                }
+                );
+            }
+        }
+        afterViews();
     }
 
 }

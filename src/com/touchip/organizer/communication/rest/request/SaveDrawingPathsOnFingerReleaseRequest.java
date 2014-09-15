@@ -75,7 +75,7 @@ public class SaveDrawingPathsOnFingerReleaseRequest extends SpringAndroidSpiceRe
                vars.clear();
           }
 
-          vars.add(HTTP_PARAMS.MARKER_ID, GlobalConstants.LAST_CLICKED_MARKER_ID);
+          vars.add(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
           vars.add(HTTP_PARAMS.TYPE, GlobalConstants.DrawingType.SITE_PLAN_DRAWING);
           vars.add(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
           vars.add(HTTP_PARAMS.FLOOR, this.currentFloor);

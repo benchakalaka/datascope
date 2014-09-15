@@ -68,8 +68,8 @@ public final class DeliveryView_
     @Override
     public void onViewChanged(HasViews hasViews) {
         twDeliveryGate = ((TextView) hasViews.findViewById(id.twDeliveryGate));
-        twDeliveryDescription = ((TextView) hasViews.findViewById(id.twDeliveryDescription));
         ivCompanyColor = ((ImageView) hasViews.findViewById(id.ivCompanyColor));
+        twDeliveryDescription = ((TextView) hasViews.findViewById(id.twDeliveryDescription));
     }
 
 }

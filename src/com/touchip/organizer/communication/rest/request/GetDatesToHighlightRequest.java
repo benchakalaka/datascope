@@ -6,7 +6,6 @@ import java.util.Map;
 import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
 import com.touchip.organizer.communication.rest.model.DatesToHighlightList;
 import com.touchip.organizer.utils.GlobalConstants;
-import com.touchip.organizer.utils.HTTP_PARAMS;
 import com.touchip.organizer.utils.Utils;
 
 public class GetDatesToHighlightRequest extends SpringAndroidSpiceRequest <DatesToHighlightList> {
@@ -28,7 +27,7 @@ public class GetDatesToHighlightRequest extends SpringAndroidSpiceRequest <Dates
                vars.clear();
           }
 
-          vars.put(HTTP_PARAMS.MARKER_ID, GlobalConstants.LAST_CLICKED_MARKER_ID);
+          vars.put(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
           return getRestTemplate().postForObject(RestAddresses.GET_LIST_OF_DATES_TO_HIGHLIGHT_IN_CALENDAR, vars, DatesToHighlightList.class);
      }
 

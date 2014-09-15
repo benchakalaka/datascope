@@ -81,23 +81,8 @@ public final class MapActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        refreshMap = ((ImageButton) hasViews.findViewById(id.refreshMap));
         showMenu = ((ImageButton) hasViews.findViewById(id.showMenu));
-        {
-            View view = hasViews.findViewById(id.showMenu);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        MapActivity_.this.showMenu();
-                    }
-
-                }
-                );
-            }
-        }
+        refreshMap = ((ImageButton) hasViews.findViewById(id.refreshMap));
         {
             View view = hasViews.findViewById(id.refreshMap);
             if (view!= null) {
@@ -107,6 +92,21 @@ public final class MapActivity_
                     @Override
                     public void onClick(View view) {
                         MapActivity_.this.refreshMap();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.showMenu);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        MapActivity_.this.showMenu();
                     }
 
                 }

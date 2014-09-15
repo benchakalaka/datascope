@@ -185,18 +185,18 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                ANotes.llNotes.addView(item);
                Animation anim = AnimationManager.load(R.anim.push_left_in);
                anim.setStartOffset(i);
-               i += 250;
+               i += 150;
                item.startAnimation(anim);
           }
      }
 
      private String getNoteTypeStringByImageId(int noteImageId) {
           String noteType = "";
-          if ( noteImageId == R.drawable.rectangle ) {
+          if ( noteImageId == R.drawable.rectangle_1 ) {
                noteType = "rectangle";
           }
 
-          if ( noteImageId == R.drawable.triangle ) {
+          if ( noteImageId == R.drawable.triangle_1 ) {
                noteType = "triangle";
           }
 

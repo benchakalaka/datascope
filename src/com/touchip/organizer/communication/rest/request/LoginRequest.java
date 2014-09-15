@@ -9,6 +9,7 @@ import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
+import com.touchip.organizer.activities.TvActivity;
 import com.touchip.organizer.communication.rest.model.User;
 import com.touchip.organizer.utils.Utils;
 
@@ -23,10 +24,12 @@ public class LoginRequest extends SpringAndroidSpiceRequest <User> {
           super(User.class);
           Utils.logw("Post....." + RestAddresses.LOGIN);
           this.vars = params;
+          if ( null != TvActivity.progressDialog ) {
+               TvActivity.progressDialog.show();
+          }
      }
 
      @Override public User loadDataFromNetwork() throws Exception {
-          // manageTimeOuts(getRestTemplate());
           return getRestTemplate().postForObject(/* "http://10.1.254.154:39064/api/Login/Login" */RestAddresses.LOGIN, vars, User.class);
      }
 

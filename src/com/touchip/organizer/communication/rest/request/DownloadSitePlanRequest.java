@@ -26,8 +26,8 @@ public class DownloadSitePlanRequest extends SpringAndroidSpiceRequest <byte[]> 
           if ( null != vars && !vars.isEmpty() ) {
                vars.clear();
           }
-          vars.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME + "_" + GlobalConstants.CURRENT_FLOOR);
-          vars.put(HTTP_PARAMS.MARKER_ID, GlobalConstants.LAST_CLICKED_MARKER_ID);
+          vars.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
+          vars.put(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
           getRestTemplate().getMessageConverters().add(new ByteArrayHttpMessageConverter());
           return getRestTemplate().postForObject(RestAddresses.DOWNLOAD_SITE_PLAN, vars, byte[].class);
      }

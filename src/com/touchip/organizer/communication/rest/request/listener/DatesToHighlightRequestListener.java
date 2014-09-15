@@ -33,7 +33,7 @@ public class DatesToHighlightRequestListener implements RequestListener <DatesTo
           // update your UI
           Utils.logw(e.getMessage());
           Utils.showToast(activity, R.string.connection_problem, true);
-          TvActivity.dissmissProgressDialog();
+          activity.dissmissProgressDialog();
      }
 
      // Request succesfull, update UI
@@ -66,6 +66,6 @@ public class DatesToHighlightRequestListener implements RequestListener <DatesTo
           StartActivity.dialogCaldroidFragment.setBackgroundResourceForDates(datesAndColour);
 
           StartActivity.dialogCaldroidFragment.show(activity.getSupportFragmentManager(), GlobalConstants.LOG_TAG);
-          TvActivity.dissmissProgressDialog();
+          activity.dissmissProgressDialog();
      }
 }

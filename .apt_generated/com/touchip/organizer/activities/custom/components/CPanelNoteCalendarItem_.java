@@ -68,10 +68,10 @@ public final class CPanelNoteCalendarItem_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivNoteColor = ((ImageView) hasViews.findViewById(id.ivNoteColor));
-        twName = ((TextView) hasViews.findViewById(id.twName));
-        llAttachedColours = ((LinearLayout) hasViews.findViewById(id.llAttachedColours));
         ivNoteType = ((ImageView) hasViews.findViewById(id.ivNoteType));
+        llAttachedColours = ((LinearLayout) hasViews.findViewById(id.llAttachedColours));
+        twName = ((TextView) hasViews.findViewById(id.twName));
+        ivNoteColor = ((ImageView) hasViews.findViewById(id.ivNoteColor));
     }
 
 }

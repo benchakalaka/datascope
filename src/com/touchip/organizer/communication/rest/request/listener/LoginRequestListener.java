@@ -7,7 +7,7 @@ import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.activities.AMenuModules_;
-import com.touchip.organizer.activities.SpiceFragmentActivity;
+import com.touchip.organizer.activities.TvActivity;
 import com.touchip.organizer.communication.rest.model.User;
 import com.touchip.organizer.utils.GlobalConstants;
 import com.touchip.organizer.utils.Utils;
@@ -26,7 +26,9 @@ public class LoginRequestListener implements RequestListener <User> {
      }
 
      @Override public void onRequestSuccess(User user) {
-          SpiceFragmentActivity.dissmissProgressDialog();
+          if ( null != TvActivity.progressDialog ) {
+               TvActivity.progressDialog.dismiss();
+          }
           if ( null != user ) {
                GlobalConstants.CURRENT_USER = user;
                Utils.showCustomToast(this.activity, "Hi " + user.firstName + " " + user.lastName, R.drawable.user);

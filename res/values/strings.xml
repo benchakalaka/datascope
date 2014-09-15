@@ -86,6 +86,8 @@
 	<string name="brush_color_is_set_to_green">Brush color is set to green</string>
 	<string name="brush_color_is_set_to_red">Brush color is set to red</string>
 	<string name="create_whiteboard">Create new whiteboard</string>
+	<string name="colour_has_been_changed">Color has been changed</string>
+	
 	<string name="everything_will_be_cleared">All shapes/lines will be cleared, you can not undo this action! Do you want confirm this action?</string>
 	<string name="new_whiteboard_created">New whiteboard has been created!</string>
 	<string name="field_cannot_be_empty">Field cannot be empty</string>

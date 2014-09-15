@@ -2,7 +2,10 @@ package com.touchip.organizer.activities.fragments;
 
 import android.app.Activity;
 import android.app.ListFragment;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +26,12 @@ public class FragmentCompaniesList extends ListFragment {
 
      public static CompaniesList             COMPANIES_LIST;
      private static ListViewCompaniesAdapter ADAPTER;
+     Paint                                   paint;
 
      @Override public void onAttach(Activity activity) {
           super.onAttach(activity);
+          paint = new Paint();
+          paint.setAntiAlias(true);
           ADAPTER = new ListViewCompaniesAdapter(getActivity(), COMPANIES_LIST);
           setListAdapter(ADAPTER);
      }
@@ -106,16 +112,24 @@ public class FragmentCompaniesList extends ListFragment {
                ImageView imageView = (ImageView) rowView.findViewById(R.id.ivCompanyColor);
 
                txtTitle.setText(COMPANIES_LIST.get(position).companyName);
-
-               imageView.setBackgroundColor(Color.parseColor(COMPANIES_LIST.get(position).colour));
+               paint.setColor(Color.parseColor(COMPANIES_LIST.get(position).colour));
+               imageView.setImageBitmap(createRoundImage(paint));
+               // imageView.setBackgroundColor(Color.parseColor(COMPANIES_LIST.get(position).colour));
 
                txtHasAssets.setText("ASSETS");
                twHasTrades.setText("TRADES");
 
-               txtHasAssets.setTextColor(COMPANIES_LIST.get(position).hasAssets ? Color.parseColor("#42CC3B") : Color.RED);
-               twHasTrades.setTextColor(COMPANIES_LIST.get(position).hasTrades ? Color.parseColor("#42CC3B") : Color.RED);
+               txtHasAssets.setTextColor(COMPANIES_LIST.get(position).hasAssets ? Color.parseColor("#42CC3B") : Color.parseColor("#AAADA5"));
+               twHasTrades.setTextColor(COMPANIES_LIST.get(position).hasTrades ? Color.parseColor("#42CC3B") : Color.parseColor("#AAADA5"));
                return rowView;
           }
+     }
+
+     public static Bitmap createRoundImage(Paint paint) {
+          Bitmap circleBitmap = Bitmap.createBitmap(30, 30, Bitmap.Config.ARGB_8888);
+          Canvas c = new Canvas(circleBitmap);
+          c.drawCircle(circleBitmap.getWidth() - 15, circleBitmap.getHeight() - 15, 14, paint);
+          return circleBitmap;
      }
 
      public static int getCompanyColorById(int companyId) {

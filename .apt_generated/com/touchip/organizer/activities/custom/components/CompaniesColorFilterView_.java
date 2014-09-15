@@ -67,10 +67,10 @@ public final class CompaniesColorFilterView_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twHasTrades = ((TextView) hasViews.findViewById(id.twHasTrades));
-        twCompanyTitle = ((TextView) hasViews.findViewById(id.twCompanyTitle));
-        twHasAssets = ((TextView) hasViews.findViewById(id.twHasAssets));
         ivCompanyColor = ((ImageView) hasViews.findViewById(id.ivCompanyColor));
+        twHasAssets = ((TextView) hasViews.findViewById(id.twHasAssets));
+        twCompanyTitle = ((TextView) hasViews.findViewById(id.twCompanyTitle));
+        twHasTrades = ((TextView) hasViews.findViewById(id.twHasTrades));
     }
 
 }
