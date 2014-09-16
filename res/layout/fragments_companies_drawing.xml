@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/rootRelativeLayout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" >
+
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:baselineAligned="false"
+		android:orientation="horizontal" >
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="2"
+			android:orientation="vertical" >
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="#000000"
+				android:padding="3dp"
+				android:text="@string/on_site"
+				android:textColor="@android:color/holo_orange_dark"
+				android:textStyle="bold" />
+
+			<fragment
+				android:id="@+id/fragment_companies_list"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				class="com.touchip.organizer.activities.fragments.FragmentCompaniesList" />
+<!-- 
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="#000000"
+				android:padding="3dp"
+				android:text="@string/off_site"
+				android:textColor="@android:color/holo_orange_dark"
+				android:textStyle="bold" />
+
+			<fragment
+				android:id="@+id/fragment_companies_list2"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="2"
+				class="com.touchip.organizer.activities.fragments.FragmentCompaniesListOffSite" />
+			
+			-->
+		</LinearLayout>
+
+		<RelativeLayout
+			android:id="@+id/rlHotspotsOnCanvas"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1" >
+
+			<fragment
+				android:id="@+id/fragment_drawing"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				class="com.touchip.organizer.activities.fragments.FragmentDrawing" >
+			</fragment>
+		</RelativeLayout>
+
+		<LinearLayout
+			android:id="@+id/drawing_markerTypes_linearLayout"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="2"
+			android:orientation="vertical" >
+
+			<TextView
+				android:id="@+id/dialog_hotspot_detail_textview_valid_to"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="#000000"
+				android:padding="3dp"
+				android:text="@string/assigned_hotspots"
+				android:textColor="@android:color/holo_orange_dark"
+				android:textStyle="bold" />
+
+			<fragment
+				android:id="@+id/fragment_hostspots_list"
+				android:layout_width="match_parent"
+				android:layout_height="0dip"
+				android:layout_weight="1"
+				class="com.touchip.organizer.activities.fragments.FragmentHotspotsList" >
+			</fragment>
+
+			<TextView
+				android:id="@+id/dialog_hotspot_detail_te"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="#000000"
+				android:padding="3dp"
+				android:text="@string/unassigned_hotposts"
+				android:textColor="@android:color/holo_orange_dark"
+				android:textStyle="bold" />
+
+			<fragment
+				android:id="@+id/fragment_unsigned_hostspots_list"
+				android:layout_width="match_parent"
+				android:layout_height="0dip"
+				android:layout_weight="1"
+				class="com.touchip.organizer.activities.fragments.FragmentUnsignedHotspotsList" >
+			</fragment>
+		</LinearLayout>
+	</LinearLayout>
+
+	<!-- Trades ListView -->
+
+	<LinearLayout
+		android:id="@+id/llTrades"
+		android:layout_width="200dp"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"
+		android:orientation="vertical"
+		android:visibility="gone" >
+
+		<TextView
+			android:id="@+id/twTotalAmountOfPeople"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/background_view_rounded_single_amount_of_people"
+			android:padding="3dp"
+			android:textAlignment="center" />
+
+		<ListView
+			android:id="@+id/lwTrades"
+			android:layout_width="200dp"
+			android:layout_height="wrap_content" >
+		</ListView>
+	</LinearLayout>
+
+	<!-- Assets ListView -->
+
+	<LinearLayout
+		android:id="@+id/llAssets"
+		android:layout_width="200dp"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"
+		android:orientation="vertical"
+		android:visibility="gone" >
+
+		<ListView
+			android:id="@+id/lwAssets"
+			android:layout_width="200dp"
+			android:layout_height="wrap_content" >
+		</ListView>
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/llFilters"
+		android:layout_width="300dp"
+		android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:background="@drawable/background_view_rounded_single"
+		android:orientation="vertical"
+		android:visibility="gone" >
+
+		<HorizontalScrollView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:scrollbars="horizontal"
+			android:visibility="visible" >
+
+			<LinearLayout
+				android:id="@+id/drawing_markerTypes_linearLayout2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="5sp" >
+
+				<ImageView
+					android:id="@+id/drawing_hotspots_left_arrow"
+					android:layout_width="10dp"
+					android:layout_height="50dip"
+					android:contentDescription="@null"
+					android:src="@drawable/left_arrow" />
+
+				<ImageView
+					android:id="@+id/imageViewNotesHotspot"
+					android:layout_width="50dip"
+					android:layout_height="50dip"
+					android:background="@drawable/background_view_rounded_single"
+					android:contentDescription="@null"
+					android:src="@drawable/note_hotspot" />
+
+				<ImageView
+					android:id="@+id/drawing_hotspot_safety"
+					android:layout_width="50dip"
+					android:layout_height="50dip"
+					android:background="@drawable/background_view_rounded_single"
+					android:contentDescription="@null"
+					android:src="@drawable/safety_hotspot" />
+
+				<ImageView
+					android:id="@+id/drawing_hotspot_waste"
+					android:layout_width="50dip"
+					android:layout_height="50dip"
+					android:background="@drawable/background_view_rounded_single"
+					android:contentDescription="@null"
+					android:src="@drawable/waste" />
+
+				<ImageView
+					android:id="@+id/drawing_hotspots_permits"
+					android:layout_width="50dip"
+					android:layout_height="50dip"
+					android:background="@drawable/background_view_rounded_single"
+					android:contentDescription="@null"
+					android:src="@drawable/permission_hotspot" />
+
+				<ImageView
+					android:id="@+id/drawing_hotspot_white_board"
+					android:layout_width="50dp"
+					android:layout_height="50dip"
+					android:background="@drawable/background_view_rounded_single"
+					android:contentDescription="@null"
+					android:src="@drawable/whiteboard" />
+
+				<ImageView
+					android:id="@+id/drawing_hotspot_trades"
+					android:layout_width="50dp"
+					android:layout_height="50dip"
+					android:background="@drawable/background_view_rounded_single"
+					android:contentDescription="@null"
+					android:src="@drawable/trade" />
+
+				<ImageView
+					android:id="@+id/drawing_hotspot_assets"
+					android:layout_width="50dp"
+					android:layout_height="50dip"
+					android:background="@drawable/background_view_rounded_single"
+					android:contentDescription="@null"
+					android:src="@drawable/asset" />
+
+				<ImageView
+					android:id="@+id/drawing_hotspot_camera"
+					android:layout_width="50dp"
+					android:layout_height="50dip"
+					android:background="@drawable/background_view_rounded_single"
+					android:contentDescription="@null"
+					android:src="@drawable/camera" />
+
+				<ImageView
+					android:id="@+id/drawing_hotspots_show_all"
+					android:layout_width="50dip"
+					android:layout_height="50dip"
+					android:background="@drawable/background_view_rounded_single"
+					android:contentDescription="@null"
+					android:src="@drawable/show_all" />
+
+				<ImageView
+					android:id="@+id/drawing_hotspots_hide_all"
+					android:layout_width="50dip"
+					android:layout_height="50dip"
+					android:background="@drawable/background_view_rounded_single"
+					android:contentDescription="@null"
+					android:src="@drawable/hide_hotspot" />
+
+				<ImageView
+					android:id="@+id/drawing_hotspot_right_arrow"
+					android:layout_width="10dp"
+					android:layout_height="50dip"
+					android:contentDescription="@null"
+					android:src="@drawable/right_arrow" />
+			</LinearLayout>
+		</HorizontalScrollView>
+
+		<HorizontalScrollView
+			android:id="@+id/dialog_horizontal_scrollview_companies_colours_filters"
+			android:layout_width="wrap_content"
+			android:layout_height="60dp"
+			android:visibility="visible" >
+
+			<LinearLayout
+				android:id="@+id/llCompanies"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="5sp" >
+			</LinearLayout>
+		</HorizontalScrollView>
+	</LinearLayout>
+
+</RelativeLayout>

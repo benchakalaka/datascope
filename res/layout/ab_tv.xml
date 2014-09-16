@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" >
+
+	<RelativeLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" >
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:orientation="horizontal" >
+
+			<LinearLayout
+				android:id="@+id/llSettings"
+				android:layout_width="200dp"
+				android:layout_height="wrap_content"
+				android:background="@drawable/background_view_rounded_single"
+				android:orientation="horizontal"
+				android:padding="5sp" >
+
+				<ImageView
+					android:id="@+id/ivWboard"
+					android:layout_width="50dp"
+					android:layout_height="wrap_content"
+					android:contentDescription="@null"
+					android:scaleType="fitCenter"
+					android:src="@drawable/settings" />
+
+				<TextView
+					android:id="@+id/tvWboard"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_vertical"
+					android:ellipsize="none"
+					android:gravity="center_vertical"
+					android:scrollHorizontally="false"
+					android:text="@string/settings"
+					android:textColor="#FFFB8B"
+					android:textSize="12sp"
+					android:textStyle="bold|italic" />
+			</LinearLayout>
+
+			
+		</LinearLayout>
+	</RelativeLayout>
+
+</HorizontalScrollView>

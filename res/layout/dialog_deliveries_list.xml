@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/swroot"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent" >
+
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:padding="5dp" >
+
+		<TableLayout
+			android:id="@+id/tlDeliveriesList"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1" >
+
+			<TableRow
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="@drawable/background_raised" >
+
+				<TextView
+					android:id="@+id/twRef"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="Ref"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/twDeliverAt"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="Deliver_At"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/twDuration"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="Duration"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/twGate"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="Gate"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/twDescr"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="Description"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/twCompany"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="Company"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/twContact"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="Contact"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+
+				<TextView
+					android:id="@+id/twStatus"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="Status"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+			</TableRow>
+		</TableLayout>
+
+		<!-- Table Deliveries gates -->
+
+		<TableLayout
+			android:id="@+id/tlRoot"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1" >
+
+			<TableRow
+				android:id="@+id/tableHeader"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="@drawable/background_raised" >
+			</TableRow>
+		</TableLayout>
+
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="bottom"
+			android:layout_marginTop="10dp"
+			android:gravity="bottom"
+			android:orientation="horizontal"
+			android:weightSum="2" >
+
+			<Button
+				android:id="@+id/dialogOk"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="@drawable/background_view_rounded_single"
+				android:orientation="horizontal"
+				android:text="OK" >
+			</Button>
+		</LinearLayout>
+	</LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,488 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	xmlns:mySwitch="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/fragment_white_board_relative_layout_root"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" >
+
+	<RelativeLayout
+		android:id="@+id/whiteBoardLinearLayout"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" >
+
+		<com.touchip.organizer.activities.custom.components.WhiteBoardDrawingView
+			android:id="@+id/WHITE_BOARD_DRAWING"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_marginBottom="3dp"
+			android:layout_marginLeft="5dp"
+			android:layout_marginRight="5dp"
+			android:layout_marginTop="3dp"
+			android:background="#FFFFFFFF" />
+	</RelativeLayout>
+
+	<LinearLayout
+		android:id="@+id/llDrawShapes"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/llBottomMenu"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
+		android:background="@color/ab_calendar_cell_bg"
+		android:orientation="horizontal"
+		android:visibility="gone" >
+
+		<ImageButton
+			android:id="@+id/ibShapesCircle"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_margin="4dp"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:contentDescription="@null"
+			android:scaleType="fitXY"
+			android:src="@drawable/circle_1" />
+
+		<ImageButton
+			android:id="@+id/ibShapesRectangle"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_margin="4dp"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:contentDescription="@null"
+			android:scaleType="fitXY"
+			android:src="@drawable/rectangle" />
+
+		<ImageButton
+			android:id="@+id/ibShapesLine"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_margin="4dp"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:contentDescription="@null"
+			android:scaleType="centerCrop"
+			android:src="@drawable/line" />
+
+		<ImageButton
+			android:id="@+id/ibShapesTriangle"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_margin="4dp"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:contentDescription="@null"
+			android:scaleType="fitXY"
+			android:src="@drawable/triangle" />
+
+		<ImageButton
+			android:id="@+id/ibShapesFreeDrawing"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_margin="4dp"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:contentDescription="@null"
+			android:scaleType="fitXY"
+			android:src="@drawable/free_drawing" />
+
+		<ImageButton
+			android:id="@+id/ibDrawText"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_margin="4dp"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:contentDescription="@null"
+			android:scaleType="centerInside"
+			android:src="@drawable/text" />
+	</LinearLayout>
+
+	<HorizontalScrollView
+		android:id="@+id/svChangeColour"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/llBottomMenu"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
+		android:background="@color/ab_calendar_cell_bg"
+		android:visibility="gone" >
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="4dp"
+			android:orientation="horizontal"
+			android:visibility="visible" >
+
+			<ImageButton
+				android:id="@+id/ibColorPicker"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:scaleType="fitXY"
+				android:src="@drawable/color_picker" />
+
+			<ImageButton
+				android:id="@+id/ibColour1"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:background="@drawable/transparent_inside_and_white_border"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="@android:color/white"
+				android:tag="#ffffff" />
+
+			<ImageButton
+				android:id="@+id/ibColour2"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="#0000FF"
+				android:tag="#0000FF" />
+
+			<ImageButton
+				android:id="@+id/ibColour3"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="centerCrop"
+				android:src="#008000"
+				android:tag="#008000" />
+
+			<ImageButton
+				android:id="@+id/ibColour4"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="#00FFA9"
+				android:tag="#00FFA9" />
+
+			<ImageButton
+				android:id="@+id/ibColour5"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="#FF0000"
+				android:tag="#FF0000" />
+
+			<ImageButton
+				android:id="@+id/ibColour6"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="centerCrop"
+				android:src="#FF00EA"
+				android:tag="#FF00EA" />
+
+			<ImageButton
+				android:id="@+id/ibColour7"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="#FFFB00"
+				android:tag="#FFFB00" />
+
+			<ImageButton
+				android:id="@+id/ibColour8"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="#FF9D00"
+				android:tag="#FF9D00" />
+
+			<ImageButton
+				android:id="@+id/ibColour9"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="#00FFFF"
+				android:tag="#00FFFF" />
+
+			<ImageButton
+				android:id="@+id/ibColour10"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="#7BFF4F"
+				android:tag="#7BFF4F" />
+
+			<ImageButton
+				android:id="@+id/ibColour11"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="#828282"
+				android:tag="#828282" />
+
+			<ImageButton
+				android:id="@+id/ibColour12"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="#E6C497"
+				android:tag="#E6C497" />
+
+			<ImageButton
+				android:id="@+id/ibColour13"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="#FF3366"
+				android:tag="#FF3366" />
+
+			<ImageButton
+				android:id="@+id/ibColour14"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="#B28F47"
+				android:tag="#B28F47" />
+
+			<ImageButton
+				android:id="@+id/ibColour15"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="#00FF00"
+				android:tag="#00FF00" />
+
+			<ImageButton
+				android:id="@+id/ibColour16"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="#0099CC"
+				android:tag="#0099CC" />
+
+			<ImageButton
+				android:id="@+id/ibColour17"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_margin="4dp"
+				android:background="@drawable/transparent_inside_and_white_border"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="#8A2E00"
+				android:tag="#8A2E00" />
+		</LinearLayout>
+	</HorizontalScrollView>
+
+	<LinearLayout
+		android:id="@+id/llBrushSize"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/llBottomMenu"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
+		android:background="@color/ab_calendar_cell_bg"
+		android:orientation="horizontal"
+		android:visibility="gone" >
+
+		<ImageButton
+			android:id="@+id/ibEraser"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_margin="4dp"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:contentDescription="@null"
+			android:scaleType="fitXY"
+			android:src="@drawable/erase" />
+
+		<ImageButton
+			android:id="@+id/ibThin"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_margin="4dp"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:contentDescription="@null"
+			android:scaleType="fitXY"
+			android:src="@drawable/big" />
+
+		<ImageButton
+			android:id="@+id/ibMedium"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_margin="4dp"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:contentDescription="@null"
+			android:scaleType="fitXY"
+			android:src="@drawable/medium" />
+
+		<ImageButton
+			android:id="@+id/ibThick"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_margin="4dp"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:contentDescription="@null"
+			android:scaleType="fitXY"
+			android:src="@drawable/smalll" />
+
+		<ImageButton
+			android:id="@+id/ibRedo"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_margin="4dp"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:contentDescription="@null"
+			android:scaleType="fitXY"
+			android:src="@drawable/left_1" />
+
+		<ImageButton
+			android:id="@+id/ibUndo"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_margin="4dp"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:contentDescription="@null"
+			android:scaleType="fitXY"
+			android:src="@drawable/right_1" />
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/llChangeTextSize"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/llBottomMenu"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
+		android:background="@color/ab_calendar_cell_bg"
+		android:orientation="horizontal"
+		android:visibility="gone" >
+
+		<ImageButton
+			android:id="@+id/ibCreateNewWhiteboard"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_margin="4dp"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:contentDescription="@null"
+			android:scaleType="fitXY"
+			android:src="@drawable/add" />
+
+		<ImageButton
+			android:id="@+id/ibLoadWhiteboard"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_margin="4dp"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:contentDescription="@null"
+			android:scaleType="fitXY"
+			android:src="@drawable/download" />
+
+		<ImageButton
+			android:id="@+id/ibClearAll"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_margin="4dp"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:contentDescription="@null"
+			android:scaleType="fitXY"
+			android:src="@drawable/blank" />
+
+		<ImageButton
+			android:id="@+id/ibSaveDrawing"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_margin="4dp"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:contentDescription="@null"
+			android:scaleType="fitXY"
+			android:src="@drawable/save" />
+
+		<ImageButton
+			android:id="@+id/ibRefreshWhiteboard"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_margin="4dp"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:contentDescription="@null"
+			android:scaleType="fitXY"
+			android:src="@drawable/refresh_1" />
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/llBottomMenu"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:background="@color/ab_background"
+		android:orientation="horizontal" >
+
+		<ImageView
+			android:id="@+id/ivShapes"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_margin="3dp"
+			android:layout_weight="1"
+			android:src="@drawable/shapes" />
+
+		<ImageView
+			android:id="@+id/ivColours"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_margin="3dp"
+			android:layout_weight="1"
+			android:src="@drawable/brush_color" />
+
+		<ImageView
+			android:id="@+id/ivDrawingSettings"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_margin="3dp"
+			android:layout_weight="1"
+			android:src="@drawable/drawing" />
+
+		<ImageView
+			android:id="@+id/ivWhiteboardSettings"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_margin="3dp"
+			android:layout_weight="1"
+			android:src="@drawable/settings" />
+	</LinearLayout>
+
+</RelativeLayout>

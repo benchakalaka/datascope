@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent" >
+
+	<LinearLayout android:weightSum="2" >
+
+		<TextView
+			android:id="@+id/twActivitiesAndRiskHazard"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:inputType="none"
+			android:padding="5sp"
+			android:text="COSHH"
+			android:textSize="23sp"
+			android:textStyle="bold" >
+		</TextView>
+ 
+		<TextView
+			android:id="@+id/twControlMeasure"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="@drawable/background_view_rounded_single_trades"
+			android:padding="5sp"
+			android:text="Sypol Assessment Briefing and issuing."
+			android:textSize="23sp"
+			android:textStyle="bold" />
+	</LinearLayout>
+
+</TableLayout>

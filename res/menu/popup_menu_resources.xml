@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ktcmynewapp.MainActivity" >
+
+    <item
+        android:id="@+id/action_deliveries"
+        android:orderInCategory="100"
+        android:title="Deliveries"
+        android:showAsAction="always">
+    </item>
+    <item
+        android:id="@+id/action_trades"
+        android:orderInCategory="100"
+        android:title="Trades"
+        android:showAsAction="never"/>
+    <item
+        android:id="@+id/action_assets"
+        android:orderInCategory="100"
+        android:title="Assets"
+        android:showAsAction="never"/>
+</menu>
