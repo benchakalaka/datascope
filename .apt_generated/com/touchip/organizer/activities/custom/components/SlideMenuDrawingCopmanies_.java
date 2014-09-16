@@ -68,12 +68,12 @@ public final class SlideMenuDrawingCopmanies_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+        changeArea = ((LinearLayout) hasViews.findViewById(id.changeArea));
+        undo = ((LinearLayout) hasViews.findViewById(id.undo));
+        redo = ((LinearLayout) hasViews.findViewById(id.redo));
+        meetingPlan = ((LinearLayout) hasViews.findViewById(id.meetingPlan));
         changeBrushSize = ((LinearLayout) hasViews.findViewById(id.changeBrushSize));
         changeDate = ((LinearLayout) hasViews.findViewById(id.changeDate));
-        changeArea = ((LinearLayout) hasViews.findViewById(id.changeArea));
-        meetingPlan = ((LinearLayout) hasViews.findViewById(id.meetingPlan));
-        redo = ((LinearLayout) hasViews.findViewById(id.redo));
-        undo = ((LinearLayout) hasViews.findViewById(id.undo));
         {
             View view = hasViews.findViewById(id.changeBrushSize);
             if (view!= null) {
@@ -105,21 +105,6 @@ public final class SlideMenuDrawingCopmanies_
             }
         }
         {
-            View view = hasViews.findViewById(id.redo);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        SlideMenuDrawingCopmanies_.this.redo();
-                    }
-
-                }
-                );
-            }
-        }
-        {
             View view = hasViews.findViewById(id.changeArea);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -143,6 +128,21 @@ public final class SlideMenuDrawingCopmanies_
                     @Override
                     public void onClick(View view) {
                         SlideMenuDrawingCopmanies_.this.undo();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.redo);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        SlideMenuDrawingCopmanies_.this.redo();
                     }
 
                 }

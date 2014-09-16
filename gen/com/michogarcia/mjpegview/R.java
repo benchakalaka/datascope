@@ -8,8 +8,8 @@ package com.michogarcia.mjpegview;
 
 public final class R {
 	public static final class drawable {
-		public static final int ic_action_search = 0x7f0200c9;
-		public static final int ic_launcher = 0x7f0200ca;
+		public static final int ic_action_search = 0x7f0200de;
+		public static final int ic_launcher = 0x7f0200df;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f07001a;

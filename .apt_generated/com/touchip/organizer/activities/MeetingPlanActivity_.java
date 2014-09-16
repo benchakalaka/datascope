@@ -43,8 +43,8 @@ public final class MeetingPlanActivity_
         OnViewChangedNotifier.registerOnViewChangedListener(this);
         fadeIn = AnimationUtils.loadAnimation(this, anim.fade_in);
         Resources resources_ = this.getResources();
-        meetingUnselectedColor = resources_.getColor(color.meetingUnselectedColor);
         meetingSelectedColor = resources_.getColor(color.meetingSelectedColor);
+        meetingUnselectedColor = resources_.getColor(color.meetingUnselectedColor);
         vi = ((LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE));
     }
 

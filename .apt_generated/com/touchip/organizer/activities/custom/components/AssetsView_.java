@@ -66,8 +66,8 @@ public final class AssetsView_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twAssetDescription = ((TextView) hasViews.findViewById(id.twAssetDescription));
         twAssetTagId = ((TextView) hasViews.findViewById(id.twAssetTagId));
+        twAssetDescription = ((TextView) hasViews.findViewById(id.twAssetDescription));
     }
 
 }

@@ -100,6 +100,8 @@ import com.touchip.organizer.utils.Utils;
           } else {
                if ( appPreff.tvId().get().equals("2") ) {
                     URL = "http://www.datascopesystem.com/Kier_StBernards/DigitalSignage/";
+               } else if ( appPreff.tvId().get().equals("3") ) {
+                    URL = "http://www.datascopesystem.com/Kier_BHR/DigitalSignage/";
                }
           }
           if ( null != webViewTV ) {

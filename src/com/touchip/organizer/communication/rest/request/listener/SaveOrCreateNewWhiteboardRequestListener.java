@@ -32,7 +32,7 @@ public class SaveOrCreateNewWhiteboardRequestListener implements RequestListener
                     dptw.time = fileData.substring(fileData.indexOf(" ") + 1, fileData.length());
                     GlobalConstants.LAST_CLICKED_WHITE_BOARD = dptw;
                     Utils.showCustomToast(activity, "Drawing has been loaded successfully!", R.drawable.server2);
-                    this.activity.sideSlideMenu.setTimeCreatedText(GlobalConstants.SITE_PLAN_IMAGE_NAME + " created at " + dptw.time);
+                    // this.activity.sideSlideMenu.setTimeCreatedText(GlobalConstants.SITE_PLAN_IMAGE_NAME + " created at " + dptw.time);
                } catch (Exception e) {
                     Utils.logw(e.getMessage());
                }

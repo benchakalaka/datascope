@@ -84,28 +84,13 @@ public final class UserSettingsActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+        etSiteId = ((EditText) hasViews.findViewById(id.etSiteId));
+        etPort = ((EditText) hasViews.findViewById(id.etPort));
+        buttonOk = ((Button) hasViews.findViewById(id.buttonOk));
+        etIp = ((EditText) hasViews.findViewById(id.etIp));
+        etTvId = ((EditText) hasViews.findViewById(id.etTvId));
         buttonUpdateApp = ((Button) hasViews.findViewById(id.buttonUpdateApp));
         buttonCancel = ((Button) hasViews.findViewById(id.buttonCancel));
-        etSiteId = ((EditText) hasViews.findViewById(id.etSiteId));
-        etIp = ((EditText) hasViews.findViewById(id.etIp));
-        buttonOk = ((Button) hasViews.findViewById(id.buttonOk));
-        etTvId = ((EditText) hasViews.findViewById(id.etTvId));
-        etPort = ((EditText) hasViews.findViewById(id.etPort));
-        {
-            View view = hasViews.findViewById(id.buttonUpdateApp);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        UserSettingsActivity_.this.buttonUpdateApp();
-                    }
-
-                }
-                );
-            }
-        }
         {
             View view = hasViews.findViewById(id.buttonCancel);
             if (view!= null) {
@@ -130,6 +115,21 @@ public final class UserSettingsActivity_
                     @Override
                     public void onClick(View view) {
                         UserSettingsActivity_.this.buttonOk();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.buttonUpdateApp);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        UserSettingsActivity_.this.buttonUpdateApp();
                     }
 
                 }

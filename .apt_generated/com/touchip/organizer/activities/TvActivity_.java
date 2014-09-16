@@ -83,8 +83,8 @@ public final class TvActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        relativeRoot = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.relativeRoot));
         webViewTV = ((WebView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.webViewTV));
+        relativeRoot = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.relativeRoot));
         afterViews();
     }
 

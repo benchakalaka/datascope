@@ -71,44 +71,29 @@ public final class CDialogCreateNote_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ibColour7 = ((ImageView) hasViews.findViewById(id.ibColour7));
-        ibColour12 = ((ImageView) hasViews.findViewById(id.ibColour12));
-        ibColour8 = ((ImageView) hasViews.findViewById(id.ibColour8));
         ivOk = ((ImageView) hasViews.findViewById(id.ivOk));
-        ibColour16 = ((ImageView) hasViews.findViewById(id.ibColour16));
-        ibColour14 = ((ImageView) hasViews.findViewById(id.ibColour14));
-        ibColour3 = ((ImageView) hasViews.findViewById(id.ibColour3));
-        ibColour15 = ((ImageView) hasViews.findViewById(id.ibColour15));
-        ibColour9 = ((ImageView) hasViews.findViewById(id.ibColour9));
-        ibColour2 = ((ImageView) hasViews.findViewById(id.ibColour2));
+        ibColour11 = ((ImageView) hasViews.findViewById(id.ibColour11));
         ibColour10 = ((ImageView) hasViews.findViewById(id.ibColour10));
         twEndDateL = ((TextView) hasViews.findViewById(id.twEndDateL));
         etName = ((EditText) hasViews.findViewById(id.etName));
-        ibColour4 = ((ImageView) hasViews.findViewById(id.ibColour4));
-        ibColour1 = ((ImageView) hasViews.findViewById(id.ibColour1));
-        ivTypeOfNote = ((ImageView) hasViews.findViewById(id.ivTypeOfNote));
-        twStartDate = ((TextView) hasViews.findViewById(id.twStartDate));
-        ibColour5 = ((ImageView) hasViews.findViewById(id.ibColour5));
-        ibColour6 = ((ImageView) hasViews.findViewById(id.ibColour6));
         ibColour13 = ((ImageView) hasViews.findViewById(id.ibColour13));
-        ibColour11 = ((ImageView) hasViews.findViewById(id.ibColour11));
-        ibColour17 = ((ImageView) hasViews.findViewById(id.ibColour17));
+        ibColour9 = ((ImageView) hasViews.findViewById(id.ibColour9));
+        ibColour3 = ((ImageView) hasViews.findViewById(id.ibColour3));
+        ibColour14 = ((ImageView) hasViews.findViewById(id.ibColour14));
+        ibColour6 = ((ImageView) hasViews.findViewById(id.ibColour6));
+        ibColour8 = ((ImageView) hasViews.findViewById(id.ibColour8));
+        ibColour2 = ((ImageView) hasViews.findViewById(id.ibColour2));
         etComments = ((EditText) hasViews.findViewById(id.etComments));
-        {
-            View view = hasViews.findViewById(id.twEndDateL);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogCreateNote_.this.twEndDateL();
-                    }
-
-                }
-                );
-            }
-        }
+        ibColour16 = ((ImageView) hasViews.findViewById(id.ibColour16));
+        ibColour15 = ((ImageView) hasViews.findViewById(id.ibColour15));
+        ibColour17 = ((ImageView) hasViews.findViewById(id.ibColour17));
+        ibColour7 = ((ImageView) hasViews.findViewById(id.ibColour7));
+        ibColour4 = ((ImageView) hasViews.findViewById(id.ibColour4));
+        twStartDate = ((TextView) hasViews.findViewById(id.twStartDate));
+        ivTypeOfNote = ((ImageView) hasViews.findViewById(id.ivTypeOfNote));
+        ibColour5 = ((ImageView) hasViews.findViewById(id.ibColour5));
+        ibColour12 = ((ImageView) hasViews.findViewById(id.ibColour12));
+        ibColour1 = ((ImageView) hasViews.findViewById(id.ibColour1));
         {
             View view = hasViews.findViewById(id.ivTypeOfNote);
             if (view!= null) {
@@ -118,6 +103,21 @@ public final class CDialogCreateNote_
                     @Override
                     public void onClick(View view) {
                         CDialogCreateNote_.this.ivTypeOfNote();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.twEndDateL);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogCreateNote_.this.twEndDateL();
                     }
 
                 }
