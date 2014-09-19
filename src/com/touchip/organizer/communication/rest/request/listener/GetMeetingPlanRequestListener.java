@@ -6,11 +6,10 @@ import android.content.Intent;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.activities.DrawingCompaniesActivity;
 import com.touchip.organizer.activities.MeetingPlanActivity;
 import com.touchip.organizer.activities.MeetingPlanActivity_;
 import com.touchip.organizer.communication.rest.model.MeetingPlanList;
-import com.touchip.organizer.utils.GlobalConstants;
+import com.touchip.organizer.constants.GlobalConstants;
 import com.touchip.organizer.utils.Utils;
 
 public class GetMeetingPlanRequestListener implements RequestListener <MeetingPlanList> {
@@ -26,11 +25,11 @@ public class GetMeetingPlanRequestListener implements RequestListener <MeetingPl
      @Override public void onRequestFailure(SpiceException e) {
           Utils.showCustomToast(activity, Utils.getResources(R.string.error_during_downloading_site_plan_meeting) + GlobalConstants.SITE_PLAN_IMAGE_NAME, R.drawable.hide_hotspot);
           Utils.logw(e.getMessage());
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
      }
 
      @Override public void onRequestSuccess(MeetingPlanList result) {
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
           if ( !Utils.isNullOrEmpty(result) ) {
                Intent meetingPlan = new Intent(activity, MeetingPlanActivity_.class);
                MeetingPlanActivity.MEETING_PLAN_ARRAY = result;

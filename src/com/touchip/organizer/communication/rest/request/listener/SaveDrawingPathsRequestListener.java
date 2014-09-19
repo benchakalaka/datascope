@@ -29,7 +29,7 @@ public class SaveDrawingPathsRequestListener implements RequestListener <String>
           Utils.logw(e.getMessage());
           Utils.showToast(activity, R.string.connection_problem, true);
           file.delete();
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
      }
 
      // Request succesfull, update UI

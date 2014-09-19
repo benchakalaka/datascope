@@ -5,7 +5,6 @@ import android.app.Activity;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.activities.DrawingCompaniesActivity;
 import com.touchip.organizer.activities.DrawingCompaniesActivity_;
 import com.touchip.organizer.communication.rest.model.RiskSchedule;
 import com.touchip.organizer.utils.DialogUtils;
@@ -23,7 +22,7 @@ public class GetActivitiesAndRisksRequestListener implements RequestListener <Ri
 
      // Have got error from server or problem with internet connection (there is no cash available)
      @Override public void onRequestFailure(SpiceException e) {
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
           // update your UI
           Utils.logw(e.getMessage());
           Utils.showToast(activity, R.string.connection_problem, true);
@@ -37,6 +36,6 @@ public class GetActivitiesAndRisksRequestListener implements RequestListener <Ri
           } else {
                Utils.showCustomToast(activity, R.string.there_are_no_risks, R.drawable.hide_hotspot);
           }
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
      }
 }

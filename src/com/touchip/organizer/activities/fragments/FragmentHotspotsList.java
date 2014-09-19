@@ -42,7 +42,6 @@ import com.octo.android.robospice.persistence.DurationInMillis;
 import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.activities.DrawingCompaniesActivity;
 import com.touchip.organizer.activities.DrawingCompaniesActivity_;
-import com.touchip.organizer.activities.GeneralWhiteBoardActivity;
 import com.touchip.organizer.activities.GeneralWhiteBoardActivity_;
 import com.touchip.organizer.activities.ImagePagerActivity_;
 import com.touchip.organizer.activities.custom.components.CompaniesDrawingView;
@@ -56,9 +55,8 @@ import com.touchip.organizer.communication.rest.request.GetTaskBriefingRequest;
 import com.touchip.organizer.communication.rest.request.listener.GetActivitiesAndRisksRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.GetSuitableOperativesListRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.GetTaskBriefingRequestListener;
-import com.touchip.organizer.utils.DataAccess;
-import com.touchip.organizer.utils.GlobalConstants;
-import com.touchip.organizer.utils.HTTP_PARAMS;
+import com.touchip.organizer.constants.GlobalConstants;
+import com.touchip.organizer.constants.HTTP_PARAMS;
 import com.touchip.organizer.utils.HotspotManager.Hotspots;
 import com.touchip.organizer.utils.Utils;
 import com.touchip.organizer.utils.Utils.AnimationManager;
@@ -125,7 +123,7 @@ public class FragmentHotspotsList extends ListFragment {
                                                                                                 switch (pos) {
                                                                                                      case 0:
                                                                                                           try {
-                                                                                                               Date today = DateUtils.parseDate(GlobalConstants.TODAY_FROM_SERVER, "yyyy-MM-dd");
+                                                                                                               Date today = DateUtils.parseDate(GlobalConstants.SITE_PLAN_FULL_INFO.today, "yyyy-MM-dd");
                                                                                                                Date sitePlanDate = DateUtils.parseDate(GlobalConstants.SITE_PLAN_IMAGE_NAME, "yyyy-MM-dd");
 
                                                                                                                if ( !DateUtils.isSameDay(today, sitePlanDate) && today.compareTo(sitePlanDate) > 0 ) {
@@ -314,7 +312,6 @@ public class FragmentHotspotsList extends ListFragment {
           } else {
                ((Button) dialogHotspotDetail.findViewById(R.id.dialog_button_risk)).setOnClickListener(new OnClickListener() {
                     @Override public void onClick(View v) {
-                         DrawingCompaniesActivity.showProgressDialog();
                          HashMap <String, Integer> vars = new HashMap <String, Integer>();
                          vars.put(HTTP_PARAMS.HOTSPOT_ID, hotspot.id);
                          GetActivitiesAndRisksRequest request = new GetActivitiesAndRisksRequest(vars);
@@ -324,7 +321,6 @@ public class FragmentHotspotsList extends ListFragment {
 
                ((Button) dialogHotspotDetail.findViewById(R.id.dialog_button_task_briefing)).setOnClickListener(new OnClickListener() {
                     @Override public void onClick(View v) {
-                         DrawingCompaniesActivity.showProgressDialog();
                          HashMap <String, Integer> vars = new HashMap <String, Integer>();
                          vars.put(HTTP_PARAMS.HOTSPOT_ID, hotspot.id);
                          GetTaskBriefingRequest request = new GetTaskBriefingRequest(vars);
@@ -337,7 +333,7 @@ public class FragmentHotspotsList extends ListFragment {
      }
 
      @Override public void onListItemClick(ListView l, View v, int position, long id) {
-          showDialog(DataAccess.SIGNED_HOTSPOTS.get(position), getActivity());
+          showDialog(GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(position), getActivity());
           GlobalConstants.HOTSPOTS_BUTTONS_ARRAY.get(position).startAnimation(AnimationManager.load(R.anim.growview));
      }
 
@@ -371,17 +367,17 @@ public class FragmentHotspotsList extends ListFragment {
 
                if ( type.equals(Hotspots.HIDE_ALL) ) { return; }
 
-               for ( int i = 0; i < DataAccess.SIGNED_HOTSPOTS.size(); i++ ) {
+               for ( int i = 0; i < GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.size(); i++ ) {
                     try {
                          param = new RelativeLayout.LayoutParams(60, 60);
 
-                         param.leftMargin = (int) Math.round(Double.valueOf(DataAccess.SIGNED_HOTSPOTS.get(i).x) * CompaniesDrawingView.WIDTH);
-                         param.topMargin = (int) Math.round(Double.valueOf(DataAccess.SIGNED_HOTSPOTS.get(i).y) * CompaniesDrawingView.HEIGHT);
+                         param.leftMargin = (int) Math.round(Double.valueOf(GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(i).x) * CompaniesDrawingView.WIDTH);
+                         param.topMargin = (int) Math.round(Double.valueOf(GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(i).y) * CompaniesDrawingView.HEIGHT);
 
                          // CREATE ADN SET UP BUTTON
                          final ImageButton ibutton = new ImageButton(activity);
-                         ibutton.setTag(DataAccess.SIGNED_HOTSPOTS.get(i));
-                         ibutton.setBackgroundDrawable(new BitmapDrawable(activity.getResources(), Utils.getBitmapByHotspotType(DataAccess.SIGNED_HOTSPOTS.get(i).type)));
+                         ibutton.setTag(GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(i));
+                         ibutton.setBackgroundDrawable(new BitmapDrawable(activity.getResources(), Utils.getBitmapByHotspotType(GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(i).type)));
 
                          ibutton.setOnTouchListener(new View.OnTouchListener() {
                               @Override public boolean onTouch(View arg0, MotionEvent event) {
@@ -450,7 +446,7 @@ public class FragmentHotspotsList extends ListFragment {
                                                   String tradeDescr = typeOfDraggingHs.substring(0, typeOfDraggingHs.indexOf("_"));
 
                                                   HashMap <String, String> vars = new HashMap <String, String>();
-                                                  vars.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(DataAccess.LAST_CLICKED_COMPANY.companyId));
+                                                  vars.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(GlobalConstants.LAST_CLICKED_COMPANY.companyId));
                                                   vars.put(HTTP_PARAMS.TRADE_DESCRIPTION, String.valueOf(tradeDescr));
                                                   vars.put(HTTP_PARAMS.SITE_ID, String.valueOf(2));
                                                   vars.put(HTTP_PARAMS.ASSET_ID, String.valueOf(hs.assetId));
@@ -466,12 +462,11 @@ public class FragmentHotspotsList extends ListFragment {
                                                   v.setScaleY(1);
                                                   Utils.showToast(activity, "Obtaining suitable operatives...", true);
                                                   HashMap <String, String> vars = new HashMap <String, String>();
-                                                  vars.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(DataAccess.LAST_CLICKED_COMPANY.companyId));
+                                                  vars.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(GlobalConstants.LAST_CLICKED_COMPANY.companyId));
                                                   vars.put(HTTP_PARAMS.TRADE_DESCRIPTION, String.valueOf(hs.description));
                                                   vars.put(HTTP_PARAMS.SITE_ID, String.valueOf(2));
-                                                  vars.put(HTTP_PARAMS.ASSET_ID, String.valueOf(DataAccess.LAST_CLICKED_ASSET.id));
+                                                  vars.put(HTTP_PARAMS.ASSET_ID, String.valueOf(GlobalConstants.LAST_CLICKED_ASSET.id));
                                                   vars.put(HTTP_PARAMS.DATE, String.valueOf(GlobalConstants.SITE_PLAN_IMAGE_NAME));
-                                                  DrawingCompaniesActivity.showProgressDialog();
                                                   GetSuitableOperativesListRequest request = new GetSuitableOperativesListRequest(vars);
                                                   ((DrawingCompaniesActivity) activity).getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetSuitableOperativesListRequestListener(activity));
                                              }
@@ -487,11 +482,11 @@ public class FragmentHotspotsList extends ListFragment {
                          TextView textViewDescription = new TextView(activity);
                          TextView textViewAmountResources = null;
 
-                         if ( DataAccess.SIGNED_HOTSPOTS.get(i).type == Hotspots.TRADE ) {
+                         if ( GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(i).type == Hotspots.TRADE ) {
                               textViewDescription.setTextColor(Color.BLACK);
                               textViewDescription.setBackgroundResource(R.drawable.background_view_rounded_single_trades);
                               textViewAmountResources = new TextView(activity);
-                              textViewAmountResources.setText(String.valueOf(DataAccess.SIGNED_HOTSPOTS.get(i).amount));
+                              textViewAmountResources.setText(String.valueOf(GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(i).amount));
                               textViewAmountResources.setBackgroundResource(R.drawable.background_view_rounded_single_amount_of_people);
                               textViewAmountResources.setPadding(7, 5, 7, 5);
                          } else {
@@ -501,10 +496,10 @@ public class FragmentHotspotsList extends ListFragment {
 
                          textViewDescription.setTextSize(15);
 
-                         textViewDescription.setText(String.valueOf(DataAccess.SIGNED_HOTSPOTS.get(i).id));
+                         textViewDescription.setText(String.valueOf(GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(i).id));
 
-                         int leftMargin = (int) Math.round(Double.valueOf(DataAccess.SIGNED_HOTSPOTS.get(i).x) * CompaniesDrawingView.WIDTH) + 50;
-                         int topMargin = (int) Math.round(Double.valueOf(DataAccess.SIGNED_HOTSPOTS.get(i).y) * CompaniesDrawingView.HEIGHT);
+                         int leftMargin = (int) Math.round(Double.valueOf(GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(i).x) * CompaniesDrawingView.WIDTH) + 50;
+                         int topMargin = (int) Math.round(Double.valueOf(GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(i).y) * CompaniesDrawingView.HEIGHT);
 
                          if ( type.equals(Hotspots.SHOW_ALL) ) {
                               hotspotsButtonLayout.addView(ibutton, param);
@@ -522,7 +517,7 @@ public class FragmentHotspotsList extends ListFragment {
 
                               textViewDescription.startAnimation(AnimationManager.load(android.R.anim.slide_in_left, 800));
 
-                              if ( DataAccess.SIGNED_HOTSPOTS.get(i).type == Hotspots.TRADE ) {
+                              if ( GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(i).type == Hotspots.TRADE ) {
                                    android.widget.RelativeLayout.LayoutParams param2 = new RelativeLayout.LayoutParams(60, 25);
                                    param2.width = LayoutParams.WRAP_CONTENT;
                                    param2.height = LayoutParams.WRAP_CONTENT;
@@ -534,7 +529,7 @@ public class FragmentHotspotsList extends ListFragment {
                               }
 
                          } else {
-                              if ( type.equals(DataAccess.SIGNED_HOTSPOTS.get(i).type) ) {
+                              if ( type.equals(GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(i).type) ) {
                                    hotspotsButtonLayout.addView(ibutton, param);
 
                                    param = new RelativeLayout.LayoutParams(60, 25);
@@ -547,7 +542,7 @@ public class FragmentHotspotsList extends ListFragment {
                                    hotspotsButtonLayout.addView(textViewDescription, param);
                                    textViewDescription.startAnimation(AnimationManager.load(android.R.anim.slide_in_left, 800));
 
-                                   if ( DataAccess.SIGNED_HOTSPOTS.get(i).type == Hotspots.TRADE ) {
+                                   if ( GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(i).type == Hotspots.TRADE ) {
                                         android.widget.RelativeLayout.LayoutParams param2 = new RelativeLayout.LayoutParams(60, 25);
                                         param2.width = LayoutParams.WRAP_CONTENT;
                                         param2.height = LayoutParams.WRAP_CONTENT;
@@ -599,8 +594,8 @@ public class FragmentHotspotsList extends ListFragment {
                                         }
                                    } else {
                                         if ( GlobalConstants.LAST_CLICKED_HOTSPOT.type == Hotspots.WHITEBOARD ) {
-                                             GeneralWhiteBoardActivity.WHITEBOARD_TYPE = GlobalConstants.DrawingType.HOTSPOT_WHITEBOARD_DRAWING;
-                                             GeneralWhiteBoardActivity_.WHITEBOARD_TYPE = GlobalConstants.DrawingType.HOTSPOT_WHITEBOARD_DRAWING;
+                                             // GeneralWhiteBoardActivity.WHITEBOARD_TYPE = GlobalConstants.DrawingType.HOTSPOT_WHITEBOARD_DRAWING;
+                                             // GeneralWhiteBoardActivity_.WHITEBOARD_TYPE = GlobalConstants.DrawingType.HOTSPOT_WHITEBOARD_DRAWING;
                                              activity.startActivity(new Intent(activity, GeneralWhiteBoardActivity_.class));
                                         } else {
 
@@ -655,7 +650,7 @@ public class FragmentHotspotsList extends ListFragment {
           }
 
           @Override public int getCount() {
-               return DataAccess.SIGNED_HOTSPOTS.size();
+               return GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.size();
           }
 
           public static Bitmap createRoundImage(Paint paint) {
@@ -672,17 +667,17 @@ public class FragmentHotspotsList extends ListFragment {
                ImageView imageView = (ImageView) rowView.findViewById(R.id.list_hotspots_image);
                ImageView imageViewCompanyColour = (ImageView) rowView.findViewById(R.id.list_hotspots_companyColour);
 
-               imageView.setBackgroundDrawable(new BitmapDrawable(activity.getResources(), Utils.getBitmapByHotspotType(DataAccess.SIGNED_HOTSPOTS.get(position).type)));
+               imageView.setBackgroundDrawable(new BitmapDrawable(activity.getResources(), Utils.getBitmapByHotspotType(GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(position).type)));
                try {
                     // imageViewCompanyColour.setBackgroundColor(FragmentCompaniesList.getCompanyColorById(DataAccess.SIGNED_HOTSPOTS.get(position).companyId));
-                    paint.setColor(FragmentCompaniesList.getCompanyColorById(DataAccess.SIGNED_HOTSPOTS.get(position).companyId));
+                    paint.setColor(FragmentCompaniesList.getCompanyColorById(GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(position).companyId));
                     imageViewCompanyColour.setImageBitmap(createRoundImage(paint));
                } catch (Exception e) {
                     Utils.logw(e.getMessage());
                     imageViewCompanyColour.setVisibility(View.INVISIBLE);
                }
                try {
-                    txtTitle.setText("(" + DataAccess.SIGNED_HOTSPOTS.get(position).id + ") " + DataAccess.SIGNED_HOTSPOTS.get(position).description);
+                    txtTitle.setText("(" + GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(position).id + ") " + GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(position).description);
                } catch (Exception ex) {
                     Utils.logw(ex.getMessage());
                     txtTitle.setText("Def value");

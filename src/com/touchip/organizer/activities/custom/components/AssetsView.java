@@ -17,7 +17,7 @@ import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.activities.DrawingCompaniesActivity;
 import com.touchip.organizer.communication.rest.model.AssetsList;
 import com.touchip.organizer.communication.rest.model.AssetsList.POJORoboSingleAsset;
-import com.touchip.organizer.utils.DataAccess;
+import com.touchip.organizer.constants.GlobalConstants;
 
 @EViewGroup ( R.layout.asset_view ) public class AssetsView extends RelativeLayout implements android.view.View.OnLongClickListener {
 
@@ -71,7 +71,7 @@ import com.touchip.organizer.utils.DataAccess;
 
                     @Override public boolean onTouch(View v, MotionEvent event) {
                          if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
-                              DataAccess.LAST_CLICKED_ASSET = ((AssetsListViewAdapter) DrawingCompaniesActivity.getLwAssets().getAdapter()).getData().get(position);
+                              GlobalConstants.LAST_CLICKED_ASSET = ((AssetsListViewAdapter) DrawingCompaniesActivity.getLwAssets().getAdapter()).getData().get(position);
                          }
                          return false;
                     }

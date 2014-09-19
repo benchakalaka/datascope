@@ -3,6 +3,7 @@ package com.touchip.organizer.activities.custom.components;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,7 +15,6 @@ import android.widget.TextView;
 import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.activities.GeneralWhiteBoardActivity_;
 import com.touchip.organizer.communication.rest.model.PathsCreationTimeList;
-import com.touchip.organizer.utils.GlobalConstants;
 
 public class GridViewChooseWhiteBoardAdapter extends ArrayAdapter <Object> {
      Context                             context;
@@ -54,13 +54,11 @@ public class GridViewChooseWhiteBoardAdapter extends ArrayAdapter <Object> {
                row.setOnClickListener(new OnClickListener() {
 
                     @Override public void onClick(View v) {
-                         GeneralWhiteBoardActivity_.IS_WHITEBOARD_NEW = true;
-                         GeneralWhiteBoardActivity_.WHITEBOARD_TYPE = GlobalConstants.DrawingType.GENERAL_WHITEBOARD_DRAWING;
                          context.startActivity(new Intent(context, GeneralWhiteBoardActivity_.class));
                     }
                });
           } else {
-               if ( data.get(position - 1).name == null || data.get(position - 1).name.equals("") ) {
+               if ( TextUtils.isEmpty(data.get(position - 1).name) ) {
                     textViewTitle.setText(data.get(position - 1).time);
                } else {
                     textViewTitle.setText(data.get(position - 1).name);

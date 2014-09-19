@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
 import com.touchip.organizer.communication.rest.model.HotspotsList;
+import com.touchip.organizer.constants.RestAddresses;
 import com.touchip.organizer.utils.Utils;
 
 public class CreateTradeHotspotRequest extends SpringAndroidSpiceRequest <HotspotsList> {

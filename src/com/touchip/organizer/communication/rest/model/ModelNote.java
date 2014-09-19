@@ -1,6 +1,6 @@
 package com.touchip.organizer.communication.rest.model;
 
-public class ModelNote {
+public class ModelNote extends BaseModel {
      public String comments;
      public String name;
      public int    color;

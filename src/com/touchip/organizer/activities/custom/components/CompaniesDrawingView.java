@@ -19,7 +19,7 @@ import android.view.View;
 import com.touchip.organizer.activities.DrawingCompaniesActivity;
 import com.touchip.organizer.communication.rest.serializables.PaintSerializable;
 import com.touchip.organizer.communication.rest.serializables.PathSerializable;
-import com.touchip.organizer.utils.GlobalConstants;
+import com.touchip.organizer.constants.GlobalConstants;
 import com.touchip.organizer.utils.Utils;
 
 public class CompaniesDrawingView extends View {
@@ -71,17 +71,6 @@ public class CompaniesDrawingView extends View {
 
      @Override protected void onAttachedToWindow() {
           super.onAttachedToWindow();
-          // DrawingCompaniesActivity.loadPathes();
-
-          // BitmapFactory.Options opt = new BitmapFactory.Options();
-          // opt.inMutable = true;
-          /*
-           * WIDTH = w;
-           * HEIGHT = h;
-           * canvasBitmap = Bitmap.createScaledBitmap(canvasBitmap, w, h, false);
-           * startBitmap = Bitmap.createScaledBitmap(startBitmap, w, h, false);
-           * drawCanvas = new Canvas(canvasBitmap);
-           */
      }
 
      /**
@@ -112,6 +101,8 @@ public class CompaniesDrawingView extends View {
           canvasBitmap = Bitmap.createScaledBitmap(canvasBitmap, w, h, false);
           startBitmap = Bitmap.createScaledBitmap(startBitmap, w, h, false);
           drawCanvas = new Canvas(canvasBitmap);
+          setPaths(Utils.convertStringToPathsList(GlobalConstants.SITE_PLAN_FULL_INFO.drawingPaths));
+
      }
 
      /**
@@ -227,7 +218,7 @@ public class CompaniesDrawingView extends View {
                     }
                     resetDrawingTools();
                     // //////////////////////////////////////////////////////////////////////////////////////////////
-                    DrawingCompaniesActivity.saveAndSendDrawingOnBackgroundThread(GlobalConstants.CURRENT_FLOOR);
+                    DrawingCompaniesActivity.INSTANCE.saveAndSendDrawingOnBackgroundThread();
                     // ////////////////////////////////////////////////////////////////////////////////////////////////
                     break;
                default:

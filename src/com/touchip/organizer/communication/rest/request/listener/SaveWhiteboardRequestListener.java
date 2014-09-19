@@ -7,7 +7,7 @@ import com.octo.android.robospice.request.listener.RequestListener;
 import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.activities.GeneralWhiteBoardActivity;
 import com.touchip.organizer.communication.rest.model.PathsCreationTimeList.POJORoboPathCreationTime;
-import com.touchip.organizer.utils.GlobalConstants;
+import com.touchip.organizer.constants.GlobalConstants;
 import com.touchip.organizer.utils.Utils;
 
 public class SaveWhiteboardRequestListener implements RequestListener <String> {

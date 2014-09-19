@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OnActivityResult;
@@ -16,6 +17,9 @@ import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.ViewById;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
@@ -60,46 +64,39 @@ import com.touchip.organizer.activities.custom.components.ActionBarDrawingCompan
 import com.touchip.organizer.activities.custom.components.CompaniesColorFilterView;
 import com.touchip.organizer.activities.custom.components.CompaniesColorFilterView_;
 import com.touchip.organizer.activities.custom.components.CompaniesDrawingView;
-import com.touchip.organizer.activities.custom.components.SlideMenuDrawingCopmanies;
-import com.touchip.organizer.activities.custom.components.SlideMenuDrawingCopmanies_;
-import com.touchip.organizer.activities.fragments.FragmentCompaniesList;
 import com.touchip.organizer.activities.fragments.FragmentHotspotsList;
 import com.touchip.organizer.activities.fragments.FragmentUnsignedHotspotsList.ListViewUnsignedHotspotsAdapter;
+import com.touchip.organizer.communication.rest.model.ModelFullSiteInfo;
+import com.touchip.organizer.communication.rest.model.ModelWhiteboards;
+import com.touchip.organizer.communication.rest.model.PathId;
 import com.touchip.organizer.communication.rest.request.AssignUnassignHotspotRequest;
 import com.touchip.organizer.communication.rest.request.CreateAssetHotspotRequest;
 import com.touchip.organizer.communication.rest.request.CreateHotspotRequest;
 import com.touchip.organizer.communication.rest.request.CreateTradeHotspotRequest;
 import com.touchip.organizer.communication.rest.request.DownloadDrawingPathsRequest;
-import com.touchip.organizer.communication.rest.request.DownloadSitePlanWithFloorRequest;
 import com.touchip.organizer.communication.rest.request.GetAssetsRequest;
-import com.touchip.organizer.communication.rest.request.GetDatesToHighlightRequest;
 import com.touchip.organizer.communication.rest.request.GetDeliveriesListRequest;
-import com.touchip.organizer.communication.rest.request.GetPathsCreationTimeRequest;
 import com.touchip.organizer.communication.rest.request.GetTradesRequest;
-import com.touchip.organizer.communication.rest.request.SaveDrawingPathsOnFingerReleaseRequest;
-import com.touchip.organizer.communication.rest.request.SaveDrawingPathsRequest;
+import com.touchip.organizer.communication.rest.request.SuperRequest;
 import com.touchip.organizer.communication.rest.request.UpdateHotspotPositionRequest;
 import com.touchip.organizer.communication.rest.request.UploadCapturedPhotoRequest;
 import com.touchip.organizer.communication.rest.request.listener.AssignUnassignHotspotRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.CreateAssetHotspotRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.CreateHotspotRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.CreateTradeHotspotRequestListener;
-import com.touchip.organizer.communication.rest.request.listener.DatesToHighlightDrawingActivityRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.DownloadDrawingPathsRequestListener;
-import com.touchip.organizer.communication.rest.request.listener.DownloadSitePlanWithFloorRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.GetAssetsRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.GetDeliveriesListRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.GetPathsCreationTimeRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.GetTradesRequestListener;
-import com.touchip.organizer.communication.rest.request.listener.SaveDrawingPathsOnFingerReleaseRequestListener;
-import com.touchip.organizer.communication.rest.request.listener.SaveDrawingPathsRequestListener;
+import com.touchip.organizer.communication.rest.request.listener.ResponseFullSitePlanInfo;
+import com.touchip.organizer.communication.rest.request.listener.ResponseSaveDrawingPathsOnFingerRelease;
 import com.touchip.organizer.communication.rest.request.listener.UpdateHotspotPositionRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.UploadCapturedPhotoRequestListener;
 import com.touchip.organizer.communication.rest.serializables.PathSerializable;
-import com.touchip.organizer.utils.DataAccess;
-import com.touchip.organizer.utils.DialogUtils;
-import com.touchip.organizer.utils.GlobalConstants;
-import com.touchip.organizer.utils.HTTP_PARAMS;
+import com.touchip.organizer.constants.GlobalConstants;
+import com.touchip.organizer.constants.HTTP_PARAMS;
+import com.touchip.organizer.constants.RestAddresses;
 import com.touchip.organizer.utils.HotspotManager.Hotspots;
 import com.touchip.organizer.utils.Utils;
 import com.touchip.organizer.utils.Utils.AnimationManager;
@@ -137,8 +134,6 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
 
      public static ActionBarDrawingCompanies      customActionBar;
 
-     private SlideMenuDrawingCopmanies            sideSlideMenu;
-
      private Dialog                               dialog;
 
      private static ProgressDialog                progressDialog;
@@ -151,7 +146,6 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
 
           // load all views
           customActionBar = ActionBarDrawingCompanies_.build(DrawingCompaniesActivity.this);
-          sideSlideMenu = SlideMenuDrawingCopmanies_.build(DrawingCompaniesActivity.this);
 
           // sideSlideMenu.setMenuControlButton(menuStatusArrow);
           Utils.configureCustomActionBar(getActionBar(), customActionBar);
@@ -165,9 +159,9 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           dialog = new Dialog(DrawingCompaniesActivity.this);
           dialog.setCancelable(false);
 
-          for ( int i = 0; i < FragmentCompaniesList.COMPANIES_LIST.size(); i++ ) {
+          for ( int i = 0; i < GlobalConstants.SITE_PLAN_FULL_INFO.companyWrappersList.size(); i++ ) {
                CompaniesColorFilterView singleTradeItem = CompaniesColorFilterView_.build(DrawingCompaniesActivity.this);
-               singleTradeItem.setCompany(FragmentCompaniesList.COMPANIES_LIST.get(i));
+               singleTradeItem.setCompany(GlobalConstants.SITE_PLAN_FULL_INFO.companyWrappersList.get(i));
                llCompanies.addView(singleTradeItem);
           }
 
@@ -182,8 +176,8 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           setDragListener();
           // initiate bottom string
           // twBottomStatus.setText(String.format("Today:%s, Plan Name:%s, Floor:%s", Utils.formatDate(new Date()), GlobalConstants.SITE_PLAN_IMAGE_NAME,
-          // GlobalConstants.CURRENT_FLOOR));
-          customActionBar.setUpCurrentSiteInfo(GlobalConstants.TODAY_FROM_SERVER, GlobalConstants.SITE_PLAN_IMAGE_NAME, GlobalConstants.CURRENT_FLOOR);
+          // GlobalConstants.CURRENT_AREA));
+          customActionBar.setUpCurrentSiteInfo(GlobalConstants.SITE_PLAN_FULL_INFO.today, GlobalConstants.SITE_PLAN_IMAGE_NAME, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
 
           Thread updateHs = new Thread(new Runnable() {
 
@@ -210,11 +204,11 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
 
      @Override protected void onResume() {
           super.onResume();
-          tvSPN.setText(GlobalConstants.CURRENT_FLOOR);
+          tvSPN.setText(GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
      }
 
      @Click void ibChangeFloor() {
-          loadImage(null, null);
+          loadImage(null);
      }
 
      @Click void ibRefresh() {
@@ -222,13 +216,20 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
      }
 
      @Click void ibWb() {
-          DrawingCompaniesActivity.showProgressDialog();
-          GetPathsCreationTimeRequest request = new GetPathsCreationTimeRequest();
+          showProgressDialog();
+          Map <String, String> params = new HashMap <String, String>();
+
+          params.put(HTTP_PARAMS.AREA_NAME, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
+          params.put(HTTP_PARAMS.SITE_ID, GlobalConstants.SITE_ID);
+          params.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
+
+          SuperRequest <ModelWhiteboards> request = new SuperRequest <ModelWhiteboards>(ModelWhiteboards.class, RestAddresses.GET_WHITEBOARDS, null, params);
           getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetPathsCreationTimeRequestListener(this));
      }
 
      @Click void ibChangeDate() {
-          getDatesToHighliht();
+          // TODO
+          Utils.showToast(this, "NOT implemented", false);
      }
 
      @Click void ibBrushSize() {
@@ -241,12 +242,12 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
 
      @Click void ibUndo() {
           DRAW_VIEW.undo();
-          saveAndSendDrawingOnBackgroundThread(GlobalConstants.CURRENT_FLOOR);
+          saveAndSendDrawingOnBackgroundThread();
      }
 
      @Click void ibRedo() {
           DRAW_VIEW.redo();
-          saveAndSendDrawingOnBackgroundThread(GlobalConstants.CURRENT_FLOOR);
+          saveAndSendDrawingOnBackgroundThread();
      }
 
      @Click void ibResources() {
@@ -261,83 +262,57 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           twTotalAmountOfPeople.setText(String.format("Total: %s", amount));
      }
 
-     @Override public void onBackPressed() {
-          if ( sideSlideMenu.getMenu().isMenuShowing() ) {
-               sideSlideMenu.getMenu().showContent();
-          }
-     }
+     @Background public void saveAndSendDrawingOnBackgroundThread() {
 
-     public void saveAndSendDrawing(final boolean askSave, String floor) {
+          MultiValueMap <String, Object> params = new LinkedMultiValueMap <String, Object>();
+
           ObjectOutputStream out = null;
+          FileSystemResource snapshot = null;
           try {
-               File file = new File(getApplicationContext().getCacheDir(), System.currentTimeMillis() + ".paths");
-               List <PathSerializable> listPathes = DRAW_VIEW.getPaths();
+               File file = new File(DrawingCompaniesActivity.INSTANCE.getCacheDir(), System.currentTimeMillis() + ".paths");
+               List <PathSerializable> listPathes = DrawingCompaniesActivity.DRAW_VIEW.getPaths();
                out = new ObjectOutputStream(new FileOutputStream(file));
                out.writeObject(listPathes);
                out.close();
-               progressDialog.show();
-
-               // attempt to save drawing
-               FileSystemResource snapshotSpringWrapper = null;
-               try {
-                    DRAW_VIEW.setDrawingCacheEnabled(true);
-                    String saveResponseFilePath = Media.insertImage(getContentResolver(), DRAW_VIEW.getDrawingCache(), Utils.getCurrentDate() + ".png", "drawing");
-                    // Preparing feedback for user
-                    boolean isSuccessfullySaved = saveResponseFilePath != null;
-                    String userFeedback = (isSuccessfullySaved) ? Utils.getResources(R.string.drawing_saved_to_gallery) : Utils.getResources(R.string.cannot_save_image);
-                    if ( isSuccessfullySaved ) {
-                         snapshotSpringWrapper = new FileSystemResource(new File(Utils.getRealPathFromURI(getApplicationContext(), Uri.parse(saveResponseFilePath))));
-                    }
-                    DRAW_VIEW.destroyDrawingCache();
-               } catch (Exception ex) {
-                    ex.printStackTrace();
+               if ( null != file ) {
+                    params.add(HTTP_PARAMS.DRAWING_DATA, new FileSystemResource(file));
                }
-
-               SaveDrawingPathsRequest request = new SaveDrawingPathsRequest(new FileSystemResource(file), snapshotSpringWrapper, floor);
-               getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new SaveDrawingPathsRequestListener(DrawingCompaniesActivity.this, file, askSave));
           } catch (Exception e) {
                Utils.logw(e.getMessage());
           }
-     }
 
-     public static void saveAndSendDrawingOnBackgroundThread(String floor) {
-          SaveDrawingPathsOnFingerReleaseRequest request = new SaveDrawingPathsOnFingerReleaseRequest(null, null, floor);
-          DrawingCompaniesActivity.INSTANCE.getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new SaveDrawingPathsOnFingerReleaseRequestListener(DrawingCompaniesActivity.INSTANCE, false));
-     }
+          // attempt to save drawing
+          try {
+               String saveResponseFilePath = Media.insertImage(DrawingCompaniesActivity.INSTANCE.getContentResolver(), DrawingCompaniesActivity.DRAW_VIEW.getDrawingCache(), Utils.getCurrentDate() + ".png", "drawing");
+               if ( null != saveResponseFilePath ) {
+                    snapshot = new FileSystemResource(new File(Utils.getRealPathFromURI(DrawingCompaniesActivity.INSTANCE.getApplicationContext(), Uri.parse(saveResponseFilePath))));
+               }
 
-     /*
-      * public static void saveAndSendDrawingOnBackgroundThread(String floor) {
-      * ObjectOutputStream out = null;
-      * try {
-      * File file = new File(DrawingCompaniesActivity.INSTANCE.getCacheDir(), System.currentTimeMillis() + ".paths");
-      * List <PathSerializable> listPathes = DRAW_VIEW.getPaths();
-      * out = new ObjectOutputStream(new FileOutputStream(file));
-      * out.writeObject(listPathes);
-      * out.close();
-      * // attempt to save drawing
-      * FileSystemResource snapshotSpringWrapper = null;
-      * String saveResponseFilePath = null;
-      * try {
-      * saveResponseFilePath = Media.insertImage(DrawingCompaniesActivity.INSTANCE.getContentResolver(), DRAW_VIEW.getDrawingCache(), Utils.getCurrentDate() +
-      * ".png", "drawing");
-      * if ( saveResponseFilePath != null ) {
-      * snapshotSpringWrapper = new FileSystemResource(new File(Utils.getRealPathFromURI(DrawingCompaniesActivity.INSTANCE.getApplicationContext(),
-      * Uri.parse(saveResponseFilePath))));
-      * }
-      * } catch (Exception ex) {
-      * ex.printStackTrace();
-      * }
-      * SaveDrawingPathsOnFingerReleaseRequest request = new SaveDrawingPathsOnFingerReleaseRequest(new FileSystemResource(file), snapshotSpringWrapper, floor);
-      * DrawingCompaniesActivity.INSTANCE.getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new
-      * SaveDrawingPathsOnFingerReleaseRequestListener(DrawingCompaniesActivity.INSTANCE, file, false));
-      * } catch (Exception e) {
-      * Utils.logw(e.getMessage());
-      * }
-      * }
-      */
+               if ( null != snapshot ) {
+                    params.add(HTTP_PARAMS.SNAPSHOT, snapshot);
+               }
+          } catch (Exception ex) {
+               ex.printStackTrace();
+          }
+          HttpHeaders headers = new HttpHeaders();
+          headers.setContentType(MediaType.MULTIPART_FORM_DATA);
 
-     public void showSaveDrawingDialog(final boolean askSave) {
-          DialogUtils.showSaveDrawingDialog(askSave, this);
+          SuperRequest <PathId> request = null;
+
+          // Create new path
+          if ( GlobalConstants.SITE_PLAN_FULL_INFO.pathId == 0 ) {
+               params.add(HTTP_PARAMS.SITE_ID, GlobalConstants.SITE_ID);
+               params.add(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
+               params.add(HTTP_PARAMS.AREA_NAME, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
+               request = new SuperRequest <PathId>(PathId.class, RestAddresses.CREATE_SITE_PLAN_DRAWING_PATHES, new FormHttpMessageConverter(), params, headers);
+          } else {
+               // update exisiting one
+               params.add(HTTP_PARAMS.PATH_ID, String.valueOf(GlobalConstants.SITE_PLAN_FULL_INFO.pathId));
+               request = new SuperRequest <PathId>(PathId.class, RestAddresses.UPDATE_SITE_PLAN_DRAWING_PATHES, new FormHttpMessageConverter(), params, headers);
+          }
+
+          getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new ResponseSaveDrawingPathsOnFingerRelease(this, false));
+
      }
 
      /**
@@ -346,27 +321,12 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
       * @param date
       * @param floor
       */
-     public void loadImage(final Date date, final String floor) {
+     public void loadImage(final Date date) {
           AlertDialog.Builder builder = new AlertDialog.Builder(DrawingCompaniesActivity.this);
           builder.setTitle(R.string.select_drawing);
           ListView modeList = new ListView(DrawingCompaniesActivity.this);
-          List <String> floors = null;
-          String selectedDate = (null != date) ? Utils.formatDate(date) : GlobalConstants.SITE_PLAN_IMAGE_NAME;
 
-          for ( int i = 0; i < DataAccess.datestoHighlight.size(); i++ ) {
-               // Set first floor as default floor
-               if ( DataAccess.datestoHighlight.get(i).date.equals(selectedDate) ) {
-                    GlobalConstants.CURRENT_FLOOR = DataAccess.datestoHighlight.get(i).floors.get(0);
-                    floors = DataAccess.datestoHighlight.get(i).floors;
-               }
-          }
-
-          ArrayAdapter <String> modeAdapter = null;
-          try {
-               modeAdapter = new ArrayAdapter <String>(DrawingCompaniesActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, floors.toArray(new String[floors.size()]));
-          } catch (Exception ez) {
-               return;
-          }
+          ArrayAdapter <String> modeAdapter = new ArrayAdapter <String>(DrawingCompaniesActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, GlobalConstants.SITE_PLAN_FULL_INFO.areas);
           modeList.setAdapter(modeAdapter);
           builder.setView(modeList);
           dialog = builder.create();
@@ -374,18 +334,25 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           modeList.setOnItemClickListener(new OnItemClickListener() {
 
                @Override public void onItemClick(AdapterView <?> adapter, View view, int pos, long arg3) {
-                    final String floor = adapter.getItemAtPosition(pos).toString();
-                    GlobalConstants.CURRENT_FLOOR = floor;
-                    Utils.showCustomToast(DrawingCompaniesActivity.this, String.valueOf("Loading ... " + floor), R.drawable.floors);
+                    final String selectedArea = adapter.getItemAtPosition(pos).toString();
+                    Utils.showCustomToast(DrawingCompaniesActivity.this, String.valueOf("Loading area - " + selectedArea), R.drawable.floors);
+
+                    GlobalConstants.SITE_PLAN_FULL_INFO.currentArea = selectedArea;
+
                     if ( null != date ) {
                          GlobalConstants.SITE_PLAN_IMAGE_NAME = Utils.formatDate(date).toString();
                     }
-                    DownloadSitePlanWithFloorRequest request = new DownloadSitePlanWithFloorRequest();
-                    getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new DownloadSitePlanWithFloorRequestListener(DrawingCompaniesActivity.this));
+                    HashMap <String, String> params = new HashMap <String, String>();
+                    params.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
+                    params.put(HTTP_PARAMS.SITE_ID, GlobalConstants.SITE_ID);
+                    params.put(HTTP_PARAMS.AREA_NAME, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
+
+                    SuperRequest <ModelFullSiteInfo> request = new SuperRequest <ModelFullSiteInfo>(ModelFullSiteInfo.class, RestAddresses.DOWNLOAD_SITE_PLAN, null, params);
+                    getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new ResponseFullSitePlanInfo(DrawingCompaniesActivity.this));
                     dialog.dismiss();
                }
           });
-          if ( !floors.isEmpty() ) {
+          if ( !GlobalConstants.SITE_PLAN_FULL_INFO.areas.isEmpty() ) {
                dialog.show();
           }
      }
@@ -406,7 +373,6 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           progressDialog.show();
           CreateAssetHotspotRequest request = new CreateAssetHotspotRequest(requestParams);
           getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new CreateAssetHotspotRequestListener(this));
-
      }
 
      public static void loadPathes() {
@@ -416,21 +382,18 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
      }
 
      @OptionsItem void homeSelected() {
-          // if ( DRAW_VIEW.isNeedAutoSave() ) {
-          showSaveDrawingDialog(false);
-          // } else {
+          saveAndSendDrawingOnBackgroundThread();
           startActivity(new Intent(DrawingCompaniesActivity.this, AMenuModules_.class));
-          // }
      }
 
      public void showTradesPanel() {
-          DrawingCompaniesActivity.showProgressDialog();
+          showProgressDialog();
           GetTradesRequest request = new GetTradesRequest();
           getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetTradesRequestListener(DrawingCompaniesActivity.this));
      }
 
      public void showOrHideAssets() {
-          DrawingCompaniesActivity.showProgressDialog();
+          showProgressDialog();
           GetAssetsRequest request = new GetAssetsRequest();
           getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetAssetsRequestListener(DrawingCompaniesActivity.this));
      }
@@ -443,27 +406,19 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           return customActionBar;
      }
 
-     public static ProgressDialog getProgressDialog() {
+     @Override public ProgressDialog getProgressDialog() {
           return progressDialog;
      }
 
-     public static void showProgressDialog() {
+     @Override public void showProgressDialog() {
           if ( null != progressDialog ) {
                progressDialog.show();
           }
      }
 
-     public static void dissmissProgressDialog() {
+     @Override public void dissmissProgressDialog() {
           if ( null != progressDialog ) {
                progressDialog.dismiss();
-          }
-     }
-
-     public void menuStatusArrow() {
-          if ( sideSlideMenu.getMenu().isMenuShowing() ) {
-               sideSlideMenu.getMenu().showContent();
-          } else {
-               sideSlideMenu.getMenu().showMenu();
           }
      }
 
@@ -538,7 +493,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                          case DragEvent.ACTION_DROP:
 
                               try {
-                                   Date today = DateUtils.parseDate(GlobalConstants.TODAY_FROM_SERVER, GlobalConstants.DATE_FORMAT);
+                                   Date today = DateUtils.parseDate(GlobalConstants.SITE_PLAN_FULL_INFO.today, GlobalConstants.DATE_FORMAT);
                                    Date sitePlanDate = DateUtils.parseDate(GlobalConstants.SITE_PLAN_IMAGE_NAME, GlobalConstants.DATE_FORMAT);
 
                                    if ( !DateUtils.isSameDay(today, sitePlanDate) && today.compareTo(sitePlanDate) > 0 ) {
@@ -566,7 +521,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                                    return true;
                               }
 
-                              requestParams.put(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
+                              requestParams.put(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.SITE_ID);
                               requestParams.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
 
                               // ASSET HOTSPOT HAS BEEN DRAGED TO CANVAS
@@ -575,9 +530,9 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                                    requestParams.put(HTTP_PARAMS.ID, String.valueOf("-1"));
                                    requestParams.put(HTTP_PARAMS.DESCRIPTION, assetDescription);
                                    requestParams.put(HTTP_PARAMS.TYPE, Hotspots.HOTSPOTS_NAMES[Hotspots.ASSET]);
-                                   requestParams.put(HTTP_PARAMS.FLOOR, GlobalConstants.CURRENT_FLOOR);
-                                   requestParams.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(DataAccess.LAST_CLICKED_COMPANY.companyId));
-                                   requestParams.put(HTTP_PARAMS.ASSET_ID, String.valueOf(DataAccess.LAST_CLICKED_ASSET.id));
+                                   requestParams.put(HTTP_PARAMS.FLOOR, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
+                                   requestParams.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(GlobalConstants.LAST_CLICKED_COMPANY.companyId));
+                                   requestParams.put(HTTP_PARAMS.ASSET_ID, String.valueOf(GlobalConstants.LAST_CLICKED_ASSET.id));
                                    createAssetHotspot(requestParams);
                                    return false;
                               }
@@ -589,10 +544,10 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                                    requestParams.put(HTTP_PARAMS.AMOUNT, String.valueOf(1));
                                    requestParams.put(HTTP_PARAMS.DESCRIPTION, description);
                                    // requestParams.put(HTTP_PARAMS.TYPE,GlobalConstants.Hotspots.TRADE_HOTSPOT);
-                                   requestParams.put(HTTP_PARAMS.FLOOR, GlobalConstants.CURRENT_FLOOR);
-                                   requestParams.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(DataAccess.LAST_CLICKED_COMPANY.companyId));
+                                   requestParams.put(HTTP_PARAMS.FLOOR, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
+                                   requestParams.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(GlobalConstants.LAST_CLICKED_COMPANY.companyId));
 
-                                   DrawingCompaniesActivity.showProgressDialog();
+                                   showProgressDialog();
                                    CreateTradeHotspotRequest request = new CreateTradeHotspotRequest(requestParams);
                                    getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new CreateTradeHotspotRequestListener(DrawingCompaniesActivity.this, description));
                                    return false;
@@ -604,7 +559,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                                    requestParams.put(HTTP_PARAMS.ID, String.valueOf("-1"));
                                    requestParams.put(HTTP_PARAMS.TYPE, type);
 
-                                   dialog.setTitle(null != DataAccess.LAST_CLICKED_COMPANY ? type + " for " + DataAccess.LAST_CLICKED_COMPANY.companyName : type);
+                                   dialog.setTitle(null != GlobalConstants.LAST_CLICKED_COMPANY ? type + " for " + GlobalConstants.LAST_CLICKED_COMPANY.companyName : type);
                                    dialog.setContentView(R.layout.dialog_input_hotspot_detail);
 
                                    final EditText editTextDescription = (EditText) dialog.findViewById(R.id.dialog_edittext_input_text_to_draw);
@@ -705,7 +660,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
 
                                         @Override public void onClick(View v) {
 
-                                             if ( null == DataAccess.LAST_CLICKED_COMPANY ) {
+                                             if ( null == GlobalConstants.LAST_CLICKED_COMPANY ) {
                                                   Utils.showToast(getApplicationContext(), R.string.choose_company_before_creating_hotspot, true);
                                                   dialog.dismiss();
                                                   return;
@@ -713,8 +668,8 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
 
                                              String hotspotDescription = "";
 
-                                             requestParams.put(HTTP_PARAMS.FLOOR, GlobalConstants.CURRENT_FLOOR);
-                                             requestParams.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(DataAccess.LAST_CLICKED_COMPANY.companyId));
+                                             requestParams.put(HTTP_PARAMS.FLOOR, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
+                                             requestParams.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(GlobalConstants.LAST_CLICKED_COMPANY.companyId));
 
                                              if ( type.equals(Hotspots.HOTSPOTS_NAMES[Hotspots.PERMIT]) ) {
                                                   hotspotDescription = spinner.getSelectedItem().toString();
@@ -775,7 +730,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                                    requestParams.put(HTTP_PARAMS.ID, type);
                                    requestParams.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(ListViewUnsignedHotspotsAdapter.draggedUnsignedHotspot.companyId));
 
-                                   requestParams.put(HTTP_PARAMS.FLOOR, GlobalConstants.CURRENT_FLOOR);
+                                   requestParams.put(HTTP_PARAMS.FLOOR, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
                                    requestParams.put(HTTP_PARAMS.TYPE, String.valueOf(ListViewUnsignedHotspotsAdapter.draggedUnsignedHotspot.type));
                                    requestParams.put(HTTP_PARAMS.DESCRIPTION, ListViewUnsignedHotspotsAdapter.draggedUnsignedHotspot.description);
 
@@ -814,7 +769,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                @Override public boolean onMenuItemClick(MenuItem item) {
                     switch (item.getItemId()) {
                          case R.id.action_deliveries:
-                              DrawingCompaniesActivity.showProgressDialog();
+                              showProgressDialog();
                               HashMap <String, String> params = new HashMap <String, String>();
                               params.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
                               params.put(HTTP_PARAMS.SITE_ID, String.valueOf(1));
@@ -825,7 +780,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                          // ////////////////////////////////////////////////////////////////////////////////////////////////
                          case R.id.action_assets:
                               // if user has not choosen any company - show appropriate message and uncheck toggle button
-                              if ( null == DataAccess.LAST_CLICKED_COMPANY ) {
+                              if ( null == GlobalConstants.LAST_CLICKED_COMPANY ) {
                                    Utils.showCustomToast(DrawingCompaniesActivity.this, R.string.choose_company, R.drawable.trade);
                                    break;
                               }
@@ -839,7 +794,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                          // ////////////////////////////////////////////////////////////////////////////////////////////////
                          case R.id.action_trades:
                               // if user has not choosen any company - show appropriate message and uncheck toggle button
-                              if ( (null == DataAccess.LAST_CLICKED_COMPANY) ) {
+                              if ( (null == GlobalConstants.LAST_CLICKED_COMPANY) ) {
                                    Utils.showCustomToast(DrawingCompaniesActivity.this, R.string.choose_company, R.drawable.trade);
                                    break;
                               }
@@ -877,11 +832,4 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                AnimationManager.animateMenu(DrawingCompaniesActivity.getllFilters(), View.GONE, R.anim.push_left_out, 200);
           }
      }
-
-     private void getDatesToHighliht() {
-          DrawingCompaniesActivity.showProgressDialog();
-          GetDatesToHighlightRequest request = new GetDatesToHighlightRequest();
-          getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new DatesToHighlightDrawingActivityRequestListener(this));
-     }
-
 }

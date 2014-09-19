@@ -5,9 +5,9 @@ import java.util.Map;
 
 import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
 import com.touchip.organizer.communication.rest.model.AssetsList;
-import com.touchip.organizer.utils.DataAccess;
-import com.touchip.organizer.utils.GlobalConstants;
-import com.touchip.organizer.utils.HTTP_PARAMS;
+import com.touchip.organizer.constants.GlobalConstants;
+import com.touchip.organizer.constants.HTTP_PARAMS;
+import com.touchip.organizer.constants.RestAddresses;
 import com.touchip.organizer.utils.Utils;
 
 public class GetAssetsRequest extends SpringAndroidSpiceRequest <AssetsList> {
@@ -29,8 +29,8 @@ public class GetAssetsRequest extends SpringAndroidSpiceRequest <AssetsList> {
                vars.clear();
           }
 
-          vars.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(DataAccess.LAST_CLICKED_COMPANY.companyId));
-          vars.put(/* HTTP_PARAMS.SITE_ID */"markerId", String.valueOf(GlobalConstants.LAST_CLICKED_MARKER_ID));
+          vars.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(GlobalConstants.LAST_CLICKED_COMPANY.companyId));
+          vars.put(/* HTTP_PARAMS.SITE_ID */"markerId", String.valueOf(GlobalConstants.SITE_ID));
 
           return getRestTemplate().postForObject(RestAddresses.GET_ASSETS_LIST, vars, AssetsList.class);
      }

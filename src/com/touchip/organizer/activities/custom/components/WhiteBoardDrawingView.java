@@ -20,61 +20,60 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.activities.GeneralWhiteBoardActivity;
 import com.touchip.organizer.communication.rest.serializables.PaintSerializable;
 import com.touchip.organizer.communication.rest.serializables.PathSerializable;
 import com.touchip.organizer.utils.Utils;
 
 public class WhiteBoardDrawingView extends View {
 
-     private static String            textToDraw           = "";
-     boolean                          isNeedToRedraw       = false;
+     private static String                 textToDraw           = "";
+     boolean                               isNeedToRedraw       = false;
 
-     private static int               CURRENT_DRAWING_TYPE = ShapesType.STANDART_DRAWING;
+     private static int                    CURRENT_DRAWING_TYPE = ShapesType.STANDART_DRAWING;
 
-     private static Bitmap            moveTextIndicator    = BitmapFactory.decodeResource(Utils.getResources(), R.drawable.move1);
+     private static Bitmap                 moveTextIndicator    = BitmapFactory.decodeResource(Utils.getResources(), R.drawable.move1);
 
      // current finger position X
-     float                            touchX;
+     float                                 touchX;
      // current finger position Y
-     float                            touchY;
+     float                                 touchY;
      // X position of first touch
-     float                            touchDownX;
+     float                                 touchDownX;
      // Y position of first touch
-     float                            touchDownY;
+     float                                 touchDownY;
      // rectangle of drawing for different types of shapes
-     private final RectF              rectangleOfDrawing   = new RectF();
+     private final RectF                   rectangleOfDrawing   = new RectF();
      // canvas bitmap
-     public static Bitmap             canvasBitmap , startBitmap;
+     public static Bitmap                  canvasBitmap , startBitmap;
      // drawing path
-     private PathSerializable         drawPath;
+     private PathSerializable              drawPath;
      // drawing and canvas paint
-     private PaintSerializable        drawPaint , canvasPaint;
+     private PaintSerializable             drawPaint , canvasPaint;
      // initial color
-     private int                      paintColor           = Color.TRANSPARENT;
+     private int                           paintColor           = Color.TRANSPARENT;
      // canvas
-     private Canvas                   drawCanvas;
+     private Canvas                        drawCanvas;
      // brush sizes
-     private float                    brushSize;
+     private float                         brushSize;
      // step for drawing coordinates (100 pixels)
-     private final TextPaint          labelsPaint          = new TextPaint();
+     private final TextPaint               labelsPaint          = new TextPaint();
      // companies and colours filter (0 means draw everything, 1 means hide all drawings)
-     private int                      companyColorFilter   = 0;
+     private int                           companyColorFilter   = 0;
      // for UNDO operation
-     private List <PathSerializable>  paths                = new ArrayList <PathSerializable>();
+     public static List <PathSerializable> paths                = new ArrayList <PathSerializable>();
      // for UNDO & REDO operation
-     private List <PathSerializable>  redoPaths            = new ArrayList <PathSerializable>();
+     private List <PathSerializable>       redoPaths            = new ArrayList <PathSerializable>();
      // for avoiding allocation in onDraw method
-     private static PaintSerializable staticPaint          = new PaintSerializable();
+     private static PaintSerializable      staticPaint          = new PaintSerializable();
      // path for each shape
-     private static PathSerializable  shapePath            = new PathSerializable();
+     private static PathSerializable       shapePath            = new PathSerializable();
 
-     private int                      selectedPathIndex    = -1;
-     private boolean                  isEraser             = false;
-     private boolean                  isUndoRedoActive;
+     private int                           selectedPathIndex    = -1;
+     private boolean                       isEraser             = false;
+     private boolean                       isUndoRedoActive;
 
-     public static int                WIDTH;
-     public static int                HEIGHT;
+     public static int                     WIDTH;
+     public static int                     HEIGHT;
 
      public WhiteBoardDrawingView ( Context context , AttributeSet attrs ) {
           super(context, attrs);
@@ -175,16 +174,16 @@ public class WhiteBoardDrawingView extends View {
      // size assigned to view
      @Override protected void onSizeChanged(int w, int h, int oldw, int oldh) {
           super.onSizeChanged(w, h, oldw, oldh);
-          BitmapFactory.Options opt = new BitmapFactory.Options();
-          opt.inMutable = true;
           WIDTH = w;
           HEIGHT = h;
+
+          BitmapFactory.Options opt = new BitmapFactory.Options();
+          opt.inMutable = true;
           canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
           startBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
           drawCanvas = new Canvas(canvasBitmap);
-          if ( !GeneralWhiteBoardActivity.IS_WHITEBOARD_NEW ) {
-               GeneralWhiteBoardActivity.INSTANCE.loadPathes();
-          }
+          // GeneralWhiteBoardActivity.INSTANCE.loadPathes();
+
      }
 
      public boolean isNeedAutoSave() {

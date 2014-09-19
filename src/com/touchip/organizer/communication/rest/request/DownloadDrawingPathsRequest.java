@@ -6,8 +6,9 @@ import java.util.Map;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 
 import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
-import com.touchip.organizer.utils.GlobalConstants;
-import com.touchip.organizer.utils.HTTP_PARAMS;
+import com.touchip.organizer.constants.GlobalConstants;
+import com.touchip.organizer.constants.HTTP_PARAMS;
+import com.touchip.organizer.constants.RestAddresses;
 import com.touchip.organizer.utils.Utils;
 
 public class DownloadDrawingPathsRequest extends SpringAndroidSpiceRequest <byte[]> {
@@ -27,10 +28,10 @@ public class DownloadDrawingPathsRequest extends SpringAndroidSpiceRequest <byte
                vars.clear();
           }
 
-          vars.put(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
+          vars.put(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.SITE_ID);
           vars.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
-          vars.put(HTTP_PARAMS.FLOOR, GlobalConstants.CURRENT_FLOOR);
-          vars.put(HTTP_PARAMS.TYPE, GlobalConstants.DrawingType.SITE_PLAN_DRAWING);
+          vars.put(HTTP_PARAMS.FLOOR, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
+          // vars.put(HTTP_PARAMS.TYPE, GlobalConstants.DrawingType.SITE_PLAN_DRAWING);
           getRestTemplate().getMessageConverters().add(new ByteArrayHttpMessageConverter());
 
           return getRestTemplate().postForObject(RestAddresses.DOWNLOAD_DRAWING_PATHES, vars, byte[].class);

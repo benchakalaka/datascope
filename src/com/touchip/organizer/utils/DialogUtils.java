@@ -13,7 +13,6 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.activities.DrawingCompaniesActivity;
 import com.touchip.organizer.activities.DrawingCompaniesActivity_;
 import com.touchip.organizer.communication.rest.model.ActivitiesAndRisksList.POJORoboSingleActivityAndRisk;
 import com.touchip.organizer.communication.rest.model.RiskSchedule;
@@ -66,29 +65,6 @@ public class DialogUtils {
                e.printStackTrace();
           }
 
-     }
-
-     public static void showSaveDrawingDialog(final boolean askSave, final DrawingCompaniesActivity activity) {
-          // save drawing
-          AlertDialog.Builder saveDialog = new AlertDialog.Builder(activity);
-          saveDialog.setTitle(Utils.getResources(R.string.save_drawing));
-          saveDialog.setIcon(R.drawable.save);
-          saveDialog.setMessage(R.string.save_and_logoff);
-          saveDialog.setPositiveButton(Utils.getResources(R.string.yes), new DialogInterface.OnClickListener() {
-               @Override public void onClick(DialogInterface dialog, int which) {
-                    activity.saveAndSendDrawing(askSave, GlobalConstants.CURRENT_FLOOR);
-               }
-          });
-          saveDialog.setNegativeButton(Utils.getResources(R.string.cancel), new DialogInterface.OnClickListener() {
-               @Override public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-               }
-          });
-          if ( askSave ) {
-               saveDialog.show();
-          } else {
-               activity.saveAndSendDrawing(askSave, GlobalConstants.CURRENT_FLOOR);
-          }
      }
 
      public static void showRiskScheduleDialog(final DrawingCompaniesActivity_ activity, RiskSchedule risks) {

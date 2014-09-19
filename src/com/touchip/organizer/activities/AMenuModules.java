@@ -10,7 +10,7 @@ import org.androidannotations.annotations.Trace;
 import org.androidannotations.annotations.ViewById;
 import org.apache.commons.lang3.time.DateUtils;
 
-import android.content.Intent;
+import quickutils.core.QuickUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -18,20 +18,16 @@ import android.widget.TextView;
 
 import com.octo.android.robospice.persistence.DurationInMillis;
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.communication.rest.model.DatesToHighlightList.POJORoboOneDateToHighlight;
-import com.touchip.organizer.communication.rest.request.DownloadSitePlanRequest;
+import com.touchip.organizer.communication.rest.model.ModelFullSiteInfo;
 import com.touchip.organizer.communication.rest.request.GetDeliveriesListRequest;
 import com.touchip.organizer.communication.rest.request.GetMeetingPlanNamesRequest;
-import com.touchip.organizer.communication.rest.request.GetPathsCreationTimeRequest;
-import com.touchip.organizer.communication.rest.request.RequestFullSitePlanInfo;
-import com.touchip.organizer.communication.rest.request.listener.DownloadSitePlanRequestListenerStartActivity;
+import com.touchip.organizer.communication.rest.request.SuperRequest;
 import com.touchip.organizer.communication.rest.request.listener.GetDeliveriesListRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.GetMeetingPlanNamesRequestListener;
-import com.touchip.organizer.communication.rest.request.listener.GetPathsCreationTimeRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.ResponseFullSitePlanInfo;
-import com.touchip.organizer.utils.DataAccess;
-import com.touchip.organizer.utils.GlobalConstants;
-import com.touchip.organizer.utils.HTTP_PARAMS;
+import com.touchip.organizer.constants.GlobalConstants;
+import com.touchip.organizer.constants.HTTP_PARAMS;
+import com.touchip.organizer.constants.RestAddresses;
 import com.touchip.organizer.utils.Utils;
 import com.touchip.organizer.utils.Utils.AnimationManager;
 
@@ -51,19 +47,6 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                                                                                     @Override public void onSelectDate(final Date date, View view) {
                                                                                          showProgressDialog();
                                                                                          GlobalConstants.SITE_PLAN_IMAGE_NAME = Utils.formatDate(date);
-                                                                                         for ( POJORoboOneDateToHighlight singleDate : DataAccess.datestoHighlight ) {
-                                                                                              if ( singleDate.date.equals(GlobalConstants.SITE_PLAN_IMAGE_NAME) ) {
-                                                                                                   if ( (singleDate.floors) != null && (!singleDate.floors.isEmpty()) ) {
-                                                                                                        GlobalConstants.CURRENT_FLOOR = singleDate.floors.get(0);
-                                                                                                   } else {
-                                                                                                        Utils.showCustomToast(AMenuModules.this, R.string.error_obtaining_floors_areas, R.drawable.hide_hotspot);
-                                                                                                        return;
-                                                                                                   }
-                                                                                              }
-                                                                                         }
-                                                                                         DownloadSitePlanRequest request = new DownloadSitePlanRequest();
-                                                                                         getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new DownloadSitePlanRequestListenerStartActivity(AMenuModules.this));
-                                                                                         // startActivity(new Intent(AMenuModules.this, AMenuModules_.class));
                                                                                     }
 
                                                                                     @Override public void onChangeMonth(int month, int year) {
@@ -105,33 +88,35 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
 
      @Click void rlQuilt() {
           showProgressDialog();
-
-          RequestFullSitePlanInfo request = new RequestFullSitePlanInfo();
+          HashMap <String, String> params = new HashMap <String, String>();
+          params.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
+          params.put(HTTP_PARAMS.SITE_ID, GlobalConstants.SITE_ID);
+          SuperRequest <ModelFullSiteInfo> request = new SuperRequest <ModelFullSiteInfo>(ModelFullSiteInfo.class, RestAddresses.DOWNLOAD_SITE_PLAN, null, params);
           getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new ResponseFullSitePlanInfo(AMenuModules.this));
      }
 
      @Click void rlTv() {
-          startActivity(new Intent(AMenuModules.this, TvActivity_.class));
+          QuickUtils.system.navigateToActivity(this, TvActivity_.class);
      }
 
      @Click void rlNotes() {
-          startActivity(new Intent(AMenuModules.this, ANotes_.class));
+          QuickUtils.system.navigateToActivity(this, ANotes_.class);
      }
 
      @Click void rlDelivery() {
           // showProgressDialog();
           HashMap <String, String> params = new HashMap <String, String>();
           params.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
-          params.put(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
+          params.put(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.SITE_ID);
 
           GetDeliveriesListRequest request = new GetDeliveriesListRequest(params);
           getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetDeliveriesListRequestListener(this));
      }
 
      @Click void rlWboard() {
-          DrawingCompaniesActivity.showProgressDialog();
-          GetPathsCreationTimeRequest request = new GetPathsCreationTimeRequest();
-          getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetPathsCreationTimeRequestListener(this));
+          showProgressDialog();
+          // GetPathsCreationTimeRequest request = new GetPathsCreationTimeRequest();
+          // getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetPathsCreationTimeRequestListener(this));
      }
 
      @Click void rlPrsr() {

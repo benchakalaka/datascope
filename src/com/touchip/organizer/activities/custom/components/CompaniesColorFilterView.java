@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.activities.DrawingCompaniesActivity;
-import com.touchip.organizer.activities.fragments.FragmentCompaniesList;
 import com.touchip.organizer.communication.rest.model.CompaniesList.POJORoboCompany;
+import com.touchip.organizer.constants.GlobalConstants;
 import com.touchip.organizer.utils.Utils;
 
 @EViewGroup ( R.layout.listview_company_list_item ) public class CompaniesColorFilterView extends RelativeLayout {
@@ -40,9 +40,9 @@ import com.touchip.organizer.utils.Utils;
                                                                            if ( ZERO.equals(companyColorFilter) || ONE.equals(companyColorFilter) ) {
                                                                                 DrawingCompaniesActivity.getDrawView().setCompanyColourFilter(Integer.parseInt(companyColorFilter));
                                                                            } else {
-                                                                                for ( int i = 0; i < FragmentCompaniesList.COMPANIES_LIST.size(); i++ ) {
-                                                                                     if ( FragmentCompaniesList.COMPANIES_LIST.get(i).companyName.equals(companyColorFilter) ) {
-                                                                                          colourFilter = Color.parseColor(FragmentCompaniesList.COMPANIES_LIST.get(i).colour);
+                                                                                for ( int i = 0; i < GlobalConstants.SITE_PLAN_FULL_INFO.companyWrappersList.size(); i++ ) {
+                                                                                     if ( GlobalConstants.SITE_PLAN_FULL_INFO.companyWrappersList.get(i).companyName.equals(companyColorFilter) ) {
+                                                                                          colourFilter = Color.parseColor(GlobalConstants.SITE_PLAN_FULL_INFO.companyWrappersList.get(i).colour);
                                                                                      }
                                                                                 }
                                                                                 DrawingCompaniesActivity.getDrawView().setCompanyColourFilter(colourFilter);

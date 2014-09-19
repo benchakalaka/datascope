@@ -14,12 +14,11 @@ import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.activities.AMenuModules;
-import com.touchip.organizer.activities.DrawingCompaniesActivity;
 import com.touchip.organizer.communication.rest.model.MeetingPlanNamesList;
 import com.touchip.organizer.communication.rest.model.MeetingPlanNamesList.POJORoboSingleMeetingPlanName;
 import com.touchip.organizer.communication.rest.request.GetMeetingPlanRequest;
-import com.touchip.organizer.utils.GlobalConstants;
-import com.touchip.organizer.utils.HTTP_PARAMS;
+import com.touchip.organizer.constants.GlobalConstants;
+import com.touchip.organizer.constants.HTTP_PARAMS;
 import com.touchip.organizer.utils.Utils;
 
 public class GetMeetingPlanNamesRequestListener implements RequestListener <MeetingPlanNamesList> {
@@ -36,7 +35,7 @@ public class GetMeetingPlanNamesRequestListener implements RequestListener <Meet
      @Override public void onRequestFailure(SpiceException e) {
           Utils.showCustomToast(this.activity, Utils.getResources(R.string.connection_problem), R.drawable.hide_hotspot);
           Utils.logw(e.getMessage());
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
      }
 
      // Request succesfull, update UI
@@ -64,7 +63,7 @@ public class GetMeetingPlanNamesRequestListener implements RequestListener <Meet
                                    vars.put(HTTP_PARAMS.PLAN_ID, singlePlanName.id);
                               }
                          }
-                         DrawingCompaniesActivity.showProgressDialog();
+                         // DrawingCompaniesActivity.showProgressDialog();
                          GetMeetingPlanRequest request = new GetMeetingPlanRequest(vars);
                          activity.getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetMeetingPlanRequestListener(activity));
 
@@ -76,6 +75,6 @@ public class GetMeetingPlanNamesRequestListener implements RequestListener <Meet
           } else {
                Utils.showCustomToast(activity, Utils.getResources(R.string.no_meeting_plan) + " - " + GlobalConstants.SITE_PLAN_IMAGE_NAME, R.drawable.hide_hotspot);
           }
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
      }
 }

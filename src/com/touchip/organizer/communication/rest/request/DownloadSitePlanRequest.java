@@ -6,8 +6,9 @@ import java.util.Map;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 
 import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
-import com.touchip.organizer.utils.GlobalConstants;
-import com.touchip.organizer.utils.HTTP_PARAMS;
+import com.touchip.organizer.constants.GlobalConstants;
+import com.touchip.organizer.constants.HTTP_PARAMS;
+import com.touchip.organizer.constants.RestAddresses;
 import com.touchip.organizer.utils.Utils;
 
 public class DownloadSitePlanRequest extends SpringAndroidSpiceRequest <byte[]> {
@@ -27,7 +28,7 @@ public class DownloadSitePlanRequest extends SpringAndroidSpiceRequest <byte[]> 
                vars.clear();
           }
           vars.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
-          vars.put(HTTP_PARAMS.SITE_ID, GlobalConstants.LAST_CLICKED_MARKER_ID);
+          vars.put(HTTP_PARAMS.SITE_ID, GlobalConstants.SITE_ID);
           getRestTemplate().getMessageConverters().add(new ByteArrayHttpMessageConverter());
           return getRestTemplate().postForObject(RestAddresses.DOWNLOAD_SITE_PLAN, vars, byte[].class);
      }

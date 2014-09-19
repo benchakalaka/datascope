@@ -11,7 +11,7 @@ import com.touchip.organizer.activities.DrawingCompaniesActivity_;
 import com.touchip.organizer.activities.custom.components.TradesView;
 import com.touchip.organizer.communication.rest.model.HotspotsList;
 import com.touchip.organizer.communication.rest.model.HotspotsList.POJORoboHotspot;
-import com.touchip.organizer.utils.DataAccess;
+import com.touchip.organizer.constants.GlobalConstants;
 import com.touchip.organizer.utils.Utils;
 import com.touchip.organizer.utils.Utils.AnimationManager;
 
@@ -27,7 +27,7 @@ public class GetTradesRequestListener implements RequestListener <HotspotsList> 
 
      // Have got error from server or problem with internet connection (there is no cash available)
      @Override public void onRequestFailure(SpiceException e) {
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
           // update UI
           Utils.showToast(activity, R.string.connection_problem, true);
           Utils.logw(e.getMessage());
@@ -36,10 +36,10 @@ public class GetTradesRequestListener implements RequestListener <HotspotsList> 
 
      // Request succesfull, update UI
      @Override public void onRequestSuccess(HotspotsList hotspots) {
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
           // if list empty or null show appropriate message and hide
           if ( (null == hotspots) || (hotspots.isEmpty()) ) {
-               Utils.showToast(activity, "There is no trades for " + DataAccess.LAST_CLICKED_COMPANY.companyName, true);
+               Utils.showToast(activity, "There is no trades for " + GlobalConstants.LAST_CLICKED_COMPANY.companyName, true);
                DrawingCompaniesActivity.getLlTrades().setVisibility(View.GONE);
                return;
           }

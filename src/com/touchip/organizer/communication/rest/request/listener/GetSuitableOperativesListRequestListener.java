@@ -28,7 +28,7 @@ public class GetSuitableOperativesListRequestListener implements RequestListener
      @Override public void onRequestFailure(SpiceException ex) {
           ex.printStackTrace();
           Utils.showCustomToast(activity, R.string.connection_problem, R.drawable.hide_hotspot);
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
      }
 
      @Override public void onRequestSuccess(SuitableOperativesList operatives) {
@@ -60,6 +60,6 @@ public class GetSuitableOperativesListRequestListener implements RequestListener
           } else {
                Utils.showCustomToast(activity, R.string.there_is_no_suitable_operatives, R.drawable.trade);
           }
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
      }
 }

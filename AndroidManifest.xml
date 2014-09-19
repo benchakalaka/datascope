@@ -42,15 +42,6 @@
 		<meta-data
 			android:name="com.google.android.maps.v2.API_KEY"
 			android:value="AIzaSyA-o1qp2gfS6gqCiKsQIWIsPDPCVtwtU6U" />
-		<!-- Enable Amazon Maps on Amazon devices. -->
-		<amazon:enable-feature
-			android:name="com.amazon.geo.maps"
-			android:required="false" />
-
-		<!-- Make Google Maps library optional. -->
-		<uses-library
-			android:name="com.google.android.maps"
-			android:required="false" />
 
 		<activity
 			android:name="com.touchip.organizer.activities.TvActivity_"
@@ -64,50 +55,21 @@
 			</intent-filter>
 		</activity>
 		<activity
-			android:name="com.touchip.organizer.activities.KindleMapActivity_"
-			android:screenOrientation="sensorLandscape"
-			android:theme="@style/Sherlock.__Theme.DarkActionBar" >
-		</activity>
-		<activity
-			android:name="com.touchip.organizer.activities.StartActivity_"
-			android:screenOrientation="sensorLandscape"
-			android:theme="@style/Sherlock.__Theme.DarkActionBar" >
-		</activity>
-		<activity
-			android:name="com.touchip.organizer.activities.EnterPinActivity"
-			android:screenOrientation="sensorLandscape"
-			android:theme="@style/Sherlock.__Theme.DarkActionBar" >
-		</activity>
-		<activity
 			android:name="com.touchip.organizer.activities.DeliveriesActivity_"
 			android:screenOrientation="sensorLandscape"
 			android:theme="@style/Sherlock.__Theme.DarkActionBar" >
 		</activity>
 		<activity
 			android:name="com.touchip.organizer.activities.GeneralWhiteBoardActivity_"
-			android:parentActivityName="com.touchip.organizer.activities.DrawingCompaniesActivity_"
-			android:screenOrientation="sensorLandscape"
-			android:theme="@style/Sherlock.__Theme.DarkActionBar" >
-			<meta-data
-				android:name="android.support.PARENT_ACTIVITY"
-				android:value="com.touchip.organizer.activities.DrawingCompaniesActivity_" />
-		</activity>
-		<activity
-			android:name="com.touchip.organizer.activities.MapActivity_"
-			android:parentActivityName="com.touchip.organizer.activities.StartActivity_"
 			android:screenOrientation="sensorLandscape"
 			android:theme="@style/Sherlock.__Theme.DarkActionBar" >
 		</activity>
 		<activity
 			android:name="com.touchip.organizer.activities.DrawingCompaniesActivity_"
 			android:hardwareAccelerated="true"
-			android:parentActivityName="com.touchip.organizer.activities.MapActivity"
 			android:screenOrientation="sensorLandscape"
 			android:theme="@style/Sherlock.__Theme.DarkActionBar"
 			android:windowSoftInputMode="adjustPan" >
-			<meta-data
-				android:name="android.support.PARENT_ACTIVITY"
-				android:value="com.touchip.organizer.activities.MapActivity" />
 		</activity>
 		<activity
 			android:name="com.touchip.organizer.activities.AMenuModules_"
@@ -142,9 +104,4 @@
 	<meta-data
 		android:name="com.amazon.mobile.sdk.plugin"
 		android:value="identity" />
-
-	<amazon:enable-feature
-		android:name="com.amazon.geo.maps"
-		android:required="true" />
-
-</manifest>
+</manifest>

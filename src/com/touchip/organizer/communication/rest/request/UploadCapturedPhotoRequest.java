@@ -8,6 +8,7 @@ import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.util.MultiValueMap;
 
 import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
+import com.touchip.organizer.constants.RestAddresses;
 import com.touchip.organizer.utils.Utils;
 
 public class UploadCapturedPhotoRequest extends SpringAndroidSpiceRequest <String> {

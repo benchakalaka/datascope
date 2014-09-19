@@ -17,9 +17,7 @@ import com.touchip.organizer.activities.DrawingCompaniesActivity;
 import com.touchip.organizer.activities.DrawingCompaniesActivity_;
 import com.touchip.organizer.communication.rest.model.HotspotsList;
 import com.touchip.organizer.communication.rest.model.HotspotsList.POJORoboHotspot;
-import com.touchip.organizer.utils.OnSwipeTouchListener;
 import com.touchip.organizer.utils.Utils;
-import com.touchip.organizer.utils.Utils.AnimationManager;
 
 @EViewGroup ( R.layout.trades_view ) public class TradesView extends RelativeLayout implements android.view.View.OnLongClickListener {
 
@@ -73,7 +71,6 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
 
           @Override public View getView(final int position, View convertView, ViewGroup parent) {
                TradesView rowView = TradesView_.build(activity);
-               rowView.setOnTouchListener(swipeAndClose);
                rowView.twTradeDescription.setText(tradesHotspots.get(position).description);
                rowView.twTradeAmount.setText(String.valueOf(tradesHotspots.get(position).amount));
                rowView.setTag(String.valueOf(tradesHotspots.get(position).description) + "_trade");
@@ -82,10 +79,4 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           }
      }
 
-     static OnSwipeTouchListener swipeAndClose = new OnSwipeTouchListener(DrawingCompaniesActivity.INSTANCE) {
-
-                                                    @Override public void onSwipeRight() {
-                                                         AnimationManager.animateMenu(DrawingCompaniesActivity.getLlTrades(), View.GONE, R.anim.disappear, 500);
-                                                    }
-                                               };
 }

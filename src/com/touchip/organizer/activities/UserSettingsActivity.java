@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.communication.rest.request.RestAddresses;
+import com.touchip.organizer.constants.RestAddresses;
 import com.touchip.organizer.utils.AppSharedPreferences_;
 import com.touchip.organizer.utils.Utils;
 

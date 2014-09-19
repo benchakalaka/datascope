@@ -12,9 +12,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Map;
 
+import org.apache.commons.lang3.SerializationUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.support.Base64;
+
+import quickutils.core.QuickUtils;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
@@ -28,7 +32,6 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
@@ -41,7 +44,6 @@ import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -60,9 +62,6 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnCloseListener;
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnOpenListener;
 import com.octo.android.robospice.persistence.DurationInMillis;
 import com.squareup.timessquare.sample.BuildConfig;
 import com.squareup.timessquare.sample.R;
@@ -70,6 +69,7 @@ import com.touchip.organizer.activities.UserSettingsActivity;
 import com.touchip.organizer.communication.rest.request.UpdateAppRequest;
 import com.touchip.organizer.communication.rest.request.listener.UpdateAppRequestListener;
 import com.touchip.organizer.communication.rest.serializables.PathSerializable;
+import com.touchip.organizer.constants.GlobalConstants;
 import com.touchip.organizer.utils.HotspotManager.Hotspots;
 
 public class Utils {
@@ -102,6 +102,22 @@ public class Utils {
                }
           }
           return days;
+     }
+
+     @SuppressWarnings ( "unchecked" ) public static List <PathSerializable> convertStringToPathsList(String stringToConvert) {
+          List <PathSerializable> result = null;
+          if ( !StringUtils.isEmpty(stringToConvert) ) {
+               try {
+
+                    byte[] imageByteArray = Base64.decode(stringToConvert);
+                    if ( null != imageByteArray ) {
+                         result = (List <PathSerializable>) SerializationUtils.deserialize(imageByteArray);
+                    }
+               } catch (IOException e) {
+                    e.printStackTrace();
+               }
+          }
+          return result;
      }
 
      public static void updateApp(final UserSettingsActivity userSettingsActivity) {
@@ -201,24 +217,6 @@ public class Utils {
           clickedView.setScaleX(0.9f);
           clickedView.setScaleY(0.9f);
           clickedView.setBackgroundResource(R.drawable.background_view_rounded_single);
-     }
-
-     public static SlidingMenu configureSlideMenu(Activity activity, View v) {
-          // configure the SlidingMenu
-          Point size = new Point();
-          activity.getWindowManager().getDefaultDisplay().getSize(size);
-          SlidingMenu menu = new SlidingMenu(activity);
-          menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
-          menu.setShadowWidthRes(R.dimen.shadow_width);
-          menu.setBehindOffset((int) (size.x * 0.80));
-          menu.attachToActivity(activity, SlidingMenu.SLIDING_WINDOW);
-          menu.setMenu(v);
-          menu.setAlwaysDrawnWithCacheEnabled(true);
-          menu.setMode(SlidingMenu.LEFT);
-
-          menu.setOnOpenListener((OnOpenListener) activity);
-          menu.setOnCloseListener((OnCloseListener) activity);
-          return menu;
      }
 
      /**
@@ -422,26 +420,10 @@ public class Utils {
      }
 
      /**
-      * Check if ip address valid
-      * 
-      * @param ip
-      *             string representation of ip address
-      * @return true if given ip address is valid, false otherwise
-      */
-     public static boolean isIpAddressValid(String ip) {
-          // Compile IP pattern from regular expression in GlobalConstants class
-          Pattern pattern = Pattern.compile(GlobalConstants.PATTERN);
-          // Create matcher with given ip address
-          Matcher matcher = pattern.matcher(ip);
-          // true if ip is valid, false otherwise
-          return matcher.matches();
-     }
-
-     /**
       * Remove already showed dialog to avoid ANR
       * 
-      * @param time
-      *             period of time after which dialog will be hidden
+      * @param whiteboards
+      *             period of whiteboards after which dialog will be hidden
       * @param dialog
       */
      public static void timerDelayRemoveDialog(long time, final Dialog dialog) {
@@ -586,7 +568,19 @@ public class Utils {
       */
      public static void logw(String message) {
           if ( BuildConfig.DEBUG ) {
-               Log.w(GlobalConstants.LOG_TAG, null != message ? message : "message null");
+               QuickUtils.log.i(message);
+          }
+     }
+
+     public static void printMap(Map mp) {
+          if ( null != mp ) {
+               for ( Object key : mp.keySet() ) {
+                    try {
+                         System.out.println("(" + key + " = " + mp.get(key) + ")");
+                    } catch (Exception ex) {
+                         ex.printStackTrace();
+                    }
+               }
           }
      }
 
@@ -599,7 +593,7 @@ public class Utils {
       */
      public static void logw(int message) {
           if ( BuildConfig.DEBUG ) {
-               Log.w(GlobalConstants.LOG_TAG, String.valueOf(message));
+               QuickUtils.log.i(String.valueOf(message));
           }
      }
 

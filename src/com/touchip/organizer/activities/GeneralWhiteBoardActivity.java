@@ -13,12 +13,14 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.net.Uri;
@@ -42,19 +44,13 @@ import com.touchip.organizer.activities.custom.components.ActionBarGeneralWhiteb
 import com.touchip.organizer.activities.custom.components.ActionBarGeneralWhiteboard_;
 import com.touchip.organizer.activities.custom.components.WhiteBoardDrawingView;
 import com.touchip.organizer.activities.custom.components.WhiteBoardDrawingView.ShapesType;
-import com.touchip.organizer.communication.rest.request.DownloadOrCreateNewWhiteboardRequest;
-import com.touchip.organizer.communication.rest.request.GetPathsCreationTimeRequest;
-import com.touchip.organizer.communication.rest.request.RestAddresses;
-import com.touchip.organizer.communication.rest.request.SaveHSWhiteboardRequest;
-import com.touchip.organizer.communication.rest.request.SaveWhiteboardRequest;
-import com.touchip.organizer.communication.rest.request.listener.DownloadOrCreateNewWhiteboardRequestListener;
-import com.touchip.organizer.communication.rest.request.listener.GetPathsCreationTimeRequestListener;
+import com.touchip.organizer.communication.rest.model.PathsCreationTimeList.POJORoboPathCreationTime;
+import com.touchip.organizer.communication.rest.request.SuperRequest;
 import com.touchip.organizer.communication.rest.request.listener.SaveHSWhiteboardRequestListener;
-import com.touchip.organizer.communication.rest.request.listener.SaveWhiteboardRequestListener;
 import com.touchip.organizer.communication.rest.serializables.PathSerializable;
-import com.touchip.organizer.utils.GlobalConstants;
-import com.touchip.organizer.utils.GlobalConstants.DrawingType;
-import com.touchip.organizer.utils.HTTP_PARAMS;
+import com.touchip.organizer.constants.GlobalConstants;
+import com.touchip.organizer.constants.HTTP_PARAMS;
+import com.touchip.organizer.constants.RestAddresses;
 import com.touchip.organizer.utils.Utils;
 import com.touchip.organizer.utils.Utils.AnimationManager;
 import com.touchip.organizer.utils.colorpicker.ColorPicker;
@@ -69,10 +65,8 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
      private AlertDialog.Builder                   builder;
      private ColorPicker                           picker;
      public static String                          WHITEBOARD_TYPE   = "";
-     private static ProgressDialog                 progressDialog;
      private static TextView                       twSaturationBar , twOpacityBar;
      private int                                   colorToSet;
-     public static boolean                         IS_WHITEBOARD_NEW = false;
      public static boolean                         IS_NEED_TO_BACK   = false;
 
      public static GeneralWhiteBoardActivity       INSTANCE;
@@ -123,11 +117,6 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
           ibColour15.setOnClickListener(this);
           ibColour16.setOnClickListener(this);
           ibColour17.setOnClickListener(this);
-
-          // preapare progress dialog
-          progressDialog = new ProgressDialog(GeneralWhiteBoardActivity.this);
-          progressDialog.setMessage(Utils.getResources(R.string.loading));
-          progressDialog.setCancelable(true);
 
           dialogChangeColour = new Dialog(GeneralWhiteBoardActivity.this);
           dialogInputText = new Dialog(GeneralWhiteBoardActivity.this);
@@ -190,10 +179,6 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
           ok.setOnClickListener(this);
           cancel.setOnClickListener(this);
 
-          progressDialog = new ProgressDialog(GeneralWhiteBoardActivity.this);
-          progressDialog.setTitle(R.string.loading);
-          progressDialog.setCancelable(true);
-
           ibShapesCircle.setOnTouchListener(menuTouchListener);
           ibShapesRectangle.setOnTouchListener(menuTouchListener);
           ibShapesLine.setOnTouchListener(menuTouchListener);
@@ -253,41 +238,26 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
           }
      }
 
-     public static ProgressDialog getProgressDialog() {
-          return progressDialog;
-     }
-
-     public static void showProgressDialog() {
-          if ( null != progressDialog ) {
-               progressDialog.show();
-          }
-     }
-
-     public static void dissmissProgressDialog() {
-          if ( null != progressDialog ) {
-               progressDialog.dismiss();
-          }
-     }
-
      /**
       * Load paths array
       */
      public void loadPathes() {
-          progressDialog.show();
           try {
                // Variable array for POST request
                Map <String, String> params = new HashMap <String, String>();
-               if ( WHITEBOARD_TYPE.equals(GlobalConstants.DrawingType.HOTSPOT_WHITEBOARD_DRAWING) || IS_WHITEBOARD_NEW ) {
-                    params.put(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
-                    params.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
-                    params.put(HTTP_PARAMS.FLOOR, GlobalConstants.CURRENT_FLOOR);
-                    params.put(HTTP_PARAMS.TYPE, WHITEBOARD_TYPE);
-                    params.put(HTTP_PARAMS.HOTSPOT_ID, String.valueOf(GlobalConstants.LAST_CLICKED_HOTSPOT.id));
-               } else {
-                    params.put(HTTP_PARAMS.PATH_ID, String.valueOf(GlobalConstants.LAST_CLICKED_WHITE_BOARD.id));
-               }
-               DownloadOrCreateNewWhiteboardRequest request = new DownloadOrCreateNewWhiteboardRequest(params, IS_WHITEBOARD_NEW ? RestAddresses.CREATE_NEW_WHITE_BOARD : RestAddresses.DOWNLOAD_DRAWING_PATHES);
-               getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new DownloadOrCreateNewWhiteboardRequestListener());
+               // if ( WHITEBOARD_TYPE.equals(GlobalConstants.DrawingType.HOTSPOT_WHITEBOARD_DRAWING) || IS_WHITEBOARD_NEW ) {
+               params.put(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.SITE_ID);
+               params.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
+               params.put(HTTP_PARAMS.FLOOR, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
+               params.put(HTTP_PARAMS.TYPE, WHITEBOARD_TYPE);
+               params.put(HTTP_PARAMS.HOTSPOT_ID, String.valueOf(GlobalConstants.LAST_CLICKED_HOTSPOT.id));
+               // } else {
+               params.put(HTTP_PARAMS.PATH_ID, String.valueOf(GlobalConstants.LAST_CLICKED_WHITE_BOARD.id));
+               // }
+               // DownloadOrCreateNewWhiteboardRequest request = new DownloadOrCreateNewWhiteboardRequest(params, IS_WHITEBOARD_NEW ?
+               // RestAddresses.CREATE_NEW_WHITE_BOARD : RestAddresses.DOWNLOAD_DRAWING_PATHES);
+               // getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new
+               // ResponseDownloadPathById());
           } catch (Exception e) {
                Utils.logw(e.getMessage());
                return;
@@ -295,8 +265,6 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
      }
 
      public void saveAndSendDrawing(String whiteBoardName) {
-          progressDialog.show();
-
           try {
                // Variable array for POST request
                MultiValueMap <String, Object> params = new LinkedMultiValueMap <String, Object>();
@@ -321,23 +289,9 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
                     params.add(HTTP_PARAMS.DRAWING_DATA, fileSystemResources);
                }
 
-               if ( WHITEBOARD_TYPE.equals(GlobalConstants.DrawingType.HOTSPOT_WHITEBOARD_DRAWING) ) {
-                    params.add(HTTP_PARAMS.TYPE, WHITEBOARD_TYPE);
-                    params.add(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
-                    params.add(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
-                    params.add(HTTP_PARAMS.FLOOR, GlobalConstants.CURRENT_FLOOR);
-                    params.add(HTTP_PARAMS.HOTSPOT_ID, String.valueOf(GlobalConstants.LAST_CLICKED_HOTSPOT.id));
-               } else {
-                    if ( !IS_WHITEBOARD_NEW ) {
-                         params.add(HTTP_PARAMS.PATH_ID, String.valueOf(GlobalConstants.LAST_CLICKED_WHITE_BOARD.id));
-                    } else {
-                         IS_WHITEBOARD_NEW = !IS_WHITEBOARD_NEW;
-                         params.add(HTTP_PARAMS.TYPE, WHITEBOARD_TYPE);
-                         params.add(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
-                         params.add(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
-                         params.add(HTTP_PARAMS.FLOOR, GlobalConstants.CURRENT_FLOOR);
-                    }
-               }
+               params.add(HTTP_PARAMS.SITE_ID, GlobalConstants.SITE_ID);
+               params.add(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
+               params.add(HTTP_PARAMS.AREA_NAME, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
 
                // attempt to save drawing
                try {
@@ -348,7 +302,7 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
                     String userFeedback = (isSuccessfullySaved) ? Utils.getResources(R.string.drawing_saved_to_gallery) : Utils.getResources(R.string.cannot_save_image);
                     if ( isSuccessfullySaved ) {
                          FileSystemResource snapshotSpringWrapper = new FileSystemResource(new File(Utils.getRealPathFromURI(getApplicationContext(), Uri.parse(saveResponseFilePath))));
-                         params.add(HTTP_PARAMS.WHITEBOARD_SNAPSHOT, snapshotSpringWrapper);
+                         params.add(HTTP_PARAMS.SNAPSHOT, snapshotSpringWrapper);
                     }
                     WHITE_BOARD_DRAWING.destroyDrawingCache();
                     Utils.showCustomToast(GeneralWhiteBoardActivity.this, userFeedback, R.drawable.save);
@@ -356,18 +310,14 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
                     ex.printStackTrace();
                }
 
-               if ( WHITEBOARD_TYPE.equals(GlobalConstants.DrawingType.HOTSPOT_WHITEBOARD_DRAWING) ) {
-                    // hotstpo wb
-                    SaveHSWhiteboardRequest request = new SaveHSWhiteboardRequest(params, RestAddresses.SAVE_HWD_PATHS);
-                    getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new SaveHSWhiteboardRequestListener(this));
+               HttpHeaders headers = new HttpHeaders();
+               headers.setContentType(MediaType.MULTIPART_FORM_DATA);
 
-               } else {
-                    SaveWhiteboardRequest request = new SaveWhiteboardRequest(params, RestAddresses.SAVE_GWD_PATHS);
-                    getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new SaveWhiteboardRequestListener(this));
-               }
-               if ( IS_WHITEBOARD_NEW ) {
-                    IS_WHITEBOARD_NEW = !IS_WHITEBOARD_NEW;
-               }
+               SuperRequest <POJORoboPathCreationTime> request = new SuperRequest <POJORoboPathCreationTime>(POJORoboPathCreationTime.class, RestAddresses.CREATE_GENERAL_WHITE_BOARD, new FormHttpMessageConverter(), params, headers);
+
+               // SaveHSWhiteboardRequest request = new SaveHSWhiteboardRequest(params, RestAddresses.SAVE_HWD_PATHS);
+               getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new SaveHSWhiteboardRequestListener(this));
+
           } catch (Exception e) {
                Utils.logw(e.getMessage());
           }
@@ -552,20 +502,20 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
      @Click void ibLoadWhiteboard() {
 
           ibLoadWhiteboard.startAnimation(AnimationManager.load(R.anim.pump_bottom, 500));
-          if ( WHITEBOARD_TYPE.equals(DrawingType.HOTSPOT_WHITEBOARD_DRAWING) ) {
-               Utils.showCustomToast(GeneralWhiteBoardActivity.this, "Disabled (whiteboard hotspot)", R.drawable.whiteboard);
-               return;
-          }
-          GetPathsCreationTimeRequest request = new GetPathsCreationTimeRequest();
-          getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetPathsCreationTimeRequestListener(this));
+          // if ( WHITEBOARD_TYPE.equals(DrawingType.HOTSPOT_WHITEBOARD_DRAWING) ) {
+          // Utils.showCustomToast(GeneralWhiteBoardActivity.this, "Disabled (whiteboard hotspot)", R.drawable.whiteboard);
+          // return;
+          // }
+          // GetPathsCreationTimeRequest request = new GetPathsCreationTimeRequest();
+          // getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetPathsCreationTimeRequestListener(this));
      }
 
      @Click void ibCreateNewWhiteboard() {
 
-          if ( WHITEBOARD_TYPE.equals(DrawingType.HOTSPOT_WHITEBOARD_DRAWING) ) {
-               Utils.showCustomToast(GeneralWhiteBoardActivity.this, "Disabled (whiteboard hotspot)", R.drawable.whiteboard);
-               return;
-          }
+          // if ( WHITEBOARD_TYPE.equals(DrawingType.HOTSPOT_WHITEBOARD_DRAWING) ) {
+          // Utils.showCustomToast(GeneralWhiteBoardActivity.this, "Disabled (whiteboard hotspot)", R.drawable.whiteboard);
+          // return;
+          // }
 
           builder.setTitle(R.string.create_whiteboard);
           builder.setMessage(R.string.everything_will_be_cleared);
@@ -573,7 +523,6 @@ import com.touchip.organizer.utils.colorpicker.SaturationBar.OnSaturationChanged
           builder.setPositiveButton(Utils.getResources(R.string.yes), new DialogInterface.OnClickListener() {
                @Override public void onClick(DialogInterface dialog, int which) {
                     ibCreateNewWhiteboard.startAnimation(AnimationManager.load(R.anim.pump_bottom, 500));
-                    IS_WHITEBOARD_NEW = true;
                     WHITE_BOARD_DRAWING.clearAllPaths();
                     Utils.showCustomToast(GeneralWhiteBoardActivity.this, R.string.new_whiteboard_created, R.drawable.add);
 

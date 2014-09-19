@@ -1,0 +1,4 @@
+bin/
+project.properties
+.apt_generated/
+gen/

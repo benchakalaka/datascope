@@ -7,7 +7,6 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
-import android.app.Activity;
 import android.content.Context;
 import android.text.Selection;
 import android.text.TextUtils;
@@ -18,36 +17,40 @@ import android.widget.TextView;
 
 import com.octo.android.robospice.persistence.DurationInMillis;
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.activities.TvActivity;
-import com.touchip.organizer.communication.rest.request.LoginRequest;
-import com.touchip.organizer.communication.rest.request.listener.LoginRequestListener;
-import com.touchip.organizer.utils.HTTP_PARAMS;
+import com.touchip.organizer.activities.SpiceFragmentActivity;
+import com.touchip.organizer.communication.rest.model.ModelUser;
+import com.touchip.organizer.communication.rest.request.SuperRequest;
+import com.touchip.organizer.communication.rest.request.listener.ResponseLogin;
+import com.touchip.organizer.constants.HTTP_PARAMS;
+import com.touchip.organizer.constants.RestAddresses;
 import com.touchip.organizer.utils.Utils.AnimationManager;
 
 @EViewGroup ( R.layout.dialog_user_password ) public class CDialogEnterPin extends RelativeLayout {
 
      // ===================== views
-     @ViewById public TextView tw1 , tw2 , tw3 , tw4 , tw5 , tw6 , tw7 , tw8 , tw9 , tw0 , twc , twLogin;
-     @ViewById EditText        etPassword;
+     @ViewById public TextView           tw1 , tw2 , tw3 , tw4 , tw5 , tw6 , tw7 , tw8 , tw9 , tw0 , twc , twLogin;
+     @ViewById EditText                  etPassword;
 
      // ====================== variable
-     private final Activity    activity;
+     private final SpiceFragmentActivity activity;
 
-     public CDialogEnterPin ( Context context , Activity act ) {
+     public CDialogEnterPin ( Context context , SpiceFragmentActivity act ) {
           super(context);
           this.activity = act;
      }
 
      @AfterViews void afterViews() {
           InputMethodManager imm = (InputMethodManager) this.activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-          imm.hideSoftInputFromWindow(etPassword.getWindowToken(), 0);
+          imm.hideSoftInputFromWindow(etPassword.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
      }
 
      @Click void twLogin() {
           HashMap <String, String> params = new HashMap <String, String>();
           params.put(HTTP_PARAMS.PIN, etPassword.getText().toString());
-          LoginRequest request = new LoginRequest(params);
-          ((TvActivity) this.activity).getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new LoginRequestListener(this.activity));
+
+          SuperRequest <ModelUser> request = new SuperRequest <ModelUser>(ModelUser.class, RestAddresses.LOGIN, null, params);
+          this.activity.getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new ResponseLogin(this.activity));
      }
 
      @Click void tw1() {
@@ -120,10 +123,4 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
      private void setSelection(EditText et) {
           Selection.setSelection(et.getText(), et.getText().toString().length());
      }
-
-     private void dissmissProgressDialog() {
-          // TODO Auto-generated method stub
-
-     }
-
 }

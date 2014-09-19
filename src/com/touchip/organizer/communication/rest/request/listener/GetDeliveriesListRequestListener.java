@@ -22,12 +22,11 @@ import android.widget.TextView;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.activities.DrawingCompaniesActivity;
 import com.touchip.organizer.communication.rest.model.DelieveriesList.POJORoboDelieverySlot;
 import com.touchip.organizer.communication.rest.model.Delivery;
 import com.touchip.organizer.communication.rest.model.Delivery.POJORoboDelieveryInfo;
+import com.touchip.organizer.constants.GlobalConstants;
 import com.touchip.organizer.utils.DialogUtils;
-import com.touchip.organizer.utils.GlobalConstants;
 import com.touchip.organizer.utils.Utils;
 import com.touchip.organizer.utils.Utils.AnimationManager;
 
@@ -46,7 +45,7 @@ public class GetDeliveriesListRequestListener implements RequestListener <Delive
           // update your UI
           Utils.logw(e.getMessage());
           // Utils.showToast(activity, R.string.connection_problem, true);
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
           Utils.showToast(activity, R.string.connection_problem, true);
      }
 
@@ -121,7 +120,7 @@ public class GetDeliveriesListRequestListener implements RequestListener <Delive
                          }
                     });
 
-                    // Fill header (time)
+                    // Fill header (whiteboards)
                     TableRow headerRow = (TableRow) tlRoot.findViewById(R.id.tableHeader);
                     List <POJORoboDelieverySlot> slots = deliveries.deliveries.get(0).slots;
 
@@ -221,7 +220,7 @@ public class GetDeliveriesListRequestListener implements RequestListener <Delive
                Utils.showToast(activity, Utils.getResources(R.string.deliveries_list_empty) + " for " + GlobalConstants.SITE_PLAN_IMAGE_NAME, true);
           }
 
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
 
      }
 }

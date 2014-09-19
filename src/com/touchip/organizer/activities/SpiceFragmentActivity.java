@@ -14,9 +14,9 @@ import com.squareup.timessquare.sample.R;
 public class SpiceFragmentActivity extends FragmentActivity {
 
      // Spice manager
-     private final SpiceManager    spiceManager = new SpiceManager(com.octo.android.robospice.JacksonSpringAndroidSpiceService.class);
+     private final SpiceManager spiceManager = new SpiceManager(com.octo.android.robospice.JacksonSpringAndroidSpiceService.class);
      // Progress dialog for displaying progress
-     private static ProgressDialog progressDialog;
+     public ProgressDialog      progressDialog;
 
      @Override protected void onResume() {
           super.onResume();
@@ -25,17 +25,17 @@ public class SpiceFragmentActivity extends FragmentActivity {
           progressDialog.setMessage(getResources().getString(R.string.loading));
      };
 
-     public static ProgressDialog getProgressDialog() {
+     public ProgressDialog getProgressDialog() {
           return progressDialog;
      }
 
-     public static void showProgressDialog() {
+     public void showProgressDialog() {
           if ( null != progressDialog ) {
                progressDialog.show();
           }
      }
 
-     public static void dissmissProgressDialog() {
+     public void dissmissProgressDialog() {
           if ( null != progressDialog ) {
                progressDialog.dismiss();
           }

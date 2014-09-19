@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
 import com.touchip.organizer.communication.rest.model.Delivery;
+import com.touchip.organizer.constants.RestAddresses;
 import com.touchip.organizer.utils.Utils;
 
 public class GetDeliveriesListRequest extends SpringAndroidSpiceRequest <Delivery> {

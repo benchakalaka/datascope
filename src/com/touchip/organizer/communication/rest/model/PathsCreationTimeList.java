@@ -10,9 +10,8 @@ public class PathsCreationTimeList extends ArrayList <com.touchip.organizer.comm
      private static final long serialVersionUID = 6980760542124438061L;
 
      @JsonIgnoreProperties ( ignoreUnknown = true ) public static class POJORoboPathCreationTime {
-          @JsonProperty ( "Id" ) public int      id;
+          @JsonProperty ( "PathId" ) public int  id;
           @JsonProperty ( "Time" ) public String time;
           @JsonProperty ( "Name" ) public String name;
      }
-
 }

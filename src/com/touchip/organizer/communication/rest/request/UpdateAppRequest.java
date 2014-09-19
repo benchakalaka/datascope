@@ -6,8 +6,8 @@ import java.util.Map;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 
 import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
-import com.touchip.organizer.activities.StartActivity;
-import com.touchip.organizer.utils.HTTP_PARAMS;
+import com.touchip.organizer.constants.HTTP_PARAMS;
+import com.touchip.organizer.constants.RestAddresses;
 import com.touchip.organizer.utils.Utils;
 
 public class UpdateAppRequest extends SpringAndroidSpiceRequest <byte[]> {
@@ -27,7 +27,7 @@ public class UpdateAppRequest extends SpringAndroidSpiceRequest <byte[]> {
                vars.clear();
           }
 
-          vars.put(HTTP_PARAMS.VERSION, StartActivity.APP_VERSION);
+          vars.put(HTTP_PARAMS.VERSION, "1");
           getRestTemplate().getMessageConverters().add(new ByteArrayHttpMessageConverter());
 
           return getRestTemplate().postForObject(RestAddresses.UPDATE_APPLICATION, vars, byte[].class);

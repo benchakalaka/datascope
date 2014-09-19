@@ -6,7 +6,7 @@ import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.activities.DrawingCompaniesActivity;
 import com.touchip.organizer.activities.fragments.FragmentHotspotsList;
 import com.touchip.organizer.communication.rest.model.HotspotsList;
-import com.touchip.organizer.utils.DataAccess;
+import com.touchip.organizer.constants.GlobalConstants;
 import com.touchip.organizer.utils.HotspotManager.Hotspots;
 import com.touchip.organizer.utils.Utils;
 
@@ -24,15 +24,16 @@ public class UpdateTradeHotspotRequestListener implements RequestListener <Hotsp
      @Override public void onRequestFailure(SpiceException e) {
           Utils.showToast(activity, R.string.connection_problem, true);
           Utils.logw(e.getMessage());
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
      }
 
      // Request succesfull, update UI
      @Override public void onRequestSuccess(HotspotsList hotspots) {
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
           if ( null != hotspots ) {
                this.activity.showTradesPanel();
-               DataAccess.SIGNED_HOTSPOTS = hotspots;
+               GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList = hotspots;
+
                FragmentHotspotsList.ADAPTER.notifyDataSetChanged();
                FragmentHotspotsList.ADAPTER.updateHotspotsButtonsList(Hotspots.HOTSPOTS_NAMES[Hotspots.SHOW_ALL]);
           } else {

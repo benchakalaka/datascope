@@ -5,11 +5,10 @@ import android.app.Activity;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.activities.DrawingCompaniesActivity;
 import com.touchip.organizer.activities.DrawingCompaniesActivity_;
 import com.touchip.organizer.activities.fragments.FragmentHotspotsList;
 import com.touchip.organizer.communication.rest.model.HotspotsList;
-import com.touchip.organizer.utils.DataAccess;
+import com.touchip.organizer.constants.GlobalConstants;
 import com.touchip.organizer.utils.HotspotManager.Hotspots;
 import com.touchip.organizer.utils.Utils;
 
@@ -30,14 +29,14 @@ public class CreateTradeHotspotRequestListener implements RequestListener <Hotsp
           // update your UI
           Utils.logw(e.getMessage());
           Utils.showToast(activity, R.string.connection_problem, true);
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
      }
 
      // Request succesfull, update UI
      @Override public void onRequestSuccess(HotspotsList hotspots) {
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
           if ( !Utils.isNullOrEmpty(hotspots) ) {
-               DataAccess.SIGNED_HOTSPOTS = hotspots;
+               GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList = hotspots;
                // DataAccess.UNASSIGNED_HOTSPOTS = hotspots;
                FragmentHotspotsList.ADAPTER.notifyDataSetChanged();
                // FragmentUnsignedHotspotsList.ADAPTER.notifyDataSetChanged();

@@ -37,9 +37,4 @@ import com.touchip.organizer.activities.DrawingCompaniesActivity;
           // twSPN.setText("Site:" + siteName);
           tvArea.setText("Area/Floor " + area);
      }
-
-     public void setUpCompanyName(String companyName) {
-          // tvCompanyName.setText(companyName);
-     }
-
 }

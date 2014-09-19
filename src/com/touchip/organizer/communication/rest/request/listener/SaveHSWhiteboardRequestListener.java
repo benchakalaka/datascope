@@ -7,10 +7,10 @@ import com.octo.android.robospice.request.listener.RequestListener;
 import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.activities.GeneralWhiteBoardActivity;
 import com.touchip.organizer.communication.rest.model.PathsCreationTimeList.POJORoboPathCreationTime;
-import com.touchip.organizer.utils.GlobalConstants;
+import com.touchip.organizer.constants.GlobalConstants;
 import com.touchip.organizer.utils.Utils;
 
-public class SaveHSWhiteboardRequestListener implements RequestListener <String> {
+public class SaveHSWhiteboardRequestListener implements RequestListener <POJORoboPathCreationTime> {
 
      private final GeneralWhiteBoardActivity activity;
 
@@ -23,27 +23,16 @@ public class SaveHSWhiteboardRequestListener implements RequestListener <String>
           GeneralWhiteBoardActivity.dissmissProgressDialog();
      }
 
-     @Override public void onRequestSuccess(String fileData) {
+     @Override public void onRequestSuccess(POJORoboPathCreationTime pathData) {
           GeneralWhiteBoardActivity.dissmissProgressDialog();
-          if ( "".equals(fileData) ) {
-               Utils.showCustomToast(activity, "Problem with downloading drawing", R.drawable.hide_hotspot);
-          } else {
+          if ( null != pathData ) {
                try {
-                    POJORoboPathCreationTime dptw = new POJORoboPathCreationTime();
-                    dptw.id = Integer.valueOf(fileData.substring(0, fileData.indexOf(" ")));
-                    dptw.time = fileData.substring(fileData.indexOf(" ") + 1, fileData.length());
-                    GlobalConstants.LAST_CLICKED_WHITE_BOARD = dptw;
+                    GlobalConstants.LAST_CLICKED_WHITE_BOARD = pathData;
                     Utils.showCustomToast(activity, "Drawing has been loaded successfully!", R.drawable.server2);
-                    this.activity.customActionBar.setTimeCreatedText(GlobalConstants.SITE_PLAN_IMAGE_NAME + " created at " + dptw.time);
+                    this.activity.customActionBar.setTimeCreatedText(GlobalConstants.SITE_PLAN_IMAGE_NAME + " created at " + pathData.time);
                } catch (Exception e) {
                     Utils.logw(e.getMessage());
                }
           }
-
-          if ( GeneralWhiteBoardActivity.IS_NEED_TO_BACK ) {
-               this.activity.onBackPressed();
-          }
-
      }
-
 }

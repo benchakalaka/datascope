@@ -22,8 +22,8 @@ import com.touchip.organizer.activities.DrawingCompaniesActivity;
 import com.touchip.organizer.activities.fragments.FragmentCompaniesList;
 import com.touchip.organizer.communication.rest.request.UpdateTradeHotspotRequest;
 import com.touchip.organizer.communication.rest.request.listener.UpdateTradeHotspotRequestListener;
-import com.touchip.organizer.utils.GlobalConstants;
-import com.touchip.organizer.utils.HTTP_PARAMS;
+import com.touchip.organizer.constants.GlobalConstants;
+import com.touchip.organizer.constants.HTTP_PARAMS;
 import com.touchip.organizer.utils.Utils;
 import com.touchip.organizer.utils.Utils.AnimationManager;
 
@@ -132,7 +132,7 @@ public class NumPad {
                          dialog.hide();
                          return;
                     }
-                    DrawingCompaniesActivity.showProgressDialog();
+                    // DrawingCompaniesActivity.showProgressDialog();
                     Map <String, Integer> params = new HashMap <String, Integer>();
                     params.put(HTTP_PARAMS.ID, GlobalConstants.LAST_CLICKED_HOTSPOT.id);
                     params.put(HTTP_PARAMS.NEW_AMOUNT, me.getIntValue());

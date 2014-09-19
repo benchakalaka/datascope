@@ -22,20 +22,20 @@ public class DownloadDrawingPathsRequestListener implements RequestListener <byt
 
      @Override public void onRequestFailure(SpiceException e) {
           Utils.logw(e.getMessage());
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
      }
 
      @Override public void onRequestSuccess(byte[] fileData) {
           if ( 1 == fileData.length ) {
                // Error on server or during parsing responce
-               DrawingCompaniesActivity.dissmissProgressDialog();
+               // DrawingCompaniesActivity.dissmissProgressDialog();
                return;
           }
 
           List <PathSerializable> listPathes = Utils.parseByteArryaToPathSerializable(fileData, CompaniesDrawingView.WIDTH, CompaniesDrawingView.HEIGHT);
           DrawingCompaniesActivity.DRAW_VIEW.setPaths(listPathes);
           Utils.logw(DrawingCompaniesActivity.DRAW_VIEW.getPaths().size() + " paths has been downloaded");
-          DrawingCompaniesActivity.dissmissProgressDialog();
+          // DrawingCompaniesActivity.dissmissProgressDialog();
      }
 
      /**

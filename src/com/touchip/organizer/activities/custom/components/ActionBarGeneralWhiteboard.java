@@ -11,7 +11,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.utils.GlobalConstants;
+import com.touchip.organizer.constants.GlobalConstants;
 
 @EViewGroup ( R.layout.ab_white_board_drawing ) public class ActionBarGeneralWhiteboard extends HorizontalScrollView {
      // Load views
@@ -27,8 +27,7 @@ import com.touchip.organizer.utils.GlobalConstants;
 
      @AfterViews void afterViews() {
           try {
-               twDataAndTimeCreated.setText(GlobalConstants.SITE_PLAN_IMAGE_NAME + (null == GlobalConstants.LAST_CLICKED_WHITE_BOARD ? " not saved"
-                         : " created at " + GlobalConstants.LAST_CLICKED_WHITE_BOARD.time));
+               twDataAndTimeCreated.setText(GlobalConstants.SITE_PLAN_IMAGE_NAME + (null == GlobalConstants.LAST_CLICKED_WHITE_BOARD ? " not saved" : GlobalConstants.LAST_CLICKED_WHITE_BOARD.time));
           } catch (Exception e) {
                twDataAndTimeCreated.setText(GlobalConstants.SITE_PLAN_IMAGE_NAME);
           }

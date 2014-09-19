@@ -15,7 +15,7 @@ import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.activities.DrawingCompaniesActivity;
 import com.touchip.organizer.communication.rest.model.CompaniesList;
 import com.touchip.organizer.communication.rest.model.CompaniesList.POJORoboCompany;
-import com.touchip.organizer.utils.DataAccess;
+import com.touchip.organizer.constants.GlobalConstants;
 import com.touchip.organizer.utils.Utils;
 import com.touchip.organizer.utils.Utils.AnimationManager;
 
@@ -39,14 +39,14 @@ public class FragmentCompaniesListOffSite extends ListFragment {
      }
 
      @Override public void onListItemClick(ListView l, View v, int position, long id) {
-          DataAccess.LAST_CLICKED_COMPANY = COMPANIES_LIST.get(position);
-          DrawingCompaniesActivity.getDrawView().setColor(Color.parseColor(DataAccess.LAST_CLICKED_COMPANY.colour));
+          GlobalConstants.LAST_CLICKED_COMPANY = COMPANIES_LIST.get(position);
+          DrawingCompaniesActivity.getDrawView().setColor(Color.parseColor(GlobalConstants.LAST_CLICKED_COMPANY.colour));
           DrawingCompaniesActivity.getDrawView().setCompanyColourFilter(0);
-          DrawingCompaniesActivity.ivCompanyColor.setBackgroundColor(Color.parseColor(DataAccess.LAST_CLICKED_COMPANY.colour));
+          DrawingCompaniesActivity.ivCompanyColor.setBackgroundColor(Color.parseColor(GlobalConstants.LAST_CLICKED_COMPANY.colour));
 
           DrawingCompaniesActivity.ivCompanyColor.startAnimation(AnimationManager.load(R.anim.bounce));
 
-          Utils.showCustomToastWithBackgroundColour(getActivity(), DataAccess.LAST_CLICKED_COMPANY.companyName, Color.parseColor(DataAccess.LAST_CLICKED_COMPANY.colour));
+          Utils.showCustomToastWithBackgroundColour(getActivity(), GlobalConstants.LAST_CLICKED_COMPANY.companyName, Color.parseColor(GlobalConstants.LAST_CLICKED_COMPANY.colour));
 
           DrawingCompaniesActivity.getLlAssets().setVisibility(View.GONE);
           DrawingCompaniesActivity.getLlTrades().setVisibility(View.GONE);
@@ -60,7 +60,6 @@ public class FragmentCompaniesListOffSite extends ListFragment {
            */
           // ListView item scroll to selected item
           l.smoothScrollToPositionFromTop(position, 100, 400);
-          DrawingCompaniesActivity.customActionBar.setUpCompanyName(DataAccess.LAST_CLICKED_COMPANY.companyName);
      }
 
      public static ListViewCompaniesAdapter getCompaniesAdapter() {

@@ -12,18 +12,14 @@ import android.graphics.BitmapFactory;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.activities.DrawingCompaniesActivity;
 import com.touchip.organizer.activities.DrawingCompaniesActivity_;
-import com.touchip.organizer.activities.TvActivity;
 import com.touchip.organizer.activities.custom.components.CompaniesDrawingView;
-import com.touchip.organizer.activities.fragments.FragmentCompaniesList;
 import com.touchip.organizer.activities.fragments.FragmentCompaniesListOffSite;
-import com.touchip.organizer.communication.rest.model.CompaniesAndHotspots;
-import com.touchip.organizer.utils.DataAccess;
-import com.touchip.organizer.utils.GlobalConstants;
+import com.touchip.organizer.communication.rest.model.ModelFullSiteInfo;
+import com.touchip.organizer.constants.GlobalConstants;
 import com.touchip.organizer.utils.Utils;
 
-public class ResponseFullSitePlanInfo implements RequestListener <CompaniesAndHotspots> {
+public class ResponseFullSitePlanInfo implements RequestListener <ModelFullSiteInfo> {
 
      // Reference to activity, for updating ui components
      protected Activity activity;
@@ -38,35 +34,26 @@ public class ResponseFullSitePlanInfo implements RequestListener <CompaniesAndHo
           // update your UI
           Utils.logw(e.getMessage());
           Utils.showToast(activity, R.string.connection_problem, true);
-          TvActivity.dissmissProgressDialog();
      }
 
      // Request succesfull, update UI
-     @Override public void onRequestSuccess(CompaniesAndHotspots companiesAndHotspots) {
-          if ( null != companiesAndHotspots ) {
-               FragmentCompaniesList.COMPANIES_LIST = companiesAndHotspots.companyWrappersList;
-               FragmentCompaniesListOffSite.COMPANIES_LIST = companiesAndHotspots.companyWrappersList;
-               DataAccess.SIGNED_HOTSPOTS = companiesAndHotspots.hotSpotWrapperList;
-               DataAccess.UNASSIGNED_HOTSPOTS = companiesAndHotspots.unassignHotspotsWrapperList;
-               GlobalConstants.TODAY_FROM_SERVER = companiesAndHotspots.today;
-
-               byte[] imageByteArray = null;
+     @Override public void onRequestSuccess(ModelFullSiteInfo modelFullSiteInfo) {
+          if ( null != modelFullSiteInfo ) {
+               GlobalConstants.SITE_PLAN_FULL_INFO = modelFullSiteInfo;
+               FragmentCompaniesListOffSite.COMPANIES_LIST = modelFullSiteInfo.companyWrappersList;
                try {
-                    imageByteArray = Base64.decode(companiesAndHotspots.sitePlanImage);
+                    byte[] imageByteArray = Base64.decode(modelFullSiteInfo.sitePlanImage);
                     if ( null != imageByteArray ) {
                          Bitmap bitmap = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.length);
                          CompaniesDrawingView.canvasBitmap = bitmap;
                          CompaniesDrawingView.startBitmap = bitmap;
                     }
-
                } catch (IOException e) {
                     e.printStackTrace();
                }
-
-               // TvActivity.dissmissProgressDialog();
                Intent i = new Intent(activity, DrawingCompaniesActivity_.class);
                i.addFlags(Intent.FLAG_ACTIVITY_TASK_ON_HOME);
-               DrawingCompaniesActivity.dissmissProgressDialog();
+               // DrawingCompaniesActivity.dissmissProgressDialog();
                activity.startActivity(i);
           } else {
                Utils.showCustomToast(activity, "error occured", R.drawable.hide_hotspot);

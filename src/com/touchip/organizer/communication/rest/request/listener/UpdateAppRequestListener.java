@@ -8,7 +8,6 @@ import android.net.Uri;
 
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
-import com.touchip.organizer.activities.StartActivity;
 import com.touchip.organizer.activities.UserSettingsActivity;
 import com.touchip.organizer.utils.Utils;
 
@@ -29,7 +28,6 @@ public class UpdateAppRequestListener implements RequestListener <byte[]> {
      @Override public void onRequestSuccess(byte[] fileData) {
           activity.dissmissProgressDialog();
           if ( 1 == fileData.length ) {
-               StartActivity.dissmissProgressDialog();
                // / Utils.showCustomToast(, messageResourcesId, imageResourcesId);
                // Error on server or during parsing responce
                return;
