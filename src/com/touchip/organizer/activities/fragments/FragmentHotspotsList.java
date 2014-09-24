@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import org.apache.commons.lang3.time.DateUtils;
 
+import quickutils.core.QuickUtils;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -42,6 +43,7 @@ import com.octo.android.robospice.persistence.DurationInMillis;
 import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.activities.DrawingCompaniesActivity;
 import com.touchip.organizer.activities.DrawingCompaniesActivity_;
+import com.touchip.organizer.activities.GeneralWhiteBoardActivity;
 import com.touchip.organizer.activities.GeneralWhiteBoardActivity_;
 import com.touchip.organizer.activities.ImagePagerActivity_;
 import com.touchip.organizer.activities.custom.components.CompaniesDrawingView;
@@ -82,7 +84,7 @@ public class FragmentHotspotsList extends ListFragment {
 
                                                                                            @Override public void onClick(View v) {
                                                                                                 String type = v.getTag().toString();
-                                                                                                ADAPTER.updateHotspotsButtonsList(type);
+                                                                                                ADAPTER.updateHotspotsButtonsList(Integer.valueOf(type));
 
                                                                                                 String message = "";
                                                                                                 if ( (!type.equals(Hotspots.SHOW_ALL)) && (!type.equals(Hotspots.HIDE_ALL)) ) {
@@ -98,7 +100,7 @@ public class FragmentHotspotsList extends ListFragment {
 
                                                                                            @Override public boolean onLongClick(View v) {
                                                                                                 String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
-                                                                                                ClipData dragData = new ClipData(v.getTag().toString(), mimeTypes, new ClipData.Item(v.getTag().toString()));
+                                                                                                ClipData dragData = new ClipData("hotspot", mimeTypes, new ClipData.Item(v.getTag().toString()));
                                                                                                 View.DragShadowBuilder shadow = new DragShadowBuilder(v);
                                                                                                 v.startDrag(dragData, shadow, null, 0);
                                                                                                 return true;
@@ -220,14 +222,14 @@ public class FragmentHotspotsList extends ListFragment {
           final ImageView imageViewShowAllHotspots = (ImageView) getActivity().findViewById(R.id.drawing_hotspots_show_all);
           final ImageView imageViewHideAllHotspots = (ImageView) getActivity().findViewById(R.id.drawing_hotspots_hide_all);
 
-          imageViewCamera.setTag(Hotspots.HOTSPOTS_NAMES[Hotspots.CAMERA]);
-          imageViewNotesHotspot.setTag(Hotspots.HOTSPOTS_NAMES[Hotspots.NOTE]);
-          imageViewSafetyHotspot.setTag(Hotspots.HOTSPOTS_NAMES[Hotspots.SAFETY]);
-          imageViewWasteHotspot.setTag(Hotspots.HOTSPOTS_NAMES[Hotspots.WASTE]);
-          imageViewPermitsHotspot.setTag(Hotspots.HOTSPOTS_NAMES[Hotspots.PERMIT]);
-          imageViewWhiteBoard.setTag(Hotspots.HOTSPOTS_NAMES[Hotspots.WHITEBOARD]);
-          imageViewTrades.setTag(Hotspots.HOTSPOTS_NAMES[Hotspots.TRADE]);
-          imageViewAssets.setTag(Hotspots.HOTSPOTS_NAMES[Hotspots.ASSET]);
+          imageViewCamera.setTag(String.valueOf(Hotspots.CAMERA));
+          imageViewNotesHotspot.setTag(String.valueOf(Hotspots.NOTE));
+          imageViewSafetyHotspot.setTag(String.valueOf(Hotspots.SAFETY));
+          imageViewWasteHotspot.setTag(String.valueOf(Hotspots.WASTE));
+          imageViewPermitsHotspot.setTag(String.valueOf(Hotspots.PERMIT));
+          imageViewWhiteBoard.setTag(String.valueOf(Hotspots.WHITEBOARD));
+          imageViewTrades.setTag(String.valueOf(Hotspots.TRADE));
+          imageViewAssets.setTag(String.valueOf(Hotspots.ASSET));
           imageViewShowAllHotspots.setTag(Hotspots.SHOW_ALL);
           imageViewHideAllHotspots.setTag(Hotspots.HIDE_ALL);
 
@@ -357,7 +359,7 @@ public class FragmentHotspotsList extends ListFragment {
                // notifyDataSetChanged();
           }
 
-          @SuppressWarnings ( "deprecation" ) @SuppressLint ( "NewApi" ) public void updateHotspotsButtonsList(String type) {
+          @SuppressWarnings ( "deprecation" ) @SuppressLint ( "NewApi" ) public void updateHotspotsButtonsList(int type) {
                if ( !Utils.isNull(hotspotsButtonLayout) ) {
                     // 1st view is drawing pannel, all others are hotspot button, remove them
                     hotspotsButtonLayout.removeViews(1, hotspotsButtonLayout.getChildCount() - 1);
@@ -365,7 +367,7 @@ public class FragmentHotspotsList extends ListFragment {
                     return;
                }
 
-               if ( type.equals(Hotspots.HIDE_ALL) ) { return; }
+               if ( type == Hotspots.HIDE_ALL ) { return; }
 
                for ( int i = 0; i < GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.size(); i++ ) {
                     try {
@@ -501,7 +503,7 @@ public class FragmentHotspotsList extends ListFragment {
                          int leftMargin = (int) Math.round(Double.valueOf(GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(i).x) * CompaniesDrawingView.WIDTH) + 50;
                          int topMargin = (int) Math.round(Double.valueOf(GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(i).y) * CompaniesDrawingView.HEIGHT);
 
-                         if ( type.equals(Hotspots.SHOW_ALL) ) {
+                         if ( type == Hotspots.SHOW_ALL ) {
                               hotspotsButtonLayout.addView(ibutton, param);
 
                               param = new RelativeLayout.LayoutParams(60, 25);
@@ -529,7 +531,7 @@ public class FragmentHotspotsList extends ListFragment {
                               }
 
                          } else {
-                              if ( type.equals(GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(i).type) ) {
+                              if ( type == GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(i).type ) {
                                    hotspotsButtonLayout.addView(ibutton, param);
 
                                    param = new RelativeLayout.LayoutParams(60, 25);
@@ -559,12 +561,12 @@ public class FragmentHotspotsList extends ListFragment {
                          location[0] = param.leftMargin;
                          location[1] = param.topMargin;
 
-                         final String typeOfHS = "FAKE TYPE";// DataAccess.SIGNED_HOTSPOTS.get(i).type;
+                         final int typeOfHS = GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList.get(i).type;
 
                          ibutton.setOnClickListener(new OnClickListener() {
 
                               @Override public void onClick(View v) {
-                                   if ( typeOfHS.equals(Hotspots.HOTSPOTS_NAMES[Hotspots.TRADE]) ) {
+                                   if ( typeOfHS == Hotspots.TRADE ) {
                                         dialogTradeHotspotDetail.setTitle("Trade hotspot details");
                                         NumPad npa = new NumPad();
                                         npa.show(activity, "Trade hotspot details", NumPad.NOFLAGS, new NumPad.NumbPadInterface() {
@@ -594,12 +596,11 @@ public class FragmentHotspotsList extends ListFragment {
                                         }
                                    } else {
                                         if ( GlobalConstants.LAST_CLICKED_HOTSPOT.type == Hotspots.WHITEBOARD ) {
-                                             // GeneralWhiteBoardActivity.WHITEBOARD_TYPE = GlobalConstants.DrawingType.HOTSPOT_WHITEBOARD_DRAWING;
-                                             // GeneralWhiteBoardActivity_.WHITEBOARD_TYPE = GlobalConstants.DrawingType.HOTSPOT_WHITEBOARD_DRAWING;
-                                             activity.startActivity(new Intent(activity, GeneralWhiteBoardActivity_.class));
+                                             GeneralWhiteBoardActivity.WHITEBOARD_TYPE = GlobalConstants.HWD;
+                                             QuickUtils.system.navigateToActivity(activity, GeneralWhiteBoardActivity_.class);
                                         } else {
 
-                                             if ( typeOfHS.equals(Hotspots.HOTSPOTS_NAMES[Hotspots.CAMERA]) ) {
+                                             if ( typeOfHS == Hotspots.CAMERA ) {
 
                                                   final Dialog d = new Dialog(activity);
                                                   d.setContentView(R.layout.dialog_cctv_camera);

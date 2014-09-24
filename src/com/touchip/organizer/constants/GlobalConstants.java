@@ -12,18 +12,18 @@ import android.widget.ImageButton;
 
 import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.communication.rest.model.AssetsList.POJORoboSingleAsset;
-import com.touchip.organizer.communication.rest.model.ModelFullSiteInfo;
 import com.touchip.organizer.communication.rest.model.CompaniesList.POJORoboCompany;
 import com.touchip.organizer.communication.rest.model.HotspotsList.POJORoboHotspot;
-import com.touchip.organizer.communication.rest.model.PathsCreationTimeList.POJORoboPathCreationTime;
+import com.touchip.organizer.communication.rest.model.ModelFullSiteInfo;
 import com.touchip.organizer.communication.rest.model.ModelUser;
+import com.touchip.organizer.communication.rest.model.PathsCreationTimeList.POJORoboPathCreationTime;
 import com.touchip.organizer.utils.Utils;
 
 public class GlobalConstants {
 
      public static final String                                             COLOURS_BUTTON            = "colours" , SHAPES_BUTTON = "shapes" , BRUSH_SIZE_BUTTON = "size" , TEXT_SETTINGS_BUTTON = "text";
      public static POJORoboHotspot                                          LAST_CLICKED_HOTSPOT;
-     public static String                                                   SITE_ID    = "-1";
+     public static String                                                   SITE_ID                   = "-1";
      public static POJORoboPathCreationTime                                 LAST_CLICKED_WHITE_BOARD;
      public static String                                                   SITE_PLAN_IMAGE_NAME;
      public static List <ImageButton>                                       HOTSPOTS_BUTTONS_ARRAY    = new ArrayList <ImageButton>();
@@ -35,11 +35,11 @@ public class GlobalConstants {
 
                                                                                                       .copy(Bitmap.Config.ARGB_8888, true));
 
-     public static ModelFullSiteInfo                                     SITE_PLAN_FULL_INFO;
+     public static ModelFullSiteInfo                                        SITE_PLAN_FULL_INFO;
 
      // contains full photo filename
      public static String                                                   capturedPhotoFilename;
-     public static ModelUser                                                     CURRENT_USER;
+     public static ModelUser                                                CURRENT_USER;
 
      /**
       * FragmentCompaniesList data
@@ -70,6 +70,11 @@ public class GlobalConstants {
      public static final String                                             DATE_FORMAT               = "yyyy-MM-dd";
 
      private GlobalConstants () {
-
      }
+
+     public static final String[] DRAWING_PATH_TYPES = { "SPD", "GWD", "HWD" };
+
+     public static final int      SPD                = 0;
+     public static final int      GWD                = 1;
+     public static final int      HWD                = 2;
 }

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/roolasdas"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/default_screen_bg"
+	android:orientation="vertical" >
+
+	<LinearLayout
+		android:id="@+id/llBottomMenu"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:background="@color/ab_background"
+		android:orientation="horizontal" >
+
+		<ImageView
+			android:id="@+id/ivOk"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_margin="3dp"
+			android:layout_weight="1"
+			android:src="@drawable/ok" />
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/llNoteName"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_margin="4dp"
+		android:background="@drawable/transparent_inside_and_white_border" >
+
+		<TextView
+			android:id="@+id/textView1"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:gravity="center"
+			android:padding="2dp"
+			android:text="Name"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="@android:color/white" />
+
+		<ImageView
+			android:layout_width="1dp"
+			android:layout_height="match_parent"
+			android:background="@android:color/white" />
+
+		<EditText
+			android:id="@+id/etName"
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			android:layout_weight="1"
+			android:background="@drawable/transparent_inside_and_white_border"
+			android:inputType="textPersonName"
+			android:padding="3dp"
+			android:textColor="@android:color/white" >
+		</EditText>
+	</LinearLayout>
+
+	<RelativeLayout
+		android:id="@+id/llDatesRange"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_below="@+id/llNoteName"
+		android:layout_margin="4dp"
+		android:background="@drawable/transparent_inside_and_white_border" >
+
+		<TextView
+			android:id="@+id/twStartDate"
+			android:layout_width="wrap_content"
+			android:layout_height="50dp"
+			android:layout_alignParentLeft="true"
+			android:layout_weight="1"
+			android:gravity="center"
+			android:padding="2dp"
+			android:text="20/20/2013"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="@android:color/darker_gray" />
+
+		<TextView
+			android:id="@+id/twEndDateL"
+			android:layout_width="wrap_content"
+			android:layout_height="50dp"
+			android:layout_alignParentRight="true"
+			android:layout_weight="1"
+			android:gravity="center"
+			android:padding="2dp"
+			android:text="20/20/2013"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="@android:color/white" />
+
+		<TextView
+			android:id="@+id/twDuration"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:layout_weight="1"
+			android:background="@drawable/background_fenced"
+			android:padding="2dp"
+			android:text="0 day(s)"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="@android:color/white" />
+
+		<ImageView
+			android:id="@+id/ivStart"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_toRightOf="@+id/twStartDate"
+			android:src="@drawable/start" />
+
+		<ImageView
+			android:id="@+id/ivFinish"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_toLeftOf="@+id/twEndDateL"
+			android:src="@drawable/finish" />
+
+		<ImageView
+			android:id="@+id/ivLine"
+			android:layout_width="wrap_content"
+			android:layout_height="5dp"
+			android:layout_below="@+id/twDuration"
+			android:layout_toLeftOf="@+id/ivFinish"
+			android:layout_toRightOf="@+id/ivStart"
+			android:background="@color/Red" />
+	</RelativeLayout>
+
+</RelativeLayout>

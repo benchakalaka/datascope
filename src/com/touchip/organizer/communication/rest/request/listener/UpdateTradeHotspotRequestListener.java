@@ -35,7 +35,7 @@ public class UpdateTradeHotspotRequestListener implements RequestListener <Hotsp
                GlobalConstants.SITE_PLAN_FULL_INFO.hotSpotWrapperList = hotspots;
 
                FragmentHotspotsList.ADAPTER.notifyDataSetChanged();
-               FragmentHotspotsList.ADAPTER.updateHotspotsButtonsList(Hotspots.HOTSPOTS_NAMES[Hotspots.SHOW_ALL]);
+               FragmentHotspotsList.ADAPTER.updateHotspotsButtonsList(Hotspots.SHOW_ALL);
           } else {
                Utils.showCustomToast(activity, "There is no hotposts recieved from server", R.drawable.hide_hotspot);
           }

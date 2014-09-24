@@ -20,11 +20,11 @@ public class SaveWhiteboardRequestListener implements RequestListener <String> {
 
      @Override public void onRequestFailure(SpiceException e) {
           Utils.logw(e.getMessage());
-          GeneralWhiteBoardActivity.dissmissProgressDialog();
+          // GeneralWhiteBoardActivity.dissmissProgressDialog();
      }
 
      @Override public void onRequestSuccess(String fileData) {
-          GeneralWhiteBoardActivity.dissmissProgressDialog();
+          // GeneralWhiteBoardActivity.dissmissProgressDialog();
           if ( "".equals(fileData) ) {
                Utils.showCustomToast(activity, "Problem with downloading drawing", R.drawable.hide_hotspot);
           } else {
@@ -39,11 +39,5 @@ public class SaveWhiteboardRequestListener implements RequestListener <String> {
                     Utils.logw(e.getMessage());
                }
           }
-
-          if ( GeneralWhiteBoardActivity.IS_NEED_TO_BACK ) {
-               this.activity.onBackPressed();
-          }
-
      }
-
 }

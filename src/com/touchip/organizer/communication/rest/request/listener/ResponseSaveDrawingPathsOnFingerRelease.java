@@ -7,11 +7,11 @@ import com.octo.android.robospice.request.listener.RequestListener;
 import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.activities.DrawingCompaniesActivity;
 import com.touchip.organizer.activities.TvActivity_;
-import com.touchip.organizer.communication.rest.model.PathId;
+import com.touchip.organizer.communication.rest.model.ModelPathId;
 import com.touchip.organizer.constants.GlobalConstants;
 import com.touchip.organizer.utils.Utils;
 
-public class ResponseSaveDrawingPathsOnFingerRelease implements RequestListener <PathId> {
+public class ResponseSaveDrawingPathsOnFingerRelease implements RequestListener <ModelPathId> {
      // Reference to activity, for updating ui components
      protected DrawingCompaniesActivity activity;
      // private final File file;
@@ -32,7 +32,7 @@ public class ResponseSaveDrawingPathsOnFingerRelease implements RequestListener 
      }
 
      // Request succesfull, update UI
-     @Override public void onRequestSuccess(PathId response) {
+     @Override public void onRequestSuccess(ModelPathId response) {
           if ( null != response ) {
                GlobalConstants.SITE_PLAN_FULL_INFO.pathId = response.pathId;
           }

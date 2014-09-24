@@ -4,12 +4,12 @@ package com.touchip.organizer.constants;
  * For Android Spring template (http params name)
  */
 public class HTTP_PARAMS {
-     public static final String FLOOR             = "floor";
      public static final String AREA_NAME         = "areaName";
 
      public static final String HOTSPOT_ID        = "hotspotId";
      public static final String SITE_ID           = "siteId";
      public static final String TYPE              = "type";
+     public static final String HOTSPOT_TYPE      = "hotSpotType";
      public static final String DATE              = "date";
      public static final String X                 = "x";
      public static final String Y                 = "y";
@@ -23,8 +23,8 @@ public class HTTP_PARAMS {
      public static final String NEW_AMOUNT        = "newAmount";
      public static final String PATH_ID           = "pathId";
      public static final String IMAGE             = "image";
-     public static final String DATE_VALID_FROM   = "validfromdate";
-     public static final String DATE_VALID_TO     = "validtodate";
+     public static final String VALID_FROM        = "validFromDate";
+     public static final String VALID_TO          = "validToDate";
      public static final String DRAWING_DATA      = "drawingData";
      public static final String PLAN_ID           = "planId";
      public static final String VERSION           = "version";

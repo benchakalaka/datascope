@@ -14,10 +14,11 @@ import com.octo.android.robospice.persistence.DurationInMillis;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 import com.squareup.timessquare.sample.R;
+import com.touchip.organizer.activities.GeneralWhiteBoardActivity;
 import com.touchip.organizer.activities.GeneralWhiteBoardActivity_;
 import com.touchip.organizer.activities.SpiceFragmentActivity;
 import com.touchip.organizer.activities.custom.components.GridViewChooseWhiteBoardAdapter;
-import com.touchip.organizer.communication.rest.model.ModelPathList;
+import com.touchip.organizer.communication.rest.model.ModelPathId;
 import com.touchip.organizer.communication.rest.model.ModelWhiteboards;
 import com.touchip.organizer.communication.rest.request.SuperRequest;
 import com.touchip.organizer.constants.GlobalConstants;
@@ -25,7 +26,7 @@ import com.touchip.organizer.constants.HTTP_PARAMS;
 import com.touchip.organizer.constants.RestAddresses;
 import com.touchip.organizer.utils.Utils;
 
-public class GetPathsCreationTimeRequestListener implements RequestListener <ModelWhiteboards> {
+public class ResponsePathsCreationTime implements RequestListener <ModelWhiteboards> {
 
      private Dialog                  dialog;
      private GridView                gridViewWhiteBoards;
@@ -34,19 +35,19 @@ public class GetPathsCreationTimeRequestListener implements RequestListener <Mod
      protected SpiceFragmentActivity activity;
 
      // Constructor that accept activity
-     public GetPathsCreationTimeRequestListener ( SpiceFragmentActivity act ) {
+     public ResponsePathsCreationTime ( SpiceFragmentActivity act ) {
           this.activity = act;
      }
 
      @Override public void onRequestFailure(SpiceException e) {
-          // DrawingCompaniesActivity.dissmissProgressDialog();
+          this.activity.dissmissProgressDialog();
           // update UI
           Utils.showToast(activity, R.string.connection_problem, true);
           Utils.logw(e.getMessage());
      }
 
      @Override public void onRequestSuccess(final ModelWhiteboards wboards) {
-          // DrawingCompaniesActivity.dissmissProgressDialog();
+          this.activity.dissmissProgressDialog();
           if ( null != wboards ) {
                dialog = new Dialog(activity);
                dialog.setContentView(R.layout.dialog_choose_white_board);
@@ -60,6 +61,7 @@ public class GetPathsCreationTimeRequestListener implements RequestListener <Mod
                gridViewWhiteBoards.setOnItemClickListener(new OnItemClickListener() {
 
                     @Override public void onItemClick(AdapterView <?> adapter, View v, int position, long arg3) {
+                         GeneralWhiteBoardActivity.WHITEBOARD_TYPE = GlobalConstants.GWD;
                          if ( wboards.whiteboards.isEmpty() ) {
                               GlobalConstants.LAST_CLICKED_WHITE_BOARD = null;
                               activity.startActivity(new Intent(activity, GeneralWhiteBoardActivity_.class));
@@ -67,7 +69,7 @@ public class GetPathsCreationTimeRequestListener implements RequestListener <Mod
                               Map <String, String> params = new HashMap <String, String>();
                               params.put(HTTP_PARAMS.PATH_ID, String.valueOf(wboards.whiteboards.get(position - 1).id));
                               GlobalConstants.LAST_CLICKED_WHITE_BOARD = wboards.whiteboards.get(position - 1);
-                              SuperRequest <ModelPathList> request = new SuperRequest <ModelPathList>(ModelPathList.class, RestAddresses.GET_PATH, null, params);
+                              SuperRequest <ModelPathId> request = new SuperRequest <ModelPathId>(ModelPathId.class, RestAddresses.GET_PATH, null, params);
                               activity.getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new ResponseDownloadPathById(activity));
                          }
 

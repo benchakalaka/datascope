@@ -13,7 +13,7 @@ public class HotspotsList extends ArrayList <com.touchip.organizer.communication
           @JsonProperty ( "Amount" ) public int           amount;
           @JsonProperty ( "X" ) public double             x;
           @JsonProperty ( "Y" ) public double             y;
-          @JsonProperty ( "HotSpotType" ) public int      type;
+          @JsonProperty ( "Type" ) public int             type;
           @JsonProperty ( "Description" ) public String   description;
           @JsonProperty ( "ValidFromDate" ) public String validFromDate;
           @JsonProperty ( "ValidToDate" ) public String   validToDate;

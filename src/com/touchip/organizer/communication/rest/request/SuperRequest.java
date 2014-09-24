@@ -57,7 +57,7 @@ public class SuperRequest<T> extends SpringAndroidSpiceRequest <T> {
       * Base loading data from network (Background UI)
       */
      @SuppressWarnings ( "unchecked" ) @Override public T loadDataFromNetwork() throws Exception {
-          Utils.logw("POST OBJECT " + transferingClassType.getSimpleName() + " to (" + this.requestUrl + ")");
+          Utils.logw("POST ASK FOR OBJECT " + transferingClassType.getSimpleName() + " URL == (" + this.requestUrl + ")");
           Utils.printMap((Map) httpParams);
           if ( null != vars ) {
                Utils.printMap(vars);

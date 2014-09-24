@@ -3,6 +3,7 @@ package com.touchip.organizer.activities.custom.components;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -19,43 +20,35 @@ import android.widget.TextView;
 
 import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener;
+import com.octo.android.robospice.persistence.DurationInMillis;
 import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.activities.SpiceFragmentActivity;
+import com.touchip.organizer.communication.rest.model.ModelHotspotsAndTrades;
+import com.touchip.organizer.communication.rest.request.SuperRequest;
+import com.touchip.organizer.communication.rest.request.listener.CreateHotspotRequestListener;
+import com.touchip.organizer.constants.HTTP_PARAMS;
+import com.touchip.organizer.constants.RestAddresses;
 import com.touchip.organizer.utils.Utils;
 
-@EViewGroup ( R.layout.dialog_create_note ) public class CDialogCreateNote extends RelativeLayout implements android.view.View.OnClickListener , OnDateSetListener {
+@EViewGroup ( R.layout.dialog_create_hotspot_note ) public class CDialogCreateHotspotNote extends RelativeLayout implements android.view.View.OnClickListener , OnDateSetListener {
 
      // ===================== views
-     @ViewById TextView                  twEndDateL , twStartDate;
+     @ViewById TextView                  twEndDateL , twStartDate , twDuration;
      @ViewById EditText                  etComments , etName;
      @ViewById ImageView                 ivTypeOfNote , ivOk , ibColour1 , ibColour2 , ibColour3 , ibColour4 , ibColour5 , ibColour6 , ibColour7 , ibColour8 , ibColour9 , ibColour10 , ibColour11 , ibColour12 , ibColour13 , ibColour14 , ibColour15 , ibColour16 , ibColour17;
 
      // ====================== variable
      private final SpiceFragmentActivity activity;
+     private Map <String, String>        params;
      public static int                   noteTypeId = R.drawable.rectangle_1;
 
-     public CDialogCreateNote ( SpiceFragmentActivity act ) {
+     public CDialogCreateHotspotNote ( SpiceFragmentActivity act ) {
           super(act.getApplicationContext());
           this.activity = act;
-
      }
 
-     @Click void twEndDateL() {
-          Date date = null;
-          try {
-               date = DateUtils.parseDate(twEndDateL.getText().toString(), Utils.DATE_FORMAT_YYYY_MM_DD);
-          } catch (ParseException e) {
-               e.printStackTrace();
-          }
-          if ( null == date ) {
-               date = new Date();
-          }
-          Calendar calendar = Calendar.getInstance();
-          calendar.setTime(date);
-          final DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), false);
-          datePickerDialog.setYearRange(2010, 2030);
-          datePickerDialog.setCloseOnSingleTapDay(false);
-          datePickerDialog.show(activity.getSupportFragmentManager(), "TAG");
+     public void setHttpParams(Map <String, String> vars) {
+          this.params = vars;
      }
 
      @AfterViews void afterViews() {
@@ -76,6 +69,36 @@ import com.touchip.organizer.utils.Utils;
           ibColour15.setOnClickListener(this);
           ibColour16.setOnClickListener(this);
           ibColour17.setOnClickListener(this);
+          twDuration.setText("1 day");
+          String date = Utils.formatDate(new Date());
+          twStartDate.setText(date);
+          twEndDateL.setText(date);
+     }
+
+     @Click void ivOk() {
+          this.params.put(HTTP_PARAMS.DESCRIPTION, etName.getText().toString());
+          this.activity.showProgressDialog();
+
+          SuperRequest <ModelHotspotsAndTrades> request = new SuperRequest <ModelHotspotsAndTrades>(ModelHotspotsAndTrades.class, RestAddresses.CREATE_HOTSPOT, null, this.params);
+          this.activity.getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new CreateHotspotRequestListener(this.activity));
+     }
+
+     @Click void twEndDateL() {
+          Date date = null;
+          try {
+               date = DateUtils.parseDate(twEndDateL.getText().toString(), Utils.DATE_FORMAT_YYYY_MM_DD);
+          } catch (ParseException e) {
+               e.printStackTrace();
+          }
+          if ( null == date ) {
+               date = new Date();
+          }
+          Calendar calendar = Calendar.getInstance();
+          calendar.setTime(date);
+          final DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), false);
+          datePickerDialog.setYearRange(2010, 2030);
+          datePickerDialog.setCloseOnSingleTapDay(false);
+          datePickerDialog.show(activity.getSupportFragmentManager(), "TAG");
      }
 
      @Click void ivTypeOfNote() {
@@ -129,5 +152,14 @@ import com.touchip.organizer.utils.Utils;
      @Override public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
           month = month + 1;
           twEndDateL.setText(year + "-" + (month < 10 ? ("0" + month) : month) + "-" + (day < 10 ? ("0" + day) : day));
+
+          Calendar startDate = Calendar.getInstance();
+          Calendar endDate = Calendar.getInstance();
+
+          endDate.set(Calendar.YEAR, year);
+          endDate.set(Calendar.MONTH, month - 1);
+          endDate.set(Calendar.DAY_OF_MONTH, day);
+
+          twDuration.setText(Utils.calculateDeltaInDays(startDate, endDate) + " day(s)");
      }
 }

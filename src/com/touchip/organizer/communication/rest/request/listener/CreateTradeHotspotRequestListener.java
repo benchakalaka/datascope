@@ -40,7 +40,7 @@ public class CreateTradeHotspotRequestListener implements RequestListener <Hotsp
                // DataAccess.UNASSIGNED_HOTSPOTS = hotspots;
                FragmentHotspotsList.ADAPTER.notifyDataSetChanged();
                // FragmentUnsignedHotspotsList.ADAPTER.notifyDataSetChanged();
-               FragmentHotspotsList.ADAPTER.updateHotspotsButtonsList(Hotspots.HOTSPOTS_NAMES[Hotspots.SHOW_ALL]);
+               FragmentHotspotsList.ADAPTER.updateHotspotsButtonsList(Hotspots.SHOW_ALL);
                activity.showTradesPanel();
           }
      }

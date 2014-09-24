@@ -25,7 +25,7 @@ import com.touchip.organizer.activities.custom.components.CNoteCalendarItem;
 import com.touchip.organizer.activities.custom.components.CNoteCalendarItem_;
 import com.touchip.organizer.utils.Utils;
 
-@EActivity ( R.layout.activity_notes ) public class ANotes extends SpiceActivity {
+@EActivity ( R.layout.activity_notes ) public class ANotes extends SpiceFragmentActivity {
      @ViewById GridLayout                 gridView;
      @ViewById ImageView                  ivAddNote;
      @ViewById public static LinearLayout llNotes;
@@ -64,7 +64,7 @@ import com.touchip.organizer.utils.Utils;
           currentDate = new Date();
           dialogCreateNote = new Dialog(this);
           dialogCreateNote.requestWindowFeature(Window.FEATURE_NO_TITLE);
-          dialogCreateNote.setContentView(CDialogCreateNote_.build(this, this));
+          dialogCreateNote.setContentView(CDialogCreateNote_.build(this));
           fillGridView(currentDate.getMonth(), currentDate.getYear());
           // ivAddNote.setOnClickListener(longClickDragListener);
           ivAddNote.setOnTouchListener(touch);

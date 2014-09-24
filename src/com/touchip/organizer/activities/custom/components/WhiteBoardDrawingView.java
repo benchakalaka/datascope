@@ -20,6 +20,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.squareup.timessquare.sample.R;
+import com.touchip.organizer.activities.GeneralWhiteBoardActivity;
 import com.touchip.organizer.communication.rest.serializables.PaintSerializable;
 import com.touchip.organizer.communication.rest.serializables.PathSerializable;
 import com.touchip.organizer.utils.Utils;
@@ -182,7 +183,8 @@ public class WhiteBoardDrawingView extends View {
           canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
           startBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
           drawCanvas = new Canvas(canvasBitmap);
-          // GeneralWhiteBoardActivity.INSTANCE.loadPathes();
+
+          GeneralWhiteBoardActivity.INSTANCE.loadPaths();
 
      }
 
@@ -472,7 +474,12 @@ public class WhiteBoardDrawingView extends View {
       *             the paths to set
       */
      public synchronized void setPaths(List <PathSerializable> paths) {
-          this.paths = paths;
+
+          if ( null == paths ) {
+               WhiteBoardDrawingView.paths = new ArrayList <PathSerializable>();
+          } else {
+               WhiteBoardDrawingView.paths = paths;
+          }
           redoPaths = new ArrayList <PathSerializable>();
           invalidate();
      }
@@ -481,7 +488,7 @@ public class WhiteBoardDrawingView extends View {
       * @return the path
       */
      public List <PathSerializable> getPaths() {
-          return this.paths;
+          return WhiteBoardDrawingView.paths;
      }
 
      public void selectNext() {

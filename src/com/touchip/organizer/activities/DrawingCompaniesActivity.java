@@ -61,19 +61,27 @@ import com.roomorama.caldroid.CaldroidListener;
 import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.activities.custom.components.ActionBarDrawingCompanies;
 import com.touchip.organizer.activities.custom.components.ActionBarDrawingCompanies_;
+import com.touchip.organizer.activities.custom.components.CDialogCreateHotspotNote;
+import com.touchip.organizer.activities.custom.components.CDialogCreateHotspotNote_;
+import com.touchip.organizer.activities.custom.components.CDialogCreateHotspotPermit;
+import com.touchip.organizer.activities.custom.components.CDialogCreateHotspotPermit_;
+import com.touchip.organizer.activities.custom.components.CDialogCreateHotspotSafety;
+import com.touchip.organizer.activities.custom.components.CDialogCreateHotspotSafety_;
+import com.touchip.organizer.activities.custom.components.CDialogCreateHotspotWaste;
+import com.touchip.organizer.activities.custom.components.CDialogCreateHotspotWaste_;
+import com.touchip.organizer.activities.custom.components.CDialogCreateHotspotWhiteboard;
+import com.touchip.organizer.activities.custom.components.CDialogCreateHotspotWhiteboard_;
 import com.touchip.organizer.activities.custom.components.CompaniesColorFilterView;
 import com.touchip.organizer.activities.custom.components.CompaniesColorFilterView_;
 import com.touchip.organizer.activities.custom.components.CompaniesDrawingView;
 import com.touchip.organizer.activities.fragments.FragmentHotspotsList;
 import com.touchip.organizer.activities.fragments.FragmentUnsignedHotspotsList.ListViewUnsignedHotspotsAdapter;
 import com.touchip.organizer.communication.rest.model.ModelFullSiteInfo;
+import com.touchip.organizer.communication.rest.model.ModelPathId;
 import com.touchip.organizer.communication.rest.model.ModelWhiteboards;
-import com.touchip.organizer.communication.rest.model.PathId;
 import com.touchip.organizer.communication.rest.request.AssignUnassignHotspotRequest;
 import com.touchip.organizer.communication.rest.request.CreateAssetHotspotRequest;
-import com.touchip.organizer.communication.rest.request.CreateHotspotRequest;
 import com.touchip.organizer.communication.rest.request.CreateTradeHotspotRequest;
-import com.touchip.organizer.communication.rest.request.DownloadDrawingPathsRequest;
 import com.touchip.organizer.communication.rest.request.GetAssetsRequest;
 import com.touchip.organizer.communication.rest.request.GetDeliveriesListRequest;
 import com.touchip.organizer.communication.rest.request.GetTradesRequest;
@@ -82,14 +90,12 @@ import com.touchip.organizer.communication.rest.request.UpdateHotspotPositionReq
 import com.touchip.organizer.communication.rest.request.UploadCapturedPhotoRequest;
 import com.touchip.organizer.communication.rest.request.listener.AssignUnassignHotspotRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.CreateAssetHotspotRequestListener;
-import com.touchip.organizer.communication.rest.request.listener.CreateHotspotRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.CreateTradeHotspotRequestListener;
-import com.touchip.organizer.communication.rest.request.listener.DownloadDrawingPathsRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.GetAssetsRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.GetDeliveriesListRequestListener;
-import com.touchip.organizer.communication.rest.request.listener.GetPathsCreationTimeRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.GetTradesRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.ResponseFullSitePlanInfo;
+import com.touchip.organizer.communication.rest.request.listener.ResponsePathsCreationTime;
 import com.touchip.organizer.communication.rest.request.listener.ResponseSaveDrawingPathsOnFingerRelease;
 import com.touchip.organizer.communication.rest.request.listener.UpdateHotspotPositionRequestListener;
 import com.touchip.organizer.communication.rest.request.listener.UploadCapturedPhotoRequestListener;
@@ -157,7 +163,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           progressDialog.setCancelable(true);
 
           dialog = new Dialog(DrawingCompaniesActivity.this);
-          dialog.setCancelable(false);
+          dialog.setCancelable(true);
 
           for ( int i = 0; i < GlobalConstants.SITE_PLAN_FULL_INFO.companyWrappersList.size(); i++ ) {
                CompaniesColorFilterView singleTradeItem = CompaniesColorFilterView_.build(DrawingCompaniesActivity.this);
@@ -173,7 +179,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           // Sizes from dimensions
           DRAW_VIEW.setBrushSize(getResources().getInteger(R.integer.small_size));
           DRAW_VIEW.setDrawingCacheEnabled(true);
-          setDragListener();
+          setDragListener2();
           // initiate bottom string
           // twBottomStatus.setText(String.format("Today:%s, Plan Name:%s, Floor:%s", Utils.formatDate(new Date()), GlobalConstants.SITE_PLAN_IMAGE_NAME,
           // GlobalConstants.CURRENT_AREA));
@@ -187,7 +193,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                          DrawingCompaniesActivity.this.runOnUiThread(new Runnable() {
 
                               @Override public void run() {
-                                   FragmentHotspotsList.ADAPTER.updateHotspotsButtonsList(Hotspots.HOTSPOTS_NAMES[Hotspots.SHOW_ALL]);
+                                   FragmentHotspotsList.ADAPTER.updateHotspotsButtonsList(Hotspots.SHOW_ALL);
                               }
                          });
 
@@ -224,7 +230,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           params.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
 
           SuperRequest <ModelWhiteboards> request = new SuperRequest <ModelWhiteboards>(ModelWhiteboards.class, RestAddresses.GET_WHITEBOARDS, null, params);
-          getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetPathsCreationTimeRequestListener(this));
+          getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new ResponsePathsCreationTime(this));
      }
 
      @Click void ibChangeDate() {
@@ -297,22 +303,21 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           HttpHeaders headers = new HttpHeaders();
           headers.setContentType(MediaType.MULTIPART_FORM_DATA);
 
-          SuperRequest <PathId> request = null;
+          SuperRequest <ModelPathId> request = null;
 
           // Create new path
           if ( GlobalConstants.SITE_PLAN_FULL_INFO.pathId == 0 ) {
                params.add(HTTP_PARAMS.SITE_ID, GlobalConstants.SITE_ID);
                params.add(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
                params.add(HTTP_PARAMS.AREA_NAME, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
-               request = new SuperRequest <PathId>(PathId.class, RestAddresses.CREATE_SITE_PLAN_DRAWING_PATHES, new FormHttpMessageConverter(), params, headers);
+               request = new SuperRequest <ModelPathId>(ModelPathId.class, RestAddresses.CREATE_SITE_PLAN_DRAWING_PATHES, new FormHttpMessageConverter(), params, headers);
           } else {
                // update exisiting one
                params.add(HTTP_PARAMS.PATH_ID, String.valueOf(GlobalConstants.SITE_PLAN_FULL_INFO.pathId));
-               request = new SuperRequest <PathId>(PathId.class, RestAddresses.UPDATE_SITE_PLAN_DRAWING_PATHES, new FormHttpMessageConverter(), params, headers);
+               request = new SuperRequest <ModelPathId>(ModelPathId.class, RestAddresses.UPDATE_DRAWING_PATHES, new FormHttpMessageConverter(), params, headers);
           }
 
           getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new ResponseSaveDrawingPathsOnFingerRelease(this, false));
-
      }
 
      /**
@@ -363,10 +368,59 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new AssignUnassignHotspotRequestListener(this));
      }
 
-     public void createHotspot(Map <String, String> vars) {
-          progressDialog.show();
-          CreateHotspotRequest request = new CreateHotspotRequest(vars);
-          getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new CreateHotspotRequestListener(this));
+     /**
+      * Basic function for creation hotspot
+      * 
+      * @param vars
+      *             params to be sent as http post request
+      */
+     private void createHotspot(Map <String, String> vars) {
+          if ( null != vars ) {
+
+               int hotspotType = Integer.valueOf(vars.get(HTTP_PARAMS.HOTSPOT_TYPE));
+               switch (hotspotType) {
+                    case Hotspots.NOTE:
+                         CDialogCreateHotspotNote dialogView = CDialogCreateHotspotNote_.build(this);
+                         dialog.setContentView(dialogView);
+                         dialogView.setHttpParams(vars);
+                         break;
+
+                    case Hotspots.SAFETY:
+                         CDialogCreateHotspotSafety dialogCreateSafetyHotspot = CDialogCreateHotspotSafety_.build(this);
+                         dialog.setContentView(dialogCreateSafetyHotspot);
+                         dialogCreateSafetyHotspot.setHttpParams(vars);
+                         break;
+
+                    case Hotspots.WASTE:
+                         CDialogCreateHotspotWaste dialogCreateWasteHotspot = CDialogCreateHotspotWaste_.build(this);
+                         dialog.setContentView(dialogCreateWasteHotspot);
+                         break;
+
+                    case Hotspots.PERMIT:
+                         CDialogCreateHotspotPermit dialogCreatePermitHotspot = CDialogCreateHotspotPermit_.build(this);
+                         dialog.setContentView(dialogCreatePermitHotspot);
+                         dialogCreatePermitHotspot.setHttpParams(vars);
+                         break;
+
+                    case Hotspots.CAMERA:
+
+                         break;
+
+                    case Hotspots.WHITEBOARD:
+                         CDialogCreateHotspotWhiteboard dialogCreateWhiteboardHotspot = CDialogCreateHotspotWhiteboard_.build(this);
+                         dialog.setContentView(dialogCreateWhiteboardHotspot);
+                         dialogCreateWhiteboardHotspot.setHttpParams(vars);
+                         break;
+               }
+
+               dialog.show();
+          }
+     }
+
+     public void hideDialog() {
+          if ( null != dialog ) {
+               dialog.dismiss();
+          }
      }
 
      private void createAssetHotspot(Map <String, String> requestParams) {
@@ -377,8 +431,9 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
 
      public static void loadPathes() {
           progressDialog.show();
-          DownloadDrawingPathsRequest request = new DownloadDrawingPathsRequest();
-          INSTANCE.getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new DownloadDrawingPathsRequestListener(INSTANCE));
+          // DownloadDrawingPathsRequest request = new DownloadDrawingPathsRequest();
+          // INSTANCE.getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new
+          // DownloadDrawingPathsRequestListener(INSTANCE));
      }
 
      @OptionsItem void homeSelected() {
@@ -484,6 +539,59 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           return llTrades;
      }
 
+     private void setDragListener2() {
+          DRAW_VIEW.setOnDragListener(new OnDragListener() {
+               LayoutParams params;
+
+               @Override public boolean onDrag(View v, final DragEvent event) {
+                    switch (event.getAction()) {
+                         case DragEvent.ACTION_DROP:
+
+                              try {
+                                   Date today = DateUtils.parseDate(GlobalConstants.SITE_PLAN_FULL_INFO.today, GlobalConstants.DATE_FORMAT);
+                                   Date sitePlanDate = DateUtils.parseDate(GlobalConstants.SITE_PLAN_IMAGE_NAME, GlobalConstants.DATE_FORMAT);
+
+                                   if ( !DateUtils.isSameDay(today, sitePlanDate) && today.compareTo(sitePlanDate) > 0 ) {
+                                        Utils.showToast(getApplicationContext(), "Could not create hs, date in past", true);
+                                        return false;
+                                   }
+                              } catch (Exception e1) {
+                                   e1.printStackTrace();
+                              }
+
+                              params = new RelativeLayout.LayoutParams(60, 60);
+                              params.leftMargin = (int) (event.getX() - 30);
+                              params.topMargin = (int) (event.getY() - 30);
+
+                              // All data is containing in tag of component which has been dragged to canvas
+                              // see @{HotspotManager.Hotspot}
+                              final String type = event.getClipData().getItemAt(0).getText().toString();
+
+                              /**
+                               * fill all POST params
+                               * Hotspot type (int value)
+                               * see @{HotspotManager.Hotspot}
+                               * hotspot position X,Y on canvas
+                               */
+                              final Map <String, String> requestParams = new HashMap <String, String>();
+
+                              requestParams.put(HTTP_PARAMS.X, String.valueOf((event.getX() - 30) / CompaniesDrawingView.WIDTH));
+                              requestParams.put(HTTP_PARAMS.Y, String.valueOf((event.getY() - 30) / CompaniesDrawingView.HEIGHT));
+                              requestParams.put(HTTP_PARAMS.HOTSPOT_TYPE, type);
+                              requestParams.put(HTTP_PARAMS.SITE_ID, GlobalConstants.SITE_ID);
+                              requestParams.put(HTTP_PARAMS.AREA_NAME, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
+                              requestParams.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
+                              if ( null != GlobalConstants.LAST_CLICKED_COMPANY ) {
+                                   requestParams.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(GlobalConstants.LAST_CLICKED_COMPANY.companyId));
+                              }
+                              createHotspot(requestParams);
+                              return true;
+                    }
+                    return true;
+               }
+          });
+     }
+
      private void setDragListener() {
           DRAW_VIEW.setOnDragListener(new OnDragListener() {
                LayoutParams params;
@@ -530,7 +638,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                                    requestParams.put(HTTP_PARAMS.ID, String.valueOf("-1"));
                                    requestParams.put(HTTP_PARAMS.DESCRIPTION, assetDescription);
                                    requestParams.put(HTTP_PARAMS.TYPE, Hotspots.HOTSPOTS_NAMES[Hotspots.ASSET]);
-                                   requestParams.put(HTTP_PARAMS.FLOOR, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
+                                   // requestParams.put(HTTP_PARAMS.FLOOR, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
                                    requestParams.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(GlobalConstants.LAST_CLICKED_COMPANY.companyId));
                                    requestParams.put(HTTP_PARAMS.ASSET_ID, String.valueOf(GlobalConstants.LAST_CLICKED_ASSET.id));
                                    createAssetHotspot(requestParams);
@@ -544,7 +652,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                                    requestParams.put(HTTP_PARAMS.AMOUNT, String.valueOf(1));
                                    requestParams.put(HTTP_PARAMS.DESCRIPTION, description);
                                    // requestParams.put(HTTP_PARAMS.TYPE,GlobalConstants.Hotspots.TRADE_HOTSPOT);
-                                   requestParams.put(HTTP_PARAMS.FLOOR, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
+                                   // requestParams.put(HTTP_PARAMS.FLOOR, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
                                    requestParams.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(GlobalConstants.LAST_CLICKED_COMPANY.companyId));
 
                                    showProgressDialog();
@@ -560,12 +668,12 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                                    requestParams.put(HTTP_PARAMS.TYPE, type);
 
                                    dialog.setTitle(null != GlobalConstants.LAST_CLICKED_COMPANY ? type + " for " + GlobalConstants.LAST_CLICKED_COMPANY.companyName : type);
-                                   dialog.setContentView(R.layout.dialog_input_hotspot_detail);
+                                   // dialog.setContentView(R.layout.dialog_input_hotspot_detail);
 
-                                   final EditText editTextDescription = (EditText) dialog.findViewById(R.id.dialog_edittext_input_text_to_draw);
-                                   final Spinner spinner = (Spinner) dialog.findViewById(R.id.spinner_permits_type);
+                                   final EditText editTextDescription = null;// = (EditText) dialog.findViewById(R.id.dialog_edittext_input_text_to_draw);
+                                   final Spinner spinner = null;// = (Spinner) dialog.findViewById(R.id.spinner_permits_type);
 
-                                   final TextView twValidFrom = (TextView) dialog.findViewById(R.id.dialog_hotspot_detail_textview_valid_from);
+                                   final TextView twValidFrom = null;// = (TextView) dialog.findViewById(R.id.dialog_hotspot_detail_textview_valid_from);
                                    final TextView twValidTo = (TextView) dialog.findViewById(R.id.dialog_hotspot_detail_textview_valid_to);
                                    String date = Utils.DATE_FORMAT.format(new Date());
                                    twValidFrom.setText(date);
@@ -582,8 +690,9 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                                         // Apply the adapter to the spinner
                                         spinner.setAdapter(adapter);
 
-                                        ImageButton ibValidFrom = (ImageButton) dialog.findViewById(R.id.dialog_hotspot_detail_imagebutton_valid_from);
-                                        ImageButton ibValidTo = (ImageButton) dialog.findViewById(R.id.dialog_hotspot_detail_imagebutton_valid_to);
+                                        ImageButton ibValidFrom = null;// = (ImageButton)
+                                                                       // dialog.findViewById(R.id.dialog_hotspot_detail_imagebutton_valid_from);
+                                        ImageButton ibValidTo = null;// = (ImageButton) dialog.findViewById(R.id.dialog_hotspot_detail_imagebutton_valid_to);
 
                                         ibValidFrom.setOnClickListener(new OnClickListener() {
 
@@ -646,8 +755,8 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                                         ((LinearLayout) dialog.findViewById(R.id.permits_details_linear_layout)).setVisibility(View.GONE);
                                    }
 
-                                   Button buttonCreateHotspotCancel = (Button) dialog.findViewById(R.id.dialog_cancel);
-                                   final Button buttonCreateHotspotOk = (Button) dialog.findViewById(R.id.dialog_button_ok);
+                                   Button buttonCreateHotspotCancel = null;// (Button) dialog.findViewById(R.id.dialog_cancel);
+                                   final Button buttonCreateHotspotOk = null; // (Button) dialog.findViewById(R.id.dialog_button_ok);
 
                                    buttonCreateHotspotCancel.setOnClickListener(new OnClickListener() {
 
@@ -668,13 +777,13 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
 
                                              String hotspotDescription = "";
 
-                                             requestParams.put(HTTP_PARAMS.FLOOR, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
+                                             // requestParams.put(HTTP_PARAMS.FLOOR, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
                                              requestParams.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(GlobalConstants.LAST_CLICKED_COMPANY.companyId));
 
                                              if ( type.equals(Hotspots.HOTSPOTS_NAMES[Hotspots.PERMIT]) ) {
                                                   hotspotDescription = spinner.getSelectedItem().toString();
-                                                  requestParams.put(HTTP_PARAMS.DATE_VALID_FROM, twValidFrom.getText().toString());
-                                                  requestParams.put(HTTP_PARAMS.DATE_VALID_TO, twValidTo.getText().toString());
+                                                  // requestParams.put(HTTP_PARAMS.DATE_VALID_FROM, twValidFrom.getText().toString());
+                                                  // requestParams.put(HTTP_PARAMS.DATE_VALID_TO, twValidTo.getText().toString());
                                              } else {
                                                   hotspotDescription = editTextDescription.getText().toString();
                                              }
@@ -730,7 +839,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                                    requestParams.put(HTTP_PARAMS.ID, type);
                                    requestParams.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(ListViewUnsignedHotspotsAdapter.draggedUnsignedHotspot.companyId));
 
-                                   requestParams.put(HTTP_PARAMS.FLOOR, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
+                                   // requestParams.put(HTTP_PARAMS.FLOOR, GlobalConstants.SITE_PLAN_FULL_INFO.currentArea);
                                    requestParams.put(HTTP_PARAMS.TYPE, String.valueOf(ListViewUnsignedHotspotsAdapter.draggedUnsignedHotspot.type));
                                    requestParams.put(HTTP_PARAMS.DESCRIPTION, ListViewUnsignedHotspotsAdapter.draggedUnsignedHotspot.description);
 

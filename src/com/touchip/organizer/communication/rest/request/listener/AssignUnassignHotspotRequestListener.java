@@ -38,7 +38,7 @@ public class AssignUnassignHotspotRequestListener implements RequestListener <Mo
 
                FragmentHotspotsList.ADAPTER.notifyDataSetChanged();
                FragmentUnsignedHotspotsList.ADAPTER.notifyDataSetChanged();
-               FragmentHotspotsList.ADAPTER.updateHotspotsButtonsList(Hotspots.HOTSPOTS_NAMES[Hotspots.SHOW_ALL]);
+               FragmentHotspotsList.ADAPTER.updateHotspotsButtonsList(Hotspots.SHOW_ALL);
           } else {
                Utils.showToast(activity, R.string.no_hotspots_from_server, true);
           }

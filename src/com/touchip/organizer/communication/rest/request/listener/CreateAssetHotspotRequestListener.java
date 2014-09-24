@@ -41,7 +41,7 @@ public class CreateAssetHotspotRequestListener implements RequestListener <Model
 
                     FragmentHotspotsList.ADAPTER.notifyDataSetChanged();
                     FragmentUnsignedHotspotsList.ADAPTER.notifyDataSetChanged();
-                    FragmentHotspotsList.ADAPTER.updateHotspotsButtonsList(Hotspots.HOTSPOTS_NAMES[Hotspots.SHOW_ALL]);
+                    FragmentHotspotsList.ADAPTER.updateHotspotsButtonsList(Hotspots.SHOW_ALL);
                } else {
                     Utils.showToast(activity, R.string.cannot_create_hotspot, true);
                }

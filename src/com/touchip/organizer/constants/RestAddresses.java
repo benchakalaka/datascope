@@ -8,11 +8,14 @@ public final class RestAddresses {
 
      // RestAddresses addresses
      public static String        CREATE_SITE_PLAN_DRAWING_PATHES                = "http://datascopesystems.com/api/DrawingPaths/CreateSitePlanDrawingPaths/";
-     public static String        UPDATE_SITE_PLAN_DRAWING_PATHES                = "http://datascopesystems.com/api/DrawingPaths/UpdateDrawingPaths/";
+     public static String        UPDATE_DRAWING_PATHES                          = "http://datascopesystems.com/api/DrawingPaths/UpdateDrawingPaths/";
      public static String        LOGIN                                          = "http://datascopesystems.com/Login/Login/";
+     public static String        GET_DRAWING_PATH_BY_HOTSPOT_ID                 = "http://datascopesystems.com/api/DrawingPaths/GetDrawingPathByHotspotId/";
      public static String        GET_WHITEBOARDS                                = "http://datascopesystems.com/api/DrawingPaths/GetTimesForPaths/";
      public static String        GET_PATH                                       = "http://datascopesystems.com/api/DrawingPaths/GetDrawingPathById/";
      public static String        CREATE_GENERAL_WHITE_BOARD                     = "http://datascopesystems.com/api/DrawingPaths/CreateGeneralWhiteBoardPaths";
+     public static String        CREATE_HOTSPOT                                 = "http://datascopesystems.com/api/HotSpot/Create/";
+     public static String        CREATE_HOTSPOT_DRAWING_PATHS                   = "http://datascopesystems.com/api/DrawingPaths/CreateHotSpotDrawingPaths/";
 
      public static String        GET_TIMES_FOR_PATHS                            = "http://datascopesystems.com/SitePlanImages/GetTimesForPaths/";
      public static String        CREATE_NEW_WHITE_BOARD                         = "http://datascopesystems.com/SitePlanImages/SaveGeneralWhiteBoardPath/";
@@ -26,7 +29,6 @@ public final class RestAddresses {
      public static String        TEST_CONNECTION                                = "http://datascopesystems.com/TestConnection/TestConnection/";
      public static String        UPLOAD_CAPTURED_PHOTO                          = "http://datascopesystems.com/SitePlanImages/UploadPhoto/";
      public static String        CREATE_MARKER_WITH_CURRENT_LOCATION            = "http://datascopesystems.com/SiteLocation/CreateSiteLocation/";
-     public static String        CREATE_HOTSPOT                                 = "http://datascopesystems.com/HotSpot/CreateHotSpot/";
      public static String        DOWNLOAD_SITE_PLAN                             = "http://datascopesystems.com/api/SitePlan/DownloadSitePlanInfo/";
      public static String        GET_LIST_OF_DATES_TO_HIGHLIGHT_IN_CALENDAR     = "http://datascopesystems.com/SitePlanImages/GetDatesToHighLight/";
      public static String        GET_MEETING_PLAN                               = "http://datascopesystems.com/SitePlanMeeting/GetSitePlanMeeting/";
@@ -58,11 +60,9 @@ public final class RestAddresses {
      private static final String DEF_UPLOAD_CAPTURED_PHOTO                      = "http://[ip:port]/SitePlanImages/UploadPhoto/";
      private static final String DEF_CREATE_MARKER_WITH_CURRENT_LOCATION        = "http://[ip:port]/SiteLocation/CreateSiteLocation/";
      private static final String DEF_DOWNLOAD_SITE_PLAN                         = "http://[ip:port]/api/SitePlan/DownloadSitePlanInfo/";
-     private static final String DEF_CREATE_HOTSPOT                             = "http://[ip:port]/HotSpot/CreateHotSpot/";
      private static final String DEF_GET_LIST_OF_DATES_TO_HIGHLIGHT_IN_CALENDAR = "http://[ip:port]/SitePlanImages/GetDatesToHighLight/";
      private static final String DEF_GET_MEETING_PLAN                           = "http://[ip:port]/SitePlanMeeting/GetSitePlanMeeting/";
      private static final String DEF_DOWNLOAD_DRAWING_PATHES                    = "http://[ip:port]/SitePlanImages/LoadDrawingPaths/";
-     private static final String DEF_CREATE_SITE_PLAN_DRAWING_PATHES            = "http://[ip:port]/api/DrawingPaths/CreateSitePlanDrawingPaths";
      private static final String DEF_GET_OPERATIVES_ON_SITE                     = "http://[ip:port]/Companies/GetOperativesByCompanyId/";
      private static final String DEF_GET_TRADES                                 = "http://[ip:port]/HotSpot/GetTrades/";
      private static final String DEF_CREATE_TRADE_HOTSPOT                       = "http://[ip:port]/HotSpot/CreateTradeHotSpot/";
@@ -82,10 +82,14 @@ public final class RestAddresses {
      public final static String  DEF_GET_SUITABLE_OPERATIVES                    = "http://[ip:port]/Operatives/GetOperativesByTradeAndAsset";
      public final static String  DEF_CREATE_ASSET_HOTSPOT                       = "http://[ip:port]/HotSpot/CreateAssetHotSpot/";
      public final static String  DEF_UPDATE_HOTSPOT_POSITION                    = "http://[ip:port]/HotSpot/UpdateHotspotPosition/";
-     public final static String  DEF_UPDATE_SITE_PLAN_DRAWING_PATHES            = "http://[ip:port]/api/DrawingPaths/UpdateDrawingPaths/";
+     public final static String  DEF_UPDATE_DRAWING_PATHES                      = "http://[ip:port]/api/DrawingPaths/UpdateDrawingPaths/";
      public static final String  DEF_GET_WHITEBOARDS                            = "http://[ip:port]/api/DrawingPaths/GetTimesForPaths/";
      public static final String  DEF_GET_PATH                                   = "http://[ip:port]/api/DrawingPaths/GetDrawingPathById/";
-     public static final String  DEF_CREATE_GENERAL_WHITE_BOARD                 = "http://[ip:port]/api/DrawingPaths/CreateGeneralWhiteBoardPaths";
+     public static final String  DEF_CREATE_GENERAL_WHITE_BOARD                 = "http://[ip:port]/api/DrawingPaths/CreateGeneralWhiteBoardPaths/";
+     private static final String DEF_CREATE_HOTSPOT                             = "http://[ip:port]/api/HotSpot/Create/";
+     public static final String  DEF_CREATE_HOTSPOT_DRAWING_PATHS               = "http://[ip:port]/api/DrawingPaths/CreateHotSpotDrawingPaths/";
+     private static final String DEF_CREATE_SITE_PLAN_DRAWING_PATHES            = "http://[ip:port]/api/DrawingPaths/CreateSitePlanDrawingPaths/";
+     public static final String  DEF_GET_DRAWING_PATH_BY_HOTSPOT_ID             = "http://[ip:port]/api/DrawingPaths/GetDrawingPathByHotspotId/";
 
      private RestAddresses () {
      }
@@ -95,10 +99,12 @@ public final class RestAddresses {
       */
      private static void initAdresses() {
           if ( !IP.contains("datascope") ) {
+               GET_DRAWING_PATH_BY_HOTSPOT_ID = DEF_GET_DRAWING_PATH_BY_HOTSPOT_ID.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
+               CREATE_HOTSPOT_DRAWING_PATHS = DEF_CREATE_HOTSPOT_DRAWING_PATHS.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
                CREATE_GENERAL_WHITE_BOARD = DEF_CREATE_GENERAL_WHITE_BOARD.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
                GET_PATH = DEF_GET_PATH.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
                GET_WHITEBOARDS = DEF_GET_WHITEBOARDS.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
-               UPDATE_SITE_PLAN_DRAWING_PATHES = DEF_UPDATE_SITE_PLAN_DRAWING_PATHES.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
+               UPDATE_DRAWING_PATHES = DEF_UPDATE_DRAWING_PATHES.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
                GET_ALL_COMPANIES = DEF_GET_ALL_COMPANIES.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
                GET_GOOGLE_MAP_LOCATIONS = DEF_GET_GOOGLE_MAP_LOCATIONS.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
                GET_BRIEFING_DETAILS = DEF_GET_BRIEFING_DETAILS.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
@@ -131,7 +137,7 @@ public final class RestAddresses {
                CREATE_ASSET_HOTSPOT = DEF_CREATE_ASSET_HOTSPOT.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
                UPDATE_HOTSPOT_POSITION = DEF_UPDATE_HOTSPOT_POSITION.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
           } else {
-               UPDATE_SITE_PLAN_DRAWING_PATHES = DEF_UPDATE_SITE_PLAN_DRAWING_PATHES.replace(IP_PORT, String.valueOf(IP + REST_PORT));
+               UPDATE_DRAWING_PATHES = DEF_UPDATE_DRAWING_PATHES.replace(IP_PORT, String.valueOf(IP + REST_PORT));
                GET_ALL_COMPANIES = DEF_GET_ALL_COMPANIES.replace(IP_PORT, String.valueOf(IP + REST_PORT));
                GET_GOOGLE_MAP_LOCATIONS = DEF_GET_GOOGLE_MAP_LOCATIONS.replace(IP_PORT, String.valueOf(IP + REST_PORT));
                GET_BRIEFING_DETAILS = DEF_GET_BRIEFING_DETAILS.replace(IP_PORT, String.valueOf(IP + REST_PORT));
@@ -166,6 +172,8 @@ public final class RestAddresses {
                GET_WHITEBOARDS = DEF_GET_WHITEBOARDS.replace(IP_PORT, String.valueOf(IP + REST_PORT));
                GET_PATH = DEF_GET_PATH.replace(IP_PORT, String.valueOf(IP + REST_PORT));
                CREATE_GENERAL_WHITE_BOARD = DEF_CREATE_GENERAL_WHITE_BOARD.replace(IP_PORT, String.valueOf(IP + REST_PORT));
+               CREATE_HOTSPOT_DRAWING_PATHS = DEF_CREATE_HOTSPOT_DRAWING_PATHS.replace(IP_PORT, String.valueOf(IP + REST_PORT));
+               GET_DRAWING_PATH_BY_HOTSPOT_ID = DEF_GET_DRAWING_PATH_BY_HOTSPOT_ID.replace(IP_PORT, String.valueOf(IP + REST_PORT));
           }
      }
 

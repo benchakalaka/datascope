@@ -104,8 +104,29 @@ public class Utils {
           return days;
      }
 
+     private final static long MILLISECS_PER_DAY = 24 * 60 * 60 * 1000;
+
+     public static long calculateDeltaInDays(Calendar a, Calendar b) {
+
+          // Optional: avoid cloning objects if it is the same day
+          if ( a.get(Calendar.ERA) == b.get(Calendar.ERA) && a.get(Calendar.YEAR) == b.get(Calendar.YEAR) && a.get(Calendar.DAY_OF_YEAR) == b.get(Calendar.DAY_OF_YEAR) ) { return 0; }
+          Calendar a2 = (Calendar) a.clone();
+          Calendar b2 = (Calendar) b.clone();
+          a2.set(Calendar.HOUR_OF_DAY, 0);
+          a2.set(Calendar.MINUTE, 0);
+          a2.set(Calendar.SECOND, 0);
+          a2.set(Calendar.MILLISECOND, 0);
+          b2.set(Calendar.HOUR_OF_DAY, 0);
+          b2.set(Calendar.MINUTE, 0);
+          b2.set(Calendar.SECOND, 0);
+          b2.set(Calendar.MILLISECOND, 0);
+          long diff = a2.getTimeInMillis() - b2.getTimeInMillis();
+          long days = diff / MILLISECS_PER_DAY;
+          return Math.abs(days);
+     }
+
      @SuppressWarnings ( "unchecked" ) public static List <PathSerializable> convertStringToPathsList(String stringToConvert) {
-          List <PathSerializable> result = null;
+          List <PathSerializable> result = new ArrayList <PathSerializable>();
           if ( !StringUtils.isEmpty(stringToConvert) ) {
                try {
 

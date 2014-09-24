@@ -1,7 +1,10 @@
 package com.touchip.organizer.activities.custom.components;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.util.support.Base64;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -98,6 +101,18 @@ public class CompaniesDrawingView extends View {
           opt.inMutable = true;
           WIDTH = w;
           HEIGHT = h;
+
+          try {
+               byte[] imageByteArray = Base64.decode(GlobalConstants.SITE_PLAN_FULL_INFO.sitePlanImage);
+               if ( null != imageByteArray ) {
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.length);
+                    CompaniesDrawingView.canvasBitmap = bitmap;
+                    CompaniesDrawingView.startBitmap = bitmap;
+               }
+          } catch (IOException e) {
+               e.printStackTrace();
+          }
+
           canvasBitmap = Bitmap.createScaledBitmap(canvasBitmap, w, h, false);
           startBitmap = Bitmap.createScaledBitmap(startBitmap, w, h, false);
           drawCanvas = new Canvas(canvasBitmap);
