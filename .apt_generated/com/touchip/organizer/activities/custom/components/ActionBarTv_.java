@@ -5,12 +5,12 @@
 
 package com.touchip.organizer.activities.custom.components;
 
-import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import com.squareup.timessquare.sample.R.id;
 import com.squareup.timessquare.sample.R.layout;
+import com.touchip.organizer.activities.SuperActivity;
 import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
 import org.androidannotations.api.view.OnViewChangedNotifier;
@@ -32,12 +32,12 @@ public final class ActionBarTv_
     private boolean alreadyInflated_ = false;
     private final OnViewChangedNotifier onViewChangedNotifier_ = new OnViewChangedNotifier();
 
-    public ActionBarTv_(Context context) {
+    public ActionBarTv_(SuperActivity context) {
         super(context);
         init_();
     }
 
-    public static ActionBarTv build(Context context) {
+    public static ActionBarTv build(SuperActivity context) {
         ActionBarTv_ instance = new ActionBarTv_(context);
         instance.onFinishInflate();
         return instance;
@@ -68,6 +68,7 @@ public final class ActionBarTv_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+        llInduction = ((LinearLayout) hasViews.findViewById(id.llInduction));
         llSettings = ((LinearLayout) hasViews.findViewById(id.llSettings));
         {
             View view = hasViews.findViewById(id.llSettings);
@@ -78,6 +79,21 @@ public final class ActionBarTv_
                     @Override
                     public void onClick(View view) {
                         ActionBarTv_.this.llSettings();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.llInduction);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActionBarTv_.this.llInduction();
                     }
 
                 }

@@ -82,9 +82,9 @@ public final class ANotes_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivAddNote = ((ImageView) hasViews.findViewById(id.ivAddNote));
-        gridView = ((GridLayout) hasViews.findViewById(id.gridView));
         llNotes = ((LinearLayout) hasViews.findViewById(id.llNotes));
+        gridView = ((GridLayout) hasViews.findViewById(id.gridView));
+        ivAddNote = ((ImageView) hasViews.findViewById(id.ivAddNote));
         afterViews();
     }
 

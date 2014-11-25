@@ -4,7 +4,7 @@
 	package="com.squareup.timessquare.sample"
 	android:installLocation="preferExternal"
 	android:versionCode="1"
-	android:versionName="1.2" >
+	android:versionName="1.5" >
 
 	<uses-sdk
 		android:maxSdkVersion="19"
@@ -53,10 +53,11 @@
 			android:required="false" />
 
 		<activity
-			android:name="com.touchip.organizer.activities.TvActivity_"
+			android:name="com.touchip.organizer.activities.ATv_"
 			android:hardwareAccelerated="true"
 			android:screenOrientation="sensorLandscape"
-			android:theme="@style/Sherlock.__Theme.DarkActionBar" >
+			android:theme="@style/Sherlock.__Theme.DarkActionBar"
+			android:windowSoftInputMode="stateHidden" >
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 
@@ -64,61 +65,33 @@
 			</intent-filter>
 		</activity>
 		<activity
-			android:name="com.touchip.organizer.activities.KindleMapActivity_"
-			android:screenOrientation="sensorLandscape"
-			android:theme="@style/Sherlock.__Theme.DarkActionBar" >
-		</activity>
-		<activity
-			android:name="com.touchip.organizer.activities.StartActivity_"
-			android:screenOrientation="sensorLandscape"
-			android:theme="@style/Sherlock.__Theme.DarkActionBar" >
-		</activity>
-		<activity
-			android:name="com.touchip.organizer.activities.EnterPinActivity"
-			android:screenOrientation="sensorLandscape"
-			android:theme="@style/Sherlock.__Theme.DarkActionBar" >
-		</activity>
-		<activity
 			android:name="com.touchip.organizer.activities.DeliveriesActivity_"
 			android:screenOrientation="sensorLandscape"
 			android:theme="@style/Sherlock.__Theme.DarkActionBar" >
 		</activity>
 		<activity
-			android:name="com.touchip.organizer.activities.GeneralWhiteBoardActivity_"
-			android:parentActivityName="com.touchip.organizer.activities.DrawingCompaniesActivity_"
-			android:screenOrientation="sensorLandscape"
-			android:theme="@style/Sherlock.__Theme.DarkActionBar" >
-			<meta-data
-				android:name="android.support.PARENT_ACTIVITY"
-				android:value="com.touchip.organizer.activities.DrawingCompaniesActivity_" />
-		</activity>
-		<activity
-			android:name="com.touchip.organizer.activities.MapActivity_"
-			android:parentActivityName="com.touchip.organizer.activities.StartActivity_"
+			android:name="com.touchip.organizer.activities.AGeneralWhiteBoard_"
 			android:screenOrientation="sensorLandscape"
 			android:theme="@style/Sherlock.__Theme.DarkActionBar" >
 		</activity>
 		<activity
-			android:name="com.touchip.organizer.activities.DrawingCompaniesActivity_"
+			android:name="com.touchip.organizer.activities.ADrawingCompanies_"
 			android:hardwareAccelerated="true"
-			android:parentActivityName="com.touchip.organizer.activities.MapActivity"
 			android:screenOrientation="sensorLandscape"
 			android:theme="@style/Sherlock.__Theme.DarkActionBar"
 			android:windowSoftInputMode="adjustPan" >
-			<meta-data
-				android:name="android.support.PARENT_ACTIVITY"
-				android:value="com.touchip.organizer.activities.MapActivity" />
 		</activity>
 		<activity
 			android:name="com.touchip.organizer.activities.AMenuModules_"
+			android:screenOrientation="sensorLandscape"
+			android:theme="@style/Sherlock.__Theme.DarkActionBar" >
+		</activity>
+		<activity
+			android:name="com.touchip.organizer.activities.AUserSettings_"
 			android:screenOrientation="sensorLandscape" >
 		</activity>
 		<activity
-			android:name="com.touchip.organizer.activities.UserSettingsActivity_"
-			android:screenOrientation="sensorLandscape" >
-		</activity>
-		<activity
-			android:name="com.touchip.organizer.activities.ImagePagerActivity_"
+			android:name="com.touchip.organizer.activities.AImagePager_"
 			android:screenOrientation="sensorLandscape"
 			android:theme="@style/Sherlock.__Theme.DarkActionBar" >
 		</activity>
@@ -128,7 +101,7 @@
 			android:theme="@style/Sherlock.__Theme.DarkActionBar" >
 		</activity>
 		<activity
-			android:name="com.touchip.organizer.activities.MeetingPlanActivity_"
+			android:name="com.touchip.organizer.activities.AMeetingPlan_"
 			android:screenOrientation="sensorLandscape"
 			android:theme="@style/Sherlock.__Theme.DarkActionBar" />
 		<activity android:name="MainActivity" >

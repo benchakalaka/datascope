@@ -1,39 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/ssss"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent" >
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/default_screen_bg" >
 
 	<LinearLayout
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
 		android:orientation="vertical" >
 
 		<LinearLayout
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
-			android:background="@drawable/background_view_rounded_single_trades"
-			android:orientation="horizontal" >
-
-			<TextView
-				android:id="@+id/textView1"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center"
-				android:padding="5sp"
-				android:text="Server address"
-				android:textAppearance="?android:attr/textAppearanceSmall"
-				android:textStyle="italic|bold" />
-		</LinearLayout>
-
-		<LinearLayout
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:layout_gravity="center_horizontal"
-			android:layout_marginTop="10dp"
-			android:background="@drawable/background_view_rounded_single_trades"
-			android:orientation="horizontal" >
+			android:layout_margin="10dp"
+			android:background="@drawable/transparent_inside_and_white_border"
+			android:orientation="vertical"
+			android:padding="10dp" >
 
 			<TextView
 				android:id="@+id/twIp"
@@ -53,17 +38,20 @@
 				android:layout_height="wrap_content"
 				android:layout_gravity="right"
 				android:background="@drawable/background_view_rounded_single"
-				android:padding="2sp"
-				android:textAppearance="?android:attr/textAppearanceSmall" />
+				android:padding="5sp"
+				android:textAppearance="?android:attr/textAppearanceSmall"
+				android:textColor="@android:color/white"
+				android:textStyle="bold" />
 		</LinearLayout>
 
 		<LinearLayout
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
-			android:layout_marginTop="10dp"
-			android:background="@drawable/background_view_rounded_single_trades"
-			android:orientation="horizontal" >
+			android:layout_margin="10dp"
+			android:background="@drawable/transparent_inside_and_white_border"
+			android:orientation="vertical"
+			android:padding="10dp" >
 
 			<TextView
 				android:id="@+id/twPort"
@@ -84,17 +72,20 @@
 				android:layout_gravity="right"
 				android:background="@drawable/background_view_rounded_single"
 				android:inputType="numberDecimal"
-				android:padding="2sp"
-				android:textAppearance="?android:attr/textAppearanceSmall" />
+				android:padding="5sp"
+				android:textAppearance="?android:attr/textAppearanceSmall"
+				android:textColor="@android:color/white"
+				android:textStyle="bold" />
 		</LinearLayout>
 
 		<LinearLayout
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
-			android:layout_marginTop="10dp"
-			android:background="@drawable/background_view_rounded_single_trades"
-			android:orientation="horizontal" >
+			android:layout_margin="10dp"
+			android:background="@drawable/transparent_inside_and_white_round_border"
+			android:orientation="vertical"
+			android:padding="10dp" >
 
 			<TextView
 				android:id="@+id/twTvId"
@@ -115,21 +106,20 @@
 				android:layout_gravity="right"
 				android:background="@drawable/background_view_rounded_single"
 				android:inputType="numberDecimal"
-				android:padding="2sp"
-				android:textAppearance="?android:attr/textAppearanceSmall" />
+				android:padding="5sp"
+				android:textAppearance="?android:attr/textAppearanceSmall"
+				android:textColor="@android:color/white"
+				android:textStyle="bold" />
 		</LinearLayout>
-		
-		
-		
-		
-		
+
 		<LinearLayout
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
-			android:layout_marginTop="10dp"
-			android:background="@drawable/background_view_rounded_single_trades"
-			android:orientation="horizontal" >
+			android:layout_margin="10dp"
+			android:background="@drawable/transparent_inside_and_white_round_border"
+			android:orientation="vertical"
+			android:padding="10dp" >
 
 			<TextView
 				android:id="@+id/twSiteId"
@@ -150,44 +140,79 @@
 				android:layout_gravity="right"
 				android:background="@drawable/background_view_rounded_single"
 				android:inputType="numberDecimal"
-				android:padding="2sp"
-				android:textAppearance="?android:attr/textAppearanceSmall" />
+				android:padding="5sp"
+				android:textAppearance="?android:attr/textAppearanceSmall"
+				android:textColor="@android:color/white"
+				android:textStyle="bold" />
 		</LinearLayout>
-		
 
 		<LinearLayout
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
-			android:layout_marginTop="10dp"
-			android:orientation="horizontal"
-			android:weightSum="3" >
+			android:layout_margin="10dp"
+			android:background="@drawable/transparent_inside_and_white_round_border"
+			android:orientation="vertical"
+			android:padding="10dp" >
 
-			<Button
-				android:id="@+id/buttonUpdateApp"
+			<TextView
+				android:id="@+id/twTvUrl"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				android:text="@string/update_app" />
+				android:layout_gravity="center_vertical"
+				android:paddingEnd="10dp"
+				android:paddingLeft="10dp"
+				android:paddingStart="10dp"
+				android:text="@string/tvUrl"
+				android:textAppearance="?android:attr/textAppearanceSmall"
+				android:textStyle="italic|bold" />
 
-			<Button
-				android:id="@+id/buttonOk"
-				android:layout_width="wrap_content"
+			<EditText
+				android:id="@+id/etTvUrl"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				android:orientation="horizontal"
-				android:text="@string/OK" >
-			</Button>
-
-			<Button
-				android:id="@+id/buttonCancel"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				android:orientation="horizontal"
-				android:text="@string/cancel" >
-			</Button>
+				android:layout_gravity="right"
+				android:background="@drawable/background_view_rounded_single"
+				android:inputType="textUri"
+				android:padding="5sp"
+				android:textAppearance="?android:attr/textAppearanceSmall"
+				android:textColor="@android:color/white"
+				android:textStyle="bold" />
 		</LinearLayout>
 	</LinearLayout>
 
-</ScrollView>
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:orientation="horizontal"
+		android:weightSum="3" >
+
+		<Button
+			android:id="@+id/buttonUpdateApp"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="5dp"
+			android:layout_weight="1"
+			android:text="@string/update_app" />
+
+		<Button
+			android:id="@+id/buttonOk"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="5dp"
+			android:layout_weight="1"
+			android:orientation="horizontal"
+			android:text="@string/OK" />
+
+		<Button
+			android:id="@+id/buttonCancel"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="5dp"
+			android:layout_weight="1"
+			android:orientation="horizontal"
+			android:text="@string/cancel" />
+	</LinearLayout>
+
+</RelativeLayout>

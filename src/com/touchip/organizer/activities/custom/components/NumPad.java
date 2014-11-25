@@ -1,13 +1,12 @@
 package com.touchip.organizer.activities.custom.components;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
+import quickutils.core.QUFactory.QCollection;
+import quickutils.core.QUFactory.QLog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +15,13 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.octo.android.robospice.persistence.DurationInMillis;
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.activities.DrawingCompaniesActivity;
+import com.touchip.organizer.activities.SuperActivity;
 import com.touchip.organizer.activities.fragments.FragmentCompaniesList;
-import com.touchip.organizer.communication.rest.request.UpdateTradeHotspotRequest;
-import com.touchip.organizer.communication.rest.request.listener.UpdateTradeHotspotRequestListener;
+import com.touchip.organizer.communication.rest.model.ModelHotspotsList;
+import com.touchip.organizer.communication.rest.request.RestAddresses;
+import com.touchip.organizer.communication.rest.request.SuperRequest;
+import com.touchip.organizer.communication.rest.request.listener.ResponseUpdateTradeHotspot;
 import com.touchip.organizer.utils.GlobalConstants;
 import com.touchip.organizer.utils.HTTP_PARAMS;
 import com.touchip.organizer.utils.Utils;
@@ -57,13 +57,13 @@ public class NumPad {
      static Button           btn0;
      static Button           btnC;
      static ImageButton      btnDot;
-     AlertDialog             dialog;
+     Dialog                  dialog;
 
      private String          value          = "";
      private NumPad          me;
 
      private int             flagHidePrompt = 0;
-     private Activity        activity;
+     private SuperActivity   activity;
 
      public interface NumbPadInterface {
           public String numPadInputValue(String value);
@@ -99,20 +99,16 @@ public class NumPad {
                     retValue = Integer.valueOf(value);
                }
           } catch (Exception e) {
-               Utils.logw(e.getMessage());
+               QLog.debug(e.getMessage());
           }
           return retValue;
      }
 
-     public void show(final Activity a, final String promptString, int inFlags, final NumbPadInterface postrun) {
+     public void show(final SuperActivity a, final String promptString, int inFlags, final NumbPadInterface postrun) {
           me = this;
           flagHidePrompt = (inFlags / 2) % 2;
 
-          final Builder dlg = new AlertDialog.Builder(a);
           this.activity = a;
-          if ( flagHidePrompt == 0 ) {
-               dlg.setTitle(promptString);
-          }
           // Inflate the dialog layout
           LayoutInflater inflater = a.getLayoutInflater();
           View iView = inflater.inflate(R.layout.dialog_trade_detail, null, true);
@@ -132,13 +128,13 @@ public class NumPad {
                          dialog.hide();
                          return;
                     }
-                    DrawingCompaniesActivity.showProgressDialog();
-                    Map <String, Integer> params = new HashMap <String, Integer>();
-                    params.put(HTTP_PARAMS.ID, GlobalConstants.LAST_CLICKED_HOTSPOT.id);
-                    params.put(HTTP_PARAMS.NEW_AMOUNT, me.getIntValue());
+                    Map <String, Integer> requestParams = QCollection.newHashMap();
+                    requestParams.put(HTTP_PARAMS.ID, GlobalConstants.LAST_CLICKED_HOTSPOT.id);
+                    requestParams.put(HTTP_PARAMS.NEW_AMOUNT, me.getIntValue());
+                    requestParams.put(HTTP_PARAMS.USER_ID, GlobalConstants.CURRENT_USER.userId);
 
-                    UpdateTradeHotspotRequest request = new UpdateTradeHotspotRequest(params);
-                    ((DrawingCompaniesActivity) activity).getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new UpdateTradeHotspotRequestListener((DrawingCompaniesActivity) activity));
+                    SuperRequest <ModelHotspotsList> requestGetDatesToHighlight = new SuperRequest <ModelHotspotsList>(activity, ModelHotspotsList.class, RestAddresses.UPDATE_TRADE_HOTSPOT, requestParams);
+                    activity.execute(requestGetDatesToHighlight, new ResponseUpdateTradeHotspot(activity));
 
                     dialog.hide();
                }
@@ -153,7 +149,6 @@ public class NumPad {
           progressDialog.setTitle(Utils.getResources(R.string.loading));
 
           twAmount.setText("	Current amount: " + GlobalConstants.LAST_CLICKED_HOTSPOT.amount);
-          // twAvailableAmount.setText("	Available amount: +" + GlobalConstants.LAST_CLICKED_HOTSPOT.availableAmount);
           twDescritpion.setText("	Trade: " + GlobalConstants.LAST_CLICKED_HOTSPOT.description);
           twCompanyName.setText("	Company: " + FragmentCompaniesList.getCompanyNameById(GlobalConstants.LAST_CLICKED_HOTSPOT.companyId));
 
@@ -202,8 +197,9 @@ public class NumPad {
           btnC.setOnClickListener(listener);
           btnDot.setOnClickListener(listener);
 
-          dlg.setView(iView);
-          dialog = dlg.show();
+          dialog = Utils.getConfiguredDialog(activity);
+          dialog.setContentView(iView);
+          dialog.show();
      }
 
      void appendNumber(String inNumb) {
@@ -221,8 +217,14 @@ public class NumPad {
                }
                return;
           }
-
-          int inputedValue = Integer.valueOf(value + inNumb);
+          int inputedValue = 0;
+          try {
+               inputedValue = Integer.valueOf(value + inNumb);
+          } catch (Exception ex) {
+               ex.printStackTrace();
+               Utils.showCustomToast(activity, "Wrong number format", R.drawable.failure);
+               return;
+          }
           if ( !"".equals(value) && inputedValue == 0 && Integer.valueOf(value) == 0 ) { return; }
           value = value + inNumb;
           promptValue.setText(promptValue.getText() + inNumb);

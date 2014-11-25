@@ -10,5 +10,14 @@
 	<color name="ab_background">#20324a</color>
 	<color name="ab_calendar_bg">#bb0066CC</color>
 	<color name="ab_calendar_cell_bg">#330011FF</color>
+	<color name="normal_day">#ff999999</color>
+	<color name="selected_day_background">#E75F49</color>
+	<color name="selected_day_text">#fff2f2f2</color>
+	<color name="elv_btn_pressed">#ff33b5e5</color>
+	<color name="elv_btn_focused">#ff0099cc</color>
+	<color name="elv_btn_normal">#00000000</color>
+	<color name="elv_popup_bg_color">#EE666666</color>
+	<color name="elv_separator_color">#BBBBBB</color>
+	<color name="elv_popup_text_color">#FFFFFF</color>
 
 </resources>

@@ -3,12 +3,16 @@ package com.touchip.organizer.activities.custom.components;
 import java.util.ArrayList;
 import java.util.List;
 
+import quickutils.core.QUFactory.QLog;
+import quickutils.core.QUFactory.QPreconditions;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path.Direction;
+import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.text.TextPaint;
 import android.util.AttributeSet;
@@ -16,9 +20,11 @@ import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.touchip.organizer.activities.DrawingCompaniesActivity;
+import com.touchip.organizer.activities.ADrawingCompanies;
+import com.touchip.organizer.activities.custom.components.WhiteBoardDrawingView.ShapesType;
 import com.touchip.organizer.communication.rest.serializables.PaintSerializable;
 import com.touchip.organizer.communication.rest.serializables.PathSerializable;
+import com.touchip.organizer.utils.FilterManager;
 import com.touchip.organizer.utils.GlobalConstants;
 import com.touchip.organizer.utils.Utils;
 
@@ -30,33 +36,45 @@ public class CompaniesDrawingView extends View {
      // drawing and canvas paint
      private PaintSerializable        drawPaint , canvasPaint;
      // initial color
-     private int                      paintColor         = Color.TRANSPARENT;
+     private int                      paintColor           = Color.TRANSPARENT;
+
+     private static int               CURRENT_DRAWING_TYPE = ShapesType.STANDART_DRAWING;
      // canvas
      private Canvas                   drawCanvas;
      // brush sizes
      private float                    brushSize;
      // step for drawing coordinates (100 pixels)
-     private static final float       STEP               = 100;
+     private static final float       STEP                 = 100;
      private float                    touchX;
      private float                    touchY;
      // default paint for grid drawing
-     private final Paint              coordinatesPaint   = new Paint();
+     public final static Paint        coordinatesPaint     = new Paint();
      // default paint for grid drawing
-     private final TextPaint          labelsPaint        = new TextPaint();
+     private final TextPaint          labelsPaint          = new TextPaint();
      static float                     temporaryBrushSize;
      // companies and colours filter (0 means draw everything, 1 means hide all)
-     private int                      companyColorFilter = 0;
+     private int                      companyColorFilter   = 0;
      // for UNDO operation
-     private List <PathSerializable>  paths              = new ArrayList <PathSerializable>();
+     private List <PathSerializable>  paths                = new ArrayList <PathSerializable>();
      // for UNDO operation
-     private List <PathSerializable>  redoPaths          = new ArrayList <PathSerializable>();
+     private List <PathSerializable>  redoPaths            = new ArrayList <PathSerializable>();
      //
-     private static PaintSerializable staticPaint        = new PaintSerializable();
+     private static PaintSerializable staticPaint          = new PaintSerializable();
 
-     private boolean                  drawCoordinates    = false;
+     // rectangle of drawing for different types of shapes
+     private final RectF              rectangleOfDrawing   = new RectF();
+
+     // path for each shape
+     private static PathSerializable  shapePath            = new PathSerializable();
+
+     private boolean                  drawCoordinates      = false;
+     private float                    touchDownX;
+     private float                    touchDownY;
+     private boolean                  isNeedToStopOnDrawMethod;
 
      public static int                WIDTH;
      public static int                HEIGHT;
+     public static byte[]             DRAWING_PATHS_BYTES;
 
      public CompaniesDrawingView ( Context context , AttributeSet attrs ) {
           super(context, attrs);
@@ -71,7 +89,19 @@ public class CompaniesDrawingView extends View {
 
      @Override protected void onAttachedToWindow() {
           super.onAttachedToWindow();
-          DrawingCompaniesActivity.loadPathes();
+          ADrawingCompanies.loadPathes();
+          if ( null != GlobalConstants.LAST_CLICKED_COMPANY ) {
+               setColor(GlobalConstants.LAST_CLICKED_COMPANY.colour);
+          }
+     }
+
+     /**
+      * This method is using to return from onDraw method when we do not need to draw shapes
+      * 
+      * @param value
+      */
+     public void setIsNeedToStopOnDrawMethod(boolean value) {
+          isNeedToStopOnDrawMethod = value;
      }
 
      /**
@@ -91,6 +121,27 @@ public class CompaniesDrawingView extends View {
           labelsPaint.setFakeBoldText(true);
           labelsPaint.setUnderlineText(true);
           labelsPaint.setTypeface(Typeface.SERIF);
+
+          shapePath = new PathSerializable();
+     }
+
+     /**
+      * Set drawing type: it could be any constant from static ShapeType interface
+      * 
+      * @param shapeType
+      */
+     public void setDrawingShape(int shapeType) {
+          CURRENT_DRAWING_TYPE = shapeType;
+          isNeedToStopOnDrawMethod = true;
+     }
+
+     /**
+      * Set drawing type: it could be any constant from static ShapeType interface
+      * 
+      * @param shapeType
+      */
+     public int getDrawingShape() {
+          return CURRENT_DRAWING_TYPE;
      }
 
      @Override protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -102,6 +153,17 @@ public class CompaniesDrawingView extends View {
           canvasBitmap = Bitmap.createScaledBitmap(canvasBitmap, w, h, false);
           startBitmap = Bitmap.createScaledBitmap(startBitmap, w, h, false);
           drawCanvas = new Canvas(canvasBitmap);
+          try {
+               if ( null != DRAWING_PATHS_BYTES ) {
+                    setPaths(Utils.parseByteArryaToPathSerializable(DRAWING_PATHS_BYTES, w, h));
+               }
+          } catch (Exception ex) {
+               ex.printStackTrace();
+          }
+          // canvasBitmap = Bitmap.createBitmap(w, h, Config.ARGB_8888);
+          // startBitmap = Bitmap.createBitmap(w, h, Config.ARGB_8888);
+          // drawCanvas = new Canvas();
+
      }
 
      /**
@@ -121,39 +183,6 @@ public class CompaniesDrawingView extends View {
           // draw simple bitmap
           canvas.drawBitmap(startBitmap, 0, 0, canvasPaint);
 
-          // draw all pathes which in arraylst
-          for ( int i = 0; i < paths.size(); i++ ) {
-               switch (getCompanyColourFilter()) {
-               // 0 draw lines for all companies
-                    case 0:
-
-                         staticPaint.setStrokeWidth(getPaths().get(i).getPaint().brushStrokeWith);
-                         staticPaint.setColor(getPaths().get(i).getPaint().colour);
-                         canvas.drawPath(getPaths().get(i), staticPaint);
-                         break;
-
-                    // 1 - hide all drawings
-                    case 1:
-                         break;
-
-                    // apply filter, draw only lines with color equal companyColorFilter
-                    default:
-                         try {
-                              if ( getPaths().get(i).getPaint().colour == getCompanyColourFilter() ) {
-                                   staticPaint.setStrokeWidth(getPaths().get(i).getPaint().brushStrokeWith);
-                                   staticPaint.setColor(getPaths().get(i).getPaint().colour);
-                                   canvas.drawPath(getPaths().get(i), staticPaint);
-                              }
-                         } catch (Exception e) {
-                              Utils.logw(e.getMessage());
-                         }
-                         break;
-               }
-          }
-          // draw last path with last selected color
-          drawPaint.setColor(paintColor);
-          canvas.drawPath(drawPath, drawPaint);
-
           // draw Y axis - LETTERS
           for ( int i = 0; i < (startBitmap.getHeight() / 100) + 1; i++ ) {
                canvas.drawLine(0, STEP * i, 20, STEP * i, coordinatesPaint);
@@ -171,16 +200,167 @@ public class CompaniesDrawingView extends View {
                temporaryBrushSize = coordinatesPaint.getTextSize();
                coordinatesPaint.setTextSize(20);
                // draw two crossing horizontal and vertical lines and circle on finger touch position
-               canvas.drawText(((int) touchX / 100) + ":" + Utils.convertPositionToLetter((int) touchY / 100), touchX - 40, touchY - 40, coordinatesPaint);
+               canvas.drawText(((int) touchX / 100) + ":" + Utils.convertPositionToLetter((int) touchY / 100), touchX - 40, touchY - 20, coordinatesPaint);
 
                coordinatesPaint.setTextSize(temporaryBrushSize);
                temporaryBrushSize = coordinatesPaint.getStrokeWidth();
-               coordinatesPaint.setStrokeWidth(1);
+               coordinatesPaint.setStrokeWidth(2);
                canvas.drawLine(0, touchY, WIDTH, touchY, coordinatesPaint);
                canvas.drawLine(touchX, 0, touchX, HEIGHT, coordinatesPaint);
                // canvas.drawCircle(touchX, touchY, 20, coordinatesPaint);
                coordinatesPaint.setStrokeWidth(temporaryBrushSize);
+               try {
+                    temporaryBrushSize = coordinatesPaint.getColor();
+                    coordinatesPaint.setColor(Color.parseColor(GlobalConstants.LAST_CLICKED_COMPANY.colour));
+                    coordinatesPaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD_ITALIC));
+                    canvas.drawText(GlobalConstants.LAST_CLICKED_COMPANY.companyName, touchX + 20, touchY - 20, coordinatesPaint);
+                    coordinatesPaint.setColor((int) temporaryBrushSize);
+               } catch (Exception ex) {
+                    ex.printStackTrace();
+               }
           }
+
+          // draw all pathes which in arraylst
+          for ( int i = 0; i < paths.size(); i++ ) {
+               switch (getCompanyColourFilter()) {
+               // 0 draw lines for all companies
+                    case 0:
+                         PathSerializable pathToDraw = getPaths().get(i);
+                         PaintSerializable paint = pathToDraw.getPaint();
+                         staticPaint.setStrokeWidth(paint.brushStrokeWith);
+                         staticPaint.setColor(paint.colour);
+                         canvas.drawPath(pathToDraw, staticPaint);
+                         break;
+
+                    // 1 - hide all drawings
+                    case 1:
+                         break;
+
+                    // apply filter, draw only lines with color equal companyColorFilter
+                    default:
+                         try {
+                              if ( FilterManager.activeCompaniesColor.contains(Integer.valueOf(getPaths().get(i).getPaint().colour)) ) {
+                                   staticPaint.setStrokeWidth(getPaths().get(i).getPaint().brushStrokeWith);
+                                   staticPaint.setColor(getPaths().get(i).getPaint().colour);
+                                   canvas.drawPath(getPaths().get(i), staticPaint);
+                              }
+                         } catch (Exception e) {
+                              QLog.debug(e.getMessage());
+                         }
+                         break;
+               }
+          }
+
+          if ( isNeedToStopOnDrawMethod ) {
+               isNeedToStopOnDrawMethod = false;
+               return;
+          }
+
+          // draw last path with last selected color
+          drawPaint.setColor(paintColor);
+          canvas.drawPath(drawPath, drawPaint);
+
+          // ////////////////////////
+          if ( CURRENT_DRAWING_TYPE != ShapesType.STANDART_DRAWING ) {
+               shapePath.reset();
+               staticPaint.setStrokeWidth(brushSize);
+               staticPaint.setColor(paintColor);
+
+               switch (CURRENT_DRAWING_TYPE) {
+                    case ShapesType.CIRCLE:
+                         rectangleOfDrawing.set(touchDownX, touchDownY, touchX, touchY);
+                         shapePath.addOval(rectangleOfDrawing, Direction.CW);
+                         canvas.drawPath(shapePath, staticPaint);
+                         break;
+
+                    case ShapesType.RECTANGLE:
+                         if ( touchX < touchDownX ) {
+                              if ( touchY < touchDownY ) {
+                                   rectangleOfDrawing.set(touchX, touchY, touchDownX, touchDownY);
+                                   shapePath.addRoundRect(rectangleOfDrawing, 5, 5, Direction.CW);
+                              } else {
+                                   rectangleOfDrawing.set(touchX, touchDownY, touchDownX, touchY);
+                                   shapePath.addRoundRect(rectangleOfDrawing, 5, 5, Direction.CW);
+                              }
+                         } else {
+                              if ( touchY > touchDownY ) {
+                                   rectangleOfDrawing.set(touchDownX, touchDownY, touchX, touchY);
+                                   shapePath.addRoundRect(rectangleOfDrawing, 5, 5, Direction.CW);
+                              } else {
+                                   rectangleOfDrawing.set(touchDownX, touchY, touchX, touchDownY);
+                                   shapePath.addRoundRect(rectangleOfDrawing, 5, 5, Direction.CW);
+                              }
+                         }
+                         canvas.drawPath(shapePath, staticPaint);
+                         break;
+
+                    case ShapesType.TRIANGLE:
+                         shapePath.moveTo(touchDownX, touchDownY);
+                         // line to finger touch
+                         shapePath.lineTo(touchX, touchY);
+                         shapePath.lineTo(touchDownX + (touchDownX - touchX), touchY);
+                         shapePath.lineTo(touchDownX, touchDownY);
+                         canvas.drawPath(shapePath, staticPaint);
+                         break;
+
+                    case ShapesType.ARROW:
+                         shapePath.moveTo(touchDownX, touchDownY);
+                         shapePath.lineTo(touchX, touchY);
+                         canvas.drawPath(shapePath, staticPaint);
+
+                         // DRAW ARROW
+                         double phi = Math.toRadians(140);
+                         int barb = 20;
+                         float dy = touchDownY - touchY;
+                         float dx = touchDownX - touchX;
+                         double theta = Math.atan2(dy, dx);
+                         double x ,
+                         y ,
+                         rho = theta + phi;
+                         for ( int j = 0; j < 2; j++ ) {
+                              x = touchX - barb * Math.cos(rho);
+                              y = touchY - barb * Math.sin(rho);
+                              canvas.drawLine(touchX, touchY, (float) x, (float) y, staticPaint);
+                              rho = theta - phi;
+                         }
+
+                         break;
+
+                    case ShapesType.LINE:
+                         shapePath.moveTo(touchDownX, touchDownY);
+                         shapePath.lineTo(touchX, touchY);
+                         canvas.drawPath(shapePath, staticPaint);
+
+                         // DRAW ARROW
+                         /*
+                          * double phi = Math.toRadians(140);
+                          * int barb = 20;
+                          * float dy = touchDownY - touchY;
+                          * float dx = touchDownX - touchX;
+                          * double theta = Math.atan2(dy, dx);
+                          * double x ,
+                          * y ,
+                          * rho = theta + phi;
+                          * for ( int j = 0; j < 2; j++ ) {
+                          * x = touchX - barb * Math.cos(rho);
+                          * y = touchY - barb * Math.sin(rho);
+                          * canvas.drawLine(touchX, touchY, (float) x, (float) y, staticPaint);
+                          * /*
+                          * PathSerializable arrow = new PathSerializable();
+                          * arrow.moveTo(touchX, touchY);
+                          * arrow.lineTo((float) x, (float) y);
+                          * canvas.drawPath(arrow, staticPaint);
+                          * rho = theta - phi;
+                          * }
+                          */
+                         break;
+                    default:
+                         QLog.debug("Unknown shape type");
+               }
+          } else {
+               canvas.drawPath(drawPath, drawPaint);
+          }
+          // ////////////////////////
      }
 
      @Override public boolean onTouchEvent(final MotionEvent event) {
@@ -190,34 +370,132 @@ public class CompaniesDrawingView extends View {
           // respond to down, move and up events
           switch (event.getAction()) {
                case MotionEvent.ACTION_DOWN:
-                    drawCoordinates = true;
-                    drawPath.moveTo(touchX, touchY);
+                    touchDownX = touchX;
+                    touchDownY = touchY;
+
+                    if ( CURRENT_DRAWING_TYPE == ShapesType.STANDART_DRAWING ) {
+                         drawCoordinates = true;
+                         drawPath.moveTo(touchX, touchY);
+                    }
+
                     break;
                case MotionEvent.ACTION_MOVE:
-                    drawPath.lineTo(touchX, touchY);
+                    if ( CURRENT_DRAWING_TYPE == ShapesType.STANDART_DRAWING ) {
+                         drawPath.lineTo(touchX, touchY);
+                    }
                     break;
 
                case MotionEvent.ACTION_UP:
+                    isNeedToStopOnDrawMethod = true;
+                    PaintSerializable ps = new PaintSerializable();
+                    ps.brushStrokeWith = drawPaint.getStrokeWidth();
+                    ps.colour = drawPaint.getColor();
+
                     drawCoordinates = false;
-                    drawPath.lineTo(touchX, touchY);
-                    drawCanvas.drawPath(drawPath, drawPaint);
-                    if ( drawPaint.getColor() != Color.TRANSPARENT ) {
 
-                         PaintSerializable ps = new PaintSerializable();
-                         ps.brushStrokeWith = drawPaint.getStrokeWidth();
-                         ps.colour = drawPaint.getColor();
-                         // apply WIDTH and HEIGHT scale factor to path for different screen support
-                         drawPath.setSavedCanvasX(CompaniesDrawingView.WIDTH);
-                         drawPath.setSavedCanvasY(CompaniesDrawingView.HEIGHT);
-                         // set brush to path
-                         drawPath.setPaint(ps);
-                         // add path
-                         getPaths().add(drawPath);
+                    if ( CURRENT_DRAWING_TYPE != ShapesType.STANDART_DRAWING ) {
 
+                         PathSerializable newPath = new PathSerializable();
+                         newPath.setPaint(ps);
+                         newPath.setSavedCanvasX(CompaniesDrawingView.WIDTH);
+                         newPath.setSavedCanvasY(CompaniesDrawingView.HEIGHT);
+
+                         switch (CURRENT_DRAWING_TYPE) {
+
+                              case ShapesType.LINE:
+                                   newPath.moveTo(touchDownX, touchDownY);
+                                   newPath.lineTo(event.getX(), event.getY());
+                                   getPaths().add(newPath);
+                                   break;
+
+                              case ShapesType.ARROW:
+                                   newPath.moveTo(touchDownX, touchDownY);
+                                   newPath.lineTo(event.getX(), event.getY());
+
+                                   // DRAW ARROW
+                                   double phi = Math.toRadians(140);
+                                   int barb = 20;
+                                   float dy = touchDownY - touchY;
+                                   float dx = touchDownX - touchX;
+                                   double theta = Math.atan2(dy, dx);
+                                   double x ,
+                                   y ,
+                                   rho = theta + phi;
+                                   for ( int j = 0; j < 2; j++ ) {
+                                        x = touchX - barb * Math.cos(rho);
+                                        y = touchY - barb * Math.sin(rho);
+                                        newPath.moveTo(touchX, touchY);
+                                        newPath.lineTo((float) x, (float) y);
+                                        rho = theta - phi;
+                                   }
+                                   getPaths().add(newPath);
+
+                                   break;
+
+                              case ShapesType.TRIANGLE:
+                                   newPath.moveTo(touchDownX, touchDownY);
+                                   // line to finger touch
+                                   newPath.lineTo(touchX, touchY);
+                                   newPath.lineTo(touchDownX + (touchDownX - touchX), touchY);
+                                   newPath.lineTo(touchDownX, touchDownY);
+                                   getPaths().add(newPath);
+                                   break;
+
+                              case ShapesType.CIRCLE:
+                                   rectangleOfDrawing.set(touchDownX, touchDownY, touchX, touchY);
+                                   newPath.addOval(rectangleOfDrawing, Direction.CW);
+                                   getPaths().add(newPath);
+                                   break;
+
+                              case ShapesType.RECTANGLE:
+                                   if ( touchX < touchDownX ) {
+                                        if ( touchY < touchDownY ) {
+                                             rectangleOfDrawing.set(touchX, touchY, touchDownX, touchDownY);
+                                             newPath.addRoundRect(rectangleOfDrawing, 5, 5, Direction.CW);
+                                        } else {
+                                             rectangleOfDrawing.set(touchX, touchDownY, touchDownX, touchY);
+                                             newPath.addRoundRect(rectangleOfDrawing, 5, 5, Direction.CW);
+                                        }
+                                   } else {
+                                        if ( touchY > touchDownY ) {
+                                             rectangleOfDrawing.set(touchDownX, touchDownY, touchX, touchY);
+                                             newPath.addRoundRect(rectangleOfDrawing, 5, 5, Direction.CW);
+                                        } else {
+                                             rectangleOfDrawing.set(touchDownX, touchY, touchX, touchDownY);
+                                             newPath.addRoundRect(rectangleOfDrawing, 5, 5, Direction.CW);
+                                        }
+                                   }
+                                   getPaths().add(newPath);
+                                   break;
+
+                              default:
+                                   shapePath.setPaint(ps);
+                                   // add path
+                                   getPaths().add(shapePath);
+                                   break;
+                         }
+                    } else {
+                         drawPath.lineTo(touchX, touchY);
+                         drawCanvas.drawPath(drawPath, drawPaint);
+                         if ( drawPaint.getColor() != Color.TRANSPARENT ) {
+                              ps.brushStrokeWith = drawPaint.getStrokeWidth();
+                              ps.colour = drawPaint.getColor();
+                              // apply WIDTH and HEIGHT scale factor to path for different screen support
+                              drawPath.setSavedCanvasX(CompaniesDrawingView.WIDTH);
+                              drawPath.setSavedCanvasY(CompaniesDrawingView.HEIGHT);
+                              // set brush to path
+                              drawPath.setPaint(ps);
+                              // add path
+                              getPaths().add(drawPath);
+
+                         }
                     }
+
+                    invalidate();
+
                     resetDrawingTools();
                     // //////////////////////////////////////////////////////////////////////////////////////////////
-                    DrawingCompaniesActivity.saveAndSendDrawingOnBackgroundThread(GlobalConstants.CURRENT_FLOOR);
+                    ADrawingCompanies.saveAndSendDrawingOnBackgroundThread(GlobalConstants.CURRENT_FLOOR);
                     // ////////////////////////////////////////////////////////////////////////////////////////////////
                     break;
                default:
@@ -228,20 +506,17 @@ public class CompaniesDrawingView extends View {
           return true;
      }
 
-     /**
-      * Undo function
-      */
+     // get last path
      public void undo() {
+          isNeedToStopOnDrawMethod = true;
           if ( !getPaths().isEmpty() ) {
                redoPaths.add(getPaths().remove(getPaths().size() - 1));
                invalidate();
           }
      }
 
-     /**
-      * Redo function
-      */
      public void redo() {
+          isNeedToStopOnDrawMethod = true;
           if ( !redoPaths.isEmpty() ) {
                getPaths().add(redoPaths.remove(redoPaths.size() - 1));
                invalidate();
@@ -299,7 +574,7 @@ public class CompaniesDrawingView extends View {
       * @return
       */
      public static int getCanvasHeight() {
-          if ( !Utils.isNull(canvasBitmap) ) { return startBitmap.getHeight(); }
+          if ( !QPreconditions.isNull(canvasBitmap) ) { return startBitmap.getHeight(); }
           return 0;
      }
 
@@ -309,7 +584,7 @@ public class CompaniesDrawingView extends View {
       * @return
       */
      public static int getCanvasWidth() {
-          if ( !Utils.isNull(canvasBitmap) ) { return startBitmap.getWidth(); }
+          if ( !QPreconditions.isNull(canvasBitmap) ) { return startBitmap.getWidth(); }
           return 0;
      }
 

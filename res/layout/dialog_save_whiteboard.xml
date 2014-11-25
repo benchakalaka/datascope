@@ -1,0 +1,98 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:background="@color/default_screen_bg" >
+
+	<!-- Header title view -->
+
+	<LinearLayout
+		android:id="@+id/llTopMenu"
+		android:layout_width="match_parent"
+		android:layout_height="60dp"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:background="#53000000"
+		android:clipChildren="false"
+		android:orientation="horizontal" >
+
+		<ImageView
+			android:id="@+id/ivTitleImage"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_margin="5dp"
+			android:src="@drawable/save" />
+
+		<TextView
+			android:id="@+id/tvTitle"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:gravity="center"
+			android:text="@string/changes_hasnt_been_saved"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="@android:color/white"
+			android:textStyle="bold|italic" />
+	</LinearLayout>
+
+	<!-- Middle section -->
+
+	<TextView
+		android:id="@+id/tvSaveWb"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:padding="5dp"
+		android:layout_below="@+id/llTopMenu"
+		android:text="@string/you_will_loose_whiteboard"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:textColor="@android:color/white"
+		android:textStyle="bold|italic" />
+
+	<EditText
+		android:id="@+id/etWbName"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/tvSaveWb"
+		android:layout_margin="5dp"
+		android:visibility="visible"
+		android:background="@drawable/background_raised_2"
+		android:padding="5dp"
+		android:textColor="@android:color/white"
+		android:textStyle="bold" />
+
+	<!-- Middle section -->
+
+
+	<!-- Bottom menu -->
+
+	<LinearLayout
+		android:id="@+id/llBottomMenu"
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
+		android:layout_below="@+id/etWbName"
+		android:clipChildren="false"
+		android:orientation="horizontal" >
+
+		<Button
+			android:id="@+id/btnOk"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="5dp"
+			android:layout_weight="1"
+			android:orientation="horizontal"
+			android:text="@string/OK" />
+
+		<Button
+			android:id="@+id/btnCancel"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="5dp"
+			android:layout_weight="1"
+			android:orientation="horizontal"
+			android:text="@string/cancel" />
+	</LinearLayout>
+
+</RelativeLayout>

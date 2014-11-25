@@ -7,8 +7,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.util.MultiValueMap;
 
+import quickutils.core.QUFactory.QLog;
+
 import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
-import com.touchip.organizer.utils.Utils;
 
 public class SaveOrCreateNewWhiteboardRequest extends SpringAndroidSpiceRequest <String> {
 
@@ -20,7 +21,7 @@ public class SaveOrCreateNewWhiteboardRequest extends SpringAndroidSpiceRequest 
           super(String.class);
           this.requestUrl = requestUrl;
           this.params = vars;
-          Utils.logw("Post....." + requestUrl);
+          QLog.debug("Post....." + requestUrl);
      }
 
      @Override public String loadDataFromNetwork() throws Exception {

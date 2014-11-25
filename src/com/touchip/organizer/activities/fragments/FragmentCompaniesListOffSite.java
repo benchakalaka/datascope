@@ -12,16 +12,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.activities.DrawingCompaniesActivity;
-import com.touchip.organizer.communication.rest.model.CompaniesList;
-import com.touchip.organizer.communication.rest.model.CompaniesList.POJORoboCompany;
-import com.touchip.organizer.utils.DataAccess;
+import com.touchip.organizer.activities.ADrawingCompanies;
+import com.touchip.organizer.communication.rest.model.ModelCompaniesList;
+import com.touchip.organizer.communication.rest.model.ModelCompaniesList.POJORoboCompany;
+import com.touchip.organizer.utils.GlobalConstants;
 import com.touchip.organizer.utils.Utils;
 import com.touchip.organizer.utils.Utils.AnimationManager;
 
 public class FragmentCompaniesListOffSite extends ListFragment {
 
-     public static CompaniesList             COMPANIES_LIST;
+     public static ModelCompaniesList        COMPANIES_LIST;
      private static ListViewCompaniesAdapter ADAPTER;
 
      @Override public void onAttach(Activity activity) {
@@ -39,28 +39,20 @@ public class FragmentCompaniesListOffSite extends ListFragment {
      }
 
      @Override public void onListItemClick(ListView l, View v, int position, long id) {
-          DataAccess.LAST_CLICKED_COMPANY = COMPANIES_LIST.get(position);
-          DrawingCompaniesActivity.getDrawView().setColor(Color.parseColor(DataAccess.LAST_CLICKED_COMPANY.colour));
-          DrawingCompaniesActivity.getDrawView().setCompanyColourFilter(0);
-          DrawingCompaniesActivity.ivCompanyColor.setBackgroundColor(Color.parseColor(DataAccess.LAST_CLICKED_COMPANY.colour));
+          GlobalConstants.LAST_CLICKED_COMPANY = COMPANIES_LIST.get(position);
+          ADrawingCompanies.getDrawView().setColor(Color.parseColor(GlobalConstants.LAST_CLICKED_COMPANY.colour));
+          ADrawingCompanies.getDrawView().setCompanyColourFilter(0);
+          ADrawingCompanies.ivCompanyColor.setBackgroundColor(Color.parseColor(GlobalConstants.LAST_CLICKED_COMPANY.colour));
 
-          DrawingCompaniesActivity.ivCompanyColor.startAnimation(AnimationManager.load(R.anim.bounce));
+          ADrawingCompanies.ivCompanyColor.startAnimation(AnimationManager.load(R.anim.bounce));
 
-          Utils.showCustomToastWithBackgroundColour(getActivity(), DataAccess.LAST_CLICKED_COMPANY.companyName, Color.parseColor(DataAccess.LAST_CLICKED_COMPANY.colour));
+          Utils.showCustomToastWithBackgroundColour(getActivity(), GlobalConstants.LAST_CLICKED_COMPANY.companyName, Color.parseColor(GlobalConstants.LAST_CLICKED_COMPANY.colour));
 
-          DrawingCompaniesActivity.getLlAssets().setVisibility(View.GONE);
-          DrawingCompaniesActivity.getLlTrades().setVisibility(View.GONE);
+          ADrawingCompanies.getLlAssets().setVisibility(View.GONE);
+          ADrawingCompanies.getLlTrades().setVisibility(View.GONE);
 
-          /*
-           * HIDE TRADES LIST VIEW
-           * if ( DrawingCompaniesActivity.getCustomActionBar().isTradesMenuVisible() ) {
-           * Utils.AnimationManager.animateMenu(DrawingCompaniesActivity.getLvTrades(), View.INVISIBLE, R.anim.disappear, 500);
-           * DrawingCompaniesActivity.getCustomActionBar().setTradesMenuVisibility(false);
-           * }
-           */
           // ListView item scroll to selected item
           l.smoothScrollToPositionFromTop(position, 100, 400);
-          DrawingCompaniesActivity.customActionBar.setUpCompanyName(DataAccess.LAST_CLICKED_COMPANY.companyName);
      }
 
      public static ListViewCompaniesAdapter getCompaniesAdapter() {
@@ -85,7 +77,7 @@ public class FragmentCompaniesListOffSite extends ListFragment {
 
           private final Activity activity;
 
-          public ListViewCompaniesAdapter ( Activity act , CompaniesList companies ) {
+          public ListViewCompaniesAdapter ( Activity act , ModelCompaniesList companies ) {
                super(act, R.layout.listview_company_list_item);
                COMPANIES_LIST = companies;
                activity = act;

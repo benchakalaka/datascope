@@ -10,13 +10,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.squareup.timessquare.sample.R.id;
 import com.squareup.timessquare.sample.R.layout;
 import org.androidannotations.api.SdkVersionHelper;
 import org.androidannotations.api.view.HasViews;
@@ -83,63 +83,17 @@ public final class AMenuModules_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        rlWboard = ((RelativeLayout) hasViews.findViewById(id.rlWboard));
-        ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
-        twUserDetails = ((TextView) hasViews.findViewById(id.twUserDetails));
-        rlQuilt = ((RelativeLayout) hasViews.findViewById(id.rlQuilt));
-        twDate = ((TextView) hasViews.findViewById(id.twDate));
-        rlPrsr = ((RelativeLayout) hasViews.findViewById(id.rlPrsr));
-        rlTv = ((RelativeLayout) hasViews.findViewById(id.rlTv));
-        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
-        rlNotes = ((RelativeLayout) hasViews.findViewById(id.rlNotes));
-        rlDelivery = ((RelativeLayout) hasViews.findViewById(id.rlDelivery));
+        rlWboard = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlWboard));
+        rlNotes = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlNotes));
+        rlTv = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlTv));
+        rlPrsr = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlPrsr));
+        ivPrevDay = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivPrevDay));
+        ivNextDay = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivNextDay));
+        twDate = ((TextView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.twDate));
+        rlQuilt = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlQuilt));
+        rlDelivery = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlDelivery));
         {
-            View view = hasViews.findViewById(id.ivPrevDay);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        AMenuModules_.this.ivPrevDay();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.rlPrsr);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        AMenuModules_.this.rlPrsr();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.rlDelivery);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        AMenuModules_.this.rlDelivery();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.rlWboard);
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlWboard);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
@@ -154,7 +108,7 @@ public final class AMenuModules_
             }
         }
         {
-            View view = hasViews.findViewById(id.rlNotes);
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlNotes);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
@@ -169,7 +123,52 @@ public final class AMenuModules_
             }
         }
         {
-            View view = hasViews.findViewById(id.rlQuilt);
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivPrevDay);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        AMenuModules_.this.ivPrevDay();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.twDate);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        AMenuModules_.this.twDate();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivNextDay);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        AMenuModules_.this.ivNextDay();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlQuilt);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
@@ -184,7 +183,22 @@ public final class AMenuModules_
             }
         }
         {
-            View view = hasViews.findViewById(id.rlTv);
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlDelivery);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        AMenuModules_.this.rlDelivery();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlTv);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
@@ -199,14 +213,14 @@ public final class AMenuModules_
             }
         }
         {
-            View view = hasViews.findViewById(id.ivNextDay);
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlPrsr);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        AMenuModules_.this.ivNextDay();
+                        AMenuModules_.this.rlPrsr();
                     }
 
                 }
@@ -214,6 +228,20 @@ public final class AMenuModules_
             }
         }
         afterViews();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean handled = super.onOptionsItemSelected(item);
+        if (handled) {
+            return true;
+        }
+        int itemId_ = item.getItemId();
+        if (itemId_ == android.R.id.home) {
+            homeSelected();
+            return true;
+        }
+        return false;
     }
 
     public static class IntentBuilder_ {

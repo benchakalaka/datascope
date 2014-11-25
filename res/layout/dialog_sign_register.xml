@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/ssss"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/default_screen_bg" >
+
+	<!-- Header title view -->
+
+	<LinearLayout
+		android:id="@+id/llTopMenu"
+		android:layout_width="match_parent"
+		android:layout_height="60dp"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:background="#53000000"
+		android:clipChildren="false"
+		android:orientation="horizontal" >
+
+		<ImageView
+			android:id="@+id/ivTitleImage"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_margin="5dp"
+			android:src="@drawable/sign_register" />
+
+		<TextView
+			android:id="@+id/tvTitle"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:gravity="center"
+			android:text="Sign register"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="@android:color/white"
+			android:textStyle="bold|italic" />
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/llMiddleSection"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_above="@+id/llBottomMenu"
+		android:layout_below="@+id/llTopMenu"
+		android:background="@color/default_screen_bg" >
+
+		<RelativeLayout
+			android:id="@+id/llPinPad"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="5dp"
+			android:layout_weight="1"
+			android:background="@drawable/transparent_inside_and_white_border"
+			android:orientation="vertical" >
+
+			<LinearLayout
+				android:id="@+id/linearLayout1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:layout_toRightOf="@+id/llCenter"
+				android:orientation="vertical" >
+
+				<TextView
+					android:id="@+id/tw3"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/circle"
+					android:gravity="center"
+					android:lines="1"
+					android:maxLines="1"
+					android:singleLine="true"
+					android:text="3"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@android:color/white" />
+
+				<TextView
+					android:id="@+id/tw6"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/circle"
+					android:gravity="center"
+					android:lines="1"
+					android:maxLines="1"
+					android:singleLine="true"
+					android:text="6"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@android:color/white"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/tw9"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/circle"
+					android:gravity="center"
+					android:lines="1"
+					android:maxLines="1"
+					android:singleLine="true"
+					android:text="9"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@android:color/white"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/twLogin"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/circle"
+					android:gravity="center"
+					android:lines="1"
+					android:maxLines="1"
+					android:singleLine="true"
+					android:text="Sign In"
+					android:textAppearance="?android:attr/textAppearanceSmall"
+					android:textColor="@android:color/white"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/llCenter"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerInParent="true"
+				android:orientation="vertical" >
+
+				<TextView
+					android:id="@+id/tw2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/circle"
+					android:gravity="center"
+					android:lines="1"
+					android:maxLines="1"
+					android:singleLine="true"
+					android:text="2"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@android:color/white"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/tw5"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/circle"
+					android:gravity="center"
+					android:lines="1"
+					android:maxLines="1"
+					android:singleLine="true"
+					android:text="5"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@android:color/white"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/tw8"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/circle"
+					android:gravity="center"
+					android:lines="1"
+					android:maxLines="1"
+					android:singleLine="true"
+					android:text="8"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@android:color/white"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/tw0"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/circle"
+					android:gravity="center"
+					android:lines="1"
+					android:maxLines="1"
+					android:singleLine="true"
+					android:text="0"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@android:color/white"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/linearLayout2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:layout_toLeftOf="@+id/llCenter"
+				android:orientation="vertical" >
+
+				<TextView
+					android:id="@+id/tw1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerInParent="true"
+					android:background="@drawable/circle"
+					android:gravity="center"
+					android:lines="1"
+					android:maxLines="1"
+					android:singleLine="true"
+					android:text="1"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@android:color/white"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/tw4"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerInParent="true"
+					android:background="@drawable/circle"
+					android:gravity="center"
+					android:lines="1"
+					android:maxLines="1"
+					android:singleLine="true"
+					android:text="4"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@android:color/white"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/tw7"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerInParent="true"
+					android:background="@drawable/circle"
+					android:gravity="center"
+					android:lines="1"
+					android:maxLines="1"
+					android:singleLine="true"
+					android:text="7"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@android:color/white"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/twc"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerInParent="true"
+					android:background="@drawable/circle"
+					android:gravity="center"
+					android:lines="1"
+					android:maxLines="1"
+					android:singleLine="true"
+					android:text="C"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@android:color/white"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<EditText
+				android:id="@+id/etPassword"
+				android:layout_width="wrap_content"
+				android:layout_height="80dp"
+				android:layout_above="@+id/linearLayout1"
+				android:layout_alignLeft="@+id/linearLayout2"
+				android:layout_alignRight="@+id/linearLayout1"
+				android:layout_marginTop="10dp"
+				android:background="@drawable/transparent_inside_and_white_border"
+				android:inputType="textPassword"
+				android:textColor="@android:color/white" />
+		</RelativeLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="5dp"
+			android:layout_weight="1"
+			android:background="@drawable/transparent_inside_and_white_border"
+			android:orientation="vertical" >
+
+			<ListView
+				android:id="@+id/lvSignedIn"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_alignParentBottom="true"
+				android:layout_margin="10dp"
+				android:layout_weight="1"
+				android:padding="10dp" >
+			</ListView>
+		</LinearLayout>
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/llBottomMenu"
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
+		android:clipChildren="false"
+		android:orientation="horizontal" >
+
+		<Button
+			android:id="@+id/btnOk"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="5dp"
+			android:layout_weight="1"
+			android:orientation="horizontal"
+			android:text="@string/OK" />
+	</LinearLayout>
+
+</RelativeLayout>

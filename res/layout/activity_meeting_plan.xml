@@ -8,7 +8,7 @@
         android:id="@+id/activity_meeting_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#DCDEDC" >
+        android:background="@android:color/white" >
 
         <LinearLayout
             android:id="@+id/llRootMeeting"

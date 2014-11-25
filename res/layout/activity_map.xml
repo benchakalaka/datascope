@@ -26,7 +26,7 @@
             android:layout_height="58dp"
             android:contentDescription="@null"
             android:scaleType="fitXY"
-            android:src="@drawable/refresh" />
+            android:src="@drawable/refresh_1" />
     </LinearLayout>
     
     

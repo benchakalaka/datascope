@@ -103,7 +103,6 @@ public class PathSerializable extends Path implements Serializable {
      }
 
      private void drawThisPath() {
-
           for ( PathAction p : actions ) {
                if ( p.getType().equals(PathActionType.MOVE_TO) ) {
                     super.moveTo(p.getX(), p.getY());

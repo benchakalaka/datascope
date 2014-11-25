@@ -4,29 +4,30 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.text.InputType;
-import android.widget.EditText;
+import android.app.Dialog;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
+import com.octo.android.robospice.persistence.DurationInMillis;
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.activities.TvActivity_;
-import com.touchip.organizer.activities.UserSettingsActivity_;
+import com.touchip.organizer.activities.SuperActivity;
+import com.touchip.organizer.activities.custom.components.dialogs.CDialogSettingsPassword_;
+import com.touchip.organizer.communication.rest.request.GetInductionFileListRequest;
+import com.touchip.organizer.communication.rest.request.listener.GetInductionFileListRequestListener;
 import com.touchip.organizer.utils.Utils;
 
+/**
+ * Class represents action bar (top panel) for TV activitry
+ * 
+ * @author Karpachev Ihor
+ */
 @EViewGroup ( R.layout.ab_tv ) public class ActionBarTv extends HorizontalScrollView {
 
      // Load views
-     @ViewById LinearLayout            llSettings;
+     @ViewById LinearLayout      llSettings , llInduction;
 
      // Parent activity
-     private final TvActivity_         activity;
-
-     private final AlertDialog.Builder builder;
+     private final SuperActivity activity;
 
      /**
       * Default constructor
@@ -34,53 +35,26 @@ import com.touchip.organizer.utils.Utils;
       * @param context
       *             parent activity as parametr
       */
-     public ActionBarTv ( Context context ) {
+     public ActionBarTv ( SuperActivity context ) {
           super(context);
-          this.activity = (TvActivity_) context;
-          builder = new AlertDialog.Builder(activity);
+          this.activity = context;
      }
 
+     /**
+      * Handle induction button
+      */
+     @Click void llInduction() {
+          GetInductionFileListRequest request = new GetInductionFileListRequest();
+          activity.getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetInductionFileListRequestListener(this.activity));
+     }
+
+     /**
+      * Handle settings button
+      */
      @Click void llSettings() {
-          // activity.startActivity(new Intent(activity, MapActivity_.class));
-
-          // if ( hasMapSupport() ) {
-          // activity.startActivity(new Intent(activity, KindleMapActivity_.class));
-          // } else {
-          // activity.startActivity(new Intent(activity, UserSettingsActivity_.class));
-          // }
-          final EditText input = new EditText(activity);
-
-          input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-          // input.setSelection(input.getText().length());
-
-          // input.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-          builder.setView(input);
-          builder.setTitle(getResources().getString(R.string.password_required));
-          builder.setIcon(R.drawable.menu_info);
-          builder.setPositiveButton(getResources().getString(android.R.string.ok), new DialogInterface.OnClickListener() {
-               @Override public void onClick(DialogInterface dialog, int which) {
-                    if ( input.getText().toString().equals("datascope") ) {
-                         activity.startActivity(new Intent(activity, UserSettingsActivity_.class));
-                    } else {
-                         Utils.showCustomToast(activity, R.string.invalid_password, R.drawable.hide_hotspot);
-                    }
-               }
-          });
-          builder.setNegativeButton(getResources().getString(android.R.string.cancel), new DialogInterface.OnClickListener() {
-               @Override public void onClick(DialogInterface dialog, int which) {
-               }
-          });
-          builder.create().show();
-
+          // get configured titiel (dialog without title)
+          Dialog d = Utils.getConfiguredDialog(activity);
+          d.setContentView(CDialogSettingsPassword_.build(activity, d));
+          d.show();
      }
-
-     public boolean hasMapSupport() {
-          try {
-               Class.forName("com.amazon.geo.maps.MapView");
-               return true;
-          } catch (Exception e) {
-               return false;
-          }
-     }
-
 }

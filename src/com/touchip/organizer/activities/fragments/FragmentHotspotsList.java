@@ -1,189 +1,170 @@
 package com.touchip.organizer.activities.fragments;
 
 import java.util.Date;
-import java.util.HashMap;
 
 import org.apache.commons.lang3.time.DateUtils;
 
-import android.annotation.SuppressLint;
+import quickutils.core.QUFactory.QLog;
+import quickutils.core.QUFactory.QNotifications;
+import quickutils.core.QUFactory.QPreconditions;
+import quickutils.core.QUFactory.QSystem;
+import quickutils.core.QUFactory.QViews;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ListFragment;
 import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnClickListener;
-import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.webkit.WebView;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
-import com.octo.android.robospice.persistence.DurationInMillis;
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.activities.DrawingCompaniesActivity;
-import com.touchip.organizer.activities.DrawingCompaniesActivity_;
-import com.touchip.organizer.activities.GeneralWhiteBoardActivity;
-import com.touchip.organizer.activities.GeneralWhiteBoardActivity_;
-import com.touchip.organizer.activities.ImagePagerActivity_;
-import com.touchip.organizer.activities.custom.components.CompaniesDrawingView;
-import com.touchip.organizer.activities.custom.components.NumPad;
+import com.touchip.organizer.activities.AImagePager_;
+import com.touchip.organizer.activities.SuperActivity;
+import com.touchip.organizer.activities.custom.components.HotspotButton;
 import com.touchip.organizer.activities.custom.components.QuickAction;
 import com.touchip.organizer.activities.custom.components.QuickAction.OnActionItemClickListener;
-import com.touchip.organizer.communication.rest.model.HotspotsList.POJORoboHotspot;
-import com.touchip.organizer.communication.rest.request.GetActivitiesAndRisksRequest;
-import com.touchip.organizer.communication.rest.request.GetSuitableOperativesListRequest;
-import com.touchip.organizer.communication.rest.request.GetTaskBriefingRequest;
-import com.touchip.organizer.communication.rest.request.listener.GetActivitiesAndRisksRequestListener;
-import com.touchip.organizer.communication.rest.request.listener.GetSuitableOperativesListRequestListener;
-import com.touchip.organizer.communication.rest.request.listener.GetTaskBriefingRequestListener;
-import com.touchip.organizer.utils.DataAccess;
+import com.touchip.organizer.activities.custom.components.dialogs.CDialogCompleteHotspot_;
+import com.touchip.organizer.communication.rest.model.ModelActivitiesAndRisksList.POJORoboSingleActivityAndRisk;
+import com.touchip.organizer.communication.rest.model.ModelHotspotsList.POJORoboHotspot;
+import com.touchip.organizer.utils.FilterManager;
 import com.touchip.organizer.utils.GlobalConstants;
 import com.touchip.organizer.utils.GlobalConstants.Hotspots;
-import com.touchip.organizer.utils.HTTP_PARAMS;
 import com.touchip.organizer.utils.Utils;
 import com.touchip.organizer.utils.Utils.AnimationManager;
 
 public class FragmentHotspotsList extends ListFragment {
 
-     private static TextView                    twId , twDescription , twHotspotType , twIsAssigned;
-     private static ImageView                   imageHotspotType , imageHotspotCompanyColor;
-     private static Dialog                      dialogHotspotDetail , dialogTradeHotspotDetail;
+     private static TextView                 tvActivities , tvCompanyAndProjectName , tvCompanyNameRiskSchedule , tvMeansAndFrequency , twId , twDescription , twHotspotType , tvRevievedByDate , tvBriefingItemsList , twIsAssigned , tvRevievedBy , tvNameOfSupervisiorDate ,
+               tvCompanyName , tvScopeOfWorks , tvNameOfSupervisior;
+     private static ImageView                imageHotspotType , imageHotspotCompanyColor;
+     private static Dialog                   dialogHotspotDetail , dialogTradeHotspotDetail;
 
-     public static QuickAction                  quickActionPopUpMenu , quickActionMenuAssetHotspot , quickActionPopUpNoteHs;
+     public static QuickAction               quickActionPopUpMenu , quickActionMenuAssetHotspot , quickActionPopUpNoteHs;
+     public static TableLayout               tlRiskControl;
 
-     private static RelativeLayout.LayoutParams param                                 = new RelativeLayout.LayoutParams(60, 60);
+     public static RelativeLayout            hotspotsButtonLayout;
+     private static LinearLayout             llTaskBriefing , llRiskSchedule;
+     public static ListViewHotsportsAdapter  ADAPTER;
 
-     public static RelativeLayout               hotspotsButtonLayout;
-     public static ListViewHotsportsAdapter     ADAPTER;
+     private static ProgressDialog           progressDialog;
 
-     private static ProgressDialog              progressDialog;
+     static Paint                            paint;
 
-     static Paint                               paint;
+     View.OnTouchListener                    touchListener                         = new OnTouchListener() {
 
-     View.OnClickListener                       clickListener                         = new View.OnClickListener() {
+                                                                                        @Override public boolean onTouch(View v, MotionEvent event) {
+                                                                                             switch (event.getAction()) {
+                                                                                                  case MotionEvent.ACTION_DOWN:
+                                                                                                       if ( null == GlobalConstants.LAST_CLICKED_COMPANY ) {
+                                                                                                            QNotifications.showShortToast(getActivity(), R.string.choose_company_before_creating_hotspot);
+                                                                                                            return true;
+                                                                                                       }
+                                                                                                       String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
+                                                                                                       ClipData dragData = new ClipData(v.getTag().toString(), mimeTypes, new ClipData.Item(v.getTag().toString()));
+                                                                                                       View.DragShadowBuilder shadow = new DragShadowBuilder(v);
+                                                                                                       v.startDrag(dragData, shadow, null, 0);
+                                                                                                       break;
+                                                                                             }
+                                                                                             return true;
+                                                                                        }
+                                                                                   };
 
-                                                                                           @Override public void onClick(View v) {
-                                                                                                String type = v.getTag().toString();
-                                                                                                ADAPTER.updateHotspotsButtonsList(type);
+     static OnLongClickListener              longClickUpdateHsPositionDragListener = new OnLongClickListener() {
 
-                                                                                                String message = "";
-                                                                                                if ( (!type.equals(Hotspots.SHOW_ALL)) && (!type.equals(Hotspots.HIDE_ALL)) ) {
-                                                                                                     message = "Filter ON: show only " + type;
-                                                                                                } else {
-                                                                                                     message = type.equals(Hotspots.HIDE_ALL) ? "Hide all hotspots" : "Show all hotspots";
-                                                                                                }
-                                                                                                Utils.showCustomToast(getActivity(), message, Utils.getImageIdByType(type));
-                                                                                           }
-                                                                                      };
+                                                                                        @Override public boolean onLongClick(View v) {
+                                                                                             String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
+                                                                                             ClipData dragData = new ClipData("update", mimeTypes, new ClipData.Item("update"));
+                                                                                             View.DragShadowBuilder shadow = new DragShadowBuilder(v);
+                                                                                             v.startDrag(dragData, shadow, null, 0);
+                                                                                             return true;
+                                                                                        }
 
-     static OnLongClickListener                 longClickDragListener                 = new OnLongClickListener() {
+                                                                                   };
+     private final OnActionItemClickListener quickActionListener                   = new QuickAction.OnActionItemClickListener() {
 
-                                                                                           @Override public boolean onLongClick(View v) {
-                                                                                                String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
-                                                                                                ClipData dragData = new ClipData(v.getTag().toString(), mimeTypes, new ClipData.Item(v.getTag().toString()));
-                                                                                                View.DragShadowBuilder shadow = new DragShadowBuilder(v);
-                                                                                                v.startDrag(dragData, shadow, null, 0);
-                                                                                                return true;
-                                                                                           }
+                                                                                        @Override public void onItemClick(int pos) {
+                                                                                             switch (pos) {
+                                                                                                  case 0:
+                                                                                                       try {
+                                                                                                            Date today = DateUtils.parseDate(GlobalConstants.TODAY_FROM_SERVER, "yyyy-MM-dd");
+                                                                                                            Date sitePlanDate = DateUtils.parseDate(GlobalConstants.SITE_PLAN_IMAGE_NAME, "yyyy-MM-dd");
 
-                                                                                      };
+                                                                                                            if ( !DateUtils.isSameDay(today, sitePlanDate) && today.compareTo(sitePlanDate) > 0 ) {
+                                                                                                                 QNotifications.showShortToast(getActivity(), "Could not take a picture, date in past");
+                                                                                                                 return;
+                                                                                                            }
+                                                                                                       } catch (Exception e1) {
+                                                                                                            e1.printStackTrace();
+                                                                                                       }
 
-     static OnLongClickListener                 longClickUpdateHsPositionDragListener = new OnLongClickListener() {
+                                                                                                       if ( Utils.hasDeviceCamera() ) {
+                                                                                                            Utils.captureCameraPhoto(getActivity());
+                                                                                                       } else {
+                                                                                                            Utils.showCustomToast(getActivity(), R.string.device_has_no_camera, R.drawable.hide_hotspot);
+                                                                                                       }
+                                                                                                       break;
 
-                                                                                           @Override public boolean onLongClick(View v) {
-                                                                                                String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
-                                                                                                ClipData dragData = new ClipData("update", mimeTypes, new ClipData.Item("update"));
-                                                                                                View.DragShadowBuilder shadow = new DragShadowBuilder(v);
-                                                                                                v.startDrag(dragData, shadow, null, 0);
-                                                                                                return true;
-                                                                                           }
+                                                                                                  case 1:
 
-                                                                                      };
-     private final OnActionItemClickListener    quickActionListener                   = new QuickAction.OnActionItemClickListener() {
+                                                                                                       QSystem.navigateToActivity(getActivity(), AImagePager_.class);
+                                                                                                       break;
 
-                                                                                           @Override public void onItemClick(int pos) {
-                                                                                                switch (pos) {
-                                                                                                     case 0:
-                                                                                                          try {
-                                                                                                               Date today = DateUtils.parseDate(GlobalConstants.TODAY_FROM_SERVER, "yyyy-MM-dd");
-                                                                                                               Date sitePlanDate = DateUtils.parseDate(GlobalConstants.SITE_PLAN_IMAGE_NAME, "yyyy-MM-dd");
+                                                                                                  case 2:
+                                                                                                       showDialog(GlobalConstants.LAST_CLICKED_HOTSPOT, (SuperActivity) getActivity());
+                                                                                                       break;
+                                                                                                  default:
+                                                                                                       return;
+                                                                                             }
+                                                                                        }
+                                                                                   };
 
-                                                                                                               if ( !DateUtils.isSameDay(today, sitePlanDate) && today.compareTo(sitePlanDate) > 0 ) {
-                                                                                                                    Utils.showToast(getActivity(), "Could not take a picture, date in past", true);
-                                                                                                                    return;
-                                                                                                               }
-                                                                                                          } catch (Exception e1) {
-                                                                                                               e1.printStackTrace();
-                                                                                                          }
+     private final OnActionItemClickListener quickActionListenerAsset              = new QuickAction.OnActionItemClickListener() {
 
-                                                                                                          // Utils.captureCameraPhoto(getActivity());
-                                                                                                          // Intent intent = new
-                                                                                                          // Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                                                                                                          // startActivityForResult(intent,
-                                                                                                          // GlobalConstants.CAPTURE_CAMERA_PHOTO);
+                                                                                        @Override public void onItemClick(int pos) {
+                                                                                             switch (pos) {
+                                                                                                  case 0:
+                                                                                                       QSystem.navigateToActivity(getActivity(), AImagePager_.class);
+                                                                                                       break;
 
-                                                                                                          if ( Utils.hasDeviceCamera() ) {
-                                                                                                               Utils.captureCameraPhoto(getActivity());
-                                                                                                          } else {
-                                                                                                               Utils.showCustomToast(getActivity(), R.string.device_has_no_camera, R.drawable.hide_hotspot);
-                                                                                                          }
-                                                                                                          break;
-
-                                                                                                     case 1:
-                                                                                                          startActivity(new Intent(getActivity(), ImagePagerActivity_.class));
-                                                                                                          break;
-
-                                                                                                     case 2:
-                                                                                                          showDialog(GlobalConstants.LAST_CLICKED_HOTSPOT, getActivity());
-                                                                                                          break;
-                                                                                                     default:
-                                                                                                          return;
-                                                                                                }
-                                                                                           }
-                                                                                      };
-
-     private final OnActionItemClickListener    quickActionListenerAsset              = new QuickAction.OnActionItemClickListener() {
-
-                                                                                           @Override public void onItemClick(int pos) {
-                                                                                                switch (pos) {
-                                                                                                     case 0:
-                                                                                                          startActivity(new Intent(getActivity(), ImagePagerActivity_.class));
-                                                                                                          break;
-
-                                                                                                     case 1:
-                                                                                                          showDialog(GlobalConstants.LAST_CLICKED_HOTSPOT, getActivity());
-                                                                                                          break;
-                                                                                                     default:
-                                                                                                          return;
-                                                                                                }
-                                                                                           }
-                                                                                      };
+                                                                                                  case 1:
+                                                                                                       showDialog(GlobalConstants.LAST_CLICKED_HOTSPOT, (SuperActivity) getActivity());
+                                                                                                       break;
+                                                                                                  default:
+                                                                                                       return;
+                                                                                             }
+                                                                                        }
+                                                                                   };
 
      @Override public void onAttach(Activity activity) {
           super.onAttach(activity);
           paint = new Paint();
           paint.setAntiAlias(true);
-          ADAPTER = new ListViewHotsportsAdapter(getActivity());
+          ADAPTER = new ListViewHotsportsAdapter((SuperActivity) getActivity());
           setListAdapter(ADAPTER);
      }
 
@@ -202,13 +183,30 @@ public class FragmentHotspotsList extends ListFragment {
           dialogHotspotDetail = new Dialog(getActivity());
           dialogTradeHotspotDetail = new Dialog(getActivity());
 
+          dialogHotspotDetail.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+
           dialogHotspotDetail.setContentView(R.layout.dialog_hotspot_detail);
           dialogTradeHotspotDetail.setContentView(R.layout.dialog_trade_detail);
+          dialogTradeHotspotDetail.setTitle("Trade hotspot details");
 
+          llTaskBriefing = ((LinearLayout) dialogHotspotDetail.findViewById(R.id.llTaskBriefing));
+          llRiskSchedule = ((LinearLayout) dialogHotspotDetail.findViewById(R.id.llRiskSchedule));
           twDescription = ((TextView) dialogHotspotDetail.findViewById(R.id.dialog_edit_text_description));
           twId = ((TextView) dialogHotspotDetail.findViewById(R.id.dialog_edit_text_id));
           twHotspotType = ((TextView) dialogHotspotDetail.findViewById(R.id.dialog_edit_text_type));
           twIsAssigned = ((TextView) dialogHotspotDetail.findViewById(R.id.dialog_edit_text_is_signed));
+          tvCompanyName = ((TextView) dialogHotspotDetail.findViewById(R.id.tvCompanyName));
+          tvScopeOfWorks = ((TextView) dialogHotspotDetail.findViewById(R.id.tvScopeOfWorks));
+          tvNameOfSupervisior = ((TextView) dialogHotspotDetail.findViewById(R.id.tvNameOfSupervisior));
+          tvNameOfSupervisiorDate = ((TextView) dialogHotspotDetail.findViewById(R.id.tvNameOfSupervisiorDate));
+          tvRevievedBy = ((TextView) dialogHotspotDetail.findViewById(R.id.tvRevievedBy));
+          tvRevievedByDate = ((TextView) dialogHotspotDetail.findViewById(R.id.tvRevievedByDate));
+          tvBriefingItemsList = ((TextView) dialogHotspotDetail.findViewById(R.id.tvBriefingItemsList));
+          tvActivities = ((TextView) dialogHotspotDetail.findViewById(R.id.tvActivities));
+          tvCompanyAndProjectName = ((TextView) dialogHotspotDetail.findViewById(R.id.tvCompanyAndProjectName));
+          tvMeansAndFrequency = ((TextView) dialogHotspotDetail.findViewById(R.id.tvMeansAndFrequency));
+          tlRiskControl = (TableLayout) dialogHotspotDetail.findViewById(R.id.tlRiskControl);
+          tvCompanyNameRiskSchedule = (TextView) dialogHotspotDetail.findViewById(R.id.tvCompanyNameRiskSchedule);
 
           // dragging elements in right bottom part of the screen
           final ImageView imageViewNotesHotspot = (ImageView) getActivity().findViewById(R.id.imageViewNotesHotspot);
@@ -216,11 +214,10 @@ public class FragmentHotspotsList extends ListFragment {
           final ImageView imageViewWasteHotspot = (ImageView) getActivity().findViewById(R.id.drawing_hotspot_waste);
           final ImageView imageViewPermitsHotspot = (ImageView) getActivity().findViewById(R.id.drawing_hotspots_permits);
           final ImageView imageViewWhiteBoard = (ImageView) getActivity().findViewById(R.id.drawing_hotspot_white_board);
-          final ImageView imageViewTrades = (ImageView) getActivity().findViewById(R.id.drawing_hotspot_trades);
-          final ImageView imageViewAssets = (ImageView) getActivity().findViewById(R.id.drawing_hotspot_assets);
           final ImageView imageViewCamera = (ImageView) getActivity().findViewById(R.id.drawing_hotspot_camera);
-          final ImageView imageViewShowAllHotspots = (ImageView) getActivity().findViewById(R.id.drawing_hotspots_show_all);
-          final ImageView imageViewHideAllHotspots = (ImageView) getActivity().findViewById(R.id.drawing_hotspots_hide_all);
+          final ImageView imageViewQuickNote = (ImageView) getActivity().findViewById(R.id.ivQuickNote);
+          final ImageView imageViewHighRisk = (ImageView) getActivity().findViewById(R.id.ivHighRisk);
+          final ImageView imageViewOnTheFly = (ImageView) getActivity().findViewById(R.id.ivOnTheFly);
 
           imageViewCamera.setTag(Hotspots.CAMERA_HOTSPOT);
           imageViewNotesHotspot.setTag(Hotspots.NOTE_HOTSPOT);
@@ -228,28 +225,19 @@ public class FragmentHotspotsList extends ListFragment {
           imageViewWasteHotspot.setTag(Hotspots.WASTE_HOTSPOT);
           imageViewPermitsHotspot.setTag(Hotspots.PERMITS_HOTSPOT);
           imageViewWhiteBoard.setTag(Hotspots.WHITEBOARD_HOTSPOT);
-          imageViewTrades.setTag(Hotspots.TRADE_HOTSPOT);
-          imageViewAssets.setTag(Hotspots.ASSET_HOTSPOT);
-          imageViewShowAllHotspots.setTag(Hotspots.SHOW_ALL);
-          imageViewHideAllHotspots.setTag(Hotspots.HIDE_ALL);
+          imageViewQuickNote.setTag(Hotspots.QUICK_NOTE_HOTSPOT);
+          imageViewHighRisk.setTag(Hotspots.HIGH_RISK);
+          imageViewOnTheFly.setTag(Hotspots.ON_THE_FLY);
 
-          imageViewCamera.setOnClickListener(clickListener);
-          imageViewNotesHotspot.setOnClickListener(clickListener);
-          imageViewSafetyHotspot.setOnClickListener(clickListener);
-          imageViewWasteHotspot.setOnClickListener(clickListener);
-          imageViewPermitsHotspot.setOnClickListener(clickListener);
-          imageViewWhiteBoard.setOnClickListener(clickListener);
-          imageViewTrades.setOnClickListener(clickListener);
-          imageViewAssets.setOnClickListener(clickListener);
-          imageViewShowAllHotspots.setOnClickListener(clickListener);
-          imageViewHideAllHotspots.setOnClickListener(clickListener);
-
-          imageViewCamera.setOnLongClickListener(longClickDragListener);
-          imageViewNotesHotspot.setOnLongClickListener(longClickDragListener);
-          imageViewSafetyHotspot.setOnLongClickListener(longClickDragListener);
-          imageViewWasteHotspot.setOnLongClickListener(longClickDragListener);
-          imageViewPermitsHotspot.setOnLongClickListener(longClickDragListener);
-          imageViewWhiteBoard.setOnLongClickListener(longClickDragListener);
+          imageViewCamera.setOnTouchListener(touchListener);
+          imageViewNotesHotspot.setOnTouchListener(touchListener);
+          imageViewSafetyHotspot.setOnTouchListener(touchListener);
+          imageViewWasteHotspot.setOnTouchListener(touchListener);
+          imageViewPermitsHotspot.setOnTouchListener(touchListener);
+          imageViewWhiteBoard.setOnTouchListener(touchListener);
+          imageViewQuickNote.setOnTouchListener(touchListener);
+          imageViewHighRisk.setOnTouchListener(touchListener);
+          imageViewOnTheFly.setOnTouchListener(touchListener);
 
           // Add action item
           QuickAction.ActionItem pinPicture = new QuickAction.ActionItem();
@@ -290,55 +278,129 @@ public class FragmentHotspotsList extends ListFragment {
           });
      }
 
-     public static void showDialog(final POJORoboHotspot hotspot, final Activity activity) {
-          String isSigned = (Double.valueOf(hotspot.x) > 0) ? "assigned" : "not assigned";
-          dialogHotspotDetail.setTitle(hotspot.type.replace("hotspot", ""));
+     public static void showPopUpWindow(int[] location, View v) {
+          if ( GlobalConstants.LAST_CLICKED_HOTSPOT.type.equals(Hotspots.ASSET_HOTSPOT) ) {
+               quickActionMenuAssetHotspot.show(v, location);
+          }
+          if ( GlobalConstants.LAST_CLICKED_HOTSPOT.type.equals(Hotspots.NOTE_HOTSPOT) ) {
+               quickActionPopUpNoteHs.show(v, location);
+          }
+          if ( GlobalConstants.LAST_CLICKED_HOTSPOT.type.equals(Hotspots.WASTE_HOTSPOT) ) {
+               quickActionPopUpMenu.show(v, location);
+          }
 
-          String hotspotDescription = Hotspots.PERMITS_HOTSPOT.equals(hotspot.type) ? "Description:" + hotspot.description + "\n Valid from:" + hotspot.validFromDate + "\n Valid to: " + hotspot.validToDate : "Description:" + hotspot.description;
-          twDescription.setText(hotspotDescription + "\nCreated by " + FragmentCompaniesList.getCompanyNameById(hotspot.companyId));
+          if ( GlobalConstants.LAST_CLICKED_HOTSPOT.type.equalsIgnoreCase(Hotspots.SAFETY_HOTSPOT) ) {
+               quickActionPopUpMenu.show(v, location);
+          }
+     }
 
-          twId.setText("ID: " + hotspot.id);
+     public static void showDialog(final POJORoboHotspot hotspot, final SuperActivity activity) {
+
+          twId.setText("Company:" + FragmentCompaniesList.getCompanyNameById(hotspot.companyId));
+
+          String hotspotDescription = "";
+          if ( hotspot.type.equals(GlobalConstants.Hotspots.ON_THE_FLY) ) {
+               if ( null != hotspot.taskList && !hotspot.taskList.isEmpty() ) {
+                    hotspotDescription += "Task list\n";
+                    for ( int i = 0; i < hotspot.taskList.size(); i++ ) {
+                         hotspotDescription += (i + 1) + ") " + hotspot.taskList.get(i).description + "\n";
+                    }
+               }
+          }
+
+          hotspotDescription += "Description:" + hotspot.description;
+
+          twDescription.setText(hotspotDescription);
+
           twHotspotType.setText("Type: " + hotspot.type);
-          twIsAssigned.setText("Status: hotspot is " + isSigned);
+          twIsAssigned.setText(" Valid from " + hotspot.validFromDate + " to " + hotspot.validToDate);
+
+          if ( !QPreconditions.isNull(hotspot.risks) ) {
+               QViews.gone(llRiskSchedule, false);
+               tvCompanyNameRiskSchedule.setText(hotspot.risks.companyName);
+               tvCompanyAndProjectName.setText(String.format("%s / %s", hotspot.risks.companyName, hotspot.risks.projectName));
+               tvMeansAndFrequency.setText(hotspot.risks.mean);
+               tvActivities.setText("Activities:\n   Start on Site - " + hotspot.risks.startDate + "\n   End on Site - " + hotspot.risks.endDate + "\n   Scope of Works - " + hotspot.risks.scope);
+
+               if ( !QPreconditions.isNullOrEmpty(hotspot.risks.modelActivitiesAndRisksList) ) {
+                    for ( POJORoboSingleActivityAndRisk risk : hotspot.risks.modelActivitiesAndRisksList ) {
+                         TableLayout singleActivityAndRiskHazard = (TableLayout) activity.getLayoutInflater().inflate(R.layout.single_risk_and_description_table_layout, null, false);
+                         ((TextView) singleActivityAndRiskHazard.findViewById(R.id.twActivitiesAndRiskHazard)).setText(risk.riskName);
+                         ((TextView) singleActivityAndRiskHazard.findViewById(R.id.twControlMeasure)).setText(risk.description);
+                         tlRiskControl.addView(singleActivityAndRiskHazard);
+                    }
+               }
+          } else {
+               QViews.gone(llRiskSchedule, true);
+          }
+
+          if ( !QPreconditions.isNull(hotspot.briefingTasks) ) {
+               QViews.gone(llTaskBriefing, false);
+
+               tvCompanyName.setText(hotspot.briefingTasks.siteName);
+               tvNameOfSupervisior.setText(hotspot.briefingTasks.supervisor);
+               tvNameOfSupervisiorDate.setText(hotspot.briefingTasks.supervisionDate);
+               tvRevievedByDate.setText(hotspot.briefingTasks.reviewingDate);
+               tvRevievedBy.setText(hotspot.briefingTasks.reviewer);
+               tvScopeOfWorks.setText(hotspot.briefingTasks.scopeOfWork);
+
+               StringBuilder sb = new StringBuilder();
+               if ( !QPreconditions.isNullOrEmpty(hotspot.briefingTasks.safetyAndEnvironmentalControls) ) {
+                    for ( int i = 0; i < hotspot.briefingTasks.safetyAndEnvironmentalControls.size(); i++ ) {
+                         sb.append(hotspot.briefingTasks.safetyAndEnvironmentalControls.get(i).controlName);
+                         // avoiding new line on last item in the list
+                         if ( i != (hotspot.briefingTasks.safetyAndEnvironmentalControls.size() - 1) ) {
+                              sb.append("\n");
+                         }
+                    }
+               }
+
+               tvBriefingItemsList.setText(sb.toString());
+          } else {
+               QViews.gone(llTaskBriefing, true);
+          }
 
           imageHotspotType.setBackgroundResource(Utils.getImageIdByType(hotspot.type));
-
           imageHotspotCompanyColor.setBackgroundColor(FragmentCompaniesList.getCompanyColorById(hotspot.companyId));
+          int resImageId = hotspot.isCompleted ? R.drawable.oki : R.drawable.ok48;
 
-          ((Button) dialogHotspotDetail.findViewById(R.id.dialog_button_risk)).setVisibility(View.VISIBLE);
-          ((Button) dialogHotspotDetail.findViewById(R.id.dialog_button_task_briefing)).setVisibility(View.VISIBLE);
+          ((ImageView) dialogHotspotDetail.findViewById(R.id.ivIsCompleted)).setImageResource(resImageId);
 
-          if ( hotspot.type.equals(GlobalConstants.Hotspots.NOTE_HOTSPOT) || hotspot.type.equals(GlobalConstants.Hotspots.ASSET_HOTSPOT) || hotspot.type.equals(GlobalConstants.Hotspots.WASTE_HOTSPOT) ) {
-               ((Button) dialogHotspotDetail.findViewById(R.id.dialog_button_risk)).setVisibility(View.GONE);
-               ((Button) dialogHotspotDetail.findViewById(R.id.dialog_button_task_briefing)).setVisibility(View.GONE);
-          } else {
-               ((Button) dialogHotspotDetail.findViewById(R.id.dialog_button_risk)).setOnClickListener(new OnClickListener() {
-                    @Override public void onClick(View v) {
-                         DrawingCompaniesActivity.showProgressDialog();
-                         HashMap <String, Integer> vars = new HashMap <String, Integer>();
-                         vars.put(HTTP_PARAMS.HOTSPOT_ID, hotspot.id);
-                         GetActivitiesAndRisksRequest request = new GetActivitiesAndRisksRequest(vars);
-                         ((DrawingCompaniesActivity_) activity).getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetActivitiesAndRisksRequestListener(activity));
+          ((TextView) dialogHotspotDetail.findViewById(R.id.tvTitle)).setText(hotspot.isCompleted ? "Completed" : "Not completed");
+
+          ((ImageView) dialogHotspotDetail.findViewById(R.id.ivIsCompleted)).setOnClickListener(new OnClickListener() {
+
+               @Override public void onClick(View v) {
+
+                    if ( hotspot.isCompleted ) {
+                         Utils.showCustomToast(activity, "Hotspot is completed", R.drawable.failure);
+                         return;
                     }
-               });
 
-               ((Button) dialogHotspotDetail.findViewById(R.id.dialog_button_task_briefing)).setOnClickListener(new OnClickListener() {
-                    @Override public void onClick(View v) {
-                         DrawingCompaniesActivity.showProgressDialog();
-                         HashMap <String, Integer> vars = new HashMap <String, Integer>();
-                         vars.put(HTTP_PARAMS.HOTSPOT_ID, hotspot.id);
-                         GetTaskBriefingRequest request = new GetTaskBriefingRequest(vars);
-                         ((DrawingCompaniesActivity_) activity).getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetTaskBriefingRequestListener(activity));
-                    }
-               });
-          }
+                    Dialog d = Utils.getConfiguredDialog(activity);
+                    d.setContentView(CDialogCompleteHotspot_.build(activity, d, hotspot.id, dialogHotspotDetail));
+                    d.show();
+               }
+          });
 
           dialogHotspotDetail.show();
      }
 
-     @Override public void onListItemClick(ListView l, View v, int position, long id) {
-          showDialog(DataAccess.SIGNED_HOTSPOTS.get(position), getActivity());
-          GlobalConstants.HOTSPOTS_BUTTONS_ARRAY.get(position).startAnimation(AnimationManager.load(R.anim.growview));
+     @Override public void onListItemClick(ListView l, View v, final int position, long id) {
+          Animation animation = AnimationManager.load(R.anim.growview);
+          animation.setAnimationListener(new AnimationListener() {
+
+               @Override public void onAnimationStart(Animation animation) {
+               }
+
+               @Override public void onAnimationRepeat(Animation animation) {
+               }
+
+               @Override public void onAnimationEnd(Animation animation) {
+                    showDialog(GlobalConstants.SIGNED_HOTSPOTS.get(position), (SuperActivity) getActivity());
+               }
+          });
+          GlobalConstants.HOTSPOTS_BUTTONS_ARRAY.get(position).startAnimation(animation);
      }
 
      /**
@@ -350,314 +412,100 @@ public class FragmentHotspotsList extends ListFragment {
       */
      public static class ListViewHotsportsAdapter extends ArrayAdapter <String> {
 
-          protected static final int TAKE_PHOTO_WASTE_CODE  = 0;
-          protected static final int TAKE_PHOTO_SAFETY_CODE = 1;
-          public static Activity     activity;
+          protected static final int  TAKE_PHOTO_WASTE_CODE  = 0;
+          protected static final int  TAKE_PHOTO_SAFETY_CODE = 1;
+          public static SuperActivity activity;
 
-          public ListViewHotsportsAdapter ( Activity act ) {
+          public ListViewHotsportsAdapter ( SuperActivity act ) {
                super(act, R.layout.listview_hotspot_list_item, new String[0]);
                activity = act;
-               // updateHotspotsButtonsList(Hotspots.SHOW_ALL);
-               // notifyDataSetChanged();
           }
 
-          @SuppressWarnings ( "deprecation" ) @SuppressLint ( "NewApi" ) public void updateHotspotsButtonsList(String type) {
-               if ( !Utils.isNull(hotspotsButtonLayout) ) {
+          public void updateHotspotsButtonsList() {
+               // check if hotspot layout over canvas
+               if ( !QPreconditions.isNull(hotspotsButtonLayout) ) {
                     // 1st view is drawing pannel, all others are hotspot button, remove them
                     hotspotsButtonLayout.removeViews(1, hotspotsButtonLayout.getChildCount() - 1);
                } else {
                     return;
                }
 
-               if ( type.equals(Hotspots.HIDE_ALL) ) { return; }
+               // if there is no hotspots in filter, just return
+               // if ( FilterManager.activeHotspots.isEmpty() ) { return; }
 
-               for ( int i = 0; i < DataAccess.SIGNED_HOTSPOTS.size(); i++ ) {
-                    try {
-                         param = new RelativeLayout.LayoutParams(60, 60);
+               if ( null != GlobalConstants.SIGNED_HOTSPOTS ) {
+                    for ( int i = 0; i < GlobalConstants.SIGNED_HOTSPOTS.size(); i++ ) {
+                         try {
+                              // CREATE ADN SET UP BUTTON
+                              final HotspotButton ibutton = new HotspotButton(activity, GlobalConstants.SIGNED_HOTSPOTS.get(i));
 
-                         param.leftMargin = (int) Math.round(Double.valueOf(DataAccess.SIGNED_HOTSPOTS.get(i).x) * CompaniesDrawingView.WIDTH);
-                         param.topMargin = (int) Math.round(Double.valueOf(DataAccess.SIGNED_HOTSPOTS.get(i).y) * CompaniesDrawingView.HEIGHT);
+                              // listener if user deside to reallocate hotspot
+                              ibutton.setOnLongClickListener(longClickUpdateHsPositionDragListener);
 
-                         // CREATE ADN SET UP BUTTON
-                         final ImageButton ibutton = new ImageButton(activity);
-                         ibutton.setTag(DataAccess.SIGNED_HOTSPOTS.get(i));
-                         ibutton.setBackgroundDrawable(new BitmapDrawable(activity.getResources(), Utils.getBitmapByHotspotType(DataAccess.SIGNED_HOTSPOTS.get(i).type)));
+                              TextView textViewDescription = new TextView(activity);
+                              TextView textViewAmountResources = null;
 
-                         ibutton.setOnTouchListener(new View.OnTouchListener() {
-                              @Override public boolean onTouch(View arg0, MotionEvent event) {
-
-                                   if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
-                                        GlobalConstants.LAST_CLICKED_HOTSPOT = (POJORoboHotspot) ibutton.getTag();
-                                   }
-
-                                   if ( event.getAction() == MotionEvent.ACTION_UP ) {
-                                        ibutton.startAnimation(AnimationManager.load(R.anim.growview));
-                                   }
-                                   return false;
-                              }
-                         });
-
-                         ibutton.setOnLongClickListener(longClickUpdateHsPositionDragListener);
-
-                         ibutton.setOnDragListener(new OnDragListener() {
-
-                              @Override public boolean onDrag(View v, DragEvent event) {
-                                   switch (event.getAction()) {
-
-                                        case DragEvent.ACTION_DRAG_ENTERED:
-                                             POJORoboHotspot hs1 = (POJORoboHotspot) ibutton.getTag();
-                                             String typeOfDraggingHs1 = event.getClipDescription().getLabel().toString();
-                                             if ( typeOfDraggingHs1.contains("trade") && hs1.type.equals(Hotspots.ASSET_HOTSPOT) ) {
-                                                  v.setBackgroundResource(R.drawable.target);
-                                                  v.setScaleX(1.5f);
-                                                  v.setScaleY(1.5f);
-
-                                             }
-
-                                             if ( typeOfDraggingHs1.contains("asset") && hs1.type.equals(Hotspots.TRADE_HOTSPOT) ) {
-                                                  v.setBackgroundResource(R.drawable.target);
-                                                  v.setScaleX(1.5f);
-                                                  v.setScaleY(1.5f);
-                                             }
-                                             break;
-
-                                        case DragEvent.ACTION_DRAG_EXITED:
-                                             POJORoboHotspot hs2 = (POJORoboHotspot) ibutton.getTag();
-                                             String typeOfDraggingHs2 = event.getClipDescription().getLabel().toString();
-                                             if ( typeOfDraggingHs2.contains("trade") && hs2.type.equals(Hotspots.ASSET_HOTSPOT) ) {
-                                                  v.setBackgroundResource(R.drawable.asset);
-                                                  v.setScaleX(1f);
-                                                  v.setScaleY(1f);
-                                             }
-
-                                             if ( typeOfDraggingHs2.contains("asset") && hs2.type.equals(Hotspots.TRADE_HOTSPOT) ) {
-                                                  v.setBackgroundResource(R.drawable.trade);
-                                                  v.setScaleX(1f);
-                                                  v.setScaleY(1f);
-                                             }
-                                             break;
-
-                                        case DragEvent.ACTION_DROP:
-                                             POJORoboHotspot hs = (POJORoboHotspot) ibutton.getTag();
-                                             String typeOfDraggingHs = event.getClipDescription().getLabel().toString();
-                                             ClipData d = event.getClipData();
-                                             // dragging Trade hotspot over Asset on canvas
-                                             if ( typeOfDraggingHs.contains("trade") && hs.type.equals(Hotspots.ASSET_HOTSPOT) ) {
-                                                  v.setBackgroundResource(R.drawable.asset);
-                                                  Utils.showToast(activity, "Obtaining suitable operatives...", true);
-                                                  v.setScaleX(1);
-                                                  v.setScaleY(1);
-                                                  String tradeDescr = typeOfDraggingHs.substring(0, typeOfDraggingHs.indexOf("_"));
-
-                                                  HashMap <String, String> vars = new HashMap <String, String>();
-                                                  vars.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(DataAccess.LAST_CLICKED_COMPANY.companyId));
-                                                  vars.put(HTTP_PARAMS.TRADE_DESCRIPTION, String.valueOf(tradeDescr));
-                                                  vars.put(HTTP_PARAMS.SITE_ID, String.valueOf(2));
-                                                  vars.put(HTTP_PARAMS.ASSET_ID, String.valueOf(hs.assetId));
-                                                  vars.put(HTTP_PARAMS.DATE, String.valueOf(GlobalConstants.SITE_PLAN_IMAGE_NAME));
-                                                  GetSuitableOperativesListRequest request = new GetSuitableOperativesListRequest(vars);
-                                                  ((DrawingCompaniesActivity) activity).getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetSuitableOperativesListRequestListener(activity));
-                                             }
-
-                                             // dragging Asset hotspot over Trade on canvas
-                                             if ( typeOfDraggingHs.contains("asset") && hs.type.equals(Hotspots.TRADE_HOTSPOT) ) {
-                                                  v.setBackgroundResource(R.drawable.trade);
-                                                  v.setScaleX(1);
-                                                  v.setScaleY(1);
-                                                  Utils.showToast(activity, "Obtaining suitable operatives...", true);
-                                                  HashMap <String, String> vars = new HashMap <String, String>();
-                                                  vars.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(DataAccess.LAST_CLICKED_COMPANY.companyId));
-                                                  vars.put(HTTP_PARAMS.TRADE_DESCRIPTION, String.valueOf(hs.description));
-                                                  vars.put(HTTP_PARAMS.SITE_ID, String.valueOf(2));
-                                                  vars.put(HTTP_PARAMS.ASSET_ID, String.valueOf(DataAccess.LAST_CLICKED_ASSET.id));
-                                                  vars.put(HTTP_PARAMS.DATE, String.valueOf(GlobalConstants.SITE_PLAN_IMAGE_NAME));
-                                                  DrawingCompaniesActivity.showProgressDialog();
-                                                  GetSuitableOperativesListRequest request = new GetSuitableOperativesListRequest(vars);
-                                                  ((DrawingCompaniesActivity) activity).getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetSuitableOperativesListRequestListener(activity));
-                                             }
-
-                                             ibutton.startAnimation(AnimationManager.load(R.anim.shake, 300));
-                                             break;
-
-                                   }
-                                   return true;
-                              }
-                         });
-
-                         TextView textViewDescription = new TextView(activity);
-                         TextView textViewAmountResources = null;
-
-                         if ( DataAccess.SIGNED_HOTSPOTS.get(i).type.equals(GlobalConstants.Hotspots.TRADE_HOTSPOT) ) {
-                              textViewDescription.setTextColor(Color.BLACK);
-                              textViewDescription.setBackgroundResource(R.drawable.background_view_rounded_single_trades);
-                              textViewAmountResources = new TextView(activity);
-                              textViewAmountResources.setText(String.valueOf(DataAccess.SIGNED_HOTSPOTS.get(i).amount));
-                              textViewAmountResources.setBackgroundResource(R.drawable.background_view_rounded_single_amount_of_people);
-                              textViewAmountResources.setPadding(7, 5, 7, 5);
-                         } else {
-                              textViewDescription.setTextColor(Color.WHITE);
-                              textViewDescription.setBackgroundResource(R.drawable.background_view_rounded_single);
-                         }
-
-                         textViewDescription.setTextSize(15);
-
-                         textViewDescription.setText(String.valueOf(DataAccess.SIGNED_HOTSPOTS.get(i).id));
-
-                         int leftMargin = (int) Math.round(Double.valueOf(DataAccess.SIGNED_HOTSPOTS.get(i).x) * CompaniesDrawingView.WIDTH) + 50;
-                         int topMargin = (int) Math.round(Double.valueOf(DataAccess.SIGNED_HOTSPOTS.get(i).y) * CompaniesDrawingView.HEIGHT);
-
-                         if ( type.equals(Hotspots.SHOW_ALL) ) {
-                              hotspotsButtonLayout.addView(ibutton, param);
-
-                              param = new RelativeLayout.LayoutParams(60, 25);
-
-                              param.leftMargin = leftMargin;
-                              param.topMargin = topMargin;
-
-                              param.width = LayoutParams.WRAP_CONTENT;
-                              param.height = LayoutParams.WRAP_CONTENT;
-
-                              textViewDescription.setPadding(5, 5, 5, 5);
-                              hotspotsButtonLayout.addView(textViewDescription, param);
-
-                              textViewDescription.startAnimation(AnimationManager.load(android.R.anim.slide_in_left, 800));
-
-                              if ( DataAccess.SIGNED_HOTSPOTS.get(i).type.equals(GlobalConstants.Hotspots.TRADE_HOTSPOT) ) {
-                                   android.widget.RelativeLayout.LayoutParams param2 = new RelativeLayout.LayoutParams(60, 25);
-                                   param2.width = LayoutParams.WRAP_CONTENT;
-                                   param2.height = LayoutParams.WRAP_CONTENT;
-
-                                   param2.leftMargin = leftMargin - 45;
-                                   param2.topMargin = topMargin + 30;
-
-                                   hotspotsButtonLayout.addView(textViewAmountResources, param2);
+                              if ( ibutton.getHotspot().type.equals(GlobalConstants.Hotspots.TRADE_HOTSPOT) ) {
+                                   textViewDescription.setTextColor(Color.BLACK);
+                                   textViewDescription.setBackgroundResource(R.drawable.background_view_rounded_single_trades);
+                                   textViewAmountResources = new TextView(activity);
+                                   textViewAmountResources.setText(String.valueOf(ibutton.getHotspot().amount));
+                                   textViewAmountResources.setBackgroundResource(R.drawable.background_view_rounded_single_amount_of_people);
+                                   textViewAmountResources.setPadding(7, 5, 7, 5);
+                              } else {
+                                   textViewDescription.setTextColor(Color.WHITE);
+                                   textViewDescription.setBackgroundResource(R.drawable.background_view_rounded_single);
                               }
 
-                         } else {
-                              if ( type.equals(DataAccess.SIGNED_HOTSPOTS.get(i).type) ) {
-                                   hotspotsButtonLayout.addView(ibutton, param);
+                              textViewDescription.setTextSize(15);
+                              textViewDescription.setText(String.valueOf(ibutton.getHotspot().id));
 
-                                   param = new RelativeLayout.LayoutParams(60, 25);
+                              // add only views from filter (check if filter allowed us to display this type of hotspot)
+                              if ( FilterManager.activeHotspots.get(ibutton.getHotspot().type) == Boolean.TRUE ) {
+                                   // add only hotspots for companies whifch is in filter list
+                                   if ( FilterManager.activeCompaniesColor.contains(FragmentCompaniesList.getCompanyColorById(ibutton.getHotspot().companyId)) ) {
 
-                                   param.leftMargin = leftMargin;
-                                   param.topMargin = topMargin;
-                                   param.width = LayoutParams.WRAP_CONTENT;
-                                   param.height = LayoutParams.WRAP_CONTENT;
-                                   textViewDescription.setPadding(5, 5, 5, 5);
-                                   hotspotsButtonLayout.addView(textViewDescription, param);
-                                   textViewDescription.startAnimation(AnimationManager.load(android.R.anim.slide_in_left, 800));
+                                        // Check if hotspot is completed state is the same as in the filter
+                                        if ( ibutton.getHotspot().isCompleted == FilterManager.displayCompleted ) {
+                                             hotspotsButtonLayout.addView(ibutton, ibutton.getPositionOnCanvas());
+                                        }
 
-                                   if ( DataAccess.SIGNED_HOTSPOTS.get(i).type.equals(GlobalConstants.Hotspots.TRADE_HOTSPOT) ) {
-                                        android.widget.RelativeLayout.LayoutParams param2 = new RelativeLayout.LayoutParams(60, 25);
-                                        param2.width = LayoutParams.WRAP_CONTENT;
-                                        param2.height = LayoutParams.WRAP_CONTENT;
-
-                                        param2.leftMargin = leftMargin - 45;
-                                        param2.topMargin = topMargin + 30;
-
-                                        hotspotsButtonLayout.addView(textViewAmountResources, param2);
-                                   }
-                              }
-                         }
-
-                         final int[] location = new int[2];
-                         location[0] = param.leftMargin;
-                         location[1] = param.topMargin;
-
-                         final String typeOfHS = DataAccess.SIGNED_HOTSPOTS.get(i).type;
-
-                         ibutton.setOnClickListener(new OnClickListener() {
-
-                              @Override public void onClick(View v) {
-                                   // GlobalConstants.LAST_CLICKED_HOTSPOT = (POJORoboHotspot) v.getTag();
-                                   if ( typeOfHS.equals(GlobalConstants.Hotspots.TRADE_HOTSPOT) ) {
-                                        dialogTradeHotspotDetail.setTitle("Trade hotspot details");
-                                        NumPad npa = new NumPad();
-                                        npa.show(activity, "Trade hotspot details", NumPad.NOFLAGS, new NumPad.NumbPadInterface() {
-                                             @Override public String numPadInputValue(String value) {
-                                                  return null;
-                                             }
-
-                                             @Override public String numPadCanceled() {
-                                                  return null;
-                                             }
-                                        });
-                                   } else if ( GlobalConstants.LAST_CLICKED_HOTSPOT.type.equals(Hotspots.SAFETY_HOTSPOT) || GlobalConstants.LAST_CLICKED_HOTSPOT.type.equals(Hotspots.WASTE_HOTSPOT) || GlobalConstants.LAST_CLICKED_HOTSPOT.type.equals(Hotspots.ASSET_HOTSPOT) || GlobalConstants.LAST_CLICKED_HOTSPOT.type
-                                             .equals(Hotspots.NOTE_HOTSPOT) ) {
-
-                                        if ( GlobalConstants.LAST_CLICKED_HOTSPOT.type.equals(Hotspots.ASSET_HOTSPOT) ) {
-                                             quickActionMenuAssetHotspot.setAnimStyle(QuickAction.ANIM_GROW_FROM_CENTER);
-                                             quickActionMenuAssetHotspot.show(ibutton, location);
-                                        } else {
-
-                                             if ( GlobalConstants.LAST_CLICKED_HOTSPOT.type.equals(Hotspots.NOTE_HOTSPOT) ) {
-                                                  quickActionPopUpNoteHs.setAnimStyle(QuickAction.ANIM_GROW_FROM_CENTER);
-                                                  quickActionPopUpNoteHs.show(ibutton, location);
-                                             } else {
-
-                                                  quickActionPopUpMenu.setAnimStyle(QuickAction.ANIM_GROW_FROM_CENTER);
-                                                  quickActionPopUpMenu.show(ibutton, location);
+                                        if ( FilterManager.displayHSId ) {
+                                             // if it's note hotspot display description instead of id
+                                             // Add id to all hotspots exclude Quick Note
+                                             if ( !ibutton.getHotspot().type.equals(GlobalConstants.Hotspots.QUICK_NOTE_HOTSPOT) && !ibutton.getHotspot().type.equals(GlobalConstants.Hotspots.TRADE_HOTSPOT) ) {
+                                                  textViewDescription.setPadding(5, 5, 5, 5);
+                                                  if ( ibutton.getHotspot().isCompleted == FilterManager.displayCompleted ) {
+                                                       hotspotsButtonLayout.addView(textViewDescription, ibutton.getPositionOnCanvas(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 10, 50));
+                                                  }
+                                                  textViewDescription.startAnimation(AnimationManager.load(android.R.anim.slide_in_left, 600));
                                              }
                                         }
-                                   } else {
-                                        if ( GlobalConstants.LAST_CLICKED_HOTSPOT.type.equals(Hotspots.WHITEBOARD_HOTSPOT) ) {
-                                             GeneralWhiteBoardActivity.WHITEBOARD_TYPE = GlobalConstants.DrawingType.HOTSPOT_WHITEBOARD_DRAWING;
-                                             GeneralWhiteBoardActivity_.WHITEBOARD_TYPE = GlobalConstants.DrawingType.HOTSPOT_WHITEBOARD_DRAWING;
-                                             activity.startActivity(new Intent(activity, GeneralWhiteBoardActivity_.class));
-                                        } else {
-
-                                             if ( typeOfHS.equals(GlobalConstants.Hotspots.CAMERA_HOTSPOT) ) {
-
-                                                  final Dialog d = new Dialog(activity);
-                                                  d.setContentView(R.layout.dialog_cctv_camera);
-                                                  d.setCanceledOnTouchOutside(true);
-                                                  final WebView webViewTV = (WebView) d.findViewById(R.id.webView1);
-                                                  // Utils.configureWebView(webViewTV);
-                                                  Utils.configureWebView(webViewTV).loadUrl("http://194.28.136.8:8001/record/current.jpg");
-                                                  d.show();
-
-                                                  Thread t = new Thread(new Runnable() {
-
-                                                       @Override public void run() {
-                                                            while ( d.isShowing() ) {
-                                                                 try {
-                                                                      Thread.sleep(400);
-                                                                      webViewTV.reload();
-                                                                 } catch (InterruptedException e) {
-                                                                      Utils.logw(e.getMessage());
-                                                                 }
-                                                            }
-                                                       }
-                                                  });
-                                                  t.start();
-                                                  /*
-                                                   * activity.runOnUiThread(new Runnable() {
-                                                   * @Override public void run() {
-                                                   * webViewTV.loadUrl("http://www.datascopesystem.com/QUILT_Demo_ORIGINAL/CCTV/cctv.htm");
-                                                   * }
-                                                   * });
-                                                   */
-
-                                             } else {
-                                                  activity.runOnUiThread(new Runnable() {
-                                                       @Override public void run() {
-                                                            showDialog(GlobalConstants.LAST_CLICKED_HOTSPOT, activity);
-                                                       }
-                                                  });
-                                             }
+                                        if ( GlobalConstants.SIGNED_HOTSPOTS.get(i).type.equals(GlobalConstants.Hotspots.TRADE_HOTSPOT) && ibutton.getHotspot().isCompleted == FilterManager.displayCompleted ) {
+                                             hotspotsButtonLayout.addView(textViewAmountResources, ibutton.getPositionOnCanvas(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 30, 0));
                                         }
                                    }
                               }
-                         });
-                         GlobalConstants.HOTSPOTS_BUTTONS_ARRAY.add(i, ibutton);
-                    } catch (Exception e) {
-                         Utils.logw(e.getMessage());
+                              if ( ibutton.getHotspot().isCompleted == FilterManager.displayCompleted ) {
+                                   GlobalConstants.HOTSPOTS_BUTTONS_ARRAY.add(i, ibutton);
+                              }
+                         } catch (Exception ex) {
+                              ex.printStackTrace();
+                         }
                     }
                }
           }
 
           @Override public int getCount() {
-               return DataAccess.SIGNED_HOTSPOTS.size();
+               int count = 0;
+               if ( null != GlobalConstants.SIGNED_HOTSPOTS ) {
+                    for ( POJORoboHotspot hotspot : GlobalConstants.SIGNED_HOTSPOTS ) {
+                         if ( hotspot.isCompleted == FilterManager.displayCompleted ) {
+                              count++;
+                         }
+                    }
+               }
+               return count;
           }
 
           public static Bitmap createRoundImage(Paint paint) {
@@ -673,24 +521,22 @@ public class FragmentHotspotsList extends ListFragment {
                TextView txtTitle = (TextView) rowView.findViewById(R.id.list_hotspots_text_view);
                ImageView imageView = (ImageView) rowView.findViewById(R.id.list_hotspots_image);
                ImageView imageViewCompanyColour = (ImageView) rowView.findViewById(R.id.list_hotspots_companyColour);
-
-               imageView.setBackgroundDrawable(new BitmapDrawable(activity.getResources(), Utils.getBitmapByHotspotType(DataAccess.SIGNED_HOTSPOTS.get(position).type)));
+               imageView.setBackgroundDrawable(new BitmapDrawable(activity.getResources(), Utils.getBitmapByHotspotType(GlobalConstants.SIGNED_HOTSPOTS.get(position).type)));
                try {
-                    // imageViewCompanyColour.setBackgroundColor(FragmentCompaniesList.getCompanyColorById(DataAccess.SIGNED_HOTSPOTS.get(position).companyId));
-                    paint.setColor(FragmentCompaniesList.getCompanyColorById(DataAccess.SIGNED_HOTSPOTS.get(position).companyId));
+                    // imageViewCompanyColour.setBackgroundColor(FragmentCompaniesList.getCompanyColorById(GlobalConstants.SIGNED_HOTSPOTS.get(position).companyId));
+                    paint.setColor(FragmentCompaniesList.getCompanyColorById(GlobalConstants.SIGNED_HOTSPOTS.get(position).companyId));
                     imageViewCompanyColour.setImageBitmap(createRoundImage(paint));
                } catch (Exception e) {
-                    Utils.logw(e.getMessage());
+                    QLog.debug(e.getMessage(), e);
                     imageViewCompanyColour.setVisibility(View.INVISIBLE);
                }
                try {
-                    txtTitle.setText("(" + DataAccess.SIGNED_HOTSPOTS.get(position).id + ") " + DataAccess.SIGNED_HOTSPOTS.get(position).description);
+                    txtTitle.setText("(" + GlobalConstants.SIGNED_HOTSPOTS.get(position).id + ") " + GlobalConstants.SIGNED_HOTSPOTS.get(position).description);
                } catch (Exception ex) {
-                    Utils.logw(ex.getMessage());
+                    QLog.debug(ex.getMessage(), ex);
                     txtTitle.setText("Def value");
                }
                return rowView;
           }
      }
-
 }

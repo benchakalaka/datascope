@@ -13,7 +13,7 @@
 		android:layout_marginRight="10dp"
 		android:scaleType="fitCenter"
 		android:contentDescription="@null"
-		android:src="@drawable/server2" >
+		android:src="@drawable/add" >
 	</ImageView>
 
 	<TextView

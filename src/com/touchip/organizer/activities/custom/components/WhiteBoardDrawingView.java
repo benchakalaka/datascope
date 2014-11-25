@@ -3,6 +3,8 @@ package com.touchip.organizer.activities.custom.components;
 import java.util.ArrayList;
 import java.util.List;
 
+import quickutils.core.QUFactory.QLog;
+import quickutils.core.QUFactory.QPreconditions;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,7 +22,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.activities.GeneralWhiteBoardActivity;
+import com.touchip.organizer.activities.AGeneralWhiteBoard;
 import com.touchip.organizer.communication.rest.serializables.PaintSerializable;
 import com.touchip.organizer.communication.rest.serializables.PathSerializable;
 import com.touchip.organizer.utils.Utils;
@@ -100,6 +102,7 @@ public class WhiteBoardDrawingView extends View {
           public static final int TRIANGLE         = 2;
           public static final int LINE             = 3;
           public static final int DRAW_TEXT        = 4;
+          public static final int ARROW            = 5;
 
           private ShapesType () {
           }
@@ -142,12 +145,12 @@ public class WhiteBoardDrawingView extends View {
      }
 
      public static int getCanvasHeight() {
-          if ( !Utils.isNull(canvasBitmap) ) { return startBitmap.getHeight(); }
+          if ( !QPreconditions.isNull(canvasBitmap) ) { return startBitmap.getHeight(); }
           return 0;
      }
 
      public static int getCanvasWidth() {
-          if ( !Utils.isNull(canvasBitmap) ) { return startBitmap.getWidth(); }
+          if ( !QPreconditions.isNull(canvasBitmap) ) { return startBitmap.getWidth(); }
           return 0;
      }
 
@@ -182,8 +185,8 @@ public class WhiteBoardDrawingView extends View {
           canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
           startBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
           drawCanvas = new Canvas(canvasBitmap);
-          if ( !GeneralWhiteBoardActivity.IS_WHITEBOARD_NEW ) {
-               GeneralWhiteBoardActivity.INSTANCE.loadPathes();
+          if ( !AGeneralWhiteBoard.IS_WHITEBOARD_NEW ) {
+               AGeneralWhiteBoard.INSTANCE.loadPathes();
           }
      }
 
@@ -289,7 +292,7 @@ public class WhiteBoardDrawingView extends View {
                          canvas.drawPath(shapePath, staticPaint);
                          break;
                     default:
-                         Utils.logw("Unknown shape type");
+                         QLog.debug("Unknown shape type");
                }
           } else {
 
@@ -323,11 +326,6 @@ public class WhiteBoardDrawingView extends View {
 
                case MotionEvent.ACTION_UP:
 
-                    if ( isEraser ) {
-                         // GeneralWhiteBoardActivity.unselectEraserView();
-                    }
-
-                    // GeneralWhiteBoardActivity.setFreeDrawingSelected();
                     PaintSerializable ps = new PaintSerializable();
                     ps.brushStrokeWith = drawPaint.getStrokeWidth();
                     ps.colour = drawPaint.getColor();
@@ -527,7 +525,7 @@ public class WhiteBoardDrawingView extends View {
                     m.setScale(scaleFactor, scaleFactor, rectF.centerX(), rectF.centerY());
                     transformSelected(m);
                } catch (Exception e) {
-                    Utils.logw(e.getMessage());
+                    QLog.debug(e.getMessage());
                }
           }
      }
@@ -541,7 +539,7 @@ public class WhiteBoardDrawingView extends View {
                     m.postRotate(-1, rectF.centerX(), rectF.centerY());
                     transformSelected(m);
                } catch (Exception e) {
-                    Utils.logw(e.getMessage());
+                    QLog.debug(e.getMessage());
                }
           }
      }
@@ -555,7 +553,7 @@ public class WhiteBoardDrawingView extends View {
                     m.postRotate(1, rectF.centerX(), rectF.centerY());
                     transformSelected(m);
                } catch (Exception e) {
-                    Utils.logw(e.getMessage());
+                    QLog.debug(e.getMessage());
                }
           }
      }

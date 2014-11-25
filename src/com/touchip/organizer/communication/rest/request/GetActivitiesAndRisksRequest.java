@@ -2,26 +2,27 @@ package com.touchip.organizer.communication.rest.request;
 
 import java.util.Map;
 
-import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
-import com.touchip.organizer.communication.rest.model.RiskSchedule;
-import com.touchip.organizer.utils.Utils;
+import quickutils.core.QUFactory.QLog;
 
-public class GetActivitiesAndRisksRequest extends SpringAndroidSpiceRequest <RiskSchedule> {
+import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
+import com.touchip.organizer.communication.rest.model.ModelRiskSchedule;
+
+public class GetActivitiesAndRisksRequest extends SpringAndroidSpiceRequest <ModelRiskSchedule> {
 
      // Variable array for POST request
      private final Map <String, Integer> requestVariables;
 
      public GetActivitiesAndRisksRequest ( Map <String, Integer> var ) {
-          super(RiskSchedule.class);
+          super(ModelRiskSchedule.class);
           this.requestVariables = var;
-          Utils.logw("Post....." + RestAddresses.GET_ACTIVITIES_AND_RISKS);
+          QLog.debug("Post....." + RestAddresses.GET_ACTIVITIES_AND_RISKS);
      }
 
      /**
       * Network request
       */
-     @Override public RiskSchedule loadDataFromNetwork() throws Exception {
-          return getRestTemplate().postForObject(RestAddresses.GET_ACTIVITIES_AND_RISKS, requestVariables, RiskSchedule.class);
+     @Override public ModelRiskSchedule loadDataFromNetwork() throws Exception {
+          return getRestTemplate().postForObject(RestAddresses.GET_ACTIVITIES_AND_RISKS, requestVariables, ModelRiskSchedule.class);
      }
 
      /**

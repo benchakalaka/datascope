@@ -29,7 +29,6 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.utils.Utils;
 
 public class SaturationBar extends View {
 
@@ -313,7 +312,6 @@ public class SaturationBar extends View {
                case MotionEvent.ACTION_DOWN:
                     mIsMovingPointer = true;
                     // Check whether the user pressed on (or near) the pointer
-                    Utils.logw("Dimen " + dimen + ",    position: " + mBarPointerPosition);
                     if ( dimen >= (mBarPointerHaloRadius) && dimen <= (mBarPointerHaloRadius + mBarLength) ) {
                          mBarPointerPosition = Math.round(dimen);
                          calculateColor(Math.round(dimen));

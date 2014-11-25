@@ -1,7 +1,6 @@
 package com.touchip.organizer.activities.fragments;
 
-import java.util.HashMap;
-
+import quickutils.core.QUFactory.QLog;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ListFragment;
@@ -12,10 +11,11 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,17 +23,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.octo.android.robospice.persistence.DurationInMillis;
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.activities.DrawingCompaniesActivity;
-import com.touchip.organizer.activities.DrawingCompaniesActivity_;
-import com.touchip.organizer.communication.rest.model.HotspotsList.POJORoboHotspot;
-import com.touchip.organizer.communication.rest.request.GetActivitiesAndRisksRequest;
-import com.touchip.organizer.communication.rest.request.GetTaskBriefingRequest;
-import com.touchip.organizer.communication.rest.request.listener.GetActivitiesAndRisksRequestListener;
-import com.touchip.organizer.communication.rest.request.listener.GetTaskBriefingRequestListener;
-import com.touchip.organizer.utils.DataAccess;
-import com.touchip.organizer.utils.HTTP_PARAMS;
+import com.touchip.organizer.activities.SuperActivity;
+import com.touchip.organizer.activities.custom.components.dialogs.CDialogCompleteHotspot_;
+import com.touchip.organizer.communication.rest.model.ModelHotspotsList.POJORoboHotspot;
+import com.touchip.organizer.utils.GlobalConstants;
 import com.touchip.organizer.utils.Utils;
 
 public class FragmentUnsignedHotspotsList extends ListFragment {
@@ -63,8 +57,7 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
      }
 
      @Override public void onListItemClick(ListView l, View v, int position, long id) {
-          final POJORoboHotspot hotspot = DataAccess.UNASSIGNED_HOTSPOTS.get(position);
-          dialogHotspotDetail.setTitle(hotspot.type.replace("hotspot", ""));
+          final POJORoboHotspot hotspot = GlobalConstants.UNASSIGNED_HOTSPOTS.get(position);
 
           twDescription.setText("Description:" + hotspot.description + "\nCreated by " + FragmentCompaniesList.getCompanyNameById(hotspot.companyId));
           twId.setText("ID: " + hotspot.id);
@@ -74,27 +67,33 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
           imageHotspotType.setBackgroundResource(Utils.getImageIdByType(hotspot.type));
           imageHotspotComapnyColor.setBackgroundColor(FragmentCompaniesList.getCompanyColorById(hotspot.companyId));
 
-          ((Button) dialogHotspotDetail.findViewById(R.id.dialog_button_risk)).setOnClickListener(new OnClickListener() {
+          int resImageId = hotspot.isCompleted ? R.drawable.oki : R.drawable.ok48;
+
+          ((ImageView) dialogHotspotDetail.findViewById(R.id.ivIsCompleted)).setImageResource(resImageId);
+
+          ((TextView) dialogHotspotDetail.findViewById(R.id.tvTitle)).setText(hotspot.isCompleted ? "Completed" : "Not completed");
+
+          ((ImageView) dialogHotspotDetail.findViewById(R.id.ivIsCompleted)).setOnClickListener(new OnClickListener() {
+
                @Override public void onClick(View v) {
-                    DrawingCompaniesActivity.showProgressDialog();
-                    HashMap <String, Integer> vars = new HashMap <String, Integer>();
-                    vars.put(HTTP_PARAMS.HOTSPOT_ID, hotspot.id);
-                    GetActivitiesAndRisksRequest request = new GetActivitiesAndRisksRequest(vars);
-                    ((DrawingCompaniesActivity_) getActivity()).getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetActivitiesAndRisksRequestListener(getActivity()));
+
+                    if ( hotspot.isCompleted ) {
+                         Utils.showCustomToast(getActivity(), "Hotspot is completed", R.drawable.failure);
+                         return;
+                    }
+
+                    if ( GlobalConstants.SITE_PLAN_IMAGE_NAME.compareTo(GlobalConstants.TODAY_FROM_SERVER) > 0 ) {
+                         Utils.showCustomToast(getActivity(), "Date in past", R.drawable.failure);
+                         return;
+                    }
+
+                    Dialog d = Utils.getConfiguredDialog((SuperActivity) getActivity());
+                    d.setContentView(CDialogCompleteHotspot_.build((SuperActivity) getActivity(), d, hotspot.id, dialogHotspotDetail));
+                    d.show();
                }
           });
 
-          ((Button) dialogHotspotDetail.findViewById(R.id.dialog_button_task_briefing)).setOnClickListener(new OnClickListener() {
-               @Override public void onClick(View v) {
-                    DrawingCompaniesActivity.showProgressDialog();
-                    HashMap <String, Integer> vars = new HashMap <String, Integer>();
-                    vars.put(HTTP_PARAMS.HOTSPOT_ID, hotspot.id);
-                    GetTaskBriefingRequest request = new GetTaskBriefingRequest(vars);
-                    ((DrawingCompaniesActivity_) getActivity()).getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new GetTaskBriefingRequestListener(getActivity()));
-               }
-          });
-
-          dialogHotspotDetail.show();
+          // dialogHotspotDetail.show();
      }
 
      /**
@@ -116,7 +115,11 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
           }
 
           @Override public int getCount() {
-               return DataAccess.UNASSIGNED_HOTSPOTS.size();
+               if ( null != GlobalConstants.UNASSIGNED_HOTSPOTS ) {
+                    return GlobalConstants.UNASSIGNED_HOTSPOTS.size();
+               } else {
+                    return 0;
+               }
           }
 
           @SuppressWarnings ( "deprecation" ) @Override public View getView(int position, View view, ViewGroup parent) {
@@ -127,42 +130,71 @@ public class FragmentUnsignedHotspotsList extends ListFragment {
                ImageView imageView = (ImageView) rowView.findViewById(R.id.list_hotspots_image);
                ImageView imageViewCompanyColour = (ImageView) rowView.findViewById(R.id.list_hotspots_companyColour);
 
-               imageView.setBackgroundDrawable(new BitmapDrawable(activity.getResources(), Utils.getBitmapByHotspotType(DataAccess.UNASSIGNED_HOTSPOTS.get(position).type)));
-               imageView.setTag(DataAccess.UNASSIGNED_HOTSPOTS.get(position));
+               imageView.setBackgroundDrawable(new BitmapDrawable(activity.getResources(), Utils.getBitmapByHotspotType(GlobalConstants.UNASSIGNED_HOTSPOTS.get(position).type)));
+               imageView.setTag(GlobalConstants.UNASSIGNED_HOTSPOTS.get(position));
+               rowView.setTag(GlobalConstants.UNASSIGNED_HOTSPOTS.get(position));
 
                try {
-                    paint.setColor(FragmentCompaniesList.getCompanyColorById(DataAccess.UNASSIGNED_HOTSPOTS.get(position).companyId));
+                    paint.setColor(FragmentCompaniesList.getCompanyColorById(GlobalConstants.UNASSIGNED_HOTSPOTS.get(position).companyId));
                     imageViewCompanyColour.setImageBitmap(createRoundImage(paint));
                } catch (Exception e) {
-                    Utils.logw(e.getMessage());
+                    QLog.debug(e.getMessage());
                     imageViewCompanyColour.setVisibility(View.INVISIBLE);
                }
 
-               imageView.setOnLongClickListener(new OnLongClickListener() {
+               imageView.setOnTouchListener(new OnTouchListener() {
 
-                    @Override public boolean onLongClick(View v) {
-                         ClipData.Item item = new ClipData.Item(v.getTag().toString());
-                         draggedUnsignedHotspot = (POJORoboHotspot) v.getTag();
-                         String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
-                         // Id of Hotspot and ID of company (necessary for parameter in DrawingCompaniesActivity :: createHotspot)
-                         ClipData dragData = new ClipData(String.valueOf(draggedUnsignedHotspot.id), mimeTypes, item);
+                    @Override public boolean onTouch(View v, MotionEvent event) {
 
-                         // Instantiates the drag shadow builder.
-                         View.DragShadowBuilder shadow = new DragShadowBuilder(v);
+                         switch (event.getAction()) {
+                              case MotionEvent.ACTION_DOWN:
+                                   ClipData.Item item = new ClipData.Item(v.getTag().toString());
+                                   draggedUnsignedHotspot = (POJORoboHotspot) v.getTag();
+                                   String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
+                                   // Id of Hotspot and ID of company (necessary for parameter in ADrawingCompanies :: createHotspot)
+                                   ClipData dragData = new ClipData(String.valueOf(draggedUnsignedHotspot.id), mimeTypes, item);
 
-                         // Starts the drag
-                         v.startDrag(dragData, shadow, null, 0);
-                         return true;
+                                   // Instantiates the drag shadow builder.
+                                   View.DragShadowBuilder shadow = new DragShadowBuilder(v);
+
+                                   // Starts the drag
+                                   v.startDrag(dragData, shadow, null, 0);
+                                   break;
+                         }
+
+                         return false;
                     }
                });
-               txtTitle.setText("(" + DataAccess.UNASSIGNED_HOTSPOTS.get(position).id + ") " + DataAccess.UNASSIGNED_HOTSPOTS.get(position).description);
+
+               /*
+                * imageView.setOnTouchListener(new OnTouchListener() {
+                * @Override public boolean onTouch(View v, MotionEvent event) {
+                * switch (event.getAction()) {
+                * case MotionEvent.ACTION_DOWN:
+                * ClipData.Item item = new ClipData.Item(v.getTag().toString());
+                * draggedUnsignedHotspot = (POJORoboHotspot) v.getTag();
+                * String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
+                * // Id of Hotspot and ID of company (necessary for parameter in ADrawingCompanies :: createHotspot)
+                * ClipData dragData = new ClipData(String.valueOf(draggedUnsignedHotspot.id), mimeTypes, item);
+                * // Instantiates the drag shadow builder.
+                * View.DragShadowBuilder shadow = new DragShadowBuilder(v);
+                * // Starts the drag
+                * v.startDrag(dragData, shadow, null, 0);
+                * break;
+                * }
+                * return false;
+                * }
+                * });
+                */
+
+               txtTitle.setText("(" + GlobalConstants.UNASSIGNED_HOTSPOTS.get(position).id + ") " + GlobalConstants.UNASSIGNED_HOTSPOTS.get(position).description);
 
                return rowView;
           }
      }
 
      public void loadViews() {
-          dialogHotspotDetail = new Dialog(getActivity());
+          dialogHotspotDetail = Utils.getConfiguredDialog((SuperActivity) getActivity());
           dialogHotspotDetail.setContentView(R.layout.dialog_hotspot_detail);
           twDescription = ((TextView) dialogHotspotDetail.findViewById(R.id.dialog_edit_text_description));
           twId = ((TextView) dialogHotspotDetail.findViewById(R.id.dialog_edit_text_id));

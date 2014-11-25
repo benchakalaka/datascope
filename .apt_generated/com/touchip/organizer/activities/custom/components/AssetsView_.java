@@ -5,10 +5,11 @@
 
 package com.touchip.organizer.activities.custom.components;
 
-import android.content.Context;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.timessquare.sample.R.id;
 import com.squareup.timessquare.sample.R.layout;
+import com.touchip.organizer.activities.SuperActivity;
 import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
 import org.androidannotations.api.view.OnViewChangedNotifier;
@@ -30,13 +31,13 @@ public final class AssetsView_
     private boolean alreadyInflated_ = false;
     private final OnViewChangedNotifier onViewChangedNotifier_ = new OnViewChangedNotifier();
 
-    public AssetsView_(Context context) {
-        super(context);
+    public AssetsView_(SuperActivity act) {
+        super(act);
         init_();
     }
 
-    public static AssetsView build(Context context) {
-        AssetsView_ instance = new AssetsView_(context);
+    public static AssetsView build(SuperActivity act) {
+        AssetsView_ instance = new AssetsView_(act);
         instance.onFinishInflate();
         return instance;
     }
@@ -68,6 +69,7 @@ public final class AssetsView_
     public void onViewChanged(HasViews hasViews) {
         twAssetTagId = ((TextView) hasViews.findViewById(id.twAssetTagId));
         twAssetDescription = ((TextView) hasViews.findViewById(id.twAssetDescription));
+        ivAsset = ((ImageView) hasViews.findViewById(id.ivAsset));
     }
 
 }

@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/rootlll"
-	android:background="@color/default_screen_bg"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent" >
+	android:layout_height="match_parent"
+	android:background="@color/default_screen_bg" >
 
 	<RelativeLayout
 		android:id="@+id/rlCurrentDate"
@@ -10,7 +10,7 @@
 		android:layout_height="wrap_content"
 		android:layout_alignParentLeft="true"
 		android:layout_alignParentRight="true"
-		android:layout_margin="3dp"
+		android:layout_margin="10dp"
 		android:background="@drawable/transparent_inside_and_white_round_border" >
 
 		<ImageView
@@ -48,8 +48,9 @@
 	<ScrollView
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:layout_above="@+id/rlUserDetail"
 		android:layout_below="@+id/rlCurrentDate"
+		android:layout_margin="10dp"
+		android:background="@drawable/transparent_inside_and_white_border"
 		android:orientation="vertical" >
 
 		<LinearLayout
@@ -60,92 +61,98 @@
 			<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:layout_margin="5dp"
 				android:orientation="horizontal" >
 
 				<RelativeLayout
 					android:id="@+id/rlQuilt"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
+					android:layout_height="150dp"
 					android:layout_margin="10dp"
 					android:layout_weight="1"
-					android:background="@drawable/transparent_inside_and_white_border"
+					android:background="@drawable/background_fenced"
 					android:orientation="horizontal" >
+
+					<TextView
+						android:id="@+id/textView1"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_centerInParent="true"
+						android:layout_margin="4dp"
+						android:gravity="center"
+						android:text="Data Touch"
+						android:textColor="@android:color/white"
+						android:textStyle="bold" />
 
 					<ImageView
 						android:id="@+id/ivUserImage"
 						android:layout_width="50dp"
 						android:layout_height="50dp"
-						android:layout_centerInParent="true"
+						android:layout_centerVertical="true"
+						android:layout_toLeftOf="@+id/textView1"
 						android:scaleType="fitCenter"
 						android:src="@drawable/drawings" />
-
-					<TextView
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:layout_below="@+id/ivUserImage"
-						android:layout_margin="4dp"
-						android:gravity="center"
-						android:text="Quilt"
-						android:textColor="@android:color/white"
-						android:textStyle="bold" />
 				</RelativeLayout>
 
 				<RelativeLayout
 					android:id="@+id/rlTv"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
+					android:layout_height="150dp"
 					android:layout_margin="10dp"
 					android:layout_weight="1"
-					android:background="@drawable/transparent_inside_and_white_border" >
-
-					<ImageView
-						android:id="@+id/ivT"
-						android:layout_width="50dp"
-						android:layout_height="50dp"
-						android:layout_centerInParent="true"
-						android:scaleType="fitCenter"
-						android:src="@drawable/tv" />
+					android:background="@drawable/background_fenced" >
 
 					<TextView
+						android:id="@+id/textView2"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_alignParentLeft="true"
-						android:layout_alignParentRight="true"
-						android:layout_below="@+id/ivT"
+						android:layout_centerInParent="true"
 						android:layout_margin="4dp"
 						android:gravity="center"
 						android:text="TV"
 						android:textColor="@android:color/white"
 						android:textStyle="bold" />
+
+					<ImageView
+						android:id="@+id/ivTv"
+						android:layout_width="50dp"
+						android:layout_height="50dp"
+						android:layout_centerVertical="true"
+						android:layout_toLeftOf="@+id/textView2"
+						android:scaleType="fitCenter"
+						android:src="@drawable/tv" />
 				</RelativeLayout>
 			</LinearLayout>
 
 			<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:layout_margin="5dp"
 				android:orientation="horizontal" >
 
 				<RelativeLayout
 					android:id="@+id/rlDelivery"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
+					android:layout_height="150dp"
 					android:layout_margin="10dp"
 					android:layout_weight="1"
-					android:background="@drawable/transparent_inside_and_white_border"
+					android:background="@drawable/background_fenced"
 					android:orientation="horizontal" >
 
 					<ImageView
 						android:id="@+id/ivDeliveries"
 						android:layout_width="50dp"
 						android:layout_height="50dp"
-						android:layout_centerInParent="true"
+						android:layout_centerVertical="true"
+						android:layout_toLeftOf="@+id/tvDeliveries"
 						android:scaleType="fitCenter"
 						android:src="@drawable/delivery" />
 
 					<TextView
-						android:layout_width="match_parent"
+						android:id="@+id/tvDeliveries"
+						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_below="@+id/ivDeliveries"
+						android:layout_centerInParent="true"
 						android:layout_margin="4dp"
 						android:gravity="center"
 						android:text="Deliveries"
@@ -156,25 +163,25 @@
 				<RelativeLayout
 					android:id="@+id/rlWboard"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
+					android:layout_height="150dp"
 					android:layout_margin="10dp"
 					android:layout_weight="1"
-					android:background="@drawable/transparent_inside_and_white_border" >
+					android:background="@drawable/background_fenced" >
 
 					<ImageView
 						android:id="@+id/ivwb"
 						android:layout_width="50dp"
 						android:layout_height="50dp"
-						android:layout_centerInParent="true"
+						android:layout_centerVertical="true"
+						android:layout_toLeftOf="@+id/tvWb"
 						android:scaleType="fitCenter"
-						android:src="@drawable/whiteboard_png" />
+						android:src="@drawable/whiteboard" />
 
 					<TextView
+						android:id="@+id/tvWb"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_alignParentLeft="true"
-						android:layout_alignParentRight="true"
-						android:layout_below="@+id/ivwb"
+						android:layout_centerInParent="true"
 						android:layout_margin="4dp"
 						android:gravity="center"
 						android:text="Whiteboard"
@@ -182,37 +189,39 @@
 						android:textStyle="bold" />
 				</RelativeLayout>
 			</LinearLayout>
-			
-			
+
 			<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:layout_margin="5dp"
 				android:orientation="horizontal" >
 
 				<RelativeLayout
 					android:id="@+id/rlPrsr"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
+					android:layout_height="150dp"
 					android:layout_margin="10dp"
 					android:layout_weight="1"
-					android:background="@drawable/transparent_inside_and_white_border"
-					android:orientation="horizontal" >
-
+					android:background="@drawable/background_fenced"
+					android:orientation="vertical" >
+					
 					<ImageView
-						android:id="@+id/ivPrSr"
+						android:id="@+id/ivSiteBriefing"
 						android:layout_width="50dp"
 						android:layout_height="50dp"
-						android:layout_centerInParent="true"
+						android:layout_centerVertical="true"
+						android:layout_toLeftOf="@+id/tvSiteBriefing"
 						android:scaleType="fitCenter"
 						android:src="@drawable/prsr" />
 
 					<TextView
-						android:layout_width="match_parent"
+						android:id="@+id/tvSiteBriefing"
+						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_below="@+id/ivPrSr"
+						android:layout_centerInParent="true"
 						android:layout_margin="4dp"
 						android:gravity="center"
-						android:text="PRSR"
+						android:text="Site Briefing"
 						android:textColor="@android:color/white"
 						android:textStyle="bold" />
 				</RelativeLayout>
@@ -220,25 +229,25 @@
 				<RelativeLayout
 					android:id="@+id/rlNotes"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
+					android:layout_height="150dp"
 					android:layout_margin="10dp"
 					android:layout_weight="1"
-					android:background="@drawable/transparent_inside_and_white_border" >
+					android:background="@drawable/background_fenced" >
 
 					<ImageView
 						android:id="@+id/ivNotes"
 						android:layout_width="50dp"
 						android:layout_height="50dp"
-						android:layout_centerInParent="true"
+						android:layout_centerVertical="true"
+						android:layout_toLeftOf="@+id/tvNotes"
 						android:scaleType="fitCenter"
 						android:src="@drawable/note_hotspot" />
 
 					<TextView
+						android:id="@+id/tvNotes"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_alignParentLeft="true"
-						android:layout_alignParentRight="true"
-						android:layout_below="@+id/ivNotes"
+						android:layout_centerInParent="true"
 						android:layout_margin="4dp"
 						android:gravity="center"
 						android:text="Notes"
@@ -248,40 +257,5 @@
 			</LinearLayout>
 		</LinearLayout>
 	</ScrollView>
-
-	<RelativeLayout
-		android:id="@+id/rlUserDetail"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_alignParentBottom="true"
-		android:layout_alignParentLeft="true"
-		android:layout_alignParentRight="true"
-		android:layout_margin="3dp"
-		android:background="@drawable/transparent_inside_and_white_round_border" >
-
-		<ImageView
-			android:id="@+id/ivUser"
-			android:layout_width="50dp"
-			android:layout_height="50dp"
-			android:layout_alignBottom="@+id/twUserDetails"
-			android:layout_alignParentLeft="true"
-			android:layout_alignTop="@+id/twUserDetails"
-			android:layout_margin="3dp"
-			android:src="@drawable/user" />
-
-		<TextView
-			android:id="@+id/twUserDetails"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_alignParentTop="true"
-			android:layout_centerHorizontal="true"
-			android:padding="2dp"
-			android:text="20/20/2013"
-			android:textAppearance="?android:attr/textAppearanceLarge"
-			android:textColor="@android:color/white" />
-	</RelativeLayout>
-	
-	
-	
 
 </RelativeLayout>

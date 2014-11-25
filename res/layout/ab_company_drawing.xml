@@ -5,8 +5,9 @@
 
 	<LinearLayout
 		android:id="@+id/llCompanyAndArea"
-		android:layout_width="match_parent"
+		android:layout_width="wrap_content"
 		android:layout_height="match_parent"
+		android:layout_alignParentLeft="true"
 		android:layout_alignParentTop="true"
 		android:layout_margin="5dp"
 		android:background="@drawable/transparent_inside_and_white_border"
@@ -28,14 +29,16 @@
 			android:textColor="#B6B6B4" />
 	</LinearLayout>
 
-	<LinearLayout
-		android:id="@+id/ll1"
+	<RelativeLayout
+		android:id="@+id/rlRightPanel"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_alignParentTop="true"
 		android:layout_margin="5dp"
+		android:layout_marginRight="100dp"
 		android:layout_toRightOf="@+id/llCompanyAndArea"
 		android:background="@drawable/transparent_inside_and_white_border"
+		android:gravity="right"
 		android:orientation="horizontal"
 		android:padding="2sp" >
 
@@ -44,12 +47,22 @@
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
 			android:ellipsize="none"
-			android:padding="3dp"
 			android:gravity="center_vertical"
+			android:padding="3dp"
 			android:scrollHorizontally="false"
 			android:text="Today: 20-12-2014"
 			android:textAppearance="?android:attr/textAppearanceLarge"
 			android:textColor="#B6B6B4" />
-	</LinearLayout>
+
+		<ImageView
+			android:id="@+id/imageView1"
+			android:layout_width="40dp"
+			android:layout_height="40dp"
+			android:padding="5dp"
+			android:layout_alignParentRight="true"
+			android:layout_centerVertical="true"
+			android:layout_toRightOf="@+id/twToday"
+			android:src="@drawable/calendar" />
+	</RelativeLayout>
 
 </RelativeLayout>

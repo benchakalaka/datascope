@@ -5,12 +5,16 @@
 
 package com.touchip.organizer.activities.custom.components;
 
-import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.timessquare.sample.R.anim;
 import com.squareup.timessquare.sample.R.id;
 import com.squareup.timessquare.sample.R.layout;
+import com.touchip.organizer.activities.SuperActivity;
 import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
 import org.androidannotations.api.view.OnViewChangedNotifier;
@@ -32,12 +36,12 @@ public final class ActionBarGeneralWhiteboard_
     private boolean alreadyInflated_ = false;
     private final OnViewChangedNotifier onViewChangedNotifier_ = new OnViewChangedNotifier();
 
-    public ActionBarGeneralWhiteboard_(Context context) {
+    public ActionBarGeneralWhiteboard_(SuperActivity context) {
         super(context);
         init_();
     }
 
-    public static ActionBarGeneralWhiteboard build(Context context) {
+    public static ActionBarGeneralWhiteboard build(SuperActivity context) {
         ActionBarGeneralWhiteboard_ instance = new ActionBarGeneralWhiteboard_(context);
         instance.onFinishInflate();
         return instance;
@@ -69,7 +73,27 @@ public final class ActionBarGeneralWhiteboard_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+        ibColour2 = ((ImageView) hasViews.findViewById(id.ibColour2));
         twDataAndTimeCreated = ((TextView) hasViews.findViewById(id.twDataAndTimeCreated));
+        ibColour3 = ((ImageView) hasViews.findViewById(id.ibColour3));
+        ibColour5 = ((ImageView) hasViews.findViewById(id.ibColour5));
+        ibColour1 = ((ImageView) hasViews.findViewById(id.ibColour1));
+        ibColorPicker = ((ImageButton) hasViews.findViewById(id.ibColorPicker));
+        {
+            View view = hasViews.findViewById(id.ibColorPicker);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActionBarGeneralWhiteboard_.this.ibColorPicker();
+                    }
+
+                }
+                );
+            }
+        }
         afterViews();
     }
 

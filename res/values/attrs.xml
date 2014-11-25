@@ -1,20 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="ColorPicker">
-        <attr name="color_wheel_radius" format="dimension" />
-        <attr name="color_wheel_thickness" format="dimension" />
-        <attr name="color_center_radius" format="dimension" />
-        <attr name="color_center_halo_radius" format="dimension"/>
-        <attr name="color_pointer_radius" format="dimension" />
-        <attr name="color_pointer_halo_radius" format="dimension" />
-    </declare-styleable>
-    <declare-styleable name="ColorBars">
-        <attr name="bar_thickness" format="dimension" />
-        <attr name="bar_length" format="dimension" />
-        <attr name="bar_pointer_radius" format="dimension" />
-        <attr name="bar_pointer_halo_radius" format="dimension" />
-        <attr name="bar_orientation_horizontal" format="boolean" />
-    </declare-styleable>
+	<declare-styleable name="ColorPicker">
+		<attr name="color_wheel_radius" format="dimension" />
+		<attr name="color_wheel_thickness" format="dimension" />
+		<attr name="color_center_radius" format="dimension" />
+		<attr name="color_center_halo_radius" format="dimension" />
+		<attr name="color_pointer_radius" format="dimension" />
+		<attr name="color_pointer_halo_radius" format="dimension" />
+	</declare-styleable>
+	<declare-styleable name="ColorBars">
+		<attr name="bar_thickness" format="dimension" />
+		<attr name="bar_length" format="dimension" />
+		<attr name="bar_pointer_radius" format="dimension" />
+		<attr name="bar_pointer_halo_radius" format="dimension" />
+		<attr name="bar_orientation_horizontal" format="boolean" />
+	</declare-styleable>
+	<declare-styleable name="DayPickerView">
+		<attr name="colorCurrentDay" format="color" />
+		<attr name="colorSelectedDayBackground" format="color" />
+		<attr name="colorSelectedDayText" format="color" />
+		<attr name="colorPreviousDay" format="color" />
+		<attr name="colorNormalDay" format="color" />
+		<attr name="colorMonthName" format="color" />
+		<attr name="colorDayName" format="color" />
+		<attr name="textSizeDay" format="dimension" />
+		<attr name="textSizeMonth" format="dimension" />
+		<attr name="textSizeDayName" format="dimension" />
+		<attr name="headerMonthHeight" format="dimension" />
+		<attr name="selectedDayRadius" format="dimension" />
+		<attr name="calendarHeight" format="dimension" />
+		<attr name="enablePreviousDay" format="boolean" />
+		<attr name="startCurrentMonth" format="boolean" />
+		<attr name="currentDaySelected" format="boolean" />
+		<attr name="drawRoundRect" format="boolean" />
+	</declare-styleable>
 
 </resources>

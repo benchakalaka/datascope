@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/rlRootFilterLv"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:layout_margin="2dp"
+	android:background="@drawable/transparent_inside_and_white_border" >
+
+	<TableLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/ab_background" >
+
+		<TableRow>
+
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="3dp"
+				android:background="@drawable/background_view_circle_single"
+				android:orientation="horizontal"
+				android:padding="6sp" >
+
+				<ImageView
+					android:id="@+id/ivCompanyColor"
+					android:layout_width="50dp"
+					android:layout_height="50dp"
+					android:contentDescription="@null" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="vertical" >
+
+				<TextView
+					android:id="@+id/twCompanyTitle"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:ellipsize="none"
+					android:gravity="center_vertical"
+					android:scrollHorizontally="false"
+					android:textColor="#607B8B"
+					android:textSize="12sp"
+					android:textStyle="bold|italic" />
+			</LinearLayout>
+		</TableRow>
+	</TableLayout>
+
+	<CheckBox
+		android:id="@+id/cbChecked"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerVertical="true"
+		android:layout_alignParentRight="true"
+		android:button="@drawable/checkbox_selector" />
+
+</RelativeLayout>

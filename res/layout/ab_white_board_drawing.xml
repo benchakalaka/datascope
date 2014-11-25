@@ -6,7 +6,7 @@
 
 	<TextView
 		android:id="@+id/twDataAndTimeCreated"
-		android:layout_width="match_parent"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_gravity="center_vertical"
 		android:layout_margin="5dp"
@@ -17,5 +17,75 @@
 		android:textColor="@color/abs__bright_foreground_disabled_holo_light"
 		android:textSize="14sp"
 		android:textStyle="bold|italic" />
+
+	<HorizontalScrollView
+		android:id="@+id/svChangeColour"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/llBottomMenu"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true" >
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="4dp"
+			android:orientation="horizontal"
+			android:visibility="visible" >
+
+			<ImageButton
+				android:id="@+id/ibColorPicker"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:scaleType="fitXY"
+				android:src="@drawable/color_picker" />
+
+			<ImageButton
+				android:id="@+id/ibColour1"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="#000000"
+				android:tag="#000000" />
+
+			<ImageButton
+				android:id="@+id/ibColour2"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="#0000FF"
+				android:tag="#0000FF" />
+
+			<ImageButton
+				android:id="@+id/ibColour3"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="centerCrop"
+				android:src="#00FF00"
+				android:tag="#00FF00" />
+
+			<ImageButton
+				android:id="@+id/ibColour5"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:layout_margin="4dp"
+				android:contentDescription="@null"
+				android:padding="5dp"
+				android:scaleType="fitXY"
+				android:src="#FF0000"
+				android:tag="#FF0000" />
+		</LinearLayout>
+	</HorizontalScrollView>
 
 </LinearLayout>

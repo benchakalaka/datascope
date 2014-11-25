@@ -1,5 +1,8 @@
 package com.touchip.organizer.activities.fragments;
 
+import java.util.HashMap;
+
+import quickutils.core.QUFactory.QCollection;
 import android.app.Activity;
 import android.app.ListFragment;
 import android.graphics.Bitmap;
@@ -15,16 +18,24 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.activities.DrawingCompaniesActivity;
-import com.touchip.organizer.communication.rest.model.CompaniesList;
-import com.touchip.organizer.communication.rest.model.CompaniesList.POJORoboCompany;
-import com.touchip.organizer.utils.DataAccess;
+import com.touchip.organizer.activities.ADrawingCompanies;
+import com.touchip.organizer.activities.SuperActivity;
+import com.touchip.organizer.communication.rest.model.ModelCompaniesList;
+import com.touchip.organizer.communication.rest.model.ModelCompaniesList.POJORoboCompany;
+import com.touchip.organizer.communication.rest.model.ModelHotspotsList;
+import com.touchip.organizer.communication.rest.model.ModelHotspotsList.POJORoboHotspot;
+import com.touchip.organizer.communication.rest.model.ModelTaskList;
+import com.touchip.organizer.communication.rest.request.RestAddresses;
+import com.touchip.organizer.communication.rest.request.SuperRequest;
+import com.touchip.organizer.communication.rest.request.listener.ResponseGetOnTheFlyTasks;
+import com.touchip.organizer.utils.GlobalConstants;
+import com.touchip.organizer.utils.HTTP_PARAMS;
 import com.touchip.organizer.utils.Utils;
 import com.touchip.organizer.utils.Utils.AnimationManager;
 
 public class FragmentCompaniesList extends ListFragment {
 
-     public static CompaniesList             COMPANIES_LIST;
+     public static ModelCompaniesList        COMPANIES_LIST;
      private static ListViewCompaniesAdapter ADAPTER;
      Paint                                   paint;
 
@@ -43,39 +54,44 @@ public class FragmentCompaniesList extends ListFragment {
      }
 
      @Override public void onListItemClick(ListView l, View v, int position, long id) {
-          DataAccess.LAST_CLICKED_COMPANY = COMPANIES_LIST.get(position);
-          DrawingCompaniesActivity.getDrawView().setColor(Color.parseColor(DataAccess.LAST_CLICKED_COMPANY.colour));
-          DrawingCompaniesActivity.getDrawView().setCompanyColourFilter(0);
-          DrawingCompaniesActivity.ivCompanyColor.setBackgroundColor(Color.parseColor(DataAccess.LAST_CLICKED_COMPANY.colour));
+          GlobalConstants.LAST_CLICKED_COMPANY = COMPANIES_LIST.get(position);
+          ADrawingCompanies.getDrawView().setIsNeedToStopOnDrawMethod(true);
 
-          DrawingCompaniesActivity.ivCompanyColor.startAnimation(AnimationManager.load(R.anim.bounce));
+          ADrawingCompanies.getDrawView().setColor(Color.parseColor(GlobalConstants.LAST_CLICKED_COMPANY.colour));
+          ADrawingCompanies.ivCompanyColor.setBackgroundColor(Color.parseColor(GlobalConstants.LAST_CLICKED_COMPANY.colour));
 
-          Utils.showCustomToastWithBackgroundColour(getActivity(), DataAccess.LAST_CLICKED_COMPANY.companyName, Color.parseColor(DataAccess.LAST_CLICKED_COMPANY.colour));
+          ADrawingCompanies.ivCompanyColor.startAnimation(AnimationManager.load(R.anim.bounce));
 
-          DrawingCompaniesActivity.getLlAssets().setVisibility(View.GONE);
-          DrawingCompaniesActivity.getLlTrades().setVisibility(View.GONE);
+          Utils.showCustomToastWithBackgroundColour(getActivity(), GlobalConstants.LAST_CLICKED_COMPANY.companyName, Color.parseColor(GlobalConstants.LAST_CLICKED_COMPANY.colour));
 
-          /*
-           * HIDE TRADES LIST VIEW
-           * if ( DrawingCompaniesActivity.getCustomActionBar().isTradesMenuVisible() ) {
-           * Utils.AnimationManager.animateMenu(DrawingCompaniesActivity.getLvTrades(), View.INVISIBLE, R.anim.disappear, 500);
-           * DrawingCompaniesActivity.getCustomActionBar().setTradesMenuVisibility(false);
-           * }
-           */
+          ADrawingCompanies.getLlAssets().setVisibility(View.GONE);
+          ADrawingCompanies.getLlTrades().setVisibility(View.GONE);
+
           // ListView item scroll to selected item
           l.smoothScrollToPositionFromTop(position, 100, 400);
-          DrawingCompaniesActivity.customActionBar.setUpCompanyName(DataAccess.LAST_CLICKED_COMPANY.companyName);
+          ADAPTER.notifyDataSetChanged();
+
+          HashMap <String, String> params = QCollection.newHashMap();
+          params.put(HTTP_PARAMS.COMPANY_ID, String.valueOf(GlobalConstants.LAST_CLICKED_COMPANY.companyId));
+          params.put(HTTP_PARAMS.USER_ID, String.valueOf(GlobalConstants.CURRENT_USER.userId));
+
+          SuperRequest <ModelTaskList> request = new SuperRequest <ModelTaskList>((SuperActivity) getActivity(), ModelTaskList.class, RestAddresses.GET_ON_THE_FLY_TASKS, params);
+          ((SuperActivity) getActivity()).execute(request, new ResponseGetOnTheFlyTasks((SuperActivity) getActivity()));
+
+          // filter unassigned hotspot by company
+          GlobalConstants.UNASSIGNED_HOTSPOTS = new ModelHotspotsList();
+          for ( POJORoboHotspot hotspot : GlobalConstants.UNASSIGNED_HOTSPOTS_ALL ) {
+               if ( hotspot.companyId == GlobalConstants.LAST_CLICKED_COMPANY.companyId ) {
+                    GlobalConstants.UNASSIGNED_HOTSPOTS.add(hotspot);
+               }
+          }
+          FragmentUnsignedHotspotsList.ADAPTER.notifyDataSetChanged();
+
      }
 
      public static ListViewCompaniesAdapter getCompaniesAdapter() {
           return ADAPTER;
      }
-
-     /*
-      * public static void leaveListViewSelection() {
-      * INSTANCE.getListView().smoothScrollToPositionFromTop(LIST_VIEW_ITEM_POSITION, 100, 400);
-      * }
-      */
 
      /**
       * Description: adapter, which represents list of companies and colours for list view
@@ -89,7 +105,7 @@ public class FragmentCompaniesList extends ListFragment {
 
           private final Activity activity;
 
-          public ListViewCompaniesAdapter ( Activity act , CompaniesList companies ) {
+          public ListViewCompaniesAdapter ( Activity act , ModelCompaniesList companies ) {
                super(act, R.layout.listview_company_list_item);
                COMPANIES_LIST = companies;
                activity = act;
@@ -97,7 +113,12 @@ public class FragmentCompaniesList extends ListFragment {
           }
 
           @Override public int getCount() {
-               return COMPANIES_LIST.size();
+               if ( null != COMPANIES_LIST ) {
+                    return COMPANIES_LIST.size();
+               } else {
+                    return 0;
+               }
+
           }
 
           @Override public String getItem(int position) {
@@ -110,6 +131,18 @@ public class FragmentCompaniesList extends ListFragment {
                TextView txtHasAssets = (TextView) rowView.findViewById(R.id.twHasAssets);
                TextView twHasTrades = (TextView) rowView.findViewById(R.id.twHasTrades);
                ImageView imageView = (ImageView) rowView.findViewById(R.id.ivCompanyColor);
+
+               ImageView ivChecked = (ImageView) rowView.findViewById(R.id.ivChecked);
+
+               if ( GlobalConstants.LAST_CLICKED_COMPANY != null ) {
+                    if ( COMPANIES_LIST.get(position).companyId == GlobalConstants.LAST_CLICKED_COMPANY.companyId ) {
+                         GlobalConstants.LAST_CLICKED_COMPANY = COMPANIES_LIST.get(position);
+                         ivChecked.setVisibility(View.VISIBLE);
+                         ADrawingCompanies.DRAW_VIEW.setColor(GlobalConstants.LAST_CLICKED_COMPANY.colour);
+                    } else {
+                         ivChecked.setVisibility(View.INVISIBLE);
+                    }
+               }
 
                txtTitle.setText(COMPANIES_LIST.get(position).companyName);
                paint.setColor(Color.parseColor(COMPANIES_LIST.get(position).colour));
@@ -129,6 +162,18 @@ public class FragmentCompaniesList extends ListFragment {
           Bitmap circleBitmap = Bitmap.createBitmap(30, 30, Bitmap.Config.ARGB_8888);
           Canvas c = new Canvas(circleBitmap);
           c.drawCircle(circleBitmap.getWidth() - 15, circleBitmap.getHeight() - 15, 14, paint);
+          return circleBitmap;
+     }
+
+     public static Bitmap createRoundImage(String colour, int bitmapW, int bitmapH) {
+          Bitmap circleBitmap = Bitmap.createBitmap(bitmapW, bitmapH, Bitmap.Config.ARGB_8888);
+          Canvas c = new Canvas(circleBitmap);
+
+          Paint p = new Paint();
+          p.setAntiAlias(true);
+          p.setStrokeWidth(5);
+          p.setColor(Color.parseColor(colour));
+          c.drawCircle(circleBitmap.getWidth() - bitmapW / 2, circleBitmap.getHeight() - bitmapH / 2, bitmapW / 2, p);
           return circleBitmap;
      }
 

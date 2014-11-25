@@ -5,11 +5,11 @@
 
 package com.touchip.organizer.activities.custom.components;
 
-import android.app.Activity;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.timessquare.sample.R.id;
 import com.squareup.timessquare.sample.R.layout;
+import com.touchip.organizer.activities.SuperActivity;
 import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
 import org.androidannotations.api.view.OnViewChangedNotifier;
@@ -31,12 +31,12 @@ public final class CustomImageWithTextBelowView_
     private boolean alreadyInflated_ = false;
     private final OnViewChangedNotifier onViewChangedNotifier_ = new OnViewChangedNotifier();
 
-    public CustomImageWithTextBelowView_(Activity context, String floor) {
+    public CustomImageWithTextBelowView_(SuperActivity context, String floor) {
         super(context, floor);
         init_();
     }
 
-    public static CustomImageWithTextBelowView build(Activity context, String floor) {
+    public static CustomImageWithTextBelowView build(SuperActivity context, String floor) {
         CustomImageWithTextBelowView_ instance = new CustomImageWithTextBelowView_(context, floor);
         instance.onFinishInflate();
         return instance;

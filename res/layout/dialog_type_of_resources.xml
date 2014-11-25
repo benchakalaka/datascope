@@ -1,0 +1,126 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:background="@color/default_screen_bg" >
+
+	<!-- Header title view -->
+	<LinearLayout
+		android:id="@+id/llTopMenu"
+		android:layout_width="match_parent"
+		android:layout_height="60dp"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:background="#53000000"
+		android:clipChildren="false"
+		android:orientation="horizontal" >
+
+		<ImageView
+			android:id="@+id/ivTitleImage"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_margin="5dp"
+			android:src="@drawable/construction_resources_2" />
+
+		<TextView
+			android:id="@+id/tvTitle"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:gravity="center"
+			android:text="Choose type of recources"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="@android:color/white"
+			android:textStyle="bold|italic" />
+	</LinearLayout>
+
+	<!-- Middle section -->
+
+	<LinearLayout
+		android:id="@+id/llTypeOfShapes"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/llTopMenu"
+		android:layout_margin="5dp"
+		android:background="#22000000"
+		android:orientation="horizontal"
+		android:padding="5dp" >
+
+		<RelativeLayout
+			android:id="@+id/rlAssets"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_weight="1" >
+
+			<ImageView
+				android:id="@+id/ivAssets"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:layout_centerInParent="true"
+				android:layout_margin="3dp"
+				android:background="@drawable/background_view_rounded_single"
+				android:padding="5dp"
+				android:src="@drawable/asset" />
+
+			<ImageView
+				android:id="@+id/ivAssetsSelected"
+				android:layout_width="20dp"
+				android:layout_height="20dp"
+				android:layout_alignRight="@+id/ivAssets"
+				android:src="@drawable/ok48selected"
+				android:visibility="invisible" />
+		</RelativeLayout>
+
+		<RelativeLayout
+			android:id="@+id/rlTrades"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_weight="1" >
+
+			<ImageView
+				android:id="@+id/ivTrades"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:layout_centerInParent="true"
+				android:layout_margin="3dp"
+				android:background="@drawable/background_view_rounded_single"
+				android:padding="5dp"
+				android:src="@drawable/trade" />
+
+			<ImageView
+				android:id="@+id/ivTradesSelected"
+				android:layout_width="20dp"
+				android:layout_height="20dp"
+				android:layout_alignRight="@+id/ivTrades"
+				android:src="@drawable/ok48selected"
+				android:visibility="invisible" />
+		</RelativeLayout>
+
+		<RelativeLayout
+			android:id="@+id/rlDeliveries"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_weight="1" >
+
+			<ImageView
+				android:id="@+id/ivDeliveries"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:layout_centerInParent="true"
+				android:layout_margin="3dp"
+				android:background="@drawable/background_view_rounded_single"
+				android:padding="5dp"
+				android:src="@drawable/delivery" />
+
+			<ImageView
+				android:id="@+id/ivDeliveriesSelected"
+				android:layout_width="20dp"
+				android:layout_height="20dp"
+				android:layout_alignRight="@+id/ivDeliveries"
+				android:src="@drawable/ok48selected"
+				android:visibility="invisible" />
+		</RelativeLayout>
+	</LinearLayout>
+
+	<!-- Middle section -->
+</RelativeLayout>

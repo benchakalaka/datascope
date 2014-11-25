@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:background="@color/meetingSelectedColor"
     android:orientation="vertical" >
 
     <TextView
         android:id="@+id/line"
         style="?android:attr/listSeparatorTextViewStyle"
         android:layout_width="fill_parent"
-        android:layout_height="2dp"
+        android:layout_height="5dp"
         android:gravity="center_horizontal"
         android:paddingTop="5dip" />
 
@@ -30,12 +31,13 @@
             android:src="@drawable/hand" />
 
         <TextView
-            android:id="@+id/twPointText"
+            android:id="@+id/tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="15dip"
             android:textSize="25sp"
+            android:textStyle="bold"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/black" />
     </LinearLayout>

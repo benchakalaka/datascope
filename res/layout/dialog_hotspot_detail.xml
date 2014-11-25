@@ -1,142 +1,520 @@
 <?xml version='1.0' encoding='utf-8'?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/svc"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@drawable/background5" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/rootll"
+	android:layout_width="match_parent"
+	android:layout_height="fill_parent"
+	android:background="@color/default_screen_bg" >
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10sp" >
+	<!-- Header title view -->
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+	<RelativeLayout
+		android:id="@+id/llTopMenu"
+		android:layout_width="match_parent"
+		android:layout_height="60dp"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:background="#53000000"
+		android:clipChildren="false"
+		android:orientation="horizontal" >
 
-            <ImageView
-                android:id="@+id/dialog_image_view_type"
-                android:layout_width="45dp"
-                android:layout_height="45dp" />
+		<ImageView
+			android:id="@+id/ivTitleImage"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_margin="5dp"
+			android:src="@drawable/priority" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_view_rounded_single"
-                android:orientation="horizontal"
-                android:padding="5sp" >
+		<TextView
+			android:id="@+id/tvTitle"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:layout_centerInParent="true"
+			android:gravity="center"
+			android:text="Details"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="@android:color/white"
+			android:textStyle="bold|italic" />
 
-                <ImageView
-                    android:id="@+id/dialog_image_view_company_color"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:background="@drawable/show_all" />
-            </LinearLayout>
+		<ImageView
+			android:id="@+id/ivIsCompleted"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_alignParentRight="true"
+			android:layout_centerVertical="true"
+			android:layout_marginRight="5dp"
+			android:background="@drawable/ok48" />
+	</RelativeLayout>
 
-            <TextView
-                android:id="@+id/dialog_edit_text_type"
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="1.08"
-                android:background="@drawable/background_view_rounded_single"
-                android:inputType="none"
-                android:padding="5sp"
-                android:singleLine="true"
-                android:textColor="@android:color/white"
-                android:textSize="25sp"
-                android:textStyle="bold" >
-            </TextView>
-        </LinearLayout>
+	<!-- Middle section -->
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="7sp" >
+	<ScrollView
+		android:id="@+id/svc"
+		android:layout_width="fill_parent"
+		android:layout_height="match_parent"
+		android:layout_above="@+id/llBottomMenu"
+		android:layout_below="@+id/llTopMenu" >
 
-            <TextView
-                android:id="@+id/dialog_edit_text_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_view_rounded_single"
-                android:inputType="none"
-                android:padding="5sp"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
-        </LinearLayout>
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			android:padding="10sp" >
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="7sp" >
+			<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal" >
 
-            <ScrollView
-                android:id="@+id/scroll"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
+				<LinearLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/background_view_rounded_single"
+					android:orientation="horizontal"
+					android:padding="5sp" >
 
-                <TextView
-                    android:id="@+id/dialog_edit_text_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_view_rounded_single"
-                    android:inputType="none"
-                    android:padding="5dp"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp" />
-            </ScrollView>
-        </LinearLayout>
+					<ImageView
+						android:id="@+id/dialog_image_view_company_color"
+						android:layout_width="45dp"
+						android:layout_height="45dp"
+						android:background="@drawable/show_all" />
+				</LinearLayout>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="7sp" >
+				<ImageView
+					android:id="@+id/dialog_image_view_type"
+					android:layout_width="35dp"
+					android:layout_height="35dp" />
 
-            <TextView
-                android:id="@+id/dialog_edit_text_is_signed"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_view_rounded_single"
-                android:ems="10"
-                android:inputType="none"
-                android:padding="5dp"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" >
-            </TextView>
-        </LinearLayout>
+				<TextView
+					android:id="@+id/dialog_edit_text_type"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_centerInParent="true"
+					android:layout_toRightOf="@+id/dialog_image_view_type"
+					android:background="@drawable/background_view_rounded_single"
+					android:inputType="none"
+					android:padding="5sp"
+					android:singleLine="true"
+					android:textColor="@android:color/white"
+					android:textSize="25sp"
+					android:textStyle="bold" >
+				</TextView>
+			</RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="7sp" >
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="7sp" >
 
-            <Button
-                android:id="@+id/dialog_button_ok"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/OK" />
-            
-            <Button
-            	android:id="@+id/dialog_button_risk"
-            	android:layout_width="match_parent"
-            	android:layout_height="wrap_content"
-            	android:layout_weight="1"
-            	android:text="@string/risk_schedule" />
-            
-            <Button
-            	android:id="@+id/dialog_button_task_briefing"
-            	android:layout_width="match_parent"
-            	android:layout_height="wrap_content"
-            	android:layout_weight="1"
-            	android:text="@string/task_briefing" />
-            
-        </LinearLayout>
-    </LinearLayout>
+				<TextView
+					android:id="@+id/dialog_edit_text_id"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@drawable/background_view_rounded_single"
+					android:inputType="none"
+					android:padding="5sp"
+					android:textColor="@android:color/white"
+					android:textSize="20sp" />
+			</LinearLayout>
 
-</ScrollView>
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="7sp" >
+
+				<ScrollView
+					android:id="@+id/scroll"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content" >
+
+					<TextView
+						android:id="@+id/dialog_edit_text_description"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="@drawable/background_view_rounded_single"
+						android:inputType="none"
+						android:padding="5dp"
+						android:textColor="@android:color/white"
+						android:textSize="20sp" />
+				</ScrollView>
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:padding="7sp" >
+
+				<TextView
+					android:id="@+id/dialog_edit_text_is_signed"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@drawable/background_view_rounded_single"
+					android:ems="10"
+					android:inputType="none"
+					android:padding="5dp"
+					android:textColor="@android:color/white"
+					android:textSize="20sp" >
+				</TextView>
+			</LinearLayout>
+
+			<!-- TASK BRIEFING -->
+
+			<LinearLayout
+				android:id="@+id/llTaskBriefing"
+				android:layout_width="fill_parent"
+				android:layout_height="match_parent"
+				android:background="@drawable/briefing_gradient"
+				android:orientation="horizontal"
+				android:padding="5sp" >
+
+				<LinearLayout
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical" >
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center_horizontal"
+						android:background="@drawable/background_raised_2"
+						android:gravity="center_horizontal"
+						android:padding="8sp"
+						android:singleLine="true"
+						android:text="Task Control Summary"
+						android:textAlignment="center"
+						android:textColor="@color/Aero"
+						android:textSize="18sp"
+						android:textStyle="italic" >
+					</TextView>
+
+					<!-- TASK BRIEFING TABLE -->
+
+					<TableLayout
+						android:id="@+id/tableLayout_risk_schedule"
+						android:layout_width="fill_parent"
+						android:layout_height="fill_parent" >
+
+						<TableRow>
+
+							<TextView
+								android:id="@+id/tvCompanyName"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:background="@drawable/background_view_rounded_single"
+								android:padding="5sp"
+								android:text="LLANDUDNO TRANSPORT INTERCHANGE"
+								android:textColor="@android:color/white"
+								android:textSize="18sp"
+								android:textStyle="bold" >
+							</TextView>
+						</TableRow>
+
+						<TableRow android:weightSum="2" >
+
+							<TextView
+								android:id="@+id/twProjectNameLabel"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_weight="2"
+								android:background="@drawable/background_view_rounded_single_trades"
+								android:inputType="none"
+								android:padding="5sp"
+								android:text="Scope of Works"
+								android:textSize="18sp"
+								android:textStyle="italic" >
+							</TextView>
+
+							<TextView
+								android:id="@+id/tvScopeOfWorks"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_weight="1"
+								android:background="@drawable/background_view_rounded_single_trades"
+								android:padding="5sp"
+								android:text="Erect Scaffold"
+								android:textSize="18sp"
+								android:textStyle="bold" >
+							</TextView>
+						</TableRow>
+
+						<TableRow android:weightSum="3" >
+
+							<TextView
+								android:id="@+id/twCompanyNameLabel"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_weight="3"
+								android:background="@drawable/background_view_rounded_single_trades"
+								android:padding="5sp"
+								android:text="Name of Supervisor"
+								android:textSize="18sp"
+								android:textStyle="italic" >
+							</TextView>
+
+							<TextView
+								android:id="@+id/tvNameOfSupervisior"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_weight="1"
+								android:background="@drawable/background_view_rounded_single_trades"
+								android:padding="5sp"
+								android:text="A Butt"
+								android:textSize="18sp"
+								android:textStyle="bold" >
+							</TextView>
+
+							<TextView
+								android:id="@+id/tvNameOfSupervisiorDate"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_weight="1"
+								android:background="@drawable/background_view_rounded_single_trades"
+								android:inputType="none"
+								android:padding="5sp"
+								android:text="Date : 05/05/2014"
+								android:textSize="18sp"
+								android:textStyle="bold" >
+							</TextView>
+						</TableRow>
+
+						<TableRow android:weightSum="3" >
+
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_weight="3"
+								android:background="@drawable/background_view_rounded_single_trades"
+								android:padding="5sp"
+								android:text="Reviewed By"
+								android:textSize="18sp"
+								android:textStyle="italic" >
+							</TextView>
+
+							<TextView
+								android:id="@+id/tvRevievedBy"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_weight="1"
+								android:background="@drawable/background_view_rounded_single_trades"
+								android:padding="5sp"
+								android:text="S Foster"
+								android:textSize="18sp"
+								android:textStyle="bold" >
+							</TextView>
+
+							<TextView
+								android:id="@+id/tvRevievedByDate"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_weight="1"
+								android:background="@drawable/background_view_rounded_single_trades"
+								android:inputType="none"
+								android:padding="5sp"
+								android:text="Date : 05/05/2014"
+								android:textSize="18sp"
+								android:textStyle="bold" >
+							</TextView>
+						</TableRow>
+
+						<TableRow>
+
+							<TextView
+								android:id="@+id/twActivitiesAndRiskHazardLabel"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:background="@drawable/background_view_rounded_single"
+								android:padding="5sp"
+								android:text="The following health, safety and environmental controls must be followed at all times during these works:"
+								android:textColor="@android:color/white"
+								android:textSize="16sp"
+								android:textStyle="bold" />
+						</TableRow>
+
+						<TableRow>
+
+							<TextView
+								android:id="@+id/tvBriefingItemsList"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_margin="2dp"
+								android:layout_weight="1"
+								android:background="@drawable/background_green_round_view"
+								android:padding="5sp"
+								android:textColor="@android:color/white"
+								android:textSize="16sp"
+								android:textStyle="bold" />
+						</TableRow>
+					</TableLayout>
+				</LinearLayout>
+			</LinearLayout>
+			<!-- TASK BRIEFING -->
+
+
+			<!-- RISK SCHEDULE TABLE -->
+
+			<LinearLayout
+				android:id="@+id/llRiskSchedule"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="1dp"
+				android:background="@drawable/briefing_gradient"
+				android:orientation="vertical"
+				android:padding="3sp" >
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_horizontal"
+					android:background="@drawable/background_raised_2"
+					android:gravity="center_horizontal"
+					android:padding="8sp"
+					android:singleLine="true"
+					android:text="Risk Control Schedule"
+					android:textAlignment="center"
+					android:textColor="@color/Aero"
+					android:textSize="18sp"
+					android:textStyle="italic" />
+
+				<TableLayout
+					android:id="@+id/tlRiskControl"
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:padding="8sp" >
+
+					<TableRow>
+
+						<TextView
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:background="@drawable/background_view_rounded_single_trades"
+							android:inputType="none"
+							android:padding="3sp"
+							android:text="Contract / Project Name"
+							android:textSize="18sp"
+							android:textStyle="bold" >
+						</TextView>
+
+						<TextView
+							android:id="@+id/tvCompanyAndProjectName"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:background="@drawable/background_view_rounded_single_trades"
+							android:padding="3sp"
+							android:textSize="18sp"
+							android:textStyle="bold" >
+						</TextView>
+					</TableRow>
+
+					<TableRow>
+
+						<TextView
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:background="@drawable/background_view_rounded_single_trades"
+							android:inputType="none"
+							android:padding="3sp"
+							android:text="Company Name"
+							android:textSize="18sp"
+							android:textStyle="bold" >
+						</TextView>
+
+						<TextView
+							android:id="@+id/tvCompanyNameRiskSchedule"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:background="@drawable/background_view_rounded_single_trades"
+							android:padding="3sp"
+							android:textSize="18sp"
+							android:textStyle="bold" >
+						</TextView>
+					</TableRow>
+
+					<TableRow>
+
+						<TextView
+							android:id="@+id/twMeansAndFrequencyLabel"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:background="@drawable/background_view_rounded_single_trades"
+							android:inputType="none"
+							android:padding="3sp"
+							android:text="Means of Review And Frequency"
+							android:textSize="18sp"
+							android:textStyle="bold" >
+						</TextView>
+
+						<TextView
+							android:id="@+id/tvMeansAndFrequency"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:background="@drawable/background_view_rounded_single_trades"
+							android:padding="3sp"
+							android:textSize="18sp"
+							android:textStyle="bold" >
+						</TextView>
+					</TableRow>
+
+					<TableRow>
+
+						<TextView
+							android:id="@+id/tvActivities"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:background="@drawable/background_view_rounded_single_trades"
+							android:inputType="none"
+							android:padding="3sp"
+							android:textSize="16sp"
+							android:textStyle="bold" >
+						</TextView>
+					</TableRow>
+
+					<TableRow>
+
+						<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_weight="1"
+							android:background="@drawable/background_view_rounded_single"
+							android:padding="5sp"
+							android:text="Activities and Risk Hazard / Control Measure"
+							android:textColor="@android:color/white"
+							android:textSize="16sp"
+							android:textStyle="bold" />
+					</TableRow>
+				</TableLayout>
+			</LinearLayout>
+
+			<!-- RISK SCHEDULE TABLE -->
+
+		</LinearLayout>
+	</ScrollView>
+
+	<LinearLayout
+		android:id="@+id/llBottomMenu"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:orientation="horizontal"
+		android:padding="7sp" >
+
+		<Button
+			android:id="@+id/dialog_button_ok"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="@string/OK" />
+	</LinearLayout>
+
+</RelativeLayout>

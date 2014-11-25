@@ -43,6 +43,10 @@ public final class AppSharedPreferences_
         return stringField("tvId", "1");
     }
 
+    public StringPrefField tvUrl() {
+        return stringField("tvUrl", "");
+    }
+
     public final static class AppSharedPreferencesEditor_
         extends EditorHelper<AppSharedPreferences_.AppSharedPreferencesEditor_>
     {
@@ -66,6 +70,10 @@ public final class AppSharedPreferences_
 
         public StringPrefEditorField<AppSharedPreferences_.AppSharedPreferencesEditor_> tvId() {
             return stringField("tvId");
+        }
+
+        public StringPrefEditorField<AppSharedPreferences_.AppSharedPreferencesEditor_> tvUrl() {
+            return stringField("tvUrl");
         }
 
     }

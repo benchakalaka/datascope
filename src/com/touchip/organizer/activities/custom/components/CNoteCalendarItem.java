@@ -6,6 +6,7 @@ import java.util.Date;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
+import quickutils.core.QUFactory.QLog;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -26,6 +27,9 @@ import android.widget.TextView;
 
 import com.squareup.timessquare.sample.R;
 import com.touchip.organizer.activities.ANotes;
+import com.touchip.organizer.activities.SuperActivity;
+import com.touchip.organizer.activities.custom.components.dialogs.CDialogCreateNote;
+import com.touchip.organizer.activities.custom.components.dialogs.CDialogDateRangePicker_;
 import com.touchip.organizer.communication.rest.model.ModelNote;
 import com.touchip.organizer.utils.Utils;
 import com.touchip.organizer.utils.Utils.AnimationManager;
@@ -77,6 +81,12 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           // ((TextView) dialog.findViewById(R.id.twEndDateL)).setOnClickListener(this);
           ((ImageView) dialog.findViewById(R.id.ivOk)).setOnClickListener(this);
           dialog.show();
+     }
+
+     private void displayDateRangeCalendar() {
+          Dialog d = Utils.getConfiguredDialog((SuperActivity) this.ctx);
+          d.setContentView(CDialogDateRangePicker_.build((SuperActivity) this.ctx, d));
+          d.show();
      }
 
      private void addNote(String color) {
@@ -164,7 +174,7 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
                     // update ll
                     fillNotesLl(notes);
 
-                    Utils.logw("Start Date is" + startDate + "\nEnd date is " + endDate + "\nName is " + name + "\nComments are" + comments);
+                    QLog.debug("Start Date is" + startDate + "\nEnd date is " + endDate + "\nName is " + name + "\nComments are" + comments);
                     addNote(noteColor);
                     dialog.hide();
                     break;

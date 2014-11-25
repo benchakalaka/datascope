@@ -7,6 +7,16 @@ public final class RestAddresses {
      private static String       REST_PORT                                      = "8071";                                                                         // default
 
      // RestAddresses addresses
+
+     public static String        CREATE_ON_THE_FLY_TASKS                        = "http://datascopesystems.com/HotSpot/CreateOnTheFlyHotspot/";
+     public static String        GET_ON_THE_FLY_TASKS                           = "http://datascopesystems.com/HotSpot/GetTasksOntheFlyForCompany/";
+     public static String        REGISTER_OPERATIVES                            = "http://datascopesystems.com/Login/RegisterOperativesList/";
+     public static String        GET_LIST_OF_MEETINGS                           = "http://datascopesystems.com/Login/GetListOfMeetings/";
+     public static String        COMPLETE_HOTSPOT                               = "http://datascopesystems.com/HotSpot/UpdateHotspotStatus/";
+     public static String        GET_SIGNED_IN_USERS_LIST                       = "http://datascopesystems.com/Login/GetRegisteredOperatives/";
+     public static String        SIGN_IN_USER                                   = "http://datascopesystems.com/Login/RegisterOperative/";
+     public static String        GET_INDUCTION_FILE_LIST                        = "http://datascopesystems.com/SitePlanMeeting/GetInductionFilesList/";
+     public static String        GET_INDUCTION_FILE_BY_NAME                     = "http://datascopesystems.com/SitePlanMeeting/GetInductionFile/";
      public static String        GET_TIMES_FOR_PATHS                            = "http://datascopesystems.com/SitePlanImages/GetTimesForPaths/";
      public static String        CREATE_NEW_WHITE_BOARD                         = "http://datascopesystems.com/SitePlanImages/SaveGeneralWhiteBoardPath/";
      public static String        UPDATE_TRADE_HOTSPOT                           = "http://datascopesystems.com/HotSpot/UpdateTradeHotSpot/";
@@ -72,11 +82,18 @@ public final class RestAddresses {
      private static final String DEF_GET_DELIVERIES_LIST                        = "http://[ip:port]/Deliveries/GetDeliveriesGrid/";
      private static final String DEF_SAVE_GWD_PATHS                             = "http://[ip:port]/SitePlanImages/SaveGeneralWhiteBoardDrawingPaths/";
      private static final String DEF_SAVE_HWD_PATHS                             = "http://[ip:port]/SitePlanImages/SaveHotSpotDrawingPaths/";
-
-     public final static String  DEF_GET_SUITABLE_OPERATIVES                    = "http://[ip:port]/Operatives/GetOperativesByTradeAndAsset";
-     public final static String  DEF_CREATE_ASSET_HOTSPOT                       = "http://[ip:port]/HotSpot/CreateAssetHotSpot/";
-
-     public final static String  DEF_UPDATE_HOTSPOT_POSITION                    = "http://[ip:port]/HotSpot/UpdateHotspotPosition/";
+     private static final String DEF_GET_SUITABLE_OPERATIVES                    = "http://[ip:port]/Operatives/GetOperativesByTradeAndAsset";
+     private final static String DEF_CREATE_ASSET_HOTSPOT                       = "http://[ip:port]/HotSpot/CreateAssetHotSpot/";
+     private final static String DEF_UPDATE_HOTSPOT_POSITION                    = "http://[ip:port]/HotSpot/UpdateHotspotPosition/";
+     private static final String DEF_GET_INDUCTION_FILE_LIST                    = "http://[ip:port]/SitePlanMeeting/GetInductionFilesList/";
+     private static final String DEF_GET_INDUCTION_FILE_BY_NAME                 = "http://[ip:port]/SitePlanMeeting/GetInductionFile/";
+     private static final String DEF_SIGN_IN_ON_METEENG                         = "http://[ip:port]/Login/GetRegisteredOperatives/";
+     private static final String DEF_SIGN_IN_USER                               = "http://[ip:port]/Login/RegisterOperative/";
+     private static final String DEF_COMPLETE_HOTSPOT                           = "http://[ip:port]/HotSpot/UpdateHotspotStatus/";
+     private static final String DEF_GET_LIST_OF_MEETINGS                       = "http://[ip:port]/Login/GetListOfMeetings/";
+     private static final String DEF_REGISTER_OPERATIVES                        = "http://[ip:port]/Login/RegisterOperativesList/";
+     private static final String DEF_GET_ON_THE_FLY_TASKS                       = "http://[ip:port]/HotSpot/GetTasksOntheFlyForCompany/";
+     private static final String DEF_CREATE_ON_THE_FLY_TASKS                    = "http://[ip:port]/HotSpot/CreateOnTheFlyHotspot/";
 
      private RestAddresses () {
      }
@@ -86,6 +103,14 @@ public final class RestAddresses {
       */
      private static void initAdresses() {
           if ( !IP.contains("datascope") ) {
+               CREATE_ON_THE_FLY_TASKS = DEF_CREATE_ON_THE_FLY_TASKS.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
+               GET_ON_THE_FLY_TASKS = DEF_GET_ON_THE_FLY_TASKS.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
+               REGISTER_OPERATIVES = DEF_REGISTER_OPERATIVES.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
+               GET_LIST_OF_MEETINGS = DEF_GET_LIST_OF_MEETINGS.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
+               COMPLETE_HOTSPOT = DEF_COMPLETE_HOTSPOT.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
+               SIGN_IN_USER = DEF_SIGN_IN_USER.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
+               GET_INDUCTION_FILE_BY_NAME = DEF_GET_INDUCTION_FILE_BY_NAME.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
+               GET_INDUCTION_FILE_LIST = DEF_GET_INDUCTION_FILE_LIST.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
                GET_ALL_COMPANIES = DEF_GET_ALL_COMPANIES.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
                GET_GOOGLE_MAP_LOCATIONS = DEF_GET_GOOGLE_MAP_LOCATIONS.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
                GET_BRIEFING_DETAILS = DEF_GET_BRIEFING_DETAILS.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
@@ -117,6 +142,7 @@ public final class RestAddresses {
                GET_SUITABLE_OPERATIVES = DEF_GET_SUITABLE_OPERATIVES.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
                CREATE_ASSET_HOTSPOT = DEF_CREATE_ASSET_HOTSPOT.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
                UPDATE_HOTSPOT_POSITION = DEF_UPDATE_HOTSPOT_POSITION.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
+               GET_SIGNED_IN_USERS_LIST = DEF_SIGN_IN_ON_METEENG.replace(IP_PORT, String.valueOf(IP + ":" + REST_PORT));
           } else {
                GET_ALL_COMPANIES = DEF_GET_ALL_COMPANIES.replace(IP_PORT, String.valueOf(IP + REST_PORT));
                GET_GOOGLE_MAP_LOCATIONS = DEF_GET_GOOGLE_MAP_LOCATIONS.replace(IP_PORT, String.valueOf(IP + REST_PORT));
@@ -149,6 +175,15 @@ public final class RestAddresses {
                GET_SUITABLE_OPERATIVES = DEF_GET_SUITABLE_OPERATIVES.replace(IP_PORT, String.valueOf(IP + REST_PORT));
                CREATE_ASSET_HOTSPOT = DEF_CREATE_ASSET_HOTSPOT.replace(IP_PORT, String.valueOf(IP + REST_PORT));
                UPDATE_HOTSPOT_POSITION = DEF_UPDATE_HOTSPOT_POSITION.replace(IP_PORT, String.valueOf(IP + REST_PORT));
+               GET_INDUCTION_FILE_LIST = DEF_GET_INDUCTION_FILE_LIST.replace(IP_PORT, String.valueOf(IP + REST_PORT));
+               GET_INDUCTION_FILE_BY_NAME = DEF_GET_INDUCTION_FILE_BY_NAME.replace(IP_PORT, String.valueOf(IP + REST_PORT));
+               GET_SIGNED_IN_USERS_LIST = DEF_SIGN_IN_ON_METEENG.replace(IP_PORT, String.valueOf(IP + REST_PORT));
+               SIGN_IN_USER = DEF_SIGN_IN_USER.replace(IP_PORT, String.valueOf(IP + REST_PORT));
+               COMPLETE_HOTSPOT = DEF_COMPLETE_HOTSPOT.replace(IP_PORT, String.valueOf(IP + REST_PORT));
+               GET_LIST_OF_MEETINGS = DEF_GET_LIST_OF_MEETINGS.replace(IP_PORT, String.valueOf(IP + REST_PORT));
+               REGISTER_OPERATIVES = DEF_REGISTER_OPERATIVES.replace(IP_PORT, String.valueOf(IP + REST_PORT));
+               GET_ON_THE_FLY_TASKS = DEF_GET_ON_THE_FLY_TASKS.replace(IP_PORT, String.valueOf(IP + REST_PORT));
+               CREATE_ON_THE_FLY_TASKS = DEF_CREATE_ON_THE_FLY_TASKS.replace(IP_PORT, String.valueOf(IP + REST_PORT));
           }
      }
 

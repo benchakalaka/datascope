@@ -12,7 +12,7 @@
 		android:layout_alignParentBottom="true"
 		android:layout_alignParentTop="true"
 		android:layout_margin="2dp"
-		android:src="@drawable/floors" />
+		android:src="@drawable/floorss" />
 
 	<TextView
 		android:id="@+id/text"

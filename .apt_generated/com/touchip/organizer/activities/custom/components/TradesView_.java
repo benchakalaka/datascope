@@ -6,6 +6,7 @@
 package com.touchip.organizer.activities.custom.components;
 
 import android.content.Context;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.timessquare.sample.R.id;
 import com.squareup.timessquare.sample.R.layout;
@@ -66,6 +67,7 @@ public final class TradesView_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+        ivTrade = ((ImageView) hasViews.findViewById(id.ivTrade));
         twTradeDescription = ((TextView) hasViews.findViewById(id.twTradeDescription));
         twTradeAmount = ((TextView) hasViews.findViewById(id.twTradeAmount));
     }

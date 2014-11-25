@@ -1,134 +1,189 @@
 <?xml version='1.0' encoding='utf-8'?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/swroot"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/rootLLa"
 	android:layout_width="fill_parent"
-	android:layout_height="fill_parent" >
+	android:layout_height="fill_parent"
+	android:background="@color/default_screen_bg" >
+
+	<!-- Header title view -->
 
 	<LinearLayout
+		android:id="@+id/llTopMenu"
+		android:layout_width="match_parent"
+		android:layout_height="60dp"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:background="#53000000"
+		android:clipChildren="false"
+		android:orientation="horizontal" >
+
+		<ImageView
+			android:id="@+id/ivTitleImage"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_margin="5dp"
+			android:src="@drawable/delivery" />
+
+		<TextView
+			android:id="@+id/tvTitle"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:gravity="center"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="@android:color/white"
+			android:textStyle="bold|italic" />
+	</LinearLayout>
+
+	<!-- Middle section -->
+
+	<ScrollView
+		android:id="@+id/swroot"
 		android:layout_width="fill_parent"
-		android:layout_height="match_parent"
-		android:orientation="vertical"
-		android:padding="5dp" >
-
-		<TableLayout
-			android:id="@+id/tlDeliveriesList"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_weight="1" >
-
-			<TableRow
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:background="@drawable/background_raised" >
-
-				<TextView
-					android:id="@+id/twRef"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:gravity="center"
-					android:text="Ref"
-					android:textAppearance="?android:attr/textAppearanceLarge" />
-
-				<TextView
-					android:id="@+id/twDeliverAt"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:gravity="center"
-					android:text="Deliver_At"
-					android:textAppearance="?android:attr/textAppearanceLarge" />
-
-				<TextView
-					android:id="@+id/twDuration"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:gravity="center"
-					android:text="Duration"
-					android:textAppearance="?android:attr/textAppearanceLarge" />
-
-				<TextView
-					android:id="@+id/twGate"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:gravity="center"
-					android:text="Gate"
-					android:textAppearance="?android:attr/textAppearanceLarge" />
-
-				<TextView
-					android:id="@+id/twDescr"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:gravity="center"
-					android:text="Description"
-					android:textAppearance="?android:attr/textAppearanceLarge" />
-
-				<TextView
-					android:id="@+id/twCompany"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:gravity="center"
-					android:text="Company"
-					android:textAppearance="?android:attr/textAppearanceLarge" />
-
-				<TextView
-					android:id="@+id/twContact"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:gravity="center"
-					android:text="Contact"
-					android:textAppearance="?android:attr/textAppearanceLarge" />
-
-				<TextView
-					android:id="@+id/twStatus"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:gravity="center"
-					android:text="Status"
-					android:textAppearance="?android:attr/textAppearanceLarge" />
-			</TableRow>
-		</TableLayout>
-
-		<!-- Table Deliveries gates -->
-
-		<TableLayout
-			android:id="@+id/tlRoot"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_weight="1" >
-
-			<TableRow
-				android:id="@+id/tableHeader"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:background="@drawable/background_raised" >
-			</TableRow>
-		</TableLayout>
+		android:layout_height="fill_parent"
+		android:layout_above="@+id/llBottomMenu"
+		android:layout_below="@+id/llTopMenu"
+		android:layout_marginTop="15dp" >
 
 		<LinearLayout
 			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:layout_gravity="bottom"
-			android:layout_marginTop="10dp"
-			android:gravity="bottom"
-			android:orientation="horizontal"
-			android:weightSum="2" >
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			android:padding="5dp" >
 
-			<Button
-				android:id="@+id/dialogOk"
+			<TableLayout
+				android:id="@+id/tlDeliveriesList"
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:background="@drawable/background_view_rounded_single"
-				android:orientation="horizontal"
-				android:text="OK" >
-			</Button>
+				android:layout_height="match_parent"
+				android:layout_weight="1" >
+
+				<TableRow
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@drawable/background_raised_2" >
+
+					<TextView
+						android:id="@+id/twRef"
+						android:layout_width="100dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:maxLines="2"
+						android:text="Ref"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:textColor="@android:color/white" />
+
+					<TextView
+						android:id="@+id/twDeliverAt"
+						android:layout_width="100dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:maxLines="2"
+						android:text="Deliver at"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:textColor="@android:color/white" />
+
+					<TextView
+						android:id="@+id/twDuration"
+						android:layout_width="100dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:maxLines="2"
+						android:text="Duration"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:textColor="@android:color/white" />
+
+					<TextView
+						android:id="@+id/twGate"
+						android:layout_width="100dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:maxLines="2"
+						android:text="Gate"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:textColor="@android:color/white" />
+
+					<TextView
+						android:id="@+id/twDescr"
+						android:layout_width="100dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:maxLines="2"
+						android:text="Description"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:textColor="@android:color/white" />
+
+					<TextView
+						android:id="@+id/twCompany"
+						android:layout_width="100dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:maxLines="2"
+						android:text="Company"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:textColor="@android:color/white" />
+
+					<TextView
+						android:id="@+id/twContact"
+						android:layout_width="100dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:maxLines="2"
+						android:text="Contact"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:textColor="@android:color/white" />
+
+					<TextView
+						android:id="@+id/twStatus"
+						android:layout_width="100dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:maxLines="2"
+						android:text="Status"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:textColor="@android:color/white" />
+				</TableRow>
+			</TableLayout>
+
+			<!-- Table Deliveries gates -->
+
+			<TableLayout
+				android:id="@+id/tlRoot"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1" >
+
+				<TableRow
+					android:id="@+id/tableHeader"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@drawable/background_raised" >
+				</TableRow>
+			</TableLayout>
 		</LinearLayout>
+	</ScrollView>
+
+	<LinearLayout
+		android:id="@+id/llBottomMenu"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:orientation="horizontal" >
+
+		<Button
+			android:id="@+id/dialogOk"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:text="@string/OK" >
+		</Button>
 	</LinearLayout>
 
-</ScrollView>
+</RelativeLayout>

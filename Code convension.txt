@@ -1,0 +1,23 @@
+1) All Activities starts from letter 'A'
+	example: ALogin (ActivityLogin)
+
+------------------------------------------------------------------------------------------------------------------------
+	
+2) All views should start from abbreviations (depends on type of the view) and then name of the view 
+	example: EditText - etLogin
+			 TextView - tvLabel
+			 ListView - lvUsers 
+			 etc ...
+
+------------------------------------------------------------------------------------------------------------------------
+			 			 
+3) All interfaces begins with capital 'I'
+	example: ISuperActivity
+	
+------------------------------------------------------------------------------------------------------------------------
+	
+4) All classes which represents database startsWith word Model + name of the class
+	example: Lets assume that entity represents user
+			 ModelUser
+			 
+------------------------------------------------------------------------------------------------------------------------	

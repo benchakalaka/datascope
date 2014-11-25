@@ -1,0 +1,38 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:context="com.ktcmynewapp.MainActivity" >
+
+	<item
+		android:id="@+id/action_arrow"
+		android:orderInCategory="100"
+		android:showAsAction="always"
+		android:title="Arrow">
+	</item>
+	<item
+		android:id="@+id/action_line"
+		android:orderInCategory="100"
+		android:showAsAction="always"
+		android:title="Line">
+	</item>
+	<item
+		android:id="@+id/action_triangle"
+		android:orderInCategory="100"
+		android:showAsAction="never"
+		android:title="Triangle"/>
+	<item
+		android:id="@+id/action_circle"
+		android:orderInCategory="100"
+		android:showAsAction="never"
+		android:title="Circle"/>
+	<item
+		android:id="@+id/action_square"
+		android:orderInCategory="100"
+		android:showAsAction="never"
+		android:title="Rectangle"/>
+	<item
+		android:id="@+id/action_simple"
+		android:orderInCategory="100"
+		android:showAsAction="never"
+		android:title="Simple"/>
+
+</menu>

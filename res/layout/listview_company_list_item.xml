@@ -16,9 +16,9 @@
 			<LinearLayout
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
+				android:layout_margin="3dp"
 				android:background="@drawable/background_view_circle_single"
 				android:orientation="horizontal"
-				android:layout_margin="3dp"
 				android:padding="6sp" >
 
 				<ImageView
@@ -64,5 +64,14 @@
 			</LinearLayout>
 		</TableRow>
 	</TableLayout>
+
+	<ImageView
+		android:id="@+id/ivChecked"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_centerVertical="true"
+		android:src="@drawable/ok48selected"
+		android:visibility="invisible" />
 
 </RelativeLayout>

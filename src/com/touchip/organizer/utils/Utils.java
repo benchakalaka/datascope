@@ -10,11 +10,18 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.http.converter.ByteArrayHttpMessageConverter;
+
+import quickutils.core.QUFactory.QCollection;
+import quickutils.core.QUFactory.QLog;
+import quickutils.core.QUFactory.QNotifications;
+import quickutils.core.QUFactory.QPreconditions;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
@@ -28,12 +35,9 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -41,13 +45,13 @@ import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
@@ -60,15 +64,13 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnCloseListener;
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnOpenListener;
-import com.octo.android.robospice.persistence.DurationInMillis;
-import com.squareup.timessquare.sample.BuildConfig;
+import com.roomorama.caldroid.CaldroidFragment;
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.activities.UserSettingsActivity;
-import com.touchip.organizer.communication.rest.request.UpdateAppRequest;
-import com.touchip.organizer.communication.rest.request.listener.UpdateAppRequestListener;
+import com.touchip.organizer.activities.AUserSettings;
+import com.touchip.organizer.activities.SuperActivity;
+import com.touchip.organizer.communication.rest.request.RestAddresses;
+import com.touchip.organizer.communication.rest.request.SuperRequest;
+import com.touchip.organizer.communication.rest.request.listener.ResponseUpdateApp;
 import com.touchip.organizer.communication.rest.serializables.PathSerializable;
 import com.touchip.organizer.utils.GlobalConstants.Hotspots;
 
@@ -81,39 +83,15 @@ public class Utils {
      public static final String           UPDATE_APP_DIR         = Environment.getExternalStorageDirectory() + File.separator + "update" + File.separator;
      public static final String           DATE_FORMAT_YYYY_MM_DD = "yyyy-MM-dd";
 
-     /**
-      * @param monthNumber
-      *             Month Number starts with 0. For <b>January</b> it is <b>0</b> and for <b>December</b> it is <b>11</b>.
-      * @param year
-      * @return amount of days in specific month
-      */
-     public static int getDaysInMonth(int monthNumber, int year) {
-          int days = 0;
-          if ( monthNumber >= 0 && monthNumber < 12 ) {
-               try {
-                    Calendar calendar = Calendar.getInstance();
-                    int date = 1;
-                    calendar.set(year, monthNumber, date);
-                    days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-               } catch (Exception e) {
-                    if ( e != null ) {
-                         e.printStackTrace();
-                    }
-               }
-          }
-          return days;
-     }
+     public static void updateApp(final AUserSettings aUserSettings) {
 
-     public static void updateApp(final UserSettingsActivity userSettingsActivity) {
-
-          AlertDialog.Builder ab = new AlertDialog.Builder(userSettingsActivity);
+          AlertDialog.Builder ab = new AlertDialog.Builder(aUserSettings);
           ab.setMessage("Do you really want to update app?");
           ab.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
                @Override public void onClick(DialogInterface arg0, int arg1) {
-                    userSettingsActivity.showProgressDialog();
-                    UpdateAppRequest request = new UpdateAppRequest();
-                    userSettingsActivity.getSpiceManager().execute(request, request.createCacheKey(), DurationInMillis.ALWAYS_EXPIRED, new UpdateAppRequestListener(userSettingsActivity));
+                    SuperRequest <byte[]> requestGetDatesToHighlight = new SuperRequest <byte[]>(aUserSettings, byte[].class, RestAddresses.UPDATE_APPLICATION, new ByteArrayHttpMessageConverter(), QCollection.newHashMap());
+                    aUserSettings.execute(requestGetDatesToHighlight, new ResponseUpdateApp(aUserSettings));
                     arg0.dismiss();
                }
           });
@@ -124,14 +102,13 @@ public class Utils {
                }
           });
           ab.show();
-
      }
 
      public static File writeFile(byte[] data, String fileName) throws IOException {
           File file = null , retFile = null;
           if ( !Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED) ) {
                // handle case of no SDCARD present
-               Utils.logw("SDCARD not mounted");
+               QLog.debug("SDCARD not mounted");
           } else {
 
                file = new File(UPDATE_APP_DIR); // file name
@@ -178,7 +155,7 @@ public class Utils {
                     listPathes.get(i).transform(translateMatrix);
                }
           } catch (Exception e) {
-               Utils.logw(e.getMessage());
+               QLog.debug(e.getMessage());
           }
 
           return listPathes;
@@ -201,24 +178,6 @@ public class Utils {
           clickedView.setScaleX(0.9f);
           clickedView.setScaleY(0.9f);
           clickedView.setBackgroundResource(R.drawable.background_view_rounded_single);
-     }
-
-     public static SlidingMenu configureSlideMenu(Activity activity, View v) {
-          // configure the SlidingMenu
-          Point size = new Point();
-          activity.getWindowManager().getDefaultDisplay().getSize(size);
-          SlidingMenu menu = new SlidingMenu(activity);
-          menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
-          menu.setShadowWidthRes(R.dimen.shadow_width);
-          menu.setBehindOffset((int) (size.x * 0.80));
-          menu.attachToActivity(activity, SlidingMenu.SLIDING_WINDOW);
-          menu.setMenu(v);
-          menu.setAlwaysDrawnWithCacheEnabled(true);
-          menu.setMode(SlidingMenu.LEFT);
-
-          menu.setOnOpenListener((OnOpenListener) activity);
-          menu.setOnCloseListener((OnCloseListener) activity);
-          return menu;
      }
 
      /**
@@ -285,7 +244,7 @@ public class Utils {
                ObjectInputStream o = new ObjectInputStream(b);
                return o.readObject();
           } catch (Exception e) {
-               Utils.logw(e.getMessage());
+               QLog.debug(e.getMessage());
           }
           return null;
      }
@@ -295,7 +254,7 @@ public class Utils {
                try {
                     element.setVisibility(visibility);
                } catch (Exception e) {
-                    Utils.logw(e.getMessage());
+                    QLog.debug(e.getMessage());
                }
           }
      }
@@ -303,7 +262,7 @@ public class Utils {
      public static boolean hasGoogleMaps(Context context) {
           boolean installed = false;
           String[] libraries = context.getPackageManager().getSystemSharedLibraryNames();
-          if ( !Utils.isNull(libraries) ) {
+          if ( !QPreconditions.isNull(libraries) ) {
                for ( String library : libraries ) {
                     if ( "com.google.android.maps".equalsIgnoreCase(library) ) {
                          installed = true;
@@ -312,54 +271,6 @@ public class Utils {
                }
           }
           return installed;
-     }
-
-     /**
-      * Check input json array null or empty
-      * 
-      * @param <T>
-      * @param jArray
-      * @return
-      */
-     public static boolean isNullOrEmpty(List <?> jArray) {
-          return (isNull(jArray)) || (jArray.isEmpty());
-     }
-
-     /**
-      * <p>
-      * Checks if a String is whitespace, empty ("") or null.
-      * </p>
-      * 
-      * <pre>
-      * Utils.isBlank(null)      = true
-      * Utils.isBlank("")        = true
-      * Utils.isBlank(" ")       = true
-      * Utils.isBlank("bob")     = false
-      * Utils.isBlank("  bob  ") = false
-      * </pre>
-      * 
-      * @param str
-      *             the String to check, may be null
-      * @return <code>true</code> if the String is null, empty or whitespace
-      */
-     public static boolean isBlank(String str) {
-          int strLen;
-          if ( str == null || (strLen = str.length()) == 0 ) { return true; }
-          for ( int i = 0; i < strLen; i++ ) {
-               if ( !Character.isWhitespace(str.charAt(i)) ) { return false; }
-          }
-          return true;
-     }
-
-     /**
-      * Check if object is null
-      * 
-      * @param obj
-      *             object to check
-      * @return true if object is null, otherwise return false
-      */
-     public static boolean isNull(Object obj) {
-          return null == obj;
      }
 
      public static String convertPositionToLetter(int position) {
@@ -454,58 +365,6 @@ public class Utils {
      }
 
      /**
-      * Show short toast on UI thread
-      * 
-      * @param context
-      *             application context or activity's context
-      * @param message
-      *             text representation of message to display
-      * @param isShort
-      *             define toast duration
-      */
-     public static void showToast(final Context context, final String message, boolean isShort) {
-          final int toastDuration = isShort ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG;
-          // Define toast duration
-          try {
-               Toast.makeText(context, message, toastDuration).show();
-          } catch (Exception ex) {
-               Activity activity = (Activity) context;
-               activity.runOnUiThread(new Runnable() {
-
-                    @Override public void run() {
-                         Toast.makeText(context, message, toastDuration).show();
-                    }
-               });
-          }
-     }
-
-     /**
-      * Show short/long toast on UI thread
-      * 
-      * @param context
-      *             application context or activity's context
-      * @param resourseStringId
-      *             id of message to display
-      * @param isShort
-      *             define toast duration
-      */
-     public static void showToast(final Context context, final int resourseStringId, boolean isShort) {
-          // Define toast duration
-          final int toastDuration = isShort ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG;
-          try {
-               Toast.makeText(context, getResources(resourseStringId), toastDuration).show();
-          } catch (Exception ex) {
-               Activity activity = (Activity) context;
-               activity.runOnUiThread(new Runnable() {
-
-                    @Override public void run() {
-                         Toast.makeText(context, getResources(resourseStringId), toastDuration).show();
-                    }
-               });
-          }
-     }
-
-     /**
       * Wrapper for standart resources class
       * 
       * @param id
@@ -535,26 +394,6 @@ public class Utils {
      }
 
      /**
-      * Check if network is enable
-      * 
-      * @return true, if network avaliable, false otherwise
-      * @author Ihor Karpachev
-      *         13 Dec 2013
-      */
-     public boolean isNetworkAvailable() {
-          if ( null == CONTEXT ) {
-               ConnectivityManager cm = (ConnectivityManager) CONTEXT.getSystemService(Context.CONNECTIVITY_SERVICE);
-               NetworkInfo networkInfo = cm.getActiveNetworkInfo();
-               // if no network is available networkInfo will be null
-               // otherwise check if we are connected
-               return networkInfo != null && networkInfo.isConnected();
-          } else {
-               logw("Utils::isNetworkAvaliable - CONTEXT equals NULL.");
-               return false;
-          }
-     }
-
-     /**
       * Set application context for static access
       * 
       * @param context
@@ -575,32 +414,6 @@ public class Utils {
       */
      public static Context getAppContext() {
           return CONTEXT;
-     }
-
-     /**
-      * Wrapper method for standart Logger
-      * 
-      * @param message
-      * @author Ihor Karpachev
-      *         14 Dec 2013
-      */
-     public static void logw(String message) {
-          if ( BuildConfig.DEBUG ) {
-               Log.w(GlobalConstants.LOG_TAG, null != message ? message : "message null");
-          }
-     }
-
-     /**
-      * Wrapper method for standart Logger
-      * 
-      * @param message
-      * @author Ihor Karpachev
-      *         14 Dec 2013
-      */
-     public static void logw(int message) {
-          if ( BuildConfig.DEBUG ) {
-               Log.w(GlobalConstants.LOG_TAG, String.valueOf(message));
-          }
      }
 
      /**
@@ -634,8 +447,8 @@ public class Utils {
                          toast.show();
                          text.startAnimation(AnimationManager.load(android.R.anim.slide_in_left));
                     } catch (Exception e) {
-                         Utils.logw(e.getMessage());
-                         Utils.showToast(activity.getApplicationContext(), message, true);
+                         QLog.debug(e.getMessage());
+                         QNotifications.showShortToast(activity.getApplicationContext(), message);
                     }
                }
           });
@@ -663,8 +476,8 @@ public class Utils {
                          toast.show();
                          text.startAnimation(AnimationManager.load(android.R.anim.slide_in_left));
                     } catch (Exception e) {
-                         Utils.logw(e.getMessage());
-                         Utils.showToast(activity.getApplicationContext(), message, true);
+                         QLog.debug(e.getMessage());
+                         QNotifications.showShortToast(activity.getApplicationContext(), message);
                     }
                }
           });
@@ -692,8 +505,8 @@ public class Utils {
                          toast.show();
                          text.startAnimation(AnimationManager.load(android.R.anim.slide_in_left));
                     } catch (Exception e) {
-                         Utils.logw(e.getMessage());
-                         Utils.showToast(activity.getApplicationContext(), message, true);
+                         QLog.debug(e.getMessage());
+                         QNotifications.showShortToast(activity.getApplicationContext(), message);
                     }
                }
           });
@@ -722,7 +535,7 @@ public class Utils {
                          toast.show();
                          text.startAnimation(AnimationManager.load(android.R.anim.slide_in_left));
                     } catch (Exception e) {
-                         Utils.logw(e.getMessage());
+                         QLog.debug(e.getMessage());
                     }
                }
           });
@@ -747,8 +560,8 @@ public class Utils {
                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
                activity.startActivityForResult(cameraIntent, GlobalConstants.CAPTURE_CAMERA_PHOTO);
           } catch (Exception e) {
-               Utils.logw(e.getMessage());
-               Utils.showToast(activity.getApplicationContext(), R.string.cannot_capture_picture, true);
+               QLog.debug(e.getMessage());
+               QNotifications.showShortToast(activity.getApplicationContext(), R.string.cannot_capture_picture);
           }
      }
 
@@ -756,39 +569,47 @@ public class Utils {
 
           Bitmap returnBitmap = Hotspots.PERMITS_HOTSPOT_IMAGE;
 
-          if ( type.equals(Hotspots.ASSET_HOTSPOT) ) {
+          if ( type.contains(Hotspots.ON_THE_FLY) ) {
+               returnBitmap = Hotspots.ON_THE_FLY_IMAGE;
+          }
+
+          if ( type.contains(Hotspots.QUICK_NOTE_HOTSPOT) ) {
+               returnBitmap = Hotspots.QUICK_NOTE_HOTSPOT_IMAGE;
+          }
+
+          if ( type.contains(Hotspots.HIGH_RISK) ) {
+               returnBitmap = Hotspots.HIGH_RISK_HOTSPOT_IMAGE;
+          }
+
+          if ( type.contains(Hotspots.ASSET_HOTSPOT) ) {
                returnBitmap = Hotspots.ASSET_HOTSPOT_IMAGE;
           }
 
-          if ( type.equals(Hotspots.CAMERA_HOTSPOT) ) {
+          if ( type.contains(Hotspots.CAMERA_HOTSPOT) ) {
                returnBitmap = Hotspots.CAMERA_HOTSPOT_IMAGE;
           }
 
-          if ( type.equals(Hotspots.TRADE_HOTSPOT) ) {
+          if ( type.contains(Hotspots.TRADE_HOTSPOT) ) {
                returnBitmap = Hotspots.TRADE_HOTSPOT_IMAGE;
           }
 
-          if ( type.equals(Hotspots.WHITEBOARD_HOTSPOT) ) {
+          if ( type.contains(Hotspots.WHITEBOARD_HOTSPOT) ) {
                returnBitmap = Hotspots.WHITEBOARD_HOTSPOT_IMAGE;
           }
 
-          if ( type.equals(Hotspots.PERMITS_HOTSPOT) ) {
-               returnBitmap = Hotspots.PERMITS_HOTSPOT_IMAGE;
-          }
-
-          if ( type.equals(Hotspots.WASTE_HOTSPOT) ) {
+          if ( type.contains(Hotspots.WASTE_HOTSPOT) ) {
                returnBitmap = Hotspots.WASTE_HOTSPOT_IMAGE;
           }
 
-          if ( type.equals(Hotspots.NOTE_HOTSPOT) ) {
+          if ( type.contains(Hotspots.NOTE_HOTSPOT) ) {
                returnBitmap = Hotspots.NOTE_HOTSPOT_IMAGE;
           }
 
-          if ( type.equals(Hotspots.SAFETY_HOTSPOT) ) {
+          if ( type.equalsIgnoreCase(Hotspots.SAFETY_HOTSPOT) ) {
                returnBitmap = Hotspots.SAFETY_HOTSPOT_IMAGE;
           }
 
-          if ( type.equals(Hotspots.TRADE_HOTSPOT) ) {
+          if ( type.contains(Hotspots.TRADE_HOTSPOT) ) {
                returnBitmap = Hotspots.TRADE_HOTSPOT_IMAGE;
           }
 
@@ -974,7 +795,19 @@ public class Utils {
      }
 
      public static int getImageIdByType(String type) {
-          int resultImageId = -1;
+          int resultImageId = R.drawable.hide_hotspot;
+
+          if ( type.equals(Hotspots.ON_THE_FLY) ) {
+               resultImageId = (R.drawable.red_hat);
+          }
+
+          if ( type.equals(Hotspots.HIGH_RISK) ) {
+               resultImageId = (R.drawable.high_risk);
+          }
+
+          if ( type.equals(Hotspots.QUICK_NOTE_HOTSPOT) ) {
+               resultImageId = (R.drawable.abc);
+          }
 
           if ( type.equals(Hotspots.ASSET_HOTSPOT) ) {
                resultImageId = (R.drawable.asset);
@@ -1000,7 +833,7 @@ public class Utils {
                resultImageId = (R.drawable.waste);
           }
 
-          if ( type.equals(Hotspots.SAFETY_HOTSPOT) ) {
+          if ( type.equalsIgnoreCase(Hotspots.SAFETY_HOTSPOT) ) {
                resultImageId = (R.drawable.safety_hotspot);
           }
 
@@ -1017,5 +850,53 @@ public class Utils {
           }
 
           return resultImageId;
+     }
+
+     /**
+      * If URL does not contain http:// concatenate it with given string
+      * 
+      * @param url
+      *             to normalize
+      * @return browseable url starts with http
+      */
+     public static String normalizeUrl(String url) {
+          // Check if user inputed without http concatenate it with http://
+          if ( !url.startsWith("http://") ) {
+               url = "http://" + url;
+          }
+          return url;
+     }
+
+     /**
+      * Configure dialog and return it
+      * 
+      * @param activity
+      *             which trigger event
+      * @return fully configured dialog
+      */
+     public static Dialog getConfiguredDialog(SuperActivity activity) {
+          Dialog d = new Dialog(activity);
+          d.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+          d.setCanceledOnTouchOutside(true);
+          return d;
+     }
+
+     /**
+      * Configure caldroid fragment before displaying
+      * 
+      * @param today
+      * @param datesAndColour
+      * @return
+      */
+     public static CaldroidFragment getConfiguredCaldroid(Date today, HashMap <Date, Integer> datesAndColour) {
+          final CaldroidFragment calendar = new CaldroidFragment();
+          // becouse implementation of calendar we have to call setBackgroundResourceForDates FIRST, and only after setBackgroundResourceForDate
+          calendar.setBackgroundResourceForDates(datesAndColour);
+          calendar.setBackgroundResourceForDate(R.drawable.background_green_round_view, today);
+          calendar.setTextColorForDate(R.color.white, today);
+          Bundle bundle = new Bundle();
+          bundle.putBoolean(com.roomorama.caldroid.CaldroidFragment.ENABLE_SWIPE, true);
+          calendar.setArguments(bundle);
+          return calendar;
      }
 }

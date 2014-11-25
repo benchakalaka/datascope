@@ -6,6 +6,9 @@
 package com.touchip.organizer.activities.custom.components;
 
 import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.squareup.timessquare.sample.R.id;
 import com.squareup.timessquare.sample.R.layout;
@@ -67,7 +70,23 @@ public final class ActionBarDrawingCompanies_
     @Override
     public void onViewChanged(HasViews hasViews) {
         tvArea = ((TextView) hasViews.findViewById(id.tvArea));
+        rlRightPanel = ((RelativeLayout) hasViews.findViewById(id.rlRightPanel));
         twToday = ((TextView) hasViews.findViewById(id.twToday));
+        {
+            View view = hasViews.findViewById(id.rlRightPanel);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActionBarDrawingCompanies_.this.rlRightPanel();
+                    }
+
+                }
+                );
+            }
+        }
     }
 
 }

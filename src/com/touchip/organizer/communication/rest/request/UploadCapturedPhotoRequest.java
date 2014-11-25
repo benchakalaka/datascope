@@ -7,8 +7,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.util.MultiValueMap;
 
+import quickutils.core.QUFactory.QLog;
+
 import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
-import com.touchip.organizer.utils.Utils;
 
 public class UploadCapturedPhotoRequest extends SpringAndroidSpiceRequest <String> {
 
@@ -18,16 +19,14 @@ public class UploadCapturedPhotoRequest extends SpringAndroidSpiceRequest <Strin
      public UploadCapturedPhotoRequest ( MultiValueMap <String, Object> parts ) {
           super(String.class);
           vars = parts;
-          Utils.logw("Post....." + RestAddresses.UPLOAD_CAPTURED_PHOTO);
+          QLog.debug("Post....." + RestAddresses.UPLOAD_CAPTURED_PHOTO);
      }
 
      @Override public String loadDataFromNetwork() throws Exception {
           HttpHeaders headers = new HttpHeaders();
           headers.setContentType(MediaType.MULTIPART_FORM_DATA);
           getRestTemplate().getMessageConverters().add(new FormHttpMessageConverter());
-          return getRestTemplate()
-                    .exchange(RestAddresses.UPLOAD_CAPTURED_PHOTO, HttpMethod.POST, new HttpEntity <MultiValueMap <String, Object>>(vars, headers), String.class)
-                    .getBody();
+          return getRestTemplate().exchange(RestAddresses.UPLOAD_CAPTURED_PHOTO, HttpMethod.POST, new HttpEntity <MultiValueMap <String, Object>>(vars, headers), String.class).getBody();
      }
 
      /**

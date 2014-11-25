@@ -30,5 +30,13 @@ public class HTTP_PARAMS {
      public static final String SNAPSHOT            = "snapshot";
      public static final String NAME                = "name";
      public static final String PIN                 = "pin";
+     public static final String FILE_NAME           = "fileName";
+     public static final String MARKER_ID           = "markerId";
+     public static final String DATE_OF_MEETING     = "dateOfMeeting";
+     public static final String IS_COMPLETED        = "isClosed";
+     public static final String OPERATIVES          = "operatives";
+     public static final String TIME                = "time";
+     public static final String TASKS               = "tasks";
+     public static final String USER_ID             = "userId";
 
 }

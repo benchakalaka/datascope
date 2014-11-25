@@ -9,10 +9,11 @@ import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+import quickutils.core.QUFactory.QLog;
+
 import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
 import com.touchip.organizer.utils.GlobalConstants;
 import com.touchip.organizer.utils.HTTP_PARAMS;
-import com.touchip.organizer.utils.Utils;
 
 public class SaveDrawingPathsRequest extends SpringAndroidSpiceRequest <String> {
 
@@ -26,7 +27,7 @@ public class SaveDrawingPathsRequest extends SpringAndroidSpiceRequest <String> 
           super(String.class);
           this.file = file;
           this.snapshot = snapshot;
-          Utils.logw("Post....." + RestAddresses.SAVE_DRAWING_PATHES);
+          QLog.debug("Post....." + RestAddresses.SAVE_DRAWING_PATHES);
           this.currentFloor = currFloor;
      }
 
@@ -39,7 +40,7 @@ public class SaveDrawingPathsRequest extends SpringAndroidSpiceRequest <String> 
                vars.clear();
           }
 
-          vars.add(/* HTTP_PARAMS.SITE_ID */"markerId", GlobalConstants.LAST_CLICKED_MARKER_ID);
+          vars.add(HTTP_PARAMS.MARKER_ID, GlobalConstants.LAST_CLICKED_MARKER_ID);
           vars.add(HTTP_PARAMS.DRAWING_DATA, file);
           vars.add(HTTP_PARAMS.TYPE, GlobalConstants.DrawingType.SITE_PLAN_DRAWING);
           vars.add(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);

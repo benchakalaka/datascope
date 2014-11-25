@@ -9,9 +9,10 @@
 		android:id="@+id/llAssetPicture"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:background="@drawable/background_rounded_assets" >
+		android:background="@drawable/background_green_round_view" >
 
 		<ImageView
+			android:id="@+id/ivAsset"
 			android:layout_width="40dp"
 			android:layout_height="40dp"
 			android:background="@drawable/asset" />

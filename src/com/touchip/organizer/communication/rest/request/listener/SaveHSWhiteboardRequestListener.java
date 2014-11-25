@@ -1,30 +1,31 @@
 package com.touchip.organizer.communication.rest.request.listener;
 
-import android.app.Activity;
+import quickutils.core.QUFactory.QLog;
 
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 import com.squareup.timessquare.sample.R;
-import com.touchip.organizer.activities.GeneralWhiteBoardActivity;
-import com.touchip.organizer.communication.rest.model.PathsCreationTimeList.POJORoboPathCreationTime;
+import com.touchip.organizer.activities.AGeneralWhiteBoard;
+import com.touchip.organizer.activities.SuperActivity;
+import com.touchip.organizer.communication.rest.model.ModelPathsCreationTimeList.POJORoboPathCreationTime;
 import com.touchip.organizer.utils.GlobalConstants;
 import com.touchip.organizer.utils.Utils;
 
 public class SaveHSWhiteboardRequestListener implements RequestListener <String> {
 
-     private final GeneralWhiteBoardActivity activity;
+     private final SuperActivity activity;
 
-     public SaveHSWhiteboardRequestListener ( Activity act ) {
-          this.activity = (GeneralWhiteBoardActivity) act;
+     public SaveHSWhiteboardRequestListener ( SuperActivity act ) {
+          this.activity = act;
      }
 
      @Override public void onRequestFailure(SpiceException e) {
-          Utils.logw(e.getMessage());
-          GeneralWhiteBoardActivity.dissmissProgressDialog();
+          QLog.debug(e.getMessage());
+          this.activity.dissmissProgressDialog();
      }
 
      @Override public void onRequestSuccess(String fileData) {
-          GeneralWhiteBoardActivity.dissmissProgressDialog();
+          this.activity.dissmissProgressDialog();
           if ( "".equals(fileData) ) {
                Utils.showCustomToast(activity, "Problem with downloading drawing", R.drawable.hide_hotspot);
           } else {
@@ -33,14 +34,14 @@ public class SaveHSWhiteboardRequestListener implements RequestListener <String>
                     dptw.id = Integer.valueOf(fileData.substring(0, fileData.indexOf(" ")));
                     dptw.time = fileData.substring(fileData.indexOf(" ") + 1, fileData.length());
                     GlobalConstants.LAST_CLICKED_WHITE_BOARD = dptw;
-                    Utils.showCustomToast(activity, "Drawing has been loaded successfully!", R.drawable.server2);
-                    this.activity.customActionBar.setTimeCreatedText(GlobalConstants.SITE_PLAN_IMAGE_NAME + " created at " + dptw.time);
+                    Utils.showCustomToast(activity, "Drawing has been loaded successfully!", R.drawable.success);
+                    ((AGeneralWhiteBoard) activity).customActionBar.setTimeCreatedText(GlobalConstants.SITE_PLAN_IMAGE_NAME + " created at " + dptw.time);
                } catch (Exception e) {
-                    Utils.logw(e.getMessage());
+                    QLog.debug(e.getMessage());
                }
           }
 
-          if ( GeneralWhiteBoardActivity.IS_NEED_TO_BACK ) {
+          if ( AGeneralWhiteBoard.IS_NEED_TO_BACK ) {
                this.activity.onBackPressed();
           }
 

@@ -37,6 +37,11 @@
 	<string name="yes">Yes</string>
 	<string name="OK">OK</string>
 	<string name="no">No</string>
+	<string name="company">Company</string>
+	<string name="full_name">User name</string>
+	<string name="user_inforamtion">User information</string>
+	<string name="tvUrl">TV Url</string>
+	<string name="induction">Induction</string>
 	<string name="siteId">Site ID</string>
 	<string name="on_site">On site</string>
 	<string name="off_site">Off site</string>
@@ -87,7 +92,6 @@
 	<string name="brush_color_is_set_to_red">Brush color is set to red</string>
 	<string name="create_whiteboard">Create new whiteboard</string>
 	<string name="colour_has_been_changed">Color has been changed</string>
-	
 	<string name="everything_will_be_cleared">All shapes/lines will be cleared, you can not undo this action! Do you want confirm this action?</string>
 	<string name="new_whiteboard_created">New whiteboard has been created!</string>
 	<string name="field_cannot_be_empty">Field cannot be empty</string>
@@ -107,7 +111,7 @@
 	<string name="proceed_anyway">Yes, go back without saving</string>
 	<string name="no_data_for_marker">There is no data for this marker</string>
 	<string name="no_meeting_plan">There is no meeting plan </string>
-	<string name="sel_meeting_name">Select meeting name</string>
+	<string name="sel_briefing_name">Select site briefing</string>
 	<string name="error_during_downloading_site_plan_meeting">Error appears during downloading site plan meeting </string>
 	<string name="no_hotspots_from_server">There are no hotspots received from server</string>
 	<string name="risk_information">Risks inforamtion</string>

@@ -2,23 +2,24 @@ package com.touchip.organizer.communication.rest.request;
 
 import java.util.Map;
 
-import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
-import com.touchip.organizer.communication.rest.model.MeetingPlanList;
-import com.touchip.organizer.utils.Utils;
+import quickutils.core.QUFactory.QLog;
 
-public class GetMeetingPlanRequest extends SpringAndroidSpiceRequest <MeetingPlanList> {
+import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
+import com.touchip.organizer.communication.rest.model.ModelMeetingPlanList;
+
+public class GetMeetingPlanRequest extends SpringAndroidSpiceRequest <ModelMeetingPlanList> {
 
      // Variable array for POST request
      private final Map <String, String> vars;
 
      public GetMeetingPlanRequest ( Map <String, String> requestVariables ) {
-          super(MeetingPlanList.class);
+          super(ModelMeetingPlanList.class);
           this.vars = requestVariables;
-          Utils.logw("Post....." + RestAddresses.GET_MEETING_PLAN);
+          QLog.debug("Post....." + RestAddresses.GET_MEETING_PLAN);
      }
 
-     @Override public MeetingPlanList loadDataFromNetwork() throws Exception {
-          return getRestTemplate().postForObject(RestAddresses.GET_MEETING_PLAN, vars, MeetingPlanList.class);
+     @Override public ModelMeetingPlanList loadDataFromNetwork() throws Exception {
+          return getRestTemplate().postForObject(RestAddresses.GET_MEETING_PLAN, vars, ModelMeetingPlanList.class);
      }
 
      /**
