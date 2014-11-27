@@ -73,22 +73,22 @@ public final class CDialogCreateTradeHotspot_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
-        btnOk = ((Button) hasViews.findViewById(id.btnOk));
-        etHighRiskText = ((EditText) hasViews.findViewById(id.etHighRiskText));
-        ibValidFrom = ((ImageButton) hasViews.findViewById(id.ibValidFrom));
-        twValidTo = ((TextView) hasViews.findViewById(id.twValidTo));
-        twValidFrom = ((TextView) hasViews.findViewById(id.twValidFrom));
         ibValidTo = ((ImageButton) hasViews.findViewById(id.ibValidTo));
+        etHighRiskText = ((EditText) hasViews.findViewById(id.etHighRiskText));
+        btnOk = ((Button) hasViews.findViewById(id.btnOk));
+        twValidTo = ((TextView) hasViews.findViewById(id.twValidTo));
+        ibValidFrom = ((ImageButton) hasViews.findViewById(id.ibValidFrom));
+        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
+        twValidFrom = ((TextView) hasViews.findViewById(id.twValidFrom));
         {
-            View view = hasViews.findViewById(id.ibValidTo);
+            View view = hasViews.findViewById(id.btnOk);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogCreateTradeHotspot_.this.ibValidTo();
+                        CDialogCreateTradeHotspot_.this.btnOk();
                     }
 
                 }
@@ -111,21 +111,6 @@ public final class CDialogCreateTradeHotspot_
             }
         }
         {
-            View view = hasViews.findViewById(id.btnOk);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogCreateTradeHotspot_.this.btnOk();
-                    }
-
-                }
-                );
-            }
-        }
-        {
             View view = hasViews.findViewById(id.btnCancel);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -134,6 +119,21 @@ public final class CDialogCreateTradeHotspot_
                     @Override
                     public void onClick(View view) {
                         CDialogCreateTradeHotspot_.this.btnCancel();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibValidTo);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogCreateTradeHotspot_.this.ibValidTo();
                     }
 
                 }

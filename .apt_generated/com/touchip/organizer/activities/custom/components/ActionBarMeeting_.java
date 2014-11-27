@@ -68,56 +68,11 @@ public final class ActionBarMeeting_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivTextSizeDown = ((ImageView) hasViews.findViewById(id.ivTextSizeDown));
-        ivRed = ((ImageView) hasViews.findViewById(id.ivRed));
-        ivGreen = ((ImageView) hasViews.findViewById(id.ivGreen));
         ivTextSizeUp = ((ImageView) hasViews.findViewById(id.ivTextSizeUp));
+        ivGreen = ((ImageView) hasViews.findViewById(id.ivGreen));
+        ivRed = ((ImageView) hasViews.findViewById(id.ivRed));
+        ivTextSizeDown = ((ImageView) hasViews.findViewById(id.ivTextSizeDown));
         ivBlue = ((ImageView) hasViews.findViewById(id.ivBlue));
-        {
-            View view = hasViews.findViewById(id.ivTextSizeDown);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActionBarMeeting_.this.ivTextSizeDown();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ivRed);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActionBarMeeting_.this.ivRed();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ivGreen);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActionBarMeeting_.this.ivGreen();
-                    }
-
-                }
-                );
-            }
-        }
         {
             View view = hasViews.findViewById(id.ivTextSizeUp);
             if (view!= null) {
@@ -142,6 +97,51 @@ public final class ActionBarMeeting_
                     @Override
                     public void onClick(View view) {
                         ActionBarMeeting_.this.ivBlue();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ivGreen);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActionBarMeeting_.this.ivGreen();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ivRed);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActionBarMeeting_.this.ivRed();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ivTextSizeDown);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActionBarMeeting_.this.ivTextSizeDown();
                     }
 
                 }

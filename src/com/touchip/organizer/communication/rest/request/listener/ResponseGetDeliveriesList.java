@@ -56,7 +56,7 @@ public class ResponseGetDeliveriesList implements RequestListener <ModelDelivery
 
      // Request succesfull, update UI
      @Override public void onRequestSuccess(final ModelDelivery modelDeliveries) {
-          if ( null != modelDeliveries ) {
+          if ( !QPreconditions.isNull(modelDeliveries) ) {
                final Dialog dialog = new Dialog(activity);
                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                dialog.setContentView(R.layout.dialog_deliveries_list);
@@ -134,7 +134,7 @@ public class ResponseGetDeliveriesList implements RequestListener <ModelDelivery
                }
 
                // DELIVERIES GATES
-               if ( null != modelDeliveries.deliveries && !modelDeliveries.deliveries.isEmpty() ) {
+               if ( !QPreconditions.isNullOrEmpty(modelDeliveries.deliveries) ) {
 
                     TableLayout tlRoot = (TableLayout) dialog.findViewById(R.id.tlRoot);
 

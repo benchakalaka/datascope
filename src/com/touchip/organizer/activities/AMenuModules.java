@@ -218,7 +218,6 @@ import com.touchip.organizer.utils.Utils.AnimationManager;
           rlWboard.startAnimation(AnimationManager.load(R.anim.fade_in));
           HashMap <String, String> params = QCollection.newHashMap();
 
-          params.put(HTTP_PARAMS.FLOOR, GlobalConstants.CURRENT_FLOOR);
           params.put(HTTP_PARAMS.DATE, GlobalConstants.SITE_PLAN_IMAGE_NAME);
           params.put(HTTP_PARAMS.MARKER_ID, GlobalConstants.LAST_CLICKED_MARKER_ID);
 

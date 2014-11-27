@@ -69,8 +69,8 @@ public final class CDialogDisplayQuickNote_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        tvText = ((TextView) hasViews.findViewById(id.tvText));
         ivClose = ((ImageView) hasViews.findViewById(id.ivClose));
+        tvText = ((TextView) hasViews.findViewById(id.tvText));
         {
             View view = hasViews.findViewById(id.ivClose);
             if (view!= null) {

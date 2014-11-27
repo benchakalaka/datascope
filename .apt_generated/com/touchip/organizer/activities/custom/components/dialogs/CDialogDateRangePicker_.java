@@ -70,24 +70,9 @@ public final class CDialogDateRangePicker_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
         btnOk = ((Button) hasViews.findViewById(id.btnOk));
         dpvDateRangePicker = ((DayPickerView) hasViews.findViewById(id.dpvDateRangePicker));
-        {
-            View view = hasViews.findViewById(id.btnOk);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogDateRangePicker_.this.btnOk();
-                    }
-
-                }
-                );
-            }
-        }
+        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
         {
             View view = hasViews.findViewById(id.btnCancel);
             if (view!= null) {
@@ -97,6 +82,21 @@ public final class CDialogDateRangePicker_
                     @Override
                     public void onClick(View view) {
                         CDialogDateRangePicker_.this.btnCancel();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.btnOk);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogDateRangePicker_.this.btnOk();
                     }
 
                 }

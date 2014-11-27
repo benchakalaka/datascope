@@ -157,7 +157,7 @@
 				android:background="@drawable/transparent_inside_and_white_border"
 				android:padding="2dp"
 				android:singleLine="true"
-				android:text="Everybody"
+				android:text="All"
 				android:textAlignment="center"
 				android:textColor="@android:color/white" />
 		</LinearLayout>
@@ -166,7 +166,7 @@
 			android:id="@+id/twTotalAmountOfPeople"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:background="@drawable/background_view_rounded_single_amount_of_people"
+			android:background="@drawable/background_green_round_view"
 			android:padding="3dp"
 			android:textAlignment="center" />
 

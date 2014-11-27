@@ -71,29 +71,29 @@ public final class CDialogCreateNote_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ibColour4 = ((ImageView) hasViews.findViewById(id.ibColour4));
-        ibColour7 = ((ImageView) hasViews.findViewById(id.ibColour7));
-        ivTypeOfNote = ((ImageView) hasViews.findViewById(id.ivTypeOfNote));
-        ibColour5 = ((ImageView) hasViews.findViewById(id.ibColour5));
-        ibColour8 = ((ImageView) hasViews.findViewById(id.ibColour8));
-        ibColour14 = ((ImageView) hasViews.findViewById(id.ibColour14));
-        ibColour16 = ((ImageView) hasViews.findViewById(id.ibColour16));
-        ibColour2 = ((ImageView) hasViews.findViewById(id.ibColour2));
-        ibColour1 = ((ImageView) hasViews.findViewById(id.ibColour1));
-        ibColour15 = ((ImageView) hasViews.findViewById(id.ibColour15));
-        ibColour11 = ((ImageView) hasViews.findViewById(id.ibColour11));
-        ibColour13 = ((ImageView) hasViews.findViewById(id.ibColour13));
-        ibColour12 = ((ImageView) hasViews.findViewById(id.ibColour12));
-        ibColour3 = ((ImageView) hasViews.findViewById(id.ibColour3));
-        twStartDate = ((TextView) hasViews.findViewById(id.twStartDate));
-        ibColour17 = ((ImageView) hasViews.findViewById(id.ibColour17));
         etName = ((EditText) hasViews.findViewById(id.etName));
-        ibColour9 = ((ImageView) hasViews.findViewById(id.ibColour9));
-        twEndDateL = ((TextView) hasViews.findViewById(id.twEndDateL));
-        ivOk = ((ImageView) hasViews.findViewById(id.ivOk));
         ibColour10 = ((ImageView) hasViews.findViewById(id.ibColour10));
+        ibColour13 = ((ImageView) hasViews.findViewById(id.ibColour13));
+        ibColour17 = ((ImageView) hasViews.findViewById(id.ibColour17));
+        ibColour15 = ((ImageView) hasViews.findViewById(id.ibColour15));
         ibColour6 = ((ImageView) hasViews.findViewById(id.ibColour6));
         etComments = ((EditText) hasViews.findViewById(id.etComments));
+        ibColour2 = ((ImageView) hasViews.findViewById(id.ibColour2));
+        ibColour16 = ((ImageView) hasViews.findViewById(id.ibColour16));
+        ibColour5 = ((ImageView) hasViews.findViewById(id.ibColour5));
+        ivTypeOfNote = ((ImageView) hasViews.findViewById(id.ivTypeOfNote));
+        ibColour7 = ((ImageView) hasViews.findViewById(id.ibColour7));
+        ibColour3 = ((ImageView) hasViews.findViewById(id.ibColour3));
+        ivOk = ((ImageView) hasViews.findViewById(id.ivOk));
+        twEndDateL = ((TextView) hasViews.findViewById(id.twEndDateL));
+        ibColour1 = ((ImageView) hasViews.findViewById(id.ibColour1));
+        ibColour12 = ((ImageView) hasViews.findViewById(id.ibColour12));
+        ibColour11 = ((ImageView) hasViews.findViewById(id.ibColour11));
+        ibColour8 = ((ImageView) hasViews.findViewById(id.ibColour8));
+        ibColour4 = ((ImageView) hasViews.findViewById(id.ibColour4));
+        twStartDate = ((TextView) hasViews.findViewById(id.twStartDate));
+        ibColour9 = ((ImageView) hasViews.findViewById(id.ibColour9));
+        ibColour14 = ((ImageView) hasViews.findViewById(id.ibColour14));
         {
             View view = hasViews.findViewById(id.ivTypeOfNote);
             if (view!= null) {

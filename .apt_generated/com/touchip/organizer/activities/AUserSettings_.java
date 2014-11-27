@@ -84,14 +84,29 @@ public final class AUserSettings_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        buttonUpdateApp = ((Button) hasViews.findViewById(id.buttonUpdateApp));
-        etIp = ((EditText) hasViews.findViewById(id.etIp));
         etPort = ((EditText) hasViews.findViewById(id.etPort));
-        etSiteId = ((EditText) hasViews.findViewById(id.etSiteId));
-        etTvUrl = ((EditText) hasViews.findViewById(id.etTvUrl));
         buttonOk = ((Button) hasViews.findViewById(id.buttonOk));
-        etTvId = ((EditText) hasViews.findViewById(id.etTvId));
+        etTvUrl = ((EditText) hasViews.findViewById(id.etTvUrl));
+        buttonUpdateApp = ((Button) hasViews.findViewById(id.buttonUpdateApp));
         buttonCancel = ((Button) hasViews.findViewById(id.buttonCancel));
+        etTvId = ((EditText) hasViews.findViewById(id.etTvId));
+        etIp = ((EditText) hasViews.findViewById(id.etIp));
+        etSiteId = ((EditText) hasViews.findViewById(id.etSiteId));
+        {
+            View view = hasViews.findViewById(id.buttonOk);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        AUserSettings_.this.buttonOk();
+                    }
+
+                }
+                );
+            }
+        }
         {
             View view = hasViews.findViewById(id.buttonUpdateApp);
             if (view!= null) {
@@ -116,21 +131,6 @@ public final class AUserSettings_
                     @Override
                     public void onClick(View view) {
                         AUserSettings_.this.buttonCancel();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.buttonOk);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        AUserSettings_.this.buttonOk();
                     }
 
                 }

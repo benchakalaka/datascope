@@ -73,13 +73,28 @@ public final class CDialogCreateAssetHotspot_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        etHighRiskText = ((EditText) hasViews.findViewById(id.etHighRiskText));
         ibValidTo = ((ImageButton) hasViews.findViewById(id.ibValidTo));
-        ibValidFrom = ((ImageButton) hasViews.findViewById(id.ibValidFrom));
-        btnOk = ((Button) hasViews.findViewById(id.btnOk));
         twValidTo = ((TextView) hasViews.findViewById(id.twValidTo));
-        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
+        btnOk = ((Button) hasViews.findViewById(id.btnOk));
+        ibValidFrom = ((ImageButton) hasViews.findViewById(id.ibValidFrom));
         twValidFrom = ((TextView) hasViews.findViewById(id.twValidFrom));
+        etHighRiskText = ((EditText) hasViews.findViewById(id.etHighRiskText));
+        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
+        {
+            View view = hasViews.findViewById(id.btnCancel);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogCreateAssetHotspot_.this.btnCancel();
+                    }
+
+                }
+                );
+            }
+        }
         {
             View view = hasViews.findViewById(id.ibValidFrom);
             if (view!= null) {
@@ -104,21 +119,6 @@ public final class CDialogCreateAssetHotspot_
                     @Override
                     public void onClick(View view) {
                         CDialogCreateAssetHotspot_.this.btnOk();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.btnCancel);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogCreateAssetHotspot_.this.btnCancel();
                     }
 
                 }

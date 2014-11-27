@@ -70,8 +70,8 @@ public final class CDialogSaveWhiteBoard_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
         etWbName = ((EditText) hasViews.findViewById(id.etWbName));
+        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
         btnOk = ((Button) hasViews.findViewById(id.btnOk));
         {
             View view = hasViews.findViewById(id.btnOk);

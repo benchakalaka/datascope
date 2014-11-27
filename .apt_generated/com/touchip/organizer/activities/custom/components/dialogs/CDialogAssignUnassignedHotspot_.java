@@ -73,13 +73,13 @@ public final class CDialogAssignUnassignedHotspot_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twValidFrom = ((TextView) hasViews.findViewById(id.twValidFrom));
         twValidTo = ((TextView) hasViews.findViewById(id.twValidTo));
-        etHighRiskText = ((EditText) hasViews.findViewById(id.etHighRiskText));
         ibValidTo = ((ImageButton) hasViews.findViewById(id.ibValidTo));
+        etHighRiskText = ((EditText) hasViews.findViewById(id.etHighRiskText));
         btnOk = ((Button) hasViews.findViewById(id.btnOk));
-        ibValidFrom = ((ImageButton) hasViews.findViewById(id.ibValidFrom));
         btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
+        ibValidFrom = ((ImageButton) hasViews.findViewById(id.ibValidFrom));
+        twValidFrom = ((TextView) hasViews.findViewById(id.twValidFrom));
         {
             View view = hasViews.findViewById(id.btnOk);
             if (view!= null) {
@@ -96,14 +96,14 @@ public final class CDialogAssignUnassignedHotspot_
             }
         }
         {
-            View view = hasViews.findViewById(id.ibValidTo);
+            View view = hasViews.findViewById(id.btnCancel);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogAssignUnassignedHotspot_.this.ibValidTo();
+                        CDialogAssignUnassignedHotspot_.this.btnCancel();
                     }
 
                 }
@@ -126,14 +126,14 @@ public final class CDialogAssignUnassignedHotspot_
             }
         }
         {
-            View view = hasViews.findViewById(id.btnCancel);
+            View view = hasViews.findViewById(id.ibValidTo);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogAssignUnassignedHotspot_.this.btnCancel();
+                        CDialogAssignUnassignedHotspot_.this.ibValidTo();
                     }
 
                 }

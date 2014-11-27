@@ -72,8 +72,8 @@ public final class CDialogDisplayUserInformation_
     @Override
     public void onViewChanged(HasViews hasViews) {
         tvFullName = ((TextView) hasViews.findViewById(id.tvFullName));
-        btnOk = ((Button) hasViews.findViewById(id.btnOk));
         ivCompanyColour = ((ImageView) hasViews.findViewById(id.ivCompanyColour));
+        btnOk = ((Button) hasViews.findViewById(id.btnOk));
         tvCompany = ((TextView) hasViews.findViewById(id.tvCompany));
         {
             View view = hasViews.findViewById(id.btnOk);

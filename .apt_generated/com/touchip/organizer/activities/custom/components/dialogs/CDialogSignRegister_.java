@@ -74,23 +74,38 @@ public final class CDialogSignRegister_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        lvSignedIn = ((ListView) hasViews.findViewById(id.lvSignedIn));
-        btnOk = ((Button) hasViews.findViewById(id.btnOk));
-        twLogin = ((TextView) hasViews.findViewById(id.twLogin));
-        tw2 = ((TextView) hasViews.findViewById(id.tw2));
         tw8 = ((TextView) hasViews.findViewById(id.tw8));
-        tw4 = ((TextView) hasViews.findViewById(id.tw4));
-        tw0 = ((TextView) hasViews.findViewById(id.tw0));
         tw3 = ((TextView) hasViews.findViewById(id.tw3));
         tw1 = ((TextView) hasViews.findViewById(id.tw1));
-        tw9 = ((TextView) hasViews.findViewById(id.tw9));
-        llPinPad = ((RelativeLayout) hasViews.findViewById(id.llPinPad));
+        lvSignedIn = ((ListView) hasViews.findViewById(id.lvSignedIn));
         tw7 = ((TextView) hasViews.findViewById(id.tw7));
-        tvTitle = ((TextView) hasViews.findViewById(id.tvTitle));
-        twc = ((TextView) hasViews.findViewById(id.twc));
-        etPassword = ((EditText) hasViews.findViewById(id.etPassword));
-        tw5 = ((TextView) hasViews.findViewById(id.tw5));
+        tw0 = ((TextView) hasViews.findViewById(id.tw0));
         tw6 = ((TextView) hasViews.findViewById(id.tw6));
+        llPinPad = ((RelativeLayout) hasViews.findViewById(id.llPinPad));
+        tw4 = ((TextView) hasViews.findViewById(id.tw4));
+        etPassword = ((EditText) hasViews.findViewById(id.etPassword));
+        tw9 = ((TextView) hasViews.findViewById(id.tw9));
+        tw5 = ((TextView) hasViews.findViewById(id.tw5));
+        twLogin = ((TextView) hasViews.findViewById(id.twLogin));
+        twc = ((TextView) hasViews.findViewById(id.twc));
+        btnOk = ((Button) hasViews.findViewById(id.btnOk));
+        tw2 = ((TextView) hasViews.findViewById(id.tw2));
+        tvTitle = ((TextView) hasViews.findViewById(id.tvTitle));
+        {
+            View view = hasViews.findViewById(id.tw2);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSignRegister_.this.tw2();
+                    }
+
+                }
+                );
+            }
+        }
         {
             View view = hasViews.findViewById(id.tw5);
             if (view!= null) {
@@ -107,14 +122,29 @@ public final class CDialogSignRegister_
             }
         }
         {
-            View view = hasViews.findViewById(id.twc);
+            View view = hasViews.findViewById(id.tw6);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogSignRegister_.this.twc();
+                        CDialogSignRegister_.this.tw6();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.tw1);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSignRegister_.this.tw1();
                     }
 
                 }
@@ -167,74 +197,14 @@ public final class CDialogSignRegister_
             }
         }
         {
-            View view = hasViews.findViewById(id.tw8);
+            View view = hasViews.findViewById(id.tw4);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogSignRegister_.this.tw8();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.tw2);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSignRegister_.this.tw2();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.btnOk);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSignRegister_.this.btnOk();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.tw1);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSignRegister_.this.tw1();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.tw6);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSignRegister_.this.tw6();
+                        CDialogSignRegister_.this.tw4();
                     }
 
                 }
@@ -257,6 +227,51 @@ public final class CDialogSignRegister_
             }
         }
         {
+            View view = hasViews.findViewById(id.twc);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSignRegister_.this.twc();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.btnOk);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSignRegister_.this.btnOk();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.tw8);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSignRegister_.this.tw8();
+                    }
+
+                }
+                );
+            }
+        }
+        {
             View view = hasViews.findViewById(id.twLogin);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -265,21 +280,6 @@ public final class CDialogSignRegister_
                     @Override
                     public void onClick(View view) {
                         CDialogSignRegister_.this.twLogin();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.tw4);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSignRegister_.this.tw4();
                     }
 
                 }

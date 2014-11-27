@@ -4,7 +4,7 @@
 	package="com.squareup.timessquare.sample"
 	android:installLocation="preferExternal"
 	android:versionCode="1"
-	android:versionName="1.5" >
+	android:versionName="1.5.1" >
 
 	<uses-sdk
 		android:maxSdkVersion="19"

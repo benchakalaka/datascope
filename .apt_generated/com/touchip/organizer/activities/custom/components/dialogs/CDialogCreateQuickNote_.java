@@ -73,12 +73,12 @@ public final class CDialogCreateQuickNote_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twValidFrom = ((TextView) hasViews.findViewById(id.twValidFrom));
-        ibValidFrom = ((ImageButton) hasViews.findViewById(id.ibValidFrom));
         etQuickNoteText = ((EditText) hasViews.findViewById(id.etQuickNoteText));
-        ibValidTo = ((ImageButton) hasViews.findViewById(id.ibValidTo));
         twValidTo = ((TextView) hasViews.findViewById(id.twValidTo));
+        ibValidFrom = ((ImageButton) hasViews.findViewById(id.ibValidFrom));
         btnOk = ((Button) hasViews.findViewById(id.btnOk));
+        ibValidTo = ((ImageButton) hasViews.findViewById(id.ibValidTo));
+        twValidFrom = ((TextView) hasViews.findViewById(id.twValidFrom));
         {
             View view = hasViews.findViewById(id.ibValidFrom);
             if (view!= null) {

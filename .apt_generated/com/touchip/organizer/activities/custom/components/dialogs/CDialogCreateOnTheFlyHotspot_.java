@@ -74,29 +74,14 @@ public final class CDialogCreateOnTheFlyHotspot_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twValidFrom = ((TextView) hasViews.findViewById(id.twValidFrom));
+        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
+        btnOk = ((Button) hasViews.findViewById(id.btnOk));
+        etDescription = ((EditText) hasViews.findViewById(id.etDescription));
         ibValidFrom = ((ImageButton) hasViews.findViewById(id.ibValidFrom));
         twValidTo = ((TextView) hasViews.findViewById(id.twValidTo));
-        ibValidTo = ((ImageButton) hasViews.findViewById(id.ibValidTo));
-        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
-        etDescription = ((EditText) hasViews.findViewById(id.etDescription));
-        btnOk = ((Button) hasViews.findViewById(id.btnOk));
         multiSpinner = ((MultiSpinner) hasViews.findViewById(id.multiSpinner));
-        {
-            View view = hasViews.findViewById(id.btnCancel);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogCreateOnTheFlyHotspot_.this.btnCancel();
-                    }
-
-                }
-                );
-            }
-        }
+        ibValidTo = ((ImageButton) hasViews.findViewById(id.ibValidTo));
+        twValidFrom = ((TextView) hasViews.findViewById(id.twValidFrom));
         {
             View view = hasViews.findViewById(id.btnOk);
             if (view!= null) {
@@ -113,14 +98,14 @@ public final class CDialogCreateOnTheFlyHotspot_
             }
         }
         {
-            View view = hasViews.findViewById(id.ibValidFrom);
+            View view = hasViews.findViewById(id.btnCancel);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogCreateOnTheFlyHotspot_.this.ibValidFrom();
+                        CDialogCreateOnTheFlyHotspot_.this.btnCancel();
                     }
 
                 }
@@ -136,6 +121,21 @@ public final class CDialogCreateOnTheFlyHotspot_
                     @Override
                     public void onClick(View view) {
                         CDialogCreateOnTheFlyHotspot_.this.ibValidTo();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibValidFrom);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogCreateOnTheFlyHotspot_.this.ibValidFrom();
                     }
 
                 }

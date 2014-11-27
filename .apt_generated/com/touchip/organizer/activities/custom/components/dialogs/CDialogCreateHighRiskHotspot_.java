@@ -73,13 +73,28 @@ public final class CDialogCreateHighRiskHotspot_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        btnOk = ((Button) hasViews.findViewById(id.btnOk));
-        twValidFrom = ((TextView) hasViews.findViewById(id.twValidFrom));
+        etHighRiskText = ((EditText) hasViews.findViewById(id.etHighRiskText));
         ibValidTo = ((ImageButton) hasViews.findViewById(id.ibValidTo));
         btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
-        etHighRiskText = ((EditText) hasViews.findViewById(id.etHighRiskText));
-        twValidTo = ((TextView) hasViews.findViewById(id.twValidTo));
         ibValidFrom = ((ImageButton) hasViews.findViewById(id.ibValidFrom));
+        twValidTo = ((TextView) hasViews.findViewById(id.twValidTo));
+        btnOk = ((Button) hasViews.findViewById(id.btnOk));
+        twValidFrom = ((TextView) hasViews.findViewById(id.twValidFrom));
+        {
+            View view = hasViews.findViewById(id.btnCancel);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogCreateHighRiskHotspot_.this.btnCancel();
+                    }
+
+                }
+                );
+            }
+        }
         {
             View view = hasViews.findViewById(id.ibValidFrom);
             if (view!= null) {
@@ -104,21 +119,6 @@ public final class CDialogCreateHighRiskHotspot_
                     @Override
                     public void onClick(View view) {
                         CDialogCreateHighRiskHotspot_.this.ibValidTo();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.btnCancel);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogCreateHighRiskHotspot_.this.btnCancel();
                     }
 
                 }

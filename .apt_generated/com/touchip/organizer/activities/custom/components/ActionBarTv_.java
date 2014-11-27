@@ -68,23 +68,8 @@ public final class ActionBarTv_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        llInduction = ((LinearLayout) hasViews.findViewById(id.llInduction));
         llSettings = ((LinearLayout) hasViews.findViewById(id.llSettings));
-        {
-            View view = hasViews.findViewById(id.llSettings);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActionBarTv_.this.llSettings();
-                    }
-
-                }
-                );
-            }
-        }
+        llInduction = ((LinearLayout) hasViews.findViewById(id.llInduction));
         {
             View view = hasViews.findViewById(id.llInduction);
             if (view!= null) {
@@ -94,6 +79,21 @@ public final class ActionBarTv_
                     @Override
                     public void onClick(View view) {
                         ActionBarTv_.this.llInduction();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.llSettings);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActionBarTv_.this.llSettings();
                     }
 
                 }

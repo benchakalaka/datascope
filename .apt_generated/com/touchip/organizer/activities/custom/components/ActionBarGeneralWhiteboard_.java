@@ -73,11 +73,11 @@ public final class ActionBarGeneralWhiteboard_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ibColour2 = ((ImageView) hasViews.findViewById(id.ibColour2));
         twDataAndTimeCreated = ((TextView) hasViews.findViewById(id.twDataAndTimeCreated));
-        ibColour3 = ((ImageView) hasViews.findViewById(id.ibColour3));
         ibColour5 = ((ImageView) hasViews.findViewById(id.ibColour5));
+        ibColour2 = ((ImageView) hasViews.findViewById(id.ibColour2));
         ibColour1 = ((ImageView) hasViews.findViewById(id.ibColour1));
+        ibColour3 = ((ImageView) hasViews.findViewById(id.ibColour3));
         ibColorPicker = ((ImageButton) hasViews.findViewById(id.ibColorPicker));
         {
             View view = hasViews.findViewById(id.ibColorPicker);

@@ -70,29 +70,29 @@ public final class CDialogTypeOfShape_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivRectangle = ((ImageView) hasViews.findViewById(id.ivRectangle));
-        ivChangeBrushSize = ((ImageView) hasViews.findViewById(id.ivChangeBrushSize));
-        ivTriangle = ((ImageView) hasViews.findViewById(id.ivTriangle));
-        ivLineSelected = ((ImageView) hasViews.findViewById(id.ivLineSelected));
-        sbBrushSize = ((SeekBarHint) hasViews.findViewById(id.sbBrushSize));
-        ivArrowSelected = ((ImageView) hasViews.findViewById(id.ivArrowSelected));
         ivCircle = ((ImageView) hasViews.findViewById(id.ivCircle));
-        ivSimple = ((ImageView) hasViews.findViewById(id.ivSimple));
+        ivRectangle = ((ImageView) hasViews.findViewById(id.ivRectangle));
+        ivTriangle = ((ImageView) hasViews.findViewById(id.ivTriangle));
         ivTriangleSelected = ((ImageView) hasViews.findViewById(id.ivTriangleSelected));
-        ivCircleSelected = ((ImageView) hasViews.findViewById(id.ivCircleSelected));
         ivLine = ((ImageView) hasViews.findViewById(id.ivLine));
         ivArrow = ((ImageView) hasViews.findViewById(id.ivArrow));
-        ivSimpleSelected = ((ImageView) hasViews.findViewById(id.ivSimpleSelected));
         ivRectangleSelected = ((ImageView) hasViews.findViewById(id.ivRectangleSelected));
+        ivCircleSelected = ((ImageView) hasViews.findViewById(id.ivCircleSelected));
+        ivLineSelected = ((ImageView) hasViews.findViewById(id.ivLineSelected));
+        ivSimpleSelected = ((ImageView) hasViews.findViewById(id.ivSimpleSelected));
+        ivChangeBrushSize = ((ImageView) hasViews.findViewById(id.ivChangeBrushSize));
+        ivSimple = ((ImageView) hasViews.findViewById(id.ivSimple));
+        ivArrowSelected = ((ImageView) hasViews.findViewById(id.ivArrowSelected));
+        sbBrushSize = ((SeekBarHint) hasViews.findViewById(id.sbBrushSize));
         {
-            View view = hasViews.findViewById(id.ivArrow);
+            View view = hasViews.findViewById(id.ivRectangle);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogTypeOfShape_.this.ivArrow();
+                        CDialogTypeOfShape_.this.ivRectangle();
                     }
 
                 }
@@ -115,6 +115,21 @@ public final class CDialogTypeOfShape_
             }
         }
         {
+            View view = hasViews.findViewById(id.ivArrow);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogTypeOfShape_.this.ivArrow();
+                    }
+
+                }
+                );
+            }
+        }
+        {
             View view = hasViews.findViewById(id.ivCircle);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -123,21 +138,6 @@ public final class CDialogTypeOfShape_
                     @Override
                     public void onClick(View view) {
                         CDialogTypeOfShape_.this.ivCircle();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ivRectangle);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogTypeOfShape_.this.ivRectangle();
                     }
 
                 }

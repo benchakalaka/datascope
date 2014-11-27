@@ -72,26 +72,11 @@ public final class CDialogColorPicker_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        btnOk = ((Button) hasViews.findViewById(id.btnOk));
-        opacitybar = ((OpacityBar) hasViews.findViewById(id.opacitybar));
         picker = ((ColorPicker) hasViews.findViewById(id.picker));
-        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
+        opacitybar = ((OpacityBar) hasViews.findViewById(id.opacitybar));
         saturationbar = ((SaturationBar) hasViews.findViewById(id.saturationbar));
-        {
-            View view = hasViews.findViewById(id.btnCancel);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogColorPicker_.this.btnCancel();
-                    }
-
-                }
-                );
-            }
-        }
+        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
+        btnOk = ((Button) hasViews.findViewById(id.btnOk));
         {
             View view = hasViews.findViewById(id.btnOk);
             if (view!= null) {
@@ -101,6 +86,21 @@ public final class CDialogColorPicker_
                     @Override
                     public void onClick(View view) {
                         CDialogColorPicker_.this.btnOk();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.btnCancel);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogColorPicker_.this.btnCancel();
                     }
 
                 }

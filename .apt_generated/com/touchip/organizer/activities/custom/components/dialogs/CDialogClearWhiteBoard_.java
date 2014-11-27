@@ -69,23 +69,8 @@ public final class CDialogClearWhiteBoard_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        btnOk = ((Button) hasViews.findViewById(id.btnOk));
         btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
-        {
-            View view = hasViews.findViewById(id.btnOk);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogClearWhiteBoard_.this.btnOk();
-                    }
-
-                }
-                );
-            }
-        }
+        btnOk = ((Button) hasViews.findViewById(id.btnOk));
         {
             View view = hasViews.findViewById(id.btnCancel);
             if (view!= null) {
@@ -95,6 +80,21 @@ public final class CDialogClearWhiteBoard_
                     @Override
                     public void onClick(View view) {
                         CDialogClearWhiteBoard_.this.btnCancel();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.btnOk);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogClearWhiteBoard_.this.btnOk();
                     }
 
                 }

@@ -67,8 +67,8 @@ public final class CustomImageWithTextBelowView_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        text = ((TextView) hasViews.findViewById(id.text));
         image = ((ImageView) hasViews.findViewById(id.image));
+        text = ((TextView) hasViews.findViewById(id.text));
     }
 
 }

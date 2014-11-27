@@ -83,15 +83,30 @@ public final class AMenuModules_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+        rlTv = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlTv));
+        ivNextDay = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivNextDay));
+        rlQuilt = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlQuilt));
+        rlPrsr = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlPrsr));
+        twDate = ((TextView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.twDate));
+        ivPrevDay = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivPrevDay));
+        rlDelivery = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlDelivery));
         rlWboard = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlWboard));
         rlNotes = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlNotes));
-        rlTv = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlTv));
-        rlPrsr = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlPrsr));
-        ivPrevDay = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivPrevDay));
-        ivNextDay = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivNextDay));
-        twDate = ((TextView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.twDate));
-        rlQuilt = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlQuilt));
-        rlDelivery = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlDelivery));
+        {
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.twDate);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        AMenuModules_.this.twDate();
+                    }
+
+                }
+                );
+            }
+        }
         {
             View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlWboard);
             if (view!= null) {
@@ -108,14 +123,14 @@ public final class AMenuModules_
             }
         }
         {
-            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlNotes);
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlQuilt);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        AMenuModules_.this.rlNotes();
+                        AMenuModules_.this.rlQuilt();
                     }
 
                 }
@@ -138,44 +153,14 @@ public final class AMenuModules_
             }
         }
         {
-            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.twDate);
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlNotes);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        AMenuModules_.this.twDate();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivNextDay);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        AMenuModules_.this.ivNextDay();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlQuilt);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        AMenuModules_.this.rlQuilt();
+                        AMenuModules_.this.rlNotes();
                     }
 
                 }
@@ -206,6 +191,21 @@ public final class AMenuModules_
                     @Override
                     public void onClick(View view) {
                         AMenuModules_.this.rlTv();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivNextDay);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        AMenuModules_.this.ivNextDay();
                     }
 
                 }

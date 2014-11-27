@@ -70,47 +70,47 @@ public final class CDialogSmartFilter_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        rlHighRisk = ((RelativeLayout) hasViews.findViewById(id.rlHighRisk));
-        cbOnTheFly = ((CheckBox) hasViews.findViewById(id.cbOnTheFly));
-        cbNote = ((CheckBox) hasViews.findViewById(id.cbNote));
-        cbCamera = ((CheckBox) hasViews.findViewById(id.cbCamera));
+        cbPermission = ((CheckBox) hasViews.findViewById(id.cbPermission));
+        rlSafety = ((RelativeLayout) hasViews.findViewById(id.rlSafety));
+        rlNote = ((RelativeLayout) hasViews.findViewById(id.rlNote));
+        cbWaste = ((CheckBox) hasViews.findViewById(id.cbWaste));
+        cbQuickNote = ((CheckBox) hasViews.findViewById(id.cbQuickNote));
+        rlQuickNote = ((RelativeLayout) hasViews.findViewById(id.rlQuickNote));
+        lvCompanies = ((ListView) hasViews.findViewById(id.lvCompanies));
+        rlLabels = ((RelativeLayout) hasViews.findViewById(id.rlLabels));
+        cbDisplayAll = ((CheckBox) hasViews.findViewById(id.cbDisplayAll));
+        cbTrade = ((CheckBox) hasViews.findViewById(id.cbTrade));
+        rlWaste = ((RelativeLayout) hasViews.findViewById(id.rlWaste));
+        cbAsset = ((CheckBox) hasViews.findViewById(id.cbAsset));
+        cbSafety = ((CheckBox) hasViews.findViewById(id.cbSafety));
         rlTrade = ((RelativeLayout) hasViews.findViewById(id.rlTrade));
-        cbCompleted = ((CheckBox) hasViews.findViewById(id.cbCompleted));
+        cbLabels = ((CheckBox) hasViews.findViewById(id.cbLabels));
         rlAsset = ((RelativeLayout) hasViews.findViewById(id.rlAsset));
         rlCompleted = ((RelativeLayout) hasViews.findViewById(id.rlCompleted));
-        rlShowAll = ((RelativeLayout) hasViews.findViewById(id.rlShowAll));
-        rlPermission = ((RelativeLayout) hasViews.findViewById(id.rlPermission));
-        cbQuickNote = ((CheckBox) hasViews.findViewById(id.cbQuickNote));
-        cbSafety = ((CheckBox) hasViews.findViewById(id.cbSafety));
-        lvCompanies = ((ListView) hasViews.findViewById(id.lvCompanies));
-        rlSafety = ((RelativeLayout) hasViews.findViewById(id.rlSafety));
-        rlLabels = ((RelativeLayout) hasViews.findViewById(id.rlLabels));
-        rlOnTheFly = ((RelativeLayout) hasViews.findViewById(id.rlOnTheFly));
-        rlQuickNote = ((RelativeLayout) hasViews.findViewById(id.rlQuickNote));
-        rlHideAll = ((RelativeLayout) hasViews.findViewById(id.rlHideAll));
-        cbHighRisk = ((CheckBox) hasViews.findViewById(id.cbHighRisk));
-        cbWaste = ((CheckBox) hasViews.findViewById(id.cbWaste));
-        cbShowAll = ((CheckBox) hasViews.findViewById(id.cbShowAll));
-        cbPermission = ((CheckBox) hasViews.findViewById(id.cbPermission));
-        rlWaste = ((RelativeLayout) hasViews.findViewById(id.rlWaste));
         rlCamera = ((RelativeLayout) hasViews.findViewById(id.rlCamera));
-        cbTrade = ((CheckBox) hasViews.findViewById(id.cbTrade));
+        rlPermission = ((RelativeLayout) hasViews.findViewById(id.rlPermission));
+        rlHideAll = ((RelativeLayout) hasViews.findViewById(id.rlHideAll));
         cbHideAll = ((CheckBox) hasViews.findViewById(id.cbHideAll));
-        cbDisplayAll = ((CheckBox) hasViews.findViewById(id.cbDisplayAll));
-        cbLabels = ((CheckBox) hasViews.findViewById(id.cbLabels));
+        cbCompleted = ((CheckBox) hasViews.findViewById(id.cbCompleted));
+        cbOnTheFly = ((CheckBox) hasViews.findViewById(id.cbOnTheFly));
+        cbNote = ((CheckBox) hasViews.findViewById(id.cbNote));
+        rlOnTheFly = ((RelativeLayout) hasViews.findViewById(id.rlOnTheFly));
+        rlShowAll = ((RelativeLayout) hasViews.findViewById(id.rlShowAll));
+        cbHighRisk = ((CheckBox) hasViews.findViewById(id.cbHighRisk));
+        cbCamera = ((CheckBox) hasViews.findViewById(id.cbCamera));
+        rlHighRisk = ((RelativeLayout) hasViews.findViewById(id.rlHighRisk));
         rlWb = ((RelativeLayout) hasViews.findViewById(id.rlWb));
         cbWb = ((CheckBox) hasViews.findViewById(id.cbWb));
-        rlNote = ((RelativeLayout) hasViews.findViewById(id.rlNote));
-        cbAsset = ((CheckBox) hasViews.findViewById(id.cbAsset));
+        cbShowAll = ((CheckBox) hasViews.findViewById(id.cbShowAll));
         {
-            View view = hasViews.findViewById(id.cbShowAll);
+            View view = hasViews.findViewById(id.cbWb);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogSmartFilter_.this.cbShowAll();
+                        CDialogSmartFilter_.this.cbWb();
                     }
 
                 }
@@ -133,14 +133,119 @@ public final class CDialogSmartFilter_
             }
         }
         {
-            View view = hasViews.findViewById(id.cbOnTheFly);
+            View view = hasViews.findViewById(id.rlLabels);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogSmartFilter_.this.cbOnTheFly();
+                        CDialogSmartFilter_.this.rlLabels();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.cbCompleted);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.cbCompleted();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.cbQuickNote);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.cbQuickNote();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.rlWaste);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.rlWaste();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.cbTrade);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.cbTrade();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.rlShowAll);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.rlShowAll();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.cbSafety);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.cbSafety();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.cbLabels);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.cbLabels();
                     }
 
                 }
@@ -178,14 +283,14 @@ public final class CDialogSmartFilter_
             }
         }
         {
-            View view = hasViews.findViewById(id.rlLabels);
+            View view = hasViews.findViewById(id.rlCamera);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogSmartFilter_.this.rlLabels();
+                        CDialogSmartFilter_.this.rlCamera();
                     }
 
                 }
@@ -208,299 +313,14 @@ public final class CDialogSmartFilter_
             }
         }
         {
-            View view = hasViews.findViewById(id.rlOnTheFly);
+            View view = hasViews.findViewById(id.rlHighRisk);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogSmartFilter_.this.rlOnTheFly();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.btnCancel);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.btnCancel();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.rlNote);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.rlNote();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.cbDisplayAll);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.cbDisplayAll();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.cbQuickNote);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.cbQuickNote();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.rlQuickNote);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.rlQuickNote();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.rlCompleted);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.rlCompleted();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.cbPermission);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.cbPermission();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.rlWaste);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.rlWaste();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.rlShowAll);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.rlShowAll();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.cbCompleted);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.cbCompleted();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.rlAsset);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.rlAsset();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.rlSafety);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.rlSafety();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.rlTrade);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.rlTrade();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.cbWaste);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.cbWaste();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.cbCamera);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.cbCamera();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.rlPermission);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.rlPermission();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.cbWb);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.cbWb();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.btnOk);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.btnOk();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.cbNote);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogSmartFilter_.this.cbNote();
+                        CDialogSmartFilter_.this.rlHighRisk();
                     }
 
                 }
@@ -523,14 +343,14 @@ public final class CDialogSmartFilter_
             }
         }
         {
-            View view = hasViews.findViewById(id.cbLabels);
+            View view = hasViews.findViewById(id.cbWaste);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogSmartFilter_.this.cbLabels();
+                        CDialogSmartFilter_.this.cbWaste();
                     }
 
                 }
@@ -538,14 +358,14 @@ public final class CDialogSmartFilter_
             }
         }
         {
-            View view = hasViews.findViewById(id.cbTrade);
+            View view = hasViews.findViewById(id.rlPermission);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogSmartFilter_.this.cbTrade();
+                        CDialogSmartFilter_.this.rlPermission();
                     }
 
                 }
@@ -553,14 +373,14 @@ public final class CDialogSmartFilter_
             }
         }
         {
-            View view = hasViews.findViewById(id.cbSafety);
+            View view = hasViews.findViewById(id.btnOk);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogSmartFilter_.this.cbSafety();
+                        CDialogSmartFilter_.this.btnOk();
                     }
 
                 }
@@ -568,14 +388,14 @@ public final class CDialogSmartFilter_
             }
         }
         {
-            View view = hasViews.findViewById(id.rlCamera);
+            View view = hasViews.findViewById(id.rlOnTheFly);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogSmartFilter_.this.rlCamera();
+                        CDialogSmartFilter_.this.rlOnTheFly();
                     }
 
                 }
@@ -583,14 +403,194 @@ public final class CDialogSmartFilter_
             }
         }
         {
-            View view = hasViews.findViewById(id.rlHighRisk);
+            View view = hasViews.findViewById(id.rlNote);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CDialogSmartFilter_.this.rlHighRisk();
+                        CDialogSmartFilter_.this.rlNote();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.rlTrade);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.rlTrade();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.cbShowAll);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.cbShowAll();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.rlAsset);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.rlAsset();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.cbNote);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.cbNote();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.rlCompleted);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.rlCompleted();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.btnCancel);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.btnCancel();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.rlQuickNote);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.rlQuickNote();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.rlSafety);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.rlSafety();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.cbOnTheFly);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.cbOnTheFly();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.cbPermission);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.cbPermission();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.cbCamera);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.cbCamera();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.cbDisplayAll);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogSmartFilter_.this.cbDisplayAll();
                     }
 
                 }

@@ -70,23 +70,8 @@ public final class CDialogLogout_
     @Override
     public void onViewChanged(HasViews hasViews) {
         btnChangeUser = ((Button) hasViews.findViewById(id.btnChangeUser));
-        btnLogout = ((Button) hasViews.findViewById(id.btnLogout));
         btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
-        {
-            View view = hasViews.findViewById(id.btnLogout);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogLogout_.this.btnLogout();
-                    }
-
-                }
-                );
-            }
-        }
+        btnLogout = ((Button) hasViews.findViewById(id.btnLogout));
         {
             View view = hasViews.findViewById(id.btnChangeUser);
             if (view!= null) {
@@ -111,6 +96,21 @@ public final class CDialogLogout_
                     @Override
                     public void onClick(View view) {
                         CDialogLogout_.this.btnCancel();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.btnLogout);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogLogout_.this.btnLogout();
                     }
 
                 }

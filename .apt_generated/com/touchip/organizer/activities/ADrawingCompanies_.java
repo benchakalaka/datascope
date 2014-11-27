@@ -90,41 +90,41 @@ public final class ADrawingCompanies_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        tvEverybody = ((TextView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.tvEverybody));
-        ivCompanyColor = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivCompanyColor));
-        llAssets = ((LinearLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.llAssets));
-        ibSignRegister = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibSignRegister));
-        llFilters = ((LinearLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.llFilters));
-        ibShapes = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibShapes));
-        ibResources = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibResources));
-        twTotalAmountOfPeople = ((TextView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.twTotalAmountOfPeople));
         tvSPN = ((TextView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.tvSPN));
-        ivLeftPanel = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivLeftPanel));
-        ibWb = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibWb));
-        lwTrades = ((ListView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.lwTrades));
-        ivRightPanel = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivRightPanel));
-        ibRefresh = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibRefresh));
-        ivNextArea = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivNextArea));
-        lwAssets = ((ListView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.lwAssets));
-        ivPrevArea = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivPrevArea));
-        llTrades = ((LinearLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.llTrades));
-        ibChangeFloor = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibChangeFloor));
+        llAssets = ((LinearLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.llAssets));
+        ibResources = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibResources));
         ibUndo = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibUndo));
-        tvToday = ((TextView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.tvToday));
-        DRAW_VIEW = ((CompaniesDrawingView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.DRAW_VIEW));
+        twTotalAmountOfPeople = ((TextView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.twTotalAmountOfPeople));
         tvYesterday = ((TextView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.tvYesterday));
-        rlHotspotsOnCanvas = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlHotspotsOnCanvas));
+        ibShapes = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibShapes));
+        llFilters = ((LinearLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.llFilters));
+        ivCompanyColor = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivCompanyColor));
+        lwTrades = ((ListView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.lwTrades));
+        ibSignRegister = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibSignRegister));
+        ivPrevArea = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivPrevArea));
+        ibRefresh = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibRefresh));
+        lwAssets = ((ListView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.lwAssets));
+        ibChangeFloor = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibChangeFloor));
+        ivRightPanel = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivRightPanel));
+        tvToday = ((TextView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.tvToday));
+        ivNextArea = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivNextArea));
+        ibWb = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibWb));
+        ivLeftPanel = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivLeftPanel));
         ibRedo = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibRedo));
         ibHotspots = ((ImageView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibHotspots));
+        tvEverybody = ((TextView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.tvEverybody));
+        llTrades = ((LinearLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.llTrades));
+        rlHotspotsOnCanvas = ((RelativeLayout) hasViews.findViewById(com.squareup.timessquare.sample.R.id.rlHotspotsOnCanvas));
+        DRAW_VIEW = ((CompaniesDrawingView) hasViews.findViewById(com.squareup.timessquare.sample.R.id.DRAW_VIEW));
         {
-            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibHotspots);
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.tvYesterday);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        ADrawingCompanies_.this.ibHotspots();
+                        ADrawingCompanies_.this.tvYesterday();
                     }
 
                 }
@@ -132,44 +132,14 @@ public final class ADrawingCompanies_
             }
         }
         {
-            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibShapes);
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibRefresh);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        ADrawingCompanies_.this.ibShapes();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibRedo);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ADrawingCompanies_.this.ibRedo();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.tvEverybody);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ADrawingCompanies_.this.tvEverybody();
+                        ADrawingCompanies_.this.ibRefresh();
                     }
 
                 }
@@ -192,14 +162,14 @@ public final class ADrawingCompanies_
             }
         }
         {
-            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibWb);
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivPrevArea);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        ADrawingCompanies_.this.ibWb();
+                        ADrawingCompanies_.this.ivPrevArea();
                     }
 
                 }
@@ -207,14 +177,14 @@ public final class ADrawingCompanies_
             }
         }
         {
-            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibUndo);
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibHotspots);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        ADrawingCompanies_.this.ibUndo();
+                        ADrawingCompanies_.this.ibHotspots();
                     }
 
                 }
@@ -222,44 +192,14 @@ public final class ADrawingCompanies_
             }
         }
         {
-            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibChangeFloor);
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivLeftPanel);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        ADrawingCompanies_.this.ibChangeFloor();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.tvYesterday);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ADrawingCompanies_.this.tvYesterday();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibResources);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ADrawingCompanies_.this.ibResources();
+                        ADrawingCompanies_.this.ivLeftPanel();
                     }
 
                 }
@@ -297,14 +237,14 @@ public final class ADrawingCompanies_
             }
         }
         {
-            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibRefresh);
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibRedo);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        ADrawingCompanies_.this.ibRefresh();
+                        ADrawingCompanies_.this.ibRedo();
                     }
 
                 }
@@ -312,14 +252,14 @@ public final class ADrawingCompanies_
             }
         }
         {
-            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivLeftPanel);
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibUndo);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        ADrawingCompanies_.this.ivLeftPanel();
+                        ADrawingCompanies_.this.ibUndo();
                     }
 
                 }
@@ -327,14 +267,29 @@ public final class ADrawingCompanies_
             }
         }
         {
-            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ivPrevArea);
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibShapes);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        ADrawingCompanies_.this.ivPrevArea();
+                        ADrawingCompanies_.this.ibShapes();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.tvEverybody);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ADrawingCompanies_.this.tvEverybody();
                     }
 
                 }
@@ -350,6 +305,51 @@ public final class ADrawingCompanies_
                     @Override
                     public void onClick(View view) {
                         ADrawingCompanies_.this.ivNextArea();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibResources);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ADrawingCompanies_.this.ibResources();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibChangeFloor);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ADrawingCompanies_.this.ibChangeFloor();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.squareup.timessquare.sample.R.id.ibWb);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ADrawingCompanies_.this.ibWb();
                     }
 
                 }

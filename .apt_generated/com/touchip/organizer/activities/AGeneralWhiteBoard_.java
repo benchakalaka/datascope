@@ -88,175 +88,40 @@ public final class AGeneralWhiteBoard_
     @Override
     public void onViewChanged(HasViews hasViews) {
         ibSaveDrawing = ((ImageButton) hasViews.findViewById(id.ibSaveDrawing));
-        ibMedium = ((ImageButton) hasViews.findViewById(id.ibMedium));
-        ibShapesLine = ((ImageButton) hasViews.findViewById(id.ibShapesLine));
-        ibDrawText = ((ImageButton) hasViews.findViewById(id.ibDrawText));
-        WHITE_BOARD_DRAWING = ((WhiteBoardDrawingView) hasViews.findViewById(id.WHITE_BOARD_DRAWING));
-        ibEraser = ((ImageButton) hasViews.findViewById(id.ibEraser));
-        ibShapesFreeDrawing = ((ImageButton) hasViews.findViewById(id.ibShapesFreeDrawing));
-        llChangeTextSize = ((LinearLayout) hasViews.findViewById(id.llChangeTextSize));
-        llBrushSize = ((LinearLayout) hasViews.findViewById(id.llBrushSize));
         llDrawShapes = ((LinearLayout) hasViews.findViewById(id.llDrawShapes));
-        ivDrawingState = ((ImageView) hasViews.findViewById(id.ivDrawingState));
-        ibUndo = ((ImageButton) hasViews.findViewById(id.ibUndo));
-        ivShapes = ((ImageView) hasViews.findViewById(id.ivShapes));
-        ibLoadWhiteboard = ((ImageButton) hasViews.findViewById(id.ibLoadWhiteboard));
+        ibCreateNewWhiteboard = ((ImageButton) hasViews.findViewById(id.ibCreateNewWhiteboard));
         ibClearAll = ((ImageButton) hasViews.findViewById(id.ibClearAll));
-        ibShapesCircle = ((ImageButton) hasViews.findViewById(id.ibShapesCircle));
-        ibThin = ((ImageButton) hasViews.findViewById(id.ibThin));
-        ivWhiteboardSettings = ((ImageView) hasViews.findViewById(id.ivWhiteboardSettings));
         ibThick = ((ImageButton) hasViews.findViewById(id.ibThick));
         ibRefreshWhiteboard = ((ImageButton) hasViews.findViewById(id.ibRefreshWhiteboard));
-        ibShapesTriangle = ((ImageButton) hasViews.findViewById(id.ibShapesTriangle));
+        ibThin = ((ImageButton) hasViews.findViewById(id.ibThin));
+        ibDrawText = ((ImageButton) hasViews.findViewById(id.ibDrawText));
+        llBrushSize = ((LinearLayout) hasViews.findViewById(id.llBrushSize));
         ivWhiteboardSettingsSelected = ((ImageView) hasViews.findViewById(id.ivWhiteboardSettingsSelected));
-        ibRedo = ((ImageButton) hasViews.findViewById(id.ibRedo));
-        ibCreateNewWhiteboard = ((ImageButton) hasViews.findViewById(id.ibCreateNewWhiteboard));
+        ibShapesLine = ((ImageButton) hasViews.findViewById(id.ibShapesLine));
         ibShapesRectangle = ((ImageButton) hasViews.findViewById(id.ibShapesRectangle));
+        ibUndo = ((ImageButton) hasViews.findViewById(id.ibUndo));
+        ibShapesTriangle = ((ImageButton) hasViews.findViewById(id.ibShapesTriangle));
+        WHITE_BOARD_DRAWING = ((WhiteBoardDrawingView) hasViews.findViewById(id.WHITE_BOARD_DRAWING));
+        ibLoadWhiteboard = ((ImageButton) hasViews.findViewById(id.ibLoadWhiteboard));
+        ibMedium = ((ImageButton) hasViews.findViewById(id.ibMedium));
+        ivShapes = ((ImageView) hasViews.findViewById(id.ivShapes));
+        ibRedo = ((ImageButton) hasViews.findViewById(id.ibRedo));
+        ibShapesCircle = ((ImageButton) hasViews.findViewById(id.ibShapesCircle));
+        ivWhiteboardSettings = ((ImageView) hasViews.findViewById(id.ivWhiteboardSettings));
+        ivDrawingState = ((ImageView) hasViews.findViewById(id.ivDrawingState));
         ivShapesSelected = ((ImageView) hasViews.findViewById(id.ivShapesSelected));
+        ibEraser = ((ImageButton) hasViews.findViewById(id.ibEraser));
+        llChangeTextSize = ((LinearLayout) hasViews.findViewById(id.llChangeTextSize));
+        ibShapesFreeDrawing = ((ImageButton) hasViews.findViewById(id.ibShapesFreeDrawing));
         {
-            View view = hasViews.findViewById(id.ibEraser);
+            View view = hasViews.findViewById(id.ibShapesRectangle);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        AGeneralWhiteBoard_.this.ibEraser();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibShapesCircle);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        AGeneralWhiteBoard_.this.ibShapesCircle();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibLoadWhiteboard);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        AGeneralWhiteBoard_.this.ibLoadWhiteboard();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibShapesLine);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        AGeneralWhiteBoard_.this.ibShapesLine();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibShapesFreeDrawing);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        AGeneralWhiteBoard_.this.ibShapesFreeDrawing();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibUndo);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        AGeneralWhiteBoard_.this.ibUndo();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibThick);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        AGeneralWhiteBoard_.this.ibThick();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ivShapes);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        AGeneralWhiteBoard_.this.ivShapes();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibSaveDrawing);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        AGeneralWhiteBoard_.this.ibSaveDrawing();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ibRedo);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        AGeneralWhiteBoard_.this.ibRedo();
+                        AGeneralWhiteBoard_.this.ibShapesRectangle();
                     }
 
                 }
@@ -279,14 +144,14 @@ public final class AGeneralWhiteBoard_
             }
         }
         {
-            View view = hasViews.findViewById(id.ibClearAll);
+            View view = hasViews.findViewById(id.ibEraser);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        AGeneralWhiteBoard_.this.ibClearAll();
+                        AGeneralWhiteBoard_.this.ibEraser();
                     }
 
                 }
@@ -309,14 +174,14 @@ public final class AGeneralWhiteBoard_
             }
         }
         {
-            View view = hasViews.findViewById(id.ivWhiteboardSettings);
+            View view = hasViews.findViewById(id.ibShapesFreeDrawing);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        AGeneralWhiteBoard_.this.ivWhiteboardSettings();
+                        AGeneralWhiteBoard_.this.ibShapesFreeDrawing();
                     }
 
                 }
@@ -354,14 +219,14 @@ public final class AGeneralWhiteBoard_
             }
         }
         {
-            View view = hasViews.findViewById(id.ibShapesRectangle);
+            View view = hasViews.findViewById(id.ivShapes);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        AGeneralWhiteBoard_.this.ibShapesRectangle();
+                        AGeneralWhiteBoard_.this.ivShapes();
                     }
 
                 }
@@ -369,14 +234,29 @@ public final class AGeneralWhiteBoard_
             }
         }
         {
-            View view = hasViews.findViewById(id.ibCreateNewWhiteboard);
+            View view = hasViews.findViewById(id.ibClearAll);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        AGeneralWhiteBoard_.this.ibCreateNewWhiteboard();
+                        AGeneralWhiteBoard_.this.ibClearAll();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibThick);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        AGeneralWhiteBoard_.this.ibThick();
                     }
 
                 }
@@ -399,6 +279,36 @@ public final class AGeneralWhiteBoard_
             }
         }
         {
+            View view = hasViews.findViewById(id.ibSaveDrawing);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        AGeneralWhiteBoard_.this.ibSaveDrawing();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibLoadWhiteboard);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        AGeneralWhiteBoard_.this.ibLoadWhiteboard();
+                    }
+
+                }
+                );
+            }
+        }
+        {
             View view = hasViews.findViewById(id.ibRefreshWhiteboard);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -407,6 +317,96 @@ public final class AGeneralWhiteBoard_
                     @Override
                     public void onClick(View view) {
                         AGeneralWhiteBoard_.this.ibRefreshWhiteboard();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibCreateNewWhiteboard);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        AGeneralWhiteBoard_.this.ibCreateNewWhiteboard();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibShapesCircle);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        AGeneralWhiteBoard_.this.ibShapesCircle();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibUndo);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        AGeneralWhiteBoard_.this.ibUndo();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibRedo);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        AGeneralWhiteBoard_.this.ibRedo();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibShapesLine);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        AGeneralWhiteBoard_.this.ibShapesLine();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ivWhiteboardSettings);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        AGeneralWhiteBoard_.this.ivWhiteboardSettings();
                     }
 
                 }

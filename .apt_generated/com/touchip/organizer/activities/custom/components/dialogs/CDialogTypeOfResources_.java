@@ -71,10 +71,10 @@ public final class CDialogTypeOfResources_
     public void onViewChanged(HasViews hasViews) {
         ivTradesSelected = ((ImageView) hasViews.findViewById(id.ivTradesSelected));
         ivDeliveries = ((ImageView) hasViews.findViewById(id.ivDeliveries));
-        ivTrades = ((ImageView) hasViews.findViewById(id.ivTrades));
-        ivAssets = ((ImageView) hasViews.findViewById(id.ivAssets));
-        ivDeliveriesSelected = ((ImageView) hasViews.findViewById(id.ivDeliveriesSelected));
         ivAssetsSelected = ((ImageView) hasViews.findViewById(id.ivAssetsSelected));
+        ivDeliveriesSelected = ((ImageView) hasViews.findViewById(id.ivDeliveriesSelected));
+        ivAssets = ((ImageView) hasViews.findViewById(id.ivAssets));
+        ivTrades = ((ImageView) hasViews.findViewById(id.ivTrades));
         {
             View view = hasViews.findViewById(id.ivTrades);
             if (view!= null) {
@@ -91,21 +91,6 @@ public final class CDialogTypeOfResources_
             }
         }
         {
-            View view = hasViews.findViewById(id.ivDeliveries);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CDialogTypeOfResources_.this.ivDeliveries();
-                    }
-
-                }
-                );
-            }
-        }
-        {
             View view = hasViews.findViewById(id.ivAssets);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -114,6 +99,21 @@ public final class CDialogTypeOfResources_
                     @Override
                     public void onClick(View view) {
                         CDialogTypeOfResources_.this.ivAssets();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ivDeliveries);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CDialogTypeOfResources_.this.ivDeliveries();
                     }
 
                 }
